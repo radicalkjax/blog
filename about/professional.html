@@ -1,0 +1,163 @@
+---
+layout: default
+title: Professional Background
+custom_css: |
+    .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .about-section {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .about-section::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+    
+    .about-content {
+        line-height: 1.8;
+    }
+    
+    .about-content p {
+        margin-bottom: 20px;
+    }
+    
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .skill-tag {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .experience-item {
+        margin-bottom: 30px;
+    }
+    
+    .experience-title {
+        font-weight: 500;
+        margin-bottom: 5px;
+        font-size: 1.1rem;
+    }
+    
+    .experience-company {
+        opacity: 0.8;
+        margin-bottom: 5px;
+        font-style: italic;
+    }
+    
+    .experience-date {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 10px;
+    }
+    
+    .experience-description {
+        margin-left: 15px;
+    }
+---
+<div class="about-container">
+    <section class="about-section">
+        <h1 style="margin-bottom: 30px;">The Professional Stuff...</h1>
+        
+        <div class="about-content">
+            <p>I'm a technology professional with experience in IT infrastructure, device management, and cybersecurity. My career has evolved from hands-on technical roles to leadership positions where I manage teams, projects, and relationships with stakeholders.</p>
+        </div>
+    </section>
+    
+    <section class="about-section">
+        <h2>Education</h2>
+        
+        <div class="about-content">
+            <div class="experience-item">
+                <div class="experience-title">Bachelor of Science in Computer Science</div>
+                <div class="experience-company">California State University, Stanislaus</div>
+                <div class="experience-date">Graduated: 2019</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about-section">
+        <h2>Professional Experience</h2>
+        
+        <div class="about-content">
+            <div class="experience-item">
+                <div class="experience-title">Device Management Professional</div>
+                <div class="experience-company">[Current Job]</div>
+                <div class="experience-date">2019 - Present</div>
+                <div class="experience-description">
+                    <p>Manage over 200+ public facing devices with various operating systems in the government sector. Build relationships with vendors to update devices to best meet client/customer needs. Manage deployment schedule, shipping and training of devices. Work with individual government entities to make sure all network, security, building code and electrical requirements are met for both the client and project entities. Develop new functions for app(s) when new hardware is being added/refreshed for the devices. Train workers on devices once launched and work with government IT entities to understand basic device troubleshooting. Manage devices support team to ensure SLA's are met and analyze ticket data to watch for pattern failures. Manage hardware refresh schedule and work with government entities to order, asset and install refresh equipment.</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-title">Advanced Repair Agent (ARA)</div>
+                <div class="experience-company">Geek Squad</div>
+                <div class="experience-date">2014 - 2019</div>
+                <div class="experience-description">
+                    <p>Started as part time counter agent (CIA) and moved to lead Advanced Repair Agent (ARA) by the end of my time with the company. Average personal turn-time for jobs was less than a day. As lead ARA we maintained a average turn-time of 2 days. I also managed open-box and quality assurance processes.</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-title">IT Consultant</div>
+                <div class="experience-company">Small Businesses/Farms</div>
+                <div class="experience-date">2010 - 2019</div>
+                <div class="experience-description">
+                    <p>Misc. jobs for small businesses/farms setting up Windows Server (2008-2016) with AD configs, group policy, and Sharepoint. Also setting up network infrastructure (Running fiber/CAT5e lines, install/setup of switches/routers/modems/firewall(s)).</p>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-title">Farm Hand</div>
+                <div class="experience-company">Various Farms</div>
+                <div class="experience-date">2002 - 2010</div>
+                <div class="experience-description">
+                    <p>Misc. farm-hand jobs. (Dairy, beef, produce)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about-section">
+        <h2>Community Involvement</h2>
+        
+        <div class="about-content">
+            <p>Currently lead Cybersecurity Sacramento (DC916) to bring together security enthusiasts, hackers, makers and tinkerers from the Sacramento, CA region. I hold monthly hybrid meetings, maintain our member discord server and website, run the group's social media accounts and focus on local growth.</p>
+            
+            <div class="skills-list">
+                <span class="skill-tag">Windows Server</span>
+                <span class="skill-tag">Active Directory</span>
+                <span class="skill-tag">Network Infrastructure</span>
+                <span class="skill-tag">IT Support</span>
+                <span class="skill-tag">Device Management</span>
+                <span class="skill-tag">Cybersecurity</span>
+                <span class="skill-tag">Project Management</span>
+                <span class="skill-tag">Vendor Relations</span>
+                <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Technical Training</span>
+                <span class="skill-tag">Community Building</span>
+            </div>
+        </div>
+    </section>
+</div>

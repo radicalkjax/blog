@@ -1,0 +1,186 @@
+---
+layout: default
+title: About Me
+custom_css: |
+    .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .about-section {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .about-section::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+    
+    .about-header {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .about-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    
+    .about-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.8;
+    }
+    
+    .about-content {
+        line-height: 1.8;
+    }
+    
+    .about-content p {
+        margin-bottom: 20px;
+    }
+    
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .skill-tag {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .certifications {
+        margin-top: 30px;
+    }
+    
+    .certifications h3 {
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+    
+    .certifications ul {
+        list-style-type: none;
+    }
+    
+    .certifications li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+    }
+    
+    .certifications li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .education {
+        margin-top: 30px;
+    }
+    
+    .education h3 {
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+    
+    .education-item {
+        margin-bottom: 20px;
+    }
+    
+    .education-degree {
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    
+    .education-institution {
+        opacity: 0.8;
+        margin-bottom: 5px;
+    }
+    
+    .education-year {
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+---
+        <div class="about-container">
+            <section class="about-section">
+                <div class="about-header">
+                    <h1 class="about-title">About Me</h1>
+                    <div class="about-subtitle">Software Engineer, Security Researcher, AI Expert</div>
+                </div>
+                
+                <div class="about-content">
+                    <p>Hi, I'm Kali Jackson (@radicalkjax). I'm a software engineer with expertise in React Native development, a security researcher specializing in malware reverse engineering, and an AI enthusiast with extensive experience in the field.</p>
+                    
+                    <p>My journey in technology began with a passion for understanding how things work and a desire to create solutions that make a difference. Throughout my career, I've worked on various projects ranging from mobile applications to security research, always driven by curiosity and a commitment to excellence.</p>
+                    
+                    <p>As a transgender woman, I'm also passionate about sharing my experiences and advocating for inclusivity and diversity in tech. My blog serves as a platform for both technical content and personal reflections on my journey.</p>
+                    
+                    <div class="skills-list">
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Malware Analysis</span>
+                        <span class="skill-tag">Reverse Engineering</span>
+                        <span class="skill-tag">Artificial Intelligence</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Markdown</span>
+                    </div>
+                    
+                    <div class="certifications">
+                        <h3>Certifications</h3>
+                        <ul>
+                            <li>GIAC Reverse Engineering Malware (GREM)</li>
+                            <li>Offensive Security Certified Professional (OSCP)</li>
+                            <li>CompTIA Security+</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <div class="education-degree">Master of Science in Software Engineering</div>
+                            <div class="education-institution">California State University, Stanislaus</div>
+                            <div class="education-year">Graduated: 2020</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="about-section">
+                <h2>Current Projects</h2>
+                <div class="about-content">
+                    <p>I'm currently working on several projects that combine my interests in software development, security research, and AI:</p>
+                    <ul>
+                        <li>Wattz - A robotics project focused on creating a versatile robot with advanced movement capabilities</li>
+                        <li>Security research on emerging malware threats and defense mechanisms</li>
+                        <li>Exploring applications of AI in cybersecurity and threat detection</li>
+                        <li>Contributing to open-source projects related to privacy and security</li>
+                    </ul>
+                    <p>For more details on these and other projects, check out my <a href="projects.html" style="color: #ffffff; text-decoration: underline;">Projects page</a>.</p>
+                </div>
+            </section>
+        </div>

@@ -1,0 +1,382 @@
+/* 
+ * Main CSS for radicalkjax.com GitHub Pages site
+ * Based on the Pixl theme with DM Mono font
+ */
+
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Mono', monospace;
+    background-color: #6d105a; /* Updated to match original website */
+    color: #ffffff;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    max-width: 1000px; /* Reduced from 1200px */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    padding: 20px 0;
+    border: 2px solid #ffffff; /* White border all around */
+    background-color: #6d105a; /* Match body background */
+    position: relative;
+    margin: 20px auto 60px auto; /* Doubled the bottom margin from 30px to 60px */
+    width: 95vw; /* Slightly less than full viewport width */
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    box-sizing: border-box;
+    z-index: 9999; /* Ensure header is above all other content */
+}
+
+/* Create a second border box underneath */
+header::after {
+    content: '';
+    position: absolute;
+    left: 10px; /* Shifted to the right */
+    right: -10px; /* Extended to the right */
+    bottom: -12px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* Add vertical lines to create box effect */
+header::before {
+    content: '';
+    position: absolute;
+    left: 10px; /* Aligned with the bottom line */
+    bottom: -12px;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+/* Right vertical line */
+.header-content::after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Aligned with the bottom line */
+    bottom: -12px;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: 'Uni 05_53', 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+    left: 20px;
+}
+
+/* Navigation */
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10000; /* Even higher z-index than header */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    font-size: 1.2rem; /* Increased from 1rem to 1.2rem */
+}
+
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default, shown via JavaScript */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #6d105a;
+    border: 1px solid #ffffff;
+    min-width: 200px;
+    z-index: 9999; /* Increased z-index to ensure dropdowns appear above all other elements */
+    padding: 10px 0;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    z-index: 10001; /* Higher than nav */
+}
+
+.dropdown-menu li a {
+    padding: 8px 15px;
+    display: block;
+    font-size: 1rem;
+    white-space: nowrap;
+    position: relative;
+    z-index: 10002; /* Higher than dropdown-menu li */
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
+/* Animated social icons */
+.social-icons a.animated {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+
+/* Post Card */
+.post-card {
+    background-color: rgba(109, 16, 90, 0.7); /* Slightly lighter than body background */
+    border: 2px solid #ffffff; /* White border all around */
+    padding: 30px;
+    margin-bottom: 40px; /* Increased to make room for the second border */
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1; /* Lower z-index to ensure dropdown menus appear above */
+}
+
+/* Create the stacked page effect */
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: -10px;
+    left: 10px;
+    right: -10px;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    z-index: -1;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.post-tags {
+    margin-top: 20px;
+}
+
+.post-tags a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.post-tags a:hover {
+    opacity: 1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 100;
+}
+
+/* Active navigation link */
+nav ul li a.active {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/* Form success message */
+.form-success {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-success h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.form-success p {
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        position: relative;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .mobile-nav-toggle {
+        display: block;
+        top: 60px;
+    }
+    
+    nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    .nav-open nav {
+        max-height: 300px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .site-title {
+        position: static;
+        margin: 0 0 20px 0;
+        text-align: center;
+    }
+    
+    .social-icons {
+        position: static;
+        margin-top: 20px;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .social-icons a:last-child {
+        margin-right: 0;
+    }
+}

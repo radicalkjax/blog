@@ -1,0 +1,36 @@
+# GitHub Pages Configuration for radicalkjax.com
+
+# Site settings
+title: KALI JACKSON (@RADICALKJAX)
+description: Personal website and blog of Kali Jackson, software engineer, security researcher, and AI expert.
+url: "https://radicalkjax.com"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Process HTML files
+include:
+  - _includes
+  - assets
+  - "*.html"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md
+
+# Custom settings
+author:
+  name: Kali Jackson
+  email: contact@radicalkjax.com
+  twitter: radicalkjax
+  github: radicalkjax

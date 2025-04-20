@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}KALI JACKSON (@RADICALKJAX)</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>K</text></svg>">
+    <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+    {% if page.custom_css %}
+    <style>
+        {{ page.custom_css }}
+    </style>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="{{ '/' | relative_url }}" class="site-title">KALI JACKSON (@RADICALKJAX)</a>
+                <nav>
+                    <ul>
+                        <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
+                        <li class="dropdown">
+                            <a href="{{ '/projects.html' | relative_url }}" class="dropdown-toggle">Projects</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ '/projects/rocket-pup.html' | relative_url }}">Rocket Pup</a></li>
+                                <li><a href="{{ '/projects/caliphoria.html' | relative_url }}">Caliphoria</a></li>
+                                <li><a href="{{ '/projects/wattz.html' | relative_url }}">Wattz</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ '/art.html' | relative_url }}" class="dropdown-toggle">Art</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ '/art/photos.html' | relative_url }}">Photos</a></li>
+                                <li><a href="{{ '/art/other-things.html' | relative_url }}">Other Things</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ '/about.html' | relative_url }}" class="dropdown-toggle">About Me</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ '/about/general.html' | relative_url }}">General</a></li>
+                                <li><a href="{{ '/about/trans-journey.html' | relative_url }}">Trans Journey</a></li>
+                                <li><a href="{{ '/about/professional.html' | relative_url }}">The Professional Stuff...</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ '/connections.html' | relative_url }}">Connections</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fas fa-dove"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        {{ content }}
+    </main>
+
+    <footer class="container">
+        <p>Designed with love by Kali <3</p>
+    </footer>
+</body>
+</html>

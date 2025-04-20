@@ -1,0 +1,192 @@
+---
+layout: default
+title: Art
+custom_css: |
+    .art-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .art-item {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+    
+    .art-item::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .art-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .art-placeholder {
+        height: 200px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.2rem;
+    }
+    
+    .art-info {
+        padding: 20px;
+    }
+    
+    .art-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    
+    .art-description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        opacity: 0.8;
+    }
+    
+    .art-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .art-tags a {
+        color: #ffffff;
+        text-decoration: underline;
+        font-size: 0.8rem;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+    
+    .art-tags a:hover {
+        opacity: 1;
+    }
+    
+    .art-intro {
+        margin-bottom: 40px;
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+---
+        <h1 style="margin-bottom: 30px; text-align: center;">Art Gallery</h1>
+        
+        <div class="art-intro">
+            <p>Welcome to my art gallery. This is a collection of my creative works, including digital art, photography, and other visual expressions. Each piece represents a moment of inspiration or a story I wanted to tell.</p>
+        </div>
+        
+        <div class="art-gallery">
+            <!-- Art Item 1 -->
+            <div class="art-item">
+                <div class="art-placeholder">
+                    <span>Digital Artwork</span>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Digital Dreamscape</h3>
+                    <p class="art-description">An exploration of digital landscapes and abstract forms, created using various digital painting techniques.</p>
+                    <div class="art-tags">
+                        <a href="#">digital art</a>
+                        <a href="#">abstract</a>
+                        <a href="#">2024</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Art Item 2 -->
+            <div class="art-item">
+                <div class="art-placeholder">
+                    <span>Photography</span>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Urban Reflections</h3>
+                    <p class="art-description">A series of photographs capturing reflections in urban environments, exploring the interplay of light and architecture.</p>
+                    <div class="art-tags">
+                        <a href="#">photography</a>
+                        <a href="#">urban</a>
+                        <a href="#">2023</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Art Item 3 -->
+            <div class="art-item">
+                <div class="art-placeholder">
+                    <span>Mixed Media</span>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Fragments of Identity</h3>
+                    <p class="art-description">A mixed media exploration of identity and self-expression, combining digital and traditional techniques.</p>
+                    <div class="art-tags">
+                        <a href="#">mixed media</a>
+                        <a href="#">identity</a>
+                        <a href="#">2024</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Art Item 4 -->
+            <div class="art-item">
+                <div class="art-placeholder">
+                    <span>Illustration</span>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Character Studies</h3>
+                    <p class="art-description">A collection of character illustrations exploring diverse personalities and visual styles.</p>
+                    <div class="art-tags">
+                        <a href="#">illustration</a>
+                        <a href="#">characters</a>
+                        <a href="#">2023</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Art Item 5 -->
+            <div class="art-item">
+                <div class="art-placeholder">
+                    <span>Digital Painting</span>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Emotional Landscapes</h3>
+                    <p class="art-description">Abstract digital paintings that visualize emotional states and inner experiences.</p>
+                    <div class="art-tags">
+                        <a href="#">digital painting</a>
+                        <a href="#">emotions</a>
+                        <a href="#">2024</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Art Item 6 -->
+            <div class="art-item">
+                <div class="art-placeholder">
+                    <span>Conceptual Art</span>
+                </div>
+                <div class="art-info">
+                    <h3 class="art-title">Technological Echoes</h3>
+                    <p class="art-description">A conceptual series exploring the relationship between humanity and technology in the modern age.</p>
+                    <div class="art-tags">
+                        <a href="#">conceptual</a>
+                        <a href="#">technology</a>
+                        <a href="#">2023</a>
+                    </div>
+                </div>
+            </div>
+        </div>
