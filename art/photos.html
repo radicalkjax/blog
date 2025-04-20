@@ -1,0 +1,148 @@
+---
+layout: default
+title: Photos
+custom_css: |
+    .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    .photo-item {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+    
+    .photo-item::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .photo-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .photo-placeholder {
+        height: 250px;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.2rem;
+    }
+    
+    .photo-info {
+        padding: 20px;
+    }
+    
+    .photo-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    
+    .photo-description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        opacity: 0.8;
+    }
+    
+    .photo-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .photo-tags a {
+        color: #ffffff;
+        text-decoration: underline;
+        font-size: 0.8rem;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+    
+    .photo-tags a:hover {
+        opacity: 1;
+    }
+---
+<h1 style="margin-bottom: 30px; text-align: center;">Photography</h1>
+
+<div class="photo-gallery">
+    <!-- Photo 1 -->
+    <div class="photo-item">
+        <div class="photo-placeholder">
+            <span>Urban Landscape</span>
+        </div>
+        <div class="photo-info">
+            <h3 class="photo-title">City Reflections</h3>
+            <p class="photo-description">A series of photographs capturing reflections in urban environments, exploring the interplay of light and architecture.</p>
+            <div class="photo-tags">
+                <a href="#">urban</a>
+                <a href="#">architecture</a>
+                <a href="#">2024</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Photo 2 -->
+    <div class="photo-item">
+        <div class="photo-placeholder">
+            <span>Nature</span>
+        </div>
+        <div class="photo-info">
+            <h3 class="photo-title">Forest Whispers</h3>
+            <p class="photo-description">Exploring the quiet beauty of forest landscapes and the intricate details of natural environments.</p>
+            <div class="photo-tags">
+                <a href="#">nature</a>
+                <a href="#">forest</a>
+                <a href="#">2023</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Photo 3 -->
+    <div class="photo-item">
+        <div class="photo-placeholder">
+            <span>Portrait</span>
+        </div>
+        <div class="photo-info">
+            <h3 class="photo-title">Faces of the City</h3>
+            <p class="photo-description">A portrait series capturing the diversity and character of urban dwellers in their everyday environments.</p>
+            <div class="photo-tags">
+                <a href="#">portrait</a>
+                <a href="#">people</a>
+                <a href="#">2024</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Photo 4 -->
+    <div class="photo-item">
+        <div class="photo-placeholder">
+            <span>Abstract</span>
+        </div>
+        <div class="photo-info">
+            <h3 class="photo-title">Geometric Patterns</h3>
+            <p class="photo-description">Finding and highlighting geometric patterns and abstract forms in both natural and built environments.</p>
+            <div class="photo-tags">
+                <a href="#">abstract</a>
+                <a href="#">geometry</a>
+                <a href="#">2023</a>
+            </div>
+        </div>
+    </div>
+</div>
