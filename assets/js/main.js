@@ -85,11 +85,15 @@ function setupDropdownMenus() {
     dropdowns.forEach(dropdown => {
         // Add hover event listeners for desktop
         dropdown.addEventListener('mouseenter', function() {
-            this.querySelector('.dropdown-menu').style.display = 'flex';
+            if (window.innerWidth > 768) {
+                this.querySelector('.dropdown-menu').style.display = 'flex';
+            }
         });
         
         dropdown.addEventListener('mouseleave', function() {
-            this.querySelector('.dropdown-menu').style.display = 'none';
+            if (window.innerWidth > 768) {
+                this.querySelector('.dropdown-menu').style.display = 'none';
+            }
         });
         
         // Add click event for mobile
@@ -99,6 +103,15 @@ function setupDropdownMenus() {
                 // Only prevent default on mobile
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
+                    e.stopPropagation(); // Stop event from bubbling up
+                    
+                    // Close all other dropdowns first
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu !== this.nextElementSibling) {
+                            menu.style.display = 'none';
+                        }
+                    });
+                    
                     const menu = this.nextElementSibling;
                     if (menu.style.display === 'flex') {
                         menu.style.display = 'none';
@@ -107,6 +120,18 @@ function setupDropdownMenus() {
                     }
                 }
             });
+        }
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            // Check if the click was outside any dropdown
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
         }
     });
 }
