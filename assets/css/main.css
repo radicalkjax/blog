@@ -30,6 +30,21 @@ body {
     padding: 0 20px;
 }
 
+/* Site Logo */
+.site-logo-container {
+    position: fixed;
+    left: 10px; /* Moved more to the left */
+    top: 10px; /* Moved higher up on the page */
+    transform: none; /* Removed vertical centering */
+    z-index: 10000;
+}
+
+.site-logo-outside {
+    width: 120px; /* Significantly increased from 85px */
+    height: 120px; /* Significantly increased from 85px */
+    display: block;
+}
+
 /* Header */
 header {
     padding: 20px 0;
@@ -37,7 +52,7 @@ header {
     background-color: #6d105a; /* Match body background */
     position: relative;
     margin: 20px auto 60px auto; /* Doubled the bottom margin from 30px to 60px */
-    width: 95vw; /* Slightly less than full viewport width */
+    width: 90vw; /* Reduced from 95vw to make room for the logo */
     left: 50%;
     transform: translateX(-50%);
     position: relative;
@@ -84,14 +99,25 @@ header::before {
     align-items: center;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
 .site-title {
     font-family: 'Uni 05_53', 'DM Mono', monospace;
-    font-size: 0.8rem;
+    font-size: 0.75rem; /* Slightly reduced from 0.8rem */
     font-weight: 500;
     color: #ffffff;
     text-decoration: none;
-    position: absolute;
-    left: 20px;
 }
 
 /* Navigation */
@@ -569,6 +595,19 @@ nav ul li a.active {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .site-logo-container {
+        position: static;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .site-logo-outside {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    
     .header-content {
         position: relative;
         flex-direction: column;
@@ -603,9 +642,21 @@ nav ul li a.active {
         text-align: center;
     }
     
+    .logo-container {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .site-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
     .site-title {
         position: static;
-        margin: 0 0 20px 0;
+        margin: 0;
         text-align: center;
     }
     

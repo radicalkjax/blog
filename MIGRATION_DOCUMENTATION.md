@@ -20,6 +20,9 @@
         <li><a href="#5-dynamic-content-implementation" style="color: white; text-decoration: none;">Dynamic Content</a></li>
         <li><a href="#6-technical-challenges-solved" style="color: white; text-decoration: none;">Technical Challenges</a></li>
         <li><a href="#7-performance-improvements" style="color: white; text-decoration: none;">Performance Improvements</a></li>
+        <li><a href="#8-photos-page-redesign" style="color: white; text-decoration: none;">Photos Page Redesign</a></li>
+        <li><a href="#9-about-pages-styling-standardization" style="color: white; text-decoration: none;">About Pages Styling</a></li>
+        <li><a href="#10-logo-integration" style="color: white; text-decoration: none;">Logo Integration</a></li>
       </ul>
     </li>
     <li><a href="#technical-implementation-details" style="color: white; text-decoration: none;">Technical Implementation</a></li>
@@ -427,6 +430,261 @@ graph TD
 ## Detailed Migration Changes
 
 The migration from WordPress to GitHub Pages involved several specific changes and challenges:
+
+### 8. Photos Page Redesign
+
+The Photos page was redesigned to improve the layout and make it more dynamic:
+
+```mermaid
+graph TD
+    A[Photos Page Redesign] --> B[Layout Changes]
+    A --> C[Dynamic Image Selection]
+    A --> D[Consistent Styling]
+    A --> E[Responsive Design]
+    
+    B --> B1[Two Categories Per Row]
+    B --> B2[Fixed Height Photo Cards]
+    
+    C --> C1[Random Image Selection]
+    C --> C2[Fallback Images]
+    
+    D --> D1[Matching Connections Page Style]
+    D --> D2[Consistent Card Heights]
+    
+    E --> E1[Flexible Grid Layout]
+    E --> E2[Mobile-Friendly Design]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11 stroke:#fff,stroke-width:2px;
+```
+
+#### Layout Changes
+
+The Photos page was redesigned to display categories two at a time in a grid layout:
+
+```html
+<!-- First Row: Bits of Adventures & Bottom Surgery -->
+<div class="category-container">
+    <div class="category">
+        <h2 style="margin-bottom: 20px;">Bits of Adventures</h2>
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <!-- Image and content here -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="category">
+        <h2 style="margin-bottom: 20px;">Bottom Surgery (10/2024)</h2>
+        <div class="photo-gallery">
+            <div class="photo-item">
+                <!-- Image and content here -->
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+CSS for the layout:
+
+```css
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.category {
+    flex: 1;
+    min-width: 300px;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.photo-item {
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    position: relative;
+    height: 450px; /* Fixed height for all photo items */
+    display: flex;
+    flex-direction: column;
+}
+```
+
+#### Dynamic Image Selection
+
+A key improvement was making the photo gallery dynamic, so that when new images are added to category folders, they are automatically included:
+
+```liquid
+{% assign adventure_images = site.static_files | where: "path", "/assets/images/photos/adventures/" %}
+{% assign random_adventure = adventure_images | sample: 1 | first %}
+{% if random_adventure %}
+<img src="{{ random_adventure.path }}" alt="Adventure Photo" style="width: 100%; height: 250px; object-fit: cover;">
+{% else %}
+<img src="/assets/images/photos/adventures/nature-trail.jpg" alt="Nature Trail" style="width: 100%; height: 250px; object-fit: cover;">
+{% endif %}
+```
+
+This Jekyll Liquid code:
+1. Finds all static files in the specified directory
+2. Randomly selects one image using the `sample: 1` filter
+3. Displays that image, or falls back to a default image if none are found
+
+#### Consistent Card Heights
+
+To ensure all photo cards have the same height regardless of content:
+
+```css
+.photo-item {
+    height: 450px; /* Fixed height for all photo items */
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-info {
+    padding: 20px;
+    flex: 1; /* Make the info section fill the available space */
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto; /* Push tags to the bottom of the container */
+}
+```
+
+This CSS ensures that:
+1. All photo cards have a fixed height of 450px
+2. The photo info section expands to fill available space
+3. The tags are pushed to the bottom of the card
+
+### 9. About Pages Styling Standardization
+
+The About pages (General, Professional, Trans Journey) were updated to match the styling of the Connections page:
+
+```mermaid
+graph TD
+    A[About Pages Styling] --> B[CSS Class Standardization]
+    A --> C[Visual Consistency]
+    A --> D[Content Preservation]
+    
+    B --> B1[about-container → connections-container]
+    B --> B2[about-section → connections-section]
+    B --> B3[about-content → connections-intro]
+    
+    C --> C1[Matching Background Colors]
+    C --> C2[Consistent Border Styling]
+    C --> C3[Uniform Text Formatting]
+    
+    D --> D1[Original Content Maintained]
+    D --> D2[Structure Preserved]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10 stroke:#fff,stroke-width:2px;
+```
+
+#### CSS Class Standardization
+
+The CSS classes in the About pages were standardized to match the Connections page:
+
+From:
+```css
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section {
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.about-content {
+    line-height: 1.8;
+}
+```
+
+To:
+```css
+.connections-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.connections-section {
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.connections-intro {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+```
+
+#### HTML Structure Updates
+
+The HTML structure was also updated to use the new class names:
+
+From:
+```html
+<div class="about-container">
+    <section class="about-section">
+        <h1 style="margin-bottom: 30px;">About Me</h1>
+        
+        <div class="about-content">
+            <!-- Content here -->
+        </div>
+    </section>
+</div>
+```
+
+To:
+```html
+<div class="connections-container">
+    <section class="connections-section">
+        <h1 style="margin-bottom: 30px;">About Me</h1>
+        
+        <div class="connections-intro">
+            <!-- Content here -->
+        </div>
+    </section>
+</div>
+```
+
+This standardization ensures a consistent visual experience across all pages of the site, while preserving the original content and structure.
 
 ### 1. Content Structure Transformation
 
@@ -981,6 +1239,234 @@ permalink: /404.html
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 ```
+
+### 10. Logo Integration
+
+A site logo was added to enhance the visual identity of the website. This involved a comprehensive approach to logo placement, sizing, and responsiveness.
+
+```mermaid
+graph TD
+    A[Logo Integration Process] --> B[Asset Management]
+    A --> C[HTML Structure]
+    A --> D[CSS Implementation]
+    A --> E[Responsive Design]
+    A --> F[Technical Challenges]
+    
+    B --> B1[Logo File Selection]
+    B --> B2[Directory Organization]
+    B --> B3[Format Optimization]
+    
+    C --> C1[Layout Structure]
+    C --> C2[DOM Positioning]
+    C --> C3[Jekyll Template Integration]
+    
+    D --> D1[Fixed Positioning]
+    D --> D2[Z-index Management]
+    D --> D3[Size Configuration]
+    D --> D4[Alignment Precision]
+    
+    E --> E1[Mobile Adaptations]
+    E --> E2[Tablet Considerations]
+    E --> E3[Desktop Optimization]
+    
+    F --> F1[Header Spacing Adjustments]
+    F --> F2[Z-index Conflicts]
+    F --> F3[Cross-browser Compatibility]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 stroke:#fff,stroke-width:2px;
+```
+
+#### Technical Implementation Details
+
+The logo implementation involved several technical components working together:
+
+```mermaid
+flowchart LR
+    A[Logo Implementation] --> B[HTML Structure]
+    A --> C[CSS Styling]
+    A --> D[Jekyll Integration]
+    
+    B --> B1["&lt;div class='site-logo-container'&gt;"]
+    B1 --> B2["&lt;img class='site-logo-outside'&gt;"]
+    
+    C --> C1[Position: Fixed]
+    C --> C2[Z-index: 10000]
+    C --> C3[Size: 120px × 120px]
+    C --> C4[Location: top:10px, left:10px]
+    
+    D --> D1[Liquid Template Variables]
+    D --> D2[Relative URL Paths]
+    D --> D3[Asset Pipeline Integration]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11 stroke:#fff,stroke-width:2px;
+```
+
+#### HTML Implementation
+
+The logo was implemented in the default layout template to ensure it appears on all pages:
+
+```html
+<!-- _layouts/default.html -->
+<body>
+    <div class="site-logo-container">
+        <img src="{{ '/assets/images/logo/sitelogo.png' | relative_url }}" alt="Site Logo" class="site-logo-outside">
+    </div>
+    <header>
+        <!-- Header content -->
+    </header>
+    <!-- Rest of the page -->
+</body>
+```
+
+This approach places the logo outside the normal document flow, allowing it to be positioned independently of the header and other content.
+
+#### CSS Implementation
+
+The CSS implementation uses fixed positioning to ensure the logo remains in a consistent position relative to the viewport:
+
+```css
+/* Site Logo */
+.site-logo-container {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    transform: none;
+    z-index: 10000;
+}
+
+.site-logo-outside {
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+```
+
+Key technical aspects of this implementation:
+
+1. **Fixed Positioning**: The `position: fixed` property ensures the logo stays in the same position even when scrolling
+2. **Z-index Management**: The high z-index value (10000) ensures the logo appears above all other elements
+3. **Transform Property**: The `transform: none` property explicitly removes any transformations
+4. **Display Block**: The `display: block` property ensures the image behaves as a block element
+
+#### Responsive Design Implementation
+
+The responsive design ensures the logo displays correctly on all device sizes:
+
+```css
+@media (max-width: 768px) {
+    .site-logo-container {
+        position: static;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .site-logo-outside {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+}
+```
+
+This media query:
+1. Changes the logo position from fixed to static on mobile devices
+2. Centers the logo with `text-align: center` and `margin: 0 auto`
+3. Reduces the logo size from 120px to 60px
+4. Adds appropriate margins for spacing
+
+#### Technical Challenges and Solutions
+
+```mermaid
+graph TD
+    A[Logo Integration Challenges] --> B[Z-index Conflicts]
+    A --> C[Positioning Precision]
+    A --> D[Header Width Adjustment]
+    A --> E[Image Format Optimization]
+    
+    B --> B1[Solution: Increased z-index to 10000]
+    C --> C1[Solution: Fixed positioning with exact pixel values]
+    D --> D1[Solution: Reduced header width from 95vw to 90vw]
+    E --> E1[Solution: Used PNG format for transparency support]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7 stroke:#fff,stroke-width:2px;
+```
+
+1. **Z-index Conflicts**: Initially, the logo was hidden behind other elements due to z-index conflicts. This was resolved by setting a very high z-index value (10000) for the logo container.
+
+2. **Positioning Precision**: Achieving the exact positioning required iterative adjustments:
+   - Initial position: `left: 20px, top: 50%` with `transform: translateY(-50%)`
+   - Intermediate position: `left: 15px, top: 20px` with `transform: none`
+   - Final position: `left: 10px, top: 10px` with `transform: none`
+
+3. **Header Width Adjustment**: The header width was reduced from 95vw to 90vw to create more space for the logo:
+   ```css
+   header {
+       width: 90vw; /* Reduced from 95vw to make room for the logo */
+   }
+   ```
+
+4. **Image Format Selection**: PNG format was chosen for the logo to support transparency, allowing it to blend seamlessly with the background.
+
+#### Performance Considerations
+
+To ensure optimal performance, the logo implementation includes:
+
+1. **Image Size Optimization**: The logo image was optimized to reduce file size while maintaining quality
+2. **No Additional HTTP Requests**: By including the logo in the default layout, no additional HTTP requests are needed for different pages
+3. **CSS Efficiency**: The CSS rules were kept minimal and efficient
+
+#### Browser Compatibility
+
+The implementation was tested across multiple browsers to ensure consistent rendering:
+
+```mermaid
+graph LR
+    A[Browser Compatibility] --> B[Chrome]
+    A --> C[Firefox]
+    A --> D[Safari]
+    A --> E[Edge]
+    
+    B --> B1[Desktop: Full Support]
+    B --> B2[Mobile: Full Support]
+    
+    C --> C1[Desktop: Full Support]
+    C --> C2[Mobile: Full Support]
+    
+    D --> D1[Desktop: Full Support]
+    D --> D2[Mobile: Full Support]
+    
+    E --> E1[Desktop: Full Support]
+    E --> E2[Mobile: Full Support]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11 stroke:#fff,stroke-width:2px;
+```
+
+The implementation uses standard CSS properties that are well-supported across all modern browsers, ensuring consistent rendering without the need for browser-specific prefixes or fallbacks.
 
 ## Conclusion
 

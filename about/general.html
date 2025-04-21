@@ -2,12 +2,12 @@
 layout: default
 title: General About Me
 custom_css: |
-    .about-container {
+    .connections-container {
         max-width: 800px;
         margin: 0 auto;
     }
     
-    .about-section {
+    .connections-section {
         background-color: rgba(122, 1, 119, 0.7);
         border: 1px solid rgba(255, 255, 255, 0.3);
         padding: 30px;
@@ -17,7 +17,7 @@ custom_css: |
         position: relative;
     }
     
-    .about-section::before {
+    .connections-section::before {
         content: '';
         position: absolute;
         top: -1px;
@@ -28,19 +28,20 @@ custom_css: |
         pointer-events: none;
     }
     
-    .about-content {
+    .connections-intro {
+        margin-bottom: 30px;
         line-height: 1.8;
     }
     
-    .about-content p {
+    .connections-intro p {
         margin-bottom: 20px;
     }
 ---
-<div class="about-container">
-    <section class="about-section">
+<div class="connections-container">
+    <section class="connections-section">
         <h1 style="margin-bottom: 30px;">About Me</h1>
         
-        <div class="about-content">
+        <div class="connections-intro">
             <p>Hello there! My name is Kali (Kjax || RadicalKjax) and I'm just your friendly neighborhood transfem cyber-junkie. If it's something nerdy, I've probably done it. Lover of video games, anime, physics, computer science and ripping things apart.</p>
             
             <p>I've been known to break things from time to time. As well as building and modding whatever's needed to fit the job. Cars, tractors, industrial equipment, computers and general electronics are some of the things I've poked and prodded.</p>
@@ -49,10 +50,10 @@ custom_css: |
         </div>
     </section>
     
-    <section class="about-section">
+    <section class="connections-section">
         <h2>Media I Love</h2>
         
-        <div class="about-content">
+        <div class="connections-intro">
             <h3>Games</h3>
             <ul style="margin-left: 20px; margin-bottom: 20px;">
                 <li>Pokemon series</li>
