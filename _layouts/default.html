@@ -9,15 +9,45 @@
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mermaid for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <!-- Main JavaScript -->
     <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
     <!-- Social Links JavaScript -->
     <script src="{{ '/assets/js/social-links.js' | relative_url }}" defer></script>
-    {% if page.custom_css %}
-    <style>
-        {{ page.custom_css }}
-    </style>
-    {% endif %}
+    <!-- Initialize Mermaid -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Mermaid with custom theme
+            mermaid.initialize({
+                startOnLoad: false,  // We'll manually initialize
+                theme: 'dark',
+                themeVariables: {
+                    primaryColor: '#6d105a',
+                    primaryTextColor: '#ffffff',
+                    primaryBorderColor: '#ffffff',
+                    lineColor: '#ffffff',
+                    secondaryColor: '#6d105a',
+                    tertiaryColor: '#6d105a'
+                }
+            });
+            
+            // Find all code blocks with language 'mermaid'
+            document.querySelectorAll('pre code.language-mermaid').forEach(function(element) {
+                // Create a div for mermaid
+                var mermaidDiv = document.createElement('div');
+                mermaidDiv.className = 'mermaid';
+                mermaidDiv.innerHTML = element.textContent;
+                
+                // Replace the code block with the mermaid div
+                var pre = element.parentNode;
+                pre.parentNode.replaceChild(mermaidDiv, pre);
+            });
+            
+            // Initialize mermaid after replacing elements
+            mermaid.init(undefined, '.mermaid');
+        });
+    </script>
 </head>
 <body>
     <div class="site-logo-container">
