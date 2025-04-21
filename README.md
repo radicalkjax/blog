@@ -161,6 +161,28 @@ To use a custom domain with this GitHub Pages site:
 
 ## Recent Updates
 
+### Responsive Mobile View Enhancements
+
+The site now features improved responsive behavior for mobile devices:
+
+- Automatic switching to mobile view when the logo would enter the header box
+- Automatic switching to mobile view when the site title would touch the navigation
+- Improved dropdown menu functionality on mobile devices
+- Increased z-index values for mobile navigation elements to ensure proper layering
+- Added text wrapping for menu items to prevent text from being cut off
+- Made dropdown menus scrollable with max-height and overflow properties
+- Ensured social icons have proper margins at all screen sizes
+
+### Mermaid Diagram Styling
+
+The site now includes comprehensive styling for mermaid diagrams in blog posts:
+
+- Custom styling for nodes, edges, labels, and clusters
+- Ensured diagrams are readable with the dark theme by setting appropriate colors
+- Added proper margins and padding for diagram containers
+- Implemented text alignment and overflow handling for better readability
+- Added styling for IEEE format code blocks with centered alignment
+
 ### Logo Integration
 
 The site now features a custom logo positioned in the top-left corner:
@@ -169,6 +191,7 @@ The site now features a custom logo positioned in the top-left corner:
 - Responsive design adjusts size and position on mobile devices
 - Uses PNG format with transparency for seamless integration
 - Optimized for performance and cross-browser compatibility
+- Automatically triggers mobile view when viewport size would cause logo to overlap with header
 
 ### Detailed Documentation
 

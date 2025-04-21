@@ -26,6 +26,9 @@
         <li><a href="#11-project-pages-styling" style="color: white; text-decoration: none;">Project Pages Styling</a></li>
         <li><a href="#12-hyperlink-standardization" style="color: white; text-decoration: none;">Hyperlink Standardization</a></li>
         <li><a href="#13-about-page-updates" style="color: white; text-decoration: none;">About Page Updates</a></li>
+        <li><a href="#14-responsive-mobile-view-enhancements" style="color: white; text-decoration: none;">Responsive Mobile View</a></li>
+        <li><a href="#15-mermaid-diagram-styling" style="color: white; text-decoration: none;">Mermaid Diagram Styling</a></li>
+        <li><a href="#16-custom-css-support-in-default-layout" style="color: white; text-decoration: none;">Custom CSS Support</a></li>
       </ul>
     </li>
     <li><a href="#technical-implementation-details" style="color: white; text-decoration: none;">Technical Implementation</a></li>
@@ -433,6 +436,561 @@ graph TD
 ## Detailed Migration Changes
 
 The migration from WordPress to GitHub Pages involved several specific changes and challenges:
+
+### 14. Responsive Mobile View Enhancements
+
+The responsive design of the site was significantly improved to provide a better user experience across all device sizes:
+
+```mermaid
+graph TD
+    A[Responsive Design Enhancements] --> B[Breakpoint Optimization]
+    A --> C[Mobile Navigation Improvements]
+    A --> D[Logo Positioning Refinement]
+    A --> E[Site Title Positioning]
+    A --> F[Social Icons Margin]
+    
+    B --> B1[Multiple Breakpoints]
+    B --> B2[Conditional Layout Changes]
+    
+    C --> C1[Dropdown Menu Improvements]
+    C --> C2[Z-index Management]
+    C --> C3[Text Wrapping]
+    
+    D --> D1[Automatic Mobile View Switching]
+    D --> D2[Fixed Position Optimization]
+    
+    E --> E1[Title-Navigation Collision Detection]
+    E --> E2[Layout Transformation]
+    
+    F --> F1[Consistent Margins]
+    F --> F2[Visibility Preservation]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 stroke:#fff,stroke-width:2px;
+```
+
+#### Multiple Responsive Breakpoints
+
+The responsive design was enhanced with multiple breakpoints to provide a smoother transition between different device sizes:
+
+```css
+/* Switch to mobile view when the site title would touch the navigation */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    /* Adjust the site title to prevent it from touching the navigation */
+    .site-title {
+        max-width: 20%; /* Reduce max-width to prevent overlap */
+        font-size: 0.7rem; /* Slightly reduce font size */
+    }
+    
+    /* Adjust navigation position to make more room */
+    nav {
+        left: 55%; /* Shift navigation slightly to the right */
+    }
+    
+    /* Ensure social icons have margin */
+    .social-icons {
+        right: 30px; /* Increased right margin */
+    }
+}
+
+/* Switch to mobile view when the logo would enter the header box */
+@media (max-width: 1024px) and (min-width: 901px) {
+    /* Adjust header width and position to make room for the logo */
+    header {
+        width: 80vw; /* Reduced from 90vw to make more room for the logo */
+        left: 55%; /* Shifted right to avoid the logo */
+    }
+    
+    /* Ensure the logo stays fixed in its original position */
+    .site-logo-container {
+        position: fixed;
+        left: 10px;
+        top: 1px;
+        transform: none;
+    }
+    
+    /* Ensure social icons have margin */
+    .social-icons {
+        right: 30px; /* Increased right margin */
+    }
+}
+
+/* Switch to mobile view when the site title would touch the navigation */
+@media (max-width: 1000px) and (min-width: 901px) {
+    /* Switch to mobile view when the site title would touch the navigation */
+    .site-title {
+        position: static;
+        margin: 0 auto 20px;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .header-content {
+        position: relative;
+        flex-direction: column;
+        padding-top: 20px;
+    }
+    
+    nav {
+        position: relative;
+        left: 0;
+        transform: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Ensure social icons have margin */
+    .social-icons {
+        right: 30px; /* Increased right margin */
+    }
+}
+
+/* When viewport gets even smaller, switch to full mobile view */
+@media (max-width: 900px) {
+    /* Apply mobile styles earlier to prevent logo from entering header */
+    .site-logo-container {
+        position: static;
+        left: auto;
+        top: auto;
+        transform: none;
+        text-align: center;
+        margin: 10px auto 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Additional mobile styles... */
+}
+```
+
+This implementation creates a responsive design with four distinct breakpoints:
+1. **1200px-1025px**: Adjusts site title and navigation to prevent overlap
+2. **1024px-901px**: Shifts header right to make room for the logo
+3. **1000px-901px**: Switches to vertical layout with title above navigation
+4. **900px and below**: Full mobile view with centered logo and stacked navigation
+
+#### Mobile Navigation Improvements
+
+The mobile navigation was significantly improved to provide a better user experience:
+
+```css
+/* Mobile dropdown menu styling */
+.dropdown-menu {
+    position: absolute; /* Change back to absolute for mobile */
+    top: 100%; /* Position below the parent */
+    left: 0;
+    width: 100%;
+    z-index: 20001; /* Higher z-index for mobile dropdown */
+    max-height: 200px; /* Limit height */
+    overflow-y: auto; /* Make scrollable if needed */
+    background-color: #6d105a; /* Ensure background color is set */
+    border: 1px solid #ffffff; /* Ensure border is visible */
+}
+
+.dropdown-menu li {
+    z-index: 20002; /* Higher z-index for mobile dropdown items */
+}
+
+.dropdown-menu li a {
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words if needed */
+    overflow-wrap: break-word; /* Modern version of word-wrap */
+    padding: 10px 15px; /* Increased padding for better readability */
+    font-size: 0.95rem; /* Slightly smaller font size to fit more text */
+    z-index: 20003; /* Higher z-index for mobile dropdown links */
+}
+```
+
+These improvements include:
+1. **Z-index Management**: Increased z-index values (20001-20003) to ensure dropdowns appear above all other content
+2. **Text Wrapping**: Added text wrapping for menu items to prevent text from being cut off
+3. **Scrollable Dropdowns**: Made dropdowns scrollable with max-height and overflow properties
+4. **Improved Readability**: Increased padding and adjusted font size for better readability
+
+#### JavaScript Enhancements
+
+The JavaScript for mobile navigation was also improved:
+
+```javascript
+/**
+ * Setup dropdown menus
+ */
+function setupDropdownMenus() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        // Add hover event listeners for desktop
+        dropdown.addEventListener('mouseenter', function() {
+            if (window.innerWidth > 768) {
+                this.querySelector('.dropdown-menu').style.display = 'flex';
+            }
+        });
+        
+        dropdown.addEventListener('mouseleave', function() {
+            if (window.innerWidth > 768) {
+                this.querySelector('.dropdown-menu').style.display = 'none';
+            }
+        });
+        
+        // Add click event for mobile
+        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+        if (dropdownToggle) {
+            dropdownToggle.addEventListener('click', function(e) {
+                // Only prevent default on mobile
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Stop event from bubbling up
+                    
+                    // Close all other dropdowns first
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu !== this.nextElementSibling) {
+                            menu.style.display = 'none';
+                        }
+                    });
+                    
+                    const menu = this.nextElementSibling;
+                    if (menu.style.display === 'flex') {
+                        menu.style.display = 'none';
+                    } else {
+                        menu.style.display = 'flex';
+                    }
+                }
+            });
+        }
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            // Check if the click was outside any dropdown
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        }
+    });
+}
+```
+
+Key improvements in the JavaScript:
+1. **Conditional Event Handling**: Only apply hover events on desktop (window.innerWidth > 768)
+2. **Event Propagation Control**: Added e.stopPropagation() to prevent click events from bubbling up
+3. **Dropdown Management**: Close all other dropdowns when opening a new one
+4. **Outside Click Handling**: Close dropdowns when clicking outside any dropdown
+
+#### Logo Positioning Refinement
+
+The logo positioning was refined to ensure it never enters the header box:
+
+```css
+/* Ensure the logo stays fixed in its original position */
+.site-logo-container {
+    position: fixed;
+    left: 10px;
+    top: 1px;
+    transform: none;
+}
+```
+
+This implementation ensures that:
+1. The logo stays fixed in its position regardless of scrolling
+2. The logo never enters the header box
+3. The site automatically switches to mobile view when the viewport is too narrow
+
+#### Site Title Positioning
+
+The site title positioning was improved to prevent it from touching the navigation:
+
+```css
+/* Adjust the site title to prevent it from touching the navigation */
+.site-title {
+    max-width: 20%; /* Reduce max-width to prevent overlap */
+    font-size: 0.7rem; /* Slightly reduce font size */
+}
+```
+
+This implementation:
+1. Limits the width of the site title to prevent it from overlapping with navigation
+2. Reduces the font size slightly for better fit
+3. Automatically switches to mobile view when the title would touch the navigation
+
+#### Social Icons Margin
+
+The social icons margin was increased to ensure they remain visible during responsive transformations:
+
+```css
+/* Ensure social icons have margin */
+.social-icons {
+    right: 30px; /* Increased right margin */
+}
+```
+
+This ensures that:
+1. Social icons always have proper margin
+2. Social icons remain visible during responsive transformations
+3. Social icons maintain proper spacing in all view modes
+
+### 15. Mermaid Diagram Styling
+
+Comprehensive styling was added for mermaid diagrams in blog posts:
+
+```mermaid
+graph TD
+    A[Mermaid Diagram Styling] --> B[Diagram Container Styling]
+    A --> C[Node and Edge Styling]
+    A --> D[Label Styling]
+    A --> E[Cluster Styling]
+    A --> F[IEEE Format Code Block Styling]
+    
+    B --> B1[Text Alignment]
+    B --> B2[Margins and Padding]
+    B --> B3[Background Color]
+    B --> B4[Overflow Handling]
+    
+    C --> C1[Node Fill Color]
+    C --> C2[Edge Color]
+    C --> C3[Border Styling]
+    
+    D --> D1[Font Family]
+    D --> D2[Text Color]
+    D --> D3[Background Color]
+    
+    E --> E1[Cluster Fill Color]
+    E --> E2[Cluster Border]
+    
+    F --> F1[Centered Alignment]
+    F --> F2[Background Color]
+    F --> F3[Text Formatting]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 stroke:#fff,stroke-width:2px;
+```
+
+#### Mermaid Container Styling
+
+The mermaid diagram container was styled to ensure proper display:
+
+```css
+/* Mermaid diagram styling */
+.mermaid {
+    text-align: center !important;
+    margin: 20px auto !important;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+```
+
+This styling ensures that:
+1. Diagrams are centered on the page
+2. Diagrams have proper margins and padding
+3. Diagrams have a subtle background color for better visibility
+4. Diagrams are scrollable if they exceed the container width
+
+#### Node and Edge Styling
+
+The nodes and edges in mermaid diagrams were styled to match the site's color scheme:
+
+```css
+/* Ensure mermaid diagrams are readable with our dark theme */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon,
+.mermaid .node path {
+    fill: rgba(255, 255, 255, 0.1) !important;
+    stroke: #ffffff !important;
+}
+
+.mermaid .edgePath .path {
+    stroke: #ffffff !important;
+}
+```
+
+This styling ensures that:
+1. Nodes have a subtle fill color with white borders
+2. Edges are white for high contrast
+3. All diagram elements are visible against the dark background
+
+#### Label Styling
+
+The labels in mermaid diagrams were styled for readability:
+
+```css
+.mermaid .label {
+    color: #ffffff !important;
+    font-family: 'DM Mono', monospace !important;
+}
+
+.mermaid .edgeLabel {
+    background-color: rgba(109, 16, 90, 0.7) !important;
+    color: #ffffff !important;
+}
+```
+
+This styling ensures that:
+1. Labels use the site's font family for consistency
+2. Labels have high contrast with white text
+3. Edge labels have a background color that matches the site's theme
+
+#### Cluster Styling
+
+Clusters in mermaid diagrams were styled to match the site's design:
+
+```css
+.mermaid .cluster rect {
+    fill: rgba(255, 255, 255, 0.05) !important;
+    stroke: #ffffff !important;
+}
+```
+
+This styling ensures that:
+1. Clusters have a subtle fill color
+2. Clusters have white borders for visibility
+3. Clusters are visually distinct from nodes
+
+#### IEEE Format Code Block Styling
+
+Styling was added for IEEE format code blocks:
+
+```css
+/* Code block styling for IEEE format */
+.post-content div[style*="text-align: center"] pre {
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.post-content div[style*="text-align: center"] pre code {
+    background-color: transparent;
+    padding: 0;
+    font-family: 'DM Mono', monospace;
+}
+
+.post-content div[style*="text-align: center"] p {
+    margin-top: 5px;
+}
+```
+
+This styling ensures that:
+1. Code blocks are centered on the page
+2. Code text is left-aligned for readability
+3. Code blocks have a subtle background color
+4. Code blocks are scrollable if they exceed the container width
+5. Code blocks use the site's font family for consistency
+
+#### JavaScript Integration
+
+The mermaid diagrams are initialized and processed using JavaScript:
+
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Mermaid with custom theme
+    mermaid.initialize({
+        startOnLoad: true,  // Changed to true for automatic initialization
+        theme: 'dark',
+        themeVariables: {
+            primaryColor: '#6d105a',
+            primaryTextColor: '#ffffff',
+            primaryBorderColor: '#ffffff',
+            lineColor: '#ffffff',
+            secondaryColor: '#6d105a',
+            tertiaryColor: '#6d105a'
+        }
+    });
+    
+    // Find all code blocks with language 'mermaid'
+    document.querySelectorAll('pre code.language-mermaid').forEach(function(element) {
+        // Create a div for mermaid
+        var mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.innerHTML = element.textContent;
+        
+        // Replace the code block with the mermaid div
+        var pre = element.parentNode;
+        pre.parentNode.replaceChild(mermaidDiv, pre);
+    });
+    
+    // Also handle code blocks inside divs (for our IEEE formatted posts)
+    document.querySelectorAll('div pre code').forEach(function(element) {
+        if (element.textContent.trim().startsWith('graph ') || 
+            element.textContent.trim().startsWith('sequenceDiagram') || 
+            element.textContent.trim().startsWith('classDiagram') || 
+            element.textContent.trim().startsWith('gantt') || 
+            element.textContent.trim().startsWith('pie') || 
+            element.textContent.trim().startsWith('flowchart')) {
+            
+            // Create a div for mermaid
+            var mermaidDiv = document.createElement('div');
+            mermaidDiv.className = 'mermaid';
+            mermaidDiv.innerHTML = element.textContent;
+            
+            // Replace the code block with the mermaid div
+            var pre = element.parentNode;
+            pre.parentNode.replaceChild(mermaidDiv, pre);
+        }
+    });
+    
+    // Initialize mermaid after replacing elements
+    mermaid.init(undefined, '.mermaid');
+});
+```
+
+This JavaScript:
+1. Initializes mermaid with a custom dark theme
+2. Finds all code blocks with the 'mermaid' language
+3. Creates mermaid divs and replaces the code blocks
+4. Also handles code blocks inside divs for IEEE formatted posts
+5. Initializes mermaid after replacing all elements
+
+### 16. Custom CSS Support in Default Layout
+
+Support for custom CSS in the front matter was added to the default layout:
+
+```html
+<head>
+    <!-- Other head elements -->
+    <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {% if page.custom_css %}
+    <style>
+        {{ page.custom_css }}
+    </style>
+    {% endif %}
+    <!-- Other head elements -->
+</head>
+```
+
+This implementation:
+1. Checks if the page has custom CSS in its front matter
+2. If present, includes the custom CSS in a style tag
+3. Allows pages to have custom styling without modifying the main CSS file
+
+This feature is particularly useful for pages like Connections, About, and Projects, which have specific styling requirements.
 
 ### 8. Photos Page Redesign
 
