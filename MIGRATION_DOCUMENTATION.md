@@ -1,6 +1,33 @@
 # WordPress to GitHub Pages Migration Documentation
 
-## Overview
+<div style="position: sticky; top: 20px; float: right; width: 250px; background-color: #6d105a; border: 1px solid rgba(255, 255, 255, 0.3); padding: 15px; margin-left: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+  <h3 style="margin-top: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding-bottom: 10px;">Table of Contents</h3>
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li><a href="#overview" style="color: white; text-decoration: none;">Overview</a></li>
+    <li><a href="#project-structure" style="color: white; text-decoration: none;">Project Structure</a></li>
+    <li><a href="#key-components" style="color: white; text-decoration: none;">Key Components</a></li>
+    <li><a href="#visual-design-elements" style="color: white; text-decoration: none;">Visual Design Elements</a></li>
+    <li><a href="#key-implementations" style="color: white; text-decoration: none;">Key Implementations</a></li>
+    <li><a href="#css-styling-highlights" style="color: white; text-decoration: none;">CSS Styling Highlights</a></li>
+    <li><a href="#blog-post-structure" style="color: white; text-decoration: none;">Blog Post Structure</a></li>
+    <li><a href="#migration-process" style="color: white; text-decoration: none;">Migration Process</a></li>
+    <li><a href="#detailed-migration-changes" style="color: white; text-decoration: none;">Detailed Migration Changes</a>
+      <ul style="padding-left: 15px;">
+        <li><a href="#1-content-structure-transformation" style="color: white; text-decoration: none;">Content Structure</a></li>
+        <li><a href="#2-theme-adaptation" style="color: white; text-decoration: none;">Theme Adaptation</a></li>
+        <li><a href="#3-navigation-changes" style="color: white; text-decoration: none;">Navigation Changes</a></li>
+        <li><a href="#4-social-media-updates" style="color: white; text-decoration: none;">Social Media Updates</a></li>
+        <li><a href="#5-dynamic-content-implementation" style="color: white; text-decoration: none;">Dynamic Content</a></li>
+        <li><a href="#6-technical-challenges-solved" style="color: white; text-decoration: none;">Technical Challenges</a></li>
+        <li><a href="#7-performance-improvements" style="color: white; text-decoration: none;">Performance Improvements</a></li>
+      </ul>
+    </li>
+    <li><a href="#technical-implementation-details" style="color: white; text-decoration: none;">Technical Implementation</a></li>
+    <li><a href="#conclusion" style="color: white; text-decoration: none;">Conclusion</a></li>
+  </ul>
+</div>
+
+## <a id="overview"></a>Overview
 
 This document details the process of migrating a WordPress blog to GitHub Pages. The migration involved preserving the visual style of the original WordPress site (which used the Pixl theme and DM Mono font) while adapting the content to work with GitHub Pages' static site generation using Jekyll.
 
@@ -23,7 +50,7 @@ graph TD
     linkStyle 3 stroke:#fff,stroke-width:2px;
 ```
 
-## Project Structure
+## <a id="project-structure"></a>Project Structure
 
 The GitHub Pages site follows a standard Jekyll project structure with some customizations:
 
@@ -67,7 +94,7 @@ graph TD
     linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 stroke:#fff,stroke-width:2px;
 ```
 
-## Key Components
+## <a id="key-components"></a>Key Components
 
 ### 1. Jekyll Configuration
 
@@ -99,7 +126,7 @@ The CSS was customized to match the original WordPress theme:
 - **main.js**: Contains general JavaScript functionality
 - **social-links.js**: Manages the social media links
 
-## Visual Design Elements
+## <a id="visual-design-elements"></a>Visual Design Elements
 
 The visual design of the site incorporates several distinctive elements:
 
