@@ -40,6 +40,19 @@ custom_css: |
         margin-top: 30px;
     }
     
+    /* Responsive adjustments for social connections */
+    @media (max-width: 768px) {
+        .social-connections {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .social-connections {
+            grid-template-columns: 1fr; /* Single column on very small screens */
+        }
+    }
+    
     .social-item {
         display: flex;
         align-items: center;
@@ -136,10 +149,33 @@ custom_css: |
     
     .network-item {
         display: flex;
-        align-items: center;
+        align-items: flex-start; /* Changed from center to flex-start for better alignment with long text */
         margin-bottom: 15px;
         padding-bottom: 15px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Responsive adjustments for network items */
+    @media (max-width: 768px) {
+        .network-item {
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        
+        .network-icon {
+            margin-bottom: 10px; /* Add space below icon when it wraps */
+        }
+        
+        .network-info {
+            width: 100%; /* Full width on small screens */
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .network-description a {
+            word-break: break-all; /* Break long URLs */
+            display: inline-block;
+            max-width: 100%;
+        }
     }
     
     .network-item:last-child {

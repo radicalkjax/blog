@@ -774,7 +774,24 @@ nav ul li a.active {
     
     .mobile-nav-toggle {
         display: block;
-        top: 60px;
+        top: 20px;
+        right: 20px;
+        position: absolute;
+        z-index: 20010; /* Higher than other mobile elements */
+        margin: 10px; /* Add margin for better spacing */
+        padding: 10px; /* Increase padding for a larger touch target */
+        background-color: rgba(109, 16, 90, 0.8); /* Slight background for visibility */
+        border-radius: 5px; /* Rounded corners */
+    }
+    
+    .site-title {
+        position: static;
+        margin: 0 0 20px 0;
+        text-align: center;
+        width: 70%; /* Limit width to prevent touching hamburger menu */
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     nav {
@@ -842,11 +859,7 @@ nav ul li a.active {
         height: 30px;
     }
     
-    .site-title {
-        position: static;
-        margin: 0;
-        text-align: center;
-    }
+    /* Site title styling is already defined above */
     
     .social-icons {
         position: static;
@@ -865,3 +878,42 @@ nav ul li a.active {
 }
 
 /* Styles for 768px and below are already covered by the 900px media query above */
+
+/* Extra small devices (phones, 500px and down) */
+@media (max-width: 500px) {
+    /* Make site title smaller on very small screens */
+    .site-title {
+        font-size: 0.65rem; /* Reduce font size further */
+        width: 60%; /* Reduce width to prevent touching hamburger menu */
+        max-width: 60%;
+    }
+    
+    /* Adjust hamburger menu position for better spacing */
+    .mobile-nav-toggle {
+        margin: 8px; /* Slightly smaller margin */
+        padding: 8px; /* Slightly smaller padding */
+        font-size: 1.3rem; /* Slightly smaller icon */
+    }
+    
+    /* Reduce header padding for smaller screens */
+    header {
+        padding: 25px 0;
+    }
+}
+
+/* Extra extra small devices (small phones, 350px and down) */
+@media (max-width: 350px) {
+    /* Make site title even smaller on extremely small screens */
+    .site-title {
+        font-size: 0.6rem; /* Reduce font size even further */
+        width: 50%; /* Reduce width even more */
+        max-width: 50%;
+    }
+    
+    /* Further adjust hamburger menu */
+    .mobile-nav-toggle {
+        margin: 5px;
+        padding: 5px;
+        font-size: 1.2rem;
+    }
+}
