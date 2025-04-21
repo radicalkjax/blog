@@ -584,6 +584,34 @@ nav ul li a.active {
     padding: 0;
 }
 
+/* Mermaid diagram styling */
+.mermaid {
+    text-align: center !important;
+    margin: 20px auto !important;
+}
+
+/* Code block styling for IEEE format */
+.post-content div[style*="text-align: center"] pre {
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.post-content div[style*="text-align: center"] pre code {
+    background-color: transparent;
+    padding: 0;
+    font-family: 'DM Mono', monospace;
+}
+
+.post-content div[style*="text-align: center"] p {
+    margin-top: 5px;
+}
+
 .post-navigation {
     margin-top: 40px;
     padding-top: 20px;

@@ -20,7 +20,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Mermaid with custom theme
             mermaid.initialize({
-                startOnLoad: false,  // We'll manually initialize
+                startOnLoad: true,  // Changed to true for automatic initialization
                 theme: 'dark',
                 themeVariables: {
                     primaryColor: '#6d105a',
@@ -42,6 +42,26 @@
                 // Replace the code block with the mermaid div
                 var pre = element.parentNode;
                 pre.parentNode.replaceChild(mermaidDiv, pre);
+            });
+            
+            // Also handle code blocks inside divs (for our IEEE formatted posts)
+            document.querySelectorAll('div pre code').forEach(function(element) {
+                if (element.textContent.trim().startsWith('graph ') || 
+                    element.textContent.trim().startsWith('sequenceDiagram') || 
+                    element.textContent.trim().startsWith('classDiagram') || 
+                    element.textContent.trim().startsWith('gantt') || 
+                    element.textContent.trim().startsWith('pie') || 
+                    element.textContent.trim().startsWith('flowchart')) {
+                    
+                    // Create a div for mermaid
+                    var mermaidDiv = document.createElement('div');
+                    mermaidDiv.className = 'mermaid';
+                    mermaidDiv.innerHTML = element.textContent;
+                    
+                    // Replace the code block with the mermaid div
+                    var pre = element.parentNode;
+                    pre.parentNode.replaceChild(mermaidDiv, pre);
+                }
             });
             
             // Initialize mermaid after replacing elements
