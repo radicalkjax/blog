@@ -1395,19 +1395,22 @@ graph TD
     A --> C[Positioning Precision]
     A --> D[Header Width Adjustment]
     A --> E[Image Format Optimization]
+    A --> F[Header Layout Optimization]
     
     B --> B1[Solution: Increased z-index to 10000]
     C --> C1[Solution: Fixed positioning with exact pixel values]
     D --> D1[Solution: Reduced header width from 95vw to 90vw]
     E --> E1[Solution: Used PNG format for transparency support]
+    F --> F1[Solution: Optimized header layout with absolute positioning]
     
     style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     
-    linkStyle 0,1,2,3,4,5,6,7 stroke:#fff,stroke-width:2px;
+    linkStyle 0,1,2,3,4,5,6,7,8,9 stroke:#fff,stroke-width:2px;
 ```
 
 1. **Z-index Conflicts**: Initially, the logo was hidden behind other elements due to z-index conflicts. This was resolved by setting a very high z-index value (10000) for the logo container.
@@ -1425,6 +1428,37 @@ graph TD
    ```
 
 4. **Image Format Selection**: PNG format was chosen for the logo to support transparency, allowing it to blend seamlessly with the background.
+
+5. **Header Layout Optimization**: The header layout was optimized to create a balanced design with proper spacing:
+   - Increased header height by adjusting vertical padding from 20px to 30px
+   - Positioned the site name at the far left using absolute positioning
+   - Centered the navigation buttons using absolute positioning with transform
+   - Maintained social icons at the far right
+   - Created proper spacing between all elements
+
+   ```css
+   /* Header height adjustment */
+   header {
+       padding: 30px 0; /* Increased vertical padding from 20px to 30px */
+   }
+
+   /* Site title positioning */
+   .site-title {
+       position: absolute;
+       left: 10px;
+       margin: 0;
+       padding: 0;
+       width: 200px;
+   }
+
+   /* Navigation centering */
+   nav {
+       position: absolute;
+       left: 50%;
+       transform: translateX(-50%);
+       z-index: 10000;
+   }
+   ```
 
 #### Performance Considerations
 

@@ -27,14 +27,14 @@ body {
     width: 80%;
     max-width: 1000px; /* Reduced from 1200px */
     margin: 0 auto; /* Center the container */
-    padding: 0 20px;
+    padding: 0;
 }
 
 /* Site Logo */
 .site-logo-container {
     position: fixed;
     left: 10px; /* Moved more to the left */
-    top: 10px; /* Moved higher up on the page */
+    top: 1px; /* Moved higher up on the page */
     transform: none; /* Removed vertical centering */
     z-index: 10000;
 }
@@ -47,7 +47,7 @@ body {
 
 /* Header */
 header {
-    padding: 20px 0;
+    padding: 30px 0; /* Increased vertical padding from 20px to 30px */
     border: 2px solid #ffffff; /* White border all around */
     background-color: #6d105a; /* Match body background */
     position: relative;
@@ -95,8 +95,10 @@ header::before {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Align items to the start */
     align-items: center;
+    padding: 0;
+    width: 100%;
 }
 
 .logo-container {
@@ -118,15 +120,23 @@ header::before {
     font-weight: 500;
     color: #ffffff;
     text-decoration: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 10px; /* Position at the far left with minimal padding */
+    width: 200px; /* Give the title a fixed width */
 }
 
 /* Navigation */
 nav {
-    flex: 1;
+    flex: 0;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: absolute;
     z-index: 10000; /* Even higher z-index than header */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
 }
 
 nav ul {
