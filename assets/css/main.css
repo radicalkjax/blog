@@ -597,6 +597,7 @@ nav ul li a.active {
     border-radius: 4px;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    color: #ffffff;
 }
 
 .back-to-blog:hover {
