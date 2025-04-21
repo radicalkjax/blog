@@ -1,96 +1,19 @@
 ---
 layout: default
 ---
-        <!-- Blog Post 1 -->
+        {% for post in site.posts %}
         <article class="post-card">
-            <div class="post-date">MARCH 14, 2025</div>
-            <h2 class="post-title"><a href="{{ '/2025/03/14/reliant-to-engineer.html' | relative_url }}">Reliant to Engineer</a></h2>
+            <div class="post-date">{{ post.date | date: "%B %d, %Y" | upcase }}</div>
+            <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
             <div class="post-content">
-                <p>I didn't grow up very wealthy. For most of my life my single mother, twin sisters and myself relied on government assistance to get by. Whether it was "food stamps," educational assistance or free lunch we relied on it all to get by and excel. For a large portion of my life my mom worked…</p>
+                <p>{{ post.content | strip_html | truncate: 300 }}…</p>
             </div>
             <div class="post-tags">
-                <a href="#">blog</a>
-                <a href="#">general</a>
-                <a href="#">work</a>
+                {% if post.tags %}
+                    {% for tag in post.tags %}
+                    <a href="#">{{ tag }}</a>
+                    {% endfor %}
+                {% endif %}
             </div>
         </article>
-
-        <!-- Blog Post 2 -->
-        <article class="post-card">
-            <div class="post-date">DECEMBER 24, 2024</div>
-            <h2 class="post-title"><a href="{{ '/2024/12/24/trust-the-physician.html' | relative_url }}">Trust the Physician</a></h2>
-            <div class="post-content">
-                <p>Over my lifetime I've been very grateful for the connections I've been able to make and the profound relationships I've had with others. There's always this underlying hum though. A hum that never quite goes away like when you have tinnitus. This frequency deep within I've never been able to escape or release. The feelings…</p>
-            </div>
-            <div class="post-tags">
-                <a href="#">blog</a>
-                <a href="#">feels</a>
-                <a href="#">lgbtq</a>
-                <a href="#">trans</a>
-                <a href="#">transgender</a>
-            </div>
-        </article>
-
-        <!-- Blog Post 3 -->
-        <article class="post-card">
-            <div class="post-date">OCTOBER 30, 2024</div>
-            <h2 class="post-title"><a href="{{ '/2024/10/30/bottom-surgery-hurdles-prep-and-joy.html' | relative_url }}">Bottom Surgery: Hurdles, Prep and Joy</a></h2>
-            <div class="post-content">
-                <p>I've known bottom surgery was the answer to a major source of my dysphoria for a long time. Once I was ready to come out in 2021, searching for a surgeon and understanding how to correctly get permission for surgery became my number one priority. If you're unaware, a trans person cannot have a vaginoplasty…</p>
-            </div>
-            <div class="post-tags">
-                <a href="#">blog</a>
-                <a href="#">bottom surgery</a>
-                <a href="#">health</a>
-                <a href="#">hospital</a>
-                <a href="#">lgbtq</a>
-                <a href="#">surgery</a>
-                <a href="#">trans</a>
-                <a href="#">vaginoplasty</a>
-            </div>
-        </article>
-
-        <!-- Blog Post 4 -->
-        <article class="post-card">
-            <div class="post-date">JUNE 10, 2024</div>
-            <h2 class="post-title"><a href="{{ '/2024/06/10/gender-envy.html' | relative_url }}">Gender Envy</a></h2>
-            <div class="post-content">
-                <p>I remember being closeted seeing girls and thinking, "she's so lucky she gets to wear that." I would see confident women and feel I would never be able to achieve that confidence because I was too scared to be open as myself. I started to find other trans women who I felt were inspirational whether…</p>
-            </div>
-            <div class="post-tags">
-                <a href="#">blog</a>
-                <a href="#">gender</a>
-                <a href="#">gender envy</a>
-                <a href="#">lgbtq</a>
-                <a href="#">trans</a>
-                <a href="#">transgender</a>
-            </div>
-        </article>
-
-        <!-- Blog Post 5 -->
-        <article class="post-card">
-            <div class="post-date">FEBRUARY 23, 2024</div>
-            <h2 class="post-title"><a href="{{ '/2024/02/23/the-shifting-state-of-motherhood.html' | relative_url }}">The Shifting State of Motherhood</a></h2>
-            <div class="post-content">
-                <p>My entire life when posed with the question "do you want kids?" my answer without hesitation was no. Then, suddenly I caught myself looking at the baby section in Target. There was a mirror, and I saw myself standing there surrounded by baby products. Then it suddenly hit me, I can be a mom. Most…</p>
-            </div>
-            <div class="post-tags">
-                <a href="#">blog</a>
-                <a href="#">general</a>
-                <a href="#">trans motherhood infertility</a>
-            </div>
-        </article>
-
-
-        <!-- Blog Post 6 -->
-        <article class="post-card">
-            <div class="post-date">JULY 16, 2023</div>
-            <h2 class="post-title"><a href="{{ '/2023/07/16/hello-world.html' | relative_url }}">Hello World!</a></h2>
-            <div class="post-content">
-                <p>A must have post for any site! ♥</p>
-            </div>
-            <div class="post-tags">
-                <a href="#">blog</a>
-                <a href="#">general</a>
-            </div>
-        </article>
+        {% endfor %}
