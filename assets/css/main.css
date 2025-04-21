@@ -125,6 +125,7 @@ header::before {
     position: absolute;
     left: 10px; /* Position at the far left with minimal padding */
     width: 200px; /* Give the title a fixed width */
+    max-width: 25%; /* Ensure the title doesn't take up too much space */
 }
 
 /* Navigation */
@@ -588,6 +589,11 @@ nav ul li a.active {
 .mermaid {
     text-align: center !important;
     margin: 20px auto !important;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 /* Code block styling for IEEE format */
@@ -612,6 +618,35 @@ nav ul li a.active {
     margin-top: 5px;
 }
 
+/* Ensure mermaid diagrams are readable with our dark theme */
+.mermaid .label {
+    color: #ffffff !important;
+    font-family: 'DM Mono', monospace !important;
+}
+
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon,
+.mermaid .node path {
+    fill: rgba(255, 255, 255, 0.1) !important;
+    stroke: #ffffff !important;
+}
+
+.mermaid .edgePath .path {
+    stroke: #ffffff !important;
+}
+
+.mermaid .edgeLabel {
+    background-color: rgba(109, 16, 90, 0.7) !important;
+    color: #ffffff !important;
+}
+
+.mermaid .cluster rect {
+    fill: rgba(255, 255, 255, 0.05) !important;
+    stroke: #ffffff !important;
+}
+
 .post-navigation {
     margin-top: 40px;
     padding-top: 20px;
@@ -633,18 +668,102 @@ nav ul li a.active {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* Switch to mobile view when the site title would touch the navigation */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    /* Adjust the site title to prevent it from touching the navigation */
+    .site-title {
+        max-width: 20%; /* Reduce max-width to prevent overlap */
+        font-size: 0.7rem; /* Slightly reduce font size */
+    }
+    
+    /* Adjust navigation position to make more room */
+    nav {
+        left: 55%; /* Shift navigation slightly to the right */
+    }
+    
+    /* Ensure social icons have margin */
+    .social-icons {
+        right: 30px; /* Increased right margin */
+    }
+}
+
+/* Switch to mobile view when the logo would enter the header box */
+@media (max-width: 1024px) and (min-width: 901px) {
+    /* Adjust header width and position to make room for the logo */
+    header {
+        width: 80vw; /* Reduced from 90vw to make more room for the logo */
+        left: 55%; /* Shifted right to avoid the logo */
+    }
+    
+    /* Ensure the logo stays fixed in its original position */
+    .site-logo-container {
+        position: fixed;
+        left: 10px;
+        top: 1px;
+        transform: none;
+    }
+    
+    /* Ensure social icons have margin */
+    .social-icons {
+        right: 30px; /* Increased right margin */
+    }
+}
+
+/* Switch to mobile view when the site title would touch the navigation */
+@media (max-width: 1000px) and (min-width: 901px) {
+    /* Switch to mobile view when the site title would touch the navigation */
+    .site-title {
+        position: static;
+        margin: 0 auto 20px;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .header-content {
+        position: relative;
+        flex-direction: column;
+        padding-top: 20px;
+    }
+    
+    nav {
+        position: relative;
+        left: 0;
+        transform: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Ensure social icons have margin */
+    .social-icons {
+        right: 30px; /* Increased right margin */
+    }
+}
+
+/* When viewport gets even smaller, switch to full mobile view */
+@media (max-width: 900px) {
+    /* Apply mobile styles earlier to prevent logo from entering header */
     .site-logo-container {
         position: static;
+        left: auto;
+        top: auto;
+        transform: none;
         text-align: center;
-        margin-top: 10px;
-        margin-bottom: 20px;
+        margin: 10px auto 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .site-logo-outside {
         width: 60px;
         height: 60px;
         margin: 0 auto;
+        display: block;
+        position: relative;
+        left: 0;
     }
     
     .header-content {
@@ -663,10 +782,13 @@ nav ul li a.active {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease;
+        position: relative;
+        z-index: 20000; /* Increased z-index for mobile nav */
     }
     
     .nav-open nav {
-        max-height: 300px;
+        max-height: 500px; /* Increased from 300px to accommodate dropdowns */
+        overflow: visible; /* Allow dropdowns to overflow */
     }
     
     nav ul {
@@ -679,6 +801,33 @@ nav ul li a.active {
         margin: 10px 0;
         width: 100%;
         text-align: center;
+        position: relative;
+    }
+    
+    /* Mobile dropdown menu styling */
+    .dropdown-menu {
+        position: absolute; /* Change back to absolute for mobile */
+        top: 100%; /* Position below the parent */
+        left: 0;
+        width: 100%;
+        z-index: 20001; /* Higher z-index for mobile dropdown */
+        max-height: 200px; /* Limit height */
+        overflow-y: auto; /* Make scrollable if needed */
+        background-color: #6d105a; /* Ensure background color is set */
+        border: 1px solid #ffffff; /* Ensure border is visible */
+    }
+    
+    .dropdown-menu li {
+        z-index: 20002; /* Higher z-index for mobile dropdown items */
+    }
+    
+    .dropdown-menu li a {
+        white-space: normal; /* Allow text to wrap */
+        word-wrap: break-word; /* Break long words if needed */
+        overflow-wrap: break-word; /* Modern version of word-wrap */
+        padding: 10px 15px; /* Increased padding for better readability */
+        font-size: 0.95rem; /* Slightly smaller font size to fit more text */
+        z-index: 20003; /* Higher z-index for mobile dropdown links */
     }
     
     .logo-container {
@@ -714,3 +863,5 @@ nav ul li a.active {
         padding: 20px;
     }
 }
+
+/* Styles for 768px and below are already covered by the 900px media query above */
