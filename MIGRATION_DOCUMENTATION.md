@@ -582,26 +582,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 - **BlueSky Integration**: Replaced Twitter with BlueSky, using a custom butterfly icon
 - **Social Links**: Added direct links to all social profiles:
-  - BlueSky: https://bsky.app/profile/radicalkjax.com
-  - LinkedIn: https://www.linkedin.com/in/kali-jackson-647094245
-  - Instagram: https://www.instagram.com/radicalkjax/
-  - GitHub: https://github.com/radicalkjax
+  - BlueSky: https://bsky.app/profile/username
+  - LinkedIn: https://www.linkedin.com/in/username
+  - Instagram: https://www.instagram.com/username/
+  - GitHub: https://github.com/username
 
 #### Social Links Implementation
 
 HTML Structure:
 ```html
 <div class="social-icons">
-    <a href="https://bsky.app/profile/radicalkjax.com" aria-label="BlueSky" target="_blank">
+    <a href="https://bsky.app/profile/username" aria-label="BlueSky" target="_blank">
         <i class="fas fa-butterfly"></i>
     </a>
-    <a href="https://www.linkedin.com/in/kali-jackson-647094245" aria-label="LinkedIn" target="_blank">
+    <a href="https://www.linkedin.com/in/username" aria-label="LinkedIn" target="_blank">
         <i class="fab fa-linkedin-in"></i>
     </a>
-    <a href="https://www.instagram.com/radicalkjax/" aria-label="Instagram" target="_blank">
+    <a href="https://www.instagram.com/username/" aria-label="Instagram" target="_blank">
         <i class="fab fa-instagram"></i>
     </a>
-    <a href="https://github.com/radicalkjax" aria-label="GitHub" target="_blank">
+    <a href="https://github.com/username" aria-label="GitHub" target="_blank">
         <i class="fab fa-github"></i>
     </a>
 </div>
@@ -905,10 +905,10 @@ custom_css: |
                 </nav>
             </div>
             <div class="social-icons">
-                <a href="https://bsky.app/profile/radicalkjax.com" aria-label="BlueSky" target="_blank"><i class="fas fa-butterfly"></i></a>
-                <a href="https://www.linkedin.com/in/kali-jackson-647094245" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/radicalkjax/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/radicalkjax" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://bsky.app/profile/username" aria-label="BlueSky" target="_blank"><i class="fas fa-butterfly"></i></a>
+                <a href="https://www.linkedin.com/in/username" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/username/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/username" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </header>
