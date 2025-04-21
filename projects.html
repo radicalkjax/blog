@@ -2,7 +2,12 @@
 layout: default
 title: Projects
 custom_css: |
-    .project-card {
+    .connections-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .connections-section {
         background-color: rgba(122, 1, 119, 0.7);
         border: 1px solid rgba(255, 255, 255, 0.3);
         padding: 30px;
@@ -12,7 +17,7 @@ custom_css: |
         position: relative;
     }
     
-    .project-card::before {
+    .connections-section::before {
         content: '';
         position: absolute;
         top: -1px;
@@ -23,14 +28,19 @@ custom_css: |
         pointer-events: none;
     }
     
+    .connections-intro {
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+    
+    .connections-intro p {
+        margin-bottom: 20px;
+    }
+    
     .project-title {
         font-size: 2rem;
         margin-bottom: 15px;
         font-weight: 500;
-    }
-    
-    .project-description {
-        margin-bottom: 20px;
     }
     
     .project-tags {
@@ -71,77 +81,79 @@ custom_css: |
         background-color: rgba(255, 255, 255, 0.1);
     }
 ---
-        <h1 style="margin-bottom: 30px; text-align: center;">Projects</h1>
-        
-        <!-- Project 1 -->
-        <div class="project-card">
-            <h2 class="project-title">Wattz</h2>
-            <div class="project-description">
-                <p>Wattz is a robotics project aimed at creating a versatile robot capable of performing flips and aerials with moving rotors. The robot is designed to pick up simple objects and navigate rough terrain. This project combines hardware engineering with software development to create a functional and adaptable robot.</p>
-                <p>The current version (0.01) is the ultra-base version, with plans for more advanced capabilities in future iterations.</p>
-            </div>
-            <div class="project-tags">
-                <a href="#">robotics</a>
-                <a href="#">drone</a>
-                <a href="#">raspberry pi</a>
-                <a href="#">matrix creator</a>
-            </div>
-            <div class="project-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
-            </div>
+<div class="connections-container">
+    <h1 style="margin-bottom: 30px; text-align: center;">Projects</h1>
+    
+    <!-- Project 1 -->
+    <section class="connections-section">
+        <h2 class="project-title">Wattz</h2>
+        <div class="connections-intro">
+            <p>Wattz is a robotics project aimed at creating a versatile robot capable of performing flips and aerials with moving rotors. The robot is designed to pick up simple objects and navigate rough terrain. This project combines hardware engineering with software development to create a functional and adaptable robot.</p>
+            <p>The current version (0.01) is the ultra-base version, with plans for more advanced capabilities in future iterations.</p>
         </div>
-        
-        <!-- Project 2 -->
-        <div class="project-card">
-            <h2 class="project-title">Personal Website</h2>
-            <div class="project-description">
-                <p>This website serves as my personal blog and portfolio, showcasing my projects, art, and thoughts. It was originally built on WordPress using the Pixl theme with the DM Mono font, and has now been migrated to GitHub Pages for better performance and control.</p>
-                <p>The site features a clean, minimalist design with a deep purple/magenta color scheme that reflects my personal aesthetic.</p>
-            </div>
-            <div class="project-tags">
-                <a href="#">web development</a>
-                <a href="#">github pages</a>
-                <a href="#">html</a>
-                <a href="#">css</a>
-            </div>
-            <div class="project-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-            </div>
+        <div class="project-tags">
+            <a href="#">robotics</a>
+            <a href="#">drone</a>
+            <a href="#">raspberry pi</a>
+            <a href="#">matrix creator</a>
         </div>
-        
-        <!-- Project 3 -->
-        <div class="project-card">
-            <h2 class="project-title">Security Research</h2>
-            <div class="project-description">
-                <p>As a security researcher specializing in reversing malware, I've worked on various projects to analyze and understand malicious software. This ongoing research helps improve cybersecurity measures and protect systems from potential threats.</p>
-                <p>My work involves detailed analysis of malware behavior, reverse engineering techniques, and developing countermeasures against emerging threats.</p>
-            </div>
-            <div class="project-tags">
-                <a href="#">cybersecurity</a>
-                <a href="#">malware analysis</a>
-                <a href="#">reverse engineering</a>
-            </div>
-            <div class="project-links">
-                <a href="#"><i class="fas fa-file-alt"></i> Research Papers</a>
-                <a href="#"><i class="fas fa-external-link-alt"></i> Presentations</a>
-            </div>
+        <div class="project-links">
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
         </div>
-        
-        <!-- Project 4 -->
-        <div class="project-card">
-            <h2 class="project-title">AI Research</h2>
-            <div class="project-description">
-                <p>With extensive experience in artificial intelligence, I've contributed to various AI projects and research initiatives. My work focuses on practical applications of AI technology and exploring the potential of machine learning in solving real-world problems.</p>
-                <p>This ongoing research encompasses areas such as natural language processing, computer vision, and AI ethics.</p>
-            </div>
-            <div class="project-tags">
-                <a href="#">artificial intelligence</a>
-                <a href="#">machine learning</a>
-                <a href="#">research</a>
-            </div>
-            <div class="project-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"><i class="fas fa-external-link-alt"></i> Research Page</a>
-            </div>
+    </section>
+    
+    <!-- Project 2 -->
+    <section class="connections-section">
+        <h2 class="project-title">Personal Website</h2>
+        <div class="connections-intro">
+            <p>This website serves as my personal blog and portfolio, showcasing my projects, art, and thoughts. It was originally built on WordPress using the Pixl theme with the DM Mono font, and has now been migrated to GitHub Pages for better performance and control.</p>
+            <p>The site features a clean, minimalist design with a deep purple/magenta color scheme that reflects my personal aesthetic.</p>
         </div>
+        <div class="project-tags">
+            <a href="#">web development</a>
+            <a href="#">github pages</a>
+            <a href="#">html</a>
+            <a href="#">css</a>
+        </div>
+        <div class="project-links">
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </section>
+    
+    <!-- Project 3 -->
+    <section class="connections-section">
+        <h2 class="project-title">Security Research</h2>
+        <div class="connections-intro">
+            <p>As a security researcher specializing in reversing malware, I've worked on various projects to analyze and understand malicious software. This ongoing research helps improve cybersecurity measures and protect systems from potential threats.</p>
+            <p>My work involves detailed analysis of malware behavior, reverse engineering techniques, and developing countermeasures against emerging threats.</p>
+        </div>
+        <div class="project-tags">
+            <a href="#">cybersecurity</a>
+            <a href="#">malware analysis</a>
+            <a href="#">reverse engineering</a>
+        </div>
+        <div class="project-links">
+            <a href="#"><i class="fas fa-file-alt"></i> Research Papers</a>
+            <a href="#"><i class="fas fa-external-link-alt"></i> Presentations</a>
+        </div>
+    </section>
+    
+    <!-- Project 4 -->
+    <section class="connections-section">
+        <h2 class="project-title">AI Research</h2>
+        <div class="connections-intro">
+            <p>With extensive experience in artificial intelligence, I've contributed to various AI projects and research initiatives. My work focuses on practical applications of AI technology and exploring the potential of machine learning in solving real-world problems.</p>
+            <p>This ongoing research encompasses areas such as natural language processing, computer vision, and AI ethics.</p>
+        </div>
+        <div class="project-tags">
+            <a href="#">artificial intelligence</a>
+            <a href="#">machine learning</a>
+            <a href="#">research</a>
+        </div>
+        <div class="project-links">
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fas fa-external-link-alt"></i> Research Page</a>
+        </div>
+    </section>
+</div>

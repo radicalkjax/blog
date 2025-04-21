@@ -352,14 +352,14 @@ main {
 
 /* Links */
 .post-content a, .post-card .post-content a, .post-title a, .post-card .post-title a,
-.social-item, .network-description a, .connections-intro a {
+.social-item, .network-description a, .connections-intro a, .project-tags a, .project-links a {
     color: #ffffff;
     text-decoration: underline;
     transition: opacity 0.3s ease;
 }
 
 .post-content a:hover, .post-card .post-content a:hover, .post-title a:hover, .post-card .post-title a:hover,
-.social-item:hover, .network-description a:hover, .connections-intro a:hover {
+.social-item:hover, .network-description a:hover, .connections-intro a:hover, .project-tags a:hover, .project-links a:hover {
     opacity: 0.8;
 }
 

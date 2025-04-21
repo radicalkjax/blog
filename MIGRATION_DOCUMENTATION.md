@@ -23,6 +23,9 @@
         <li><a href="#8-photos-page-redesign" style="color: white; text-decoration: none;">Photos Page Redesign</a></li>
         <li><a href="#9-about-pages-styling-standardization" style="color: white; text-decoration: none;">About Pages Styling</a></li>
         <li><a href="#10-logo-integration" style="color: white; text-decoration: none;">Logo Integration</a></li>
+        <li><a href="#11-project-pages-styling" style="color: white; text-decoration: none;">Project Pages Styling</a></li>
+        <li><a href="#12-hyperlink-standardization" style="color: white; text-decoration: none;">Hyperlink Standardization</a></li>
+        <li><a href="#13-about-page-updates" style="color: white; text-decoration: none;">About Page Updates</a></li>
       </ul>
     </li>
     <li><a href="#technical-implementation-details" style="color: white; text-decoration: none;">Technical Implementation</a></li>
@@ -884,9 +887,9 @@ Custom BlueSky Icon CSS:
 
 ```yaml
 # _config.yml
-title: KALI JACKSON (@RADICALKJAX)
+title: [SITE OWNER] (@USERNAME)
 description: Software Engineer, Security Researcher, AI Expert
-url: "https://radicalkjax.com"
+url: "https://example.com"
 baseurl: ""
 
 # Build settings
@@ -1128,7 +1131,7 @@ custom_css: |
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} - {% endif %}KALI JACKSON (@RADICALKJAX)</title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}[SITE OWNER] (@USERNAME)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>K</text></svg>">
     <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
@@ -1146,7 +1149,7 @@ custom_css: |
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="{{ '/' | relative_url }}" class="site-title">KALI JACKSON (@RADICALKJAX)</a>
+                <a href="{{ '/' | relative_url }}" class="site-title">[SITE OWNER] (@USERNAME)</a>
                 <nav>
                     <ul>
                         <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
@@ -1176,7 +1179,7 @@ custom_css: |
     </main>
 
     <footer class="container">
-        <p>Designed with love by Kali <3</p>
+        <p>Designed with love by [SITE OWNER] <3</p>
     </footer>
 </body>
 </html>
@@ -1501,6 +1504,287 @@ graph LR
 ```
 
 The implementation uses standard CSS properties that are well-supported across all modern browsers, ensuring consistent rendering without the need for browser-specific prefixes or fallbacks.
+
+### 11. Project Pages Styling
+
+The project pages were updated to match the styling of the About Me pages, creating a consistent visual experience across the site:
+
+```mermaid
+graph TD
+    A[Project Pages Styling] --> B[CSS Class Standardization]
+    A --> C[Visual Consistency]
+    A --> D[Content Structure]
+    
+    B --> B1[project-card → connections-section]
+    B --> B2[project-description → connections-intro]
+    
+    C --> C1[Matching Background Colors]
+    C --> C2[Consistent Border Styling]
+    C --> C3[Uniform Text Formatting]
+    
+    D --> D1[Container Structure]
+    D --> D2[Section Organization]
+    D --> D3[Content Hierarchy]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10 stroke:#fff,stroke-width:2px;
+```
+
+#### CSS Class Standardization
+
+The CSS classes in the project pages were standardized to match the About Me pages:
+
+From:
+```css
+.project-card {
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.project-description {
+    margin-bottom: 20px;
+}
+```
+
+To:
+```css
+.connections-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.connections-section {
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.connections-intro {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+```
+
+#### HTML Structure Updates
+
+The HTML structure was also updated to use the new class names:
+
+From:
+```html
+<div class="project-card">
+    <h1 class="project-title">Rocket Pup</h1>
+    <div class="project-description">
+        <p>Rocket Pup is an exciting project focused on creating a fun and engaging experience for users.</p>
+        <p>Check back soon for more information about this project!</p>
+    </div>
+    <div class="project-tags">
+        <a href="#">game development</a>
+        <a href="#">mobile</a>
+        <a href="#">unity</a>
+    </div>
+    <div class="project-links">
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
+    </div>
+</div>
+```
+
+To:
+```html
+<div class="connections-container">
+    <section class="connections-section">
+        <h1 style="margin-bottom: 30px;">Rocket Pup</h1>
+        <div class="connections-intro">
+            <p>Rocket Pup is an exciting project focused on creating a fun and engaging experience for users.</p>
+            <p>Check back soon for more information about this project!</p>
+        </div>
+        <div class="project-tags" style="margin-top: 20px;">
+            <a href="#">game development</a>
+            <a href="#">mobile</a>
+            <a href="#">unity</a>
+        </div>
+        <div class="project-links" style="margin-top: 20px;">
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
+        </div>
+    </section>
+</div>
+```
+
+#### Implementation Process
+
+The styling update was applied to all project pages:
+
+1. **Individual Project Pages**:
+   - rocket-pup.html
+   - caliphoria.html
+   - wattz.html
+
+2. **Main Projects Page**:
+   - projects.html
+
+This standardization ensures a consistent visual experience across all pages of the site, while preserving the original content and structure.
+
+### 12. Hyperlink Standardization
+
+All hyperlinks across the site were standardized to use a consistent white color for better readability and visual coherence:
+
+```mermaid
+graph TD
+    A[Hyperlink Standardization] --> B[CSS Updates]
+    A --> C[Visual Consistency]
+    A --> D[Accessibility Improvements]
+    
+    B --> B1[Color: #ffffff]
+    B --> B2[Hover Effect: opacity 0.8]
+    B --> B3[Transition: 0.3s ease]
+    
+    C --> C1[Consistent Link Appearance]
+    C --> C2[Unified Hover Effects]
+    
+    D --> D1[Improved Contrast]
+    D --> D2[Clear Interactive Elements]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7,8,9 stroke:#fff,stroke-width:2px;
+```
+
+#### CSS Implementation
+
+The CSS for links was updated to include project-specific link classes:
+
+```css
+/* Links */
+.post-content a, .post-card .post-content a, .post-title a, .post-card .post-title a,
+.social-item, .network-description a, .connections-intro a, .project-tags a, .project-links a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.post-content a:hover, .post-card .post-content a:hover, .post-title a:hover, .post-card .post-title a:hover,
+.social-item:hover, .network-description a:hover, .connections-intro a:hover, .project-tags a:hover, .project-links a:hover {
+    opacity: 0.8;
+}
+```
+
+This CSS update ensures that:
+
+1. All links have a consistent white color (#ffffff)
+2. All links have a consistent hover effect (opacity change)
+3. All transitions are smooth with the same timing (0.3s ease)
+
+#### Affected Link Types
+
+The standardization affected several types of links across the site:
+
+1. **Content Links**: Links within post and page content
+2. **Navigation Links**: Links in the main navigation and dropdown menus
+3. **Project Tags**: Links used for project categorization
+4. **Project Links**: Links to external resources like GitHub repositories
+5. **Social Media Links**: Links to social media profiles
+
+#### Benefits
+
+This standardization provides several benefits:
+
+1. **Visual Consistency**: Creates a unified look and feel across the site
+2. **Improved Readability**: White links stand out clearly against the dark purple background
+3. **Better User Experience**: Consistent hover effects provide clear feedback to users
+4. **Accessibility**: High contrast between link color and background improves accessibility
+
+### 13. About Page Updates
+
+The About page was updated to reflect current information and improve the presentation:
+
+```mermaid
+graph TD
+    A[About Page Updates] --> B[Content Updates]
+    A --> C[Structure Improvements]
+    
+    B --> B1[Education Update]
+    B --> B2[Certifications Removal]
+    
+    B1 --> B1a[Degree: Bachelor of Science]
+    B1 --> B1b[Graduation Year: 2019]
+    
+    C --> C1[Simplified Layout]
+    C --> C2[Improved Content Organization]
+    
+    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B1 fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style B2 fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C1 fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style C2 fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    
+    linkStyle 0,1,2,3,4,5,6,7 stroke:#fff,stroke-width:2px;
+```
+
+#### Education Information Update
+
+The education information was updated to reflect the correct degree and graduation year:
+
+From:
+```html
+<div class="education-item">
+    <div class="education-degree">Master of Science in Software Engineering</div>
+    <div class="education-institution">California State University, Stanislaus</div>
+    <div class="education-year">Graduated: 2020</div>
+</div>
+```
+
+To:
+```html
+<div class="education-item">
+    <div class="education-degree">Bachelor of Science in Computer Science</div>
+    <div class="education-institution">California State University, Stanislaus</div>
+    <div class="education-year">Graduated: 2019</div>
+</div>
+```
+
+#### Certifications Section Removal
+
+The certifications section was removed to simplify the page and focus on the most relevant information:
+
+```html
+<!-- Removed section -->
+<div class="certifications">
+    <h3>Certifications</h3>
+    <ul>
+        <li>GIAC Reverse Engineering Malware (GREM)</li>
+        <li>Offensive Security Certified Professional (OSCP)</li>
+        <li>CompTIA Security+</li>
+    </ul>
+</div>
+```
+
+#### Benefits of the Updates
+
+These updates provide several benefits:
+
+1. **Accuracy**: Ensures the information presented is correct and up-to-date
+2. **Simplicity**: Removes unnecessary information to create a cleaner, more focused page
+3. **Relevance**: Emphasizes the most important and relevant information
+4. **Consistency**: Maintains a consistent style and structure with other pages
 
 ## Conclusion
 

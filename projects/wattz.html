@@ -1,21 +1,58 @@
 ---
 layout: default
 title: Wattz
+custom_css: |
+    .connections-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .connections-section {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .connections-section::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+    
+    .connections-intro {
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+    
+    .connections-intro p {
+        margin-bottom: 20px;
+    }
 ---
-<div class="project-card">
-    <h1 class="project-title">Wattz</h1>
-    <div class="project-description">
-        <p>Wattz is a robotics project aimed at creating a versatile robot capable of performing flips and aerials with moving rotors. The robot is designed to pick up simple objects and navigate rough terrain. This project combines hardware engineering with software development to create a functional and adaptable robot.</p>
-        <p>The current version (0.01) is the ultra-base version, with plans for more advanced capabilities in future iterations.</p>
-    </div>
-    <div class="project-tags">
-        <a href="#">robotics</a>
-        <a href="#">drone</a>
-        <a href="#">raspberry pi</a>
-        <a href="#">matrix creator</a>
-    </div>
-    <div class="project-links">
-        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-        <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
-    </div>
+<div class="connections-container">
+    <section class="connections-section">
+        <h1 style="margin-bottom: 30px;">Wattz</h1>
+        <div class="connections-intro">
+            <p>Wattz is a robotics project aimed at creating a versatile robot capable of performing flips and aerials with moving rotors. The robot is designed to pick up simple objects and navigate rough terrain. This project combines hardware engineering with software development to create a functional and adaptable robot.</p>
+            <p>The current version (0.01) is the ultra-base version, with plans for more advanced capabilities in future iterations.</p>
+        </div>
+        <div class="project-tags" style="margin-top: 20px;">
+            <a href="#">robotics</a>
+            <a href="#">drone</a>
+            <a href="#">raspberry pi</a>
+            <a href="#">matrix creator</a>
+        </div>
+        <div class="project-links" style="margin-top: 20px;">
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
+        </div>
+    </section>
 </div>

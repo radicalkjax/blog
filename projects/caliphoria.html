@@ -1,20 +1,57 @@
 ---
 layout: default
 title: Caliphoria
+custom_css: |
+    .connections-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .connections-section {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .connections-section::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+    
+    .connections-intro {
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+    
+    .connections-intro p {
+        margin-bottom: 20px;
+    }
 ---
-<div class="project-card">
-    <h1 class="project-title">Caliphoria</h1>
-    <div class="project-description">
-        <p>Caliphoria is an innovative project that explores new possibilities in digital experiences. This page will contain detailed information about the Caliphoria project, its vision, implementation details, and current status.</p>
-        <p>Check back soon for more information about this project!</p>
-    </div>
-    <div class="project-tags">
-        <a href="#">virtual reality</a>
-        <a href="#">interactive</a>
-        <a href="#">design</a>
-    </div>
-    <div class="project-links">
-        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-        <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
-    </div>
+<div class="connections-container">
+    <section class="connections-section">
+        <h1 style="margin-bottom: 30px;">Caliphoria</h1>
+        <div class="connections-intro">
+            <p>Caliphoria is an innovative project that explores new possibilities in digital experiences. This page will contain detailed information about the Caliphoria project, its vision, implementation details, and current status.</p>
+            <p>Check back soon for more information about this project!</p>
+        </div>
+        <div class="project-tags" style="margin-top: 20px;">
+            <a href="#">virtual reality</a>
+            <a href="#">interactive</a>
+            <a href="#">design</a>
+        </div>
+        <div class="project-links" style="margin-top: 20px;">
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fas fa-external-link-alt"></i> Project Page</a>
+        </div>
+    </section>
 </div>
