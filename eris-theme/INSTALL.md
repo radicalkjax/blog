@@ -95,7 +95,7 @@ cat << EOF >> _config.yml
 plugins:
   - jekyll-remote-theme
 
-remote_theme: yourusername/eris-theme
+   remote_theme: yourusername/eris-theme
 EOF
 
 # Step 3: Install dependencies
