@@ -1,0 +1,135 @@
+// Layout styles for Eris theme
+
+// Container
+.container {
+    width: $container-width;
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0;
+}
+
+// Site Logo
+.site-logo-container {
+    position: fixed;
+    left: 10px;
+    top: 1px;
+    transform: none;
+    z-index: 10000;
+}
+
+.site-logo-outside {
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+
+.site-logo-placeholder {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary-color;
+    border: $border-width solid $border-color;
+    color: $text-color;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+// Header
+header {
+    padding: $header-padding;
+    border: $border-width solid $border-color;
+    background-color: $background-color;
+    position: relative;
+    margin: 20px auto 60px auto;
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    box-sizing: border-box;
+    z-index: 9999;
+    
+    // Create a second border box underneath
+    &::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: -10px;
+        bottom: -12px;
+        height: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Add vertical lines to create box effect
+    &::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        bottom: -12px;
+        width: $border-width;
+        height: 10px;
+        background-color: $border-color;
+    }
+}
+
+// Right vertical line
+.header-content::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    bottom: -12px;
+    width: $border-width;
+    height: 10px;
+    background-color: $border-color;
+}
+
+.header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.site-title {
+    font-family: $font-family-title;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: $text-color;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 10px;
+    width: 200px;
+    max-width: 25%;
+}
+
+// Main Content
+main {
+    padding: $main-padding;
+}
+
+// Footer
+footer {
+    text-align: center;
+    padding: $footer-padding;
+    margin-top: 40px;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

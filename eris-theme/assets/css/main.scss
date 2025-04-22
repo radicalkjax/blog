@@ -1,0 +1,9 @@
+---
+---
+
+// Import variables and set theme colors from config
+$primary-color: {{ site.theme_color.primary | default: "#6d105a" }};
+$text-color: {{ site.theme_color.text | default: "#ffffff" }};
+
+// Import Eris theme
+@import "eris";

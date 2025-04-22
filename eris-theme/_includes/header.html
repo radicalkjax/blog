@@ -1,0 +1,31 @@
+<header>
+    <div class="container">
+        <div class="header-content">
+            <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+            <nav>
+                <ul>
+                    {% for item in site.navigation %}
+                    {% if item.submenu %}
+                    <li class="dropdown">
+                        <a href="{{ item.url | relative_url }}" class="dropdown-toggle">{{ item.title }}</a>
+                        <ul class="dropdown-menu">
+                            {% for subitem in item.submenu %}
+                            <li><a href="{{ subitem.url | relative_url }}">{{ subitem.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="social-icons">
+            {% if site.social.bluesky %}<a href="{{ site.social.bluesky }}" aria-label="BlueSky" target="_blank"><i class="fas fa-butterfly"></i></a>{% endif %}
+            {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+            {% if site.social.instagram %}<a href="{{ site.social.instagram }}" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+            {% if site.social.github %}<a href="{{ site.social.github }}" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>{% endif %}
+        </div>
+    </div>
+</header>

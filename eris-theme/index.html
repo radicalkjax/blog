@@ -1,0 +1,57 @@
+---
+layout: default
+title: Home
+---
+
+<div class="post-card">
+  <h1 class="post-title">Welcome to Eris Theme</h1>
+  <div class="post-content">
+    <p>Eris is a modern, minimalist Jekyll theme with a distinctive purple color scheme and unique border styling. It features a responsive design, dropdown navigation, and social media integration.</p>
+    
+    <h2>Features</h2>
+    <ul>
+      <li>Responsive design</li>
+      <li>Dropdown navigation</li>
+      <li>Social media integration</li>
+      <li>Custom border styling</li>
+      <li>Monospace typography</li>
+      <li>Blog post layout</li>
+      <li>Mobile-friendly navigation</li>
+    </ul>
+    
+    <h2>Getting Started</h2>
+    <p>Check out the <a href="https://github.com/yourusername/eris-theme">GitHub repository</a> for installation instructions and documentation.</p>
+    
+    <h2>Sample Content</h2>
+    <p>This is a sample page to demonstrate the Eris theme. You can customize it to fit your needs.</p>
+    
+    <h3>Code Example</h3>
+    <pre><code>// Sample JavaScript code
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('Eris'));</code></pre>
+    
+    <h3>Mermaid Diagram</h3>
+    <pre><code class="language-mermaid">graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B</code></pre>
+  </div>
+</div>
+
+<div class="post-card">
+  <h2 class="post-title">Recent Posts</h2>
+  <div class="post-content">
+    <ul>
+      {% for post in site.posts limit:5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

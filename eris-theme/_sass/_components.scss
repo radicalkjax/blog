@@ -1,0 +1,459 @@
+// Component styles for Eris theme
+
+// Navigation
+nav {
+    flex: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 10000;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        
+        li {
+            margin: 0 15px;
+            position: relative;
+            
+            a {
+                color: $text-color;
+                text-decoration: none;
+                transition: opacity 0.3s ease;
+                font-size: 1.2rem;
+                
+                &:hover {
+                    opacity: 0.8;
+                }
+                
+                &.active {
+                    font-weight: 500;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+// Dropdown Menu
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $primary-color;
+    border: 1px solid $text-color;
+    min-width: 200px;
+    z-index: 9999;
+    padding: 10px 0;
+    flex-direction: column;
+    box-shadow: $box-shadow;
+    
+    li {
+        margin: 0;
+        width: 100%;
+        position: relative;
+        z-index: 10001;
+        
+        a {
+            padding: 8px 15px;
+            display: block;
+            font-size: 1rem;
+            white-space: nowrap;
+            position: relative;
+            z-index: 10002;
+            
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+// Social Icons
+.social-icons {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    
+    a {
+        margin-right: 15px;
+        color: $text-color;
+        font-size: 1.2rem;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        
+        &:hover {
+            opacity: 0.8;
+            transform: translateY(-3px);
+        }
+        
+        &.animated {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Post Card
+.post-card {
+    background-color: rgba($primary-color, 0.7);
+    border: $border-width solid $border-color;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    position: relative;
+    z-index: 1;
+    
+    // Create a second border box underneath - similar to header
+    &::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        bottom: -12px;
+        right: -10px;
+        width: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Right horizontal line connecting to main box
+    .post-date::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: -10px;
+        width: 10px;
+        height: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Create bottom horizontal line
+    &::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: -10px;
+        bottom: -12px;
+        height: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Left vertical line
+    .post-title::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        bottom: -12px;
+        width: $border-width;
+        height: 10px;
+        background-color: $border-color;
+    }
+    
+    // Right bottom vertical line
+    .post-content::after {
+        content: '';
+        position: absolute;
+        right: -10px;
+        bottom: -12px;
+        width: $border-width;
+        height: 10px;
+        background-color: $border-color;
+    }
+}
+
+.post-date {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.post-tags {
+    margin-top: 20px;
+    
+    a {
+        display: inline-block;
+        margin-right: 10px;
+        color: $text-color;
+        text-decoration: underline;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+// Blog Post Styles
+.post-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post {
+    background-color: rgba($primary-color, 0.7);
+    border: $border-width solid $border-color;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    position: relative;
+    
+    // Create a second border box underneath - similar to header
+    &::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        bottom: -12px;
+        right: -10px;
+        width: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Right horizontal line connecting to main box
+    .post-date::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: -10px;
+        width: 10px;
+        height: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Create bottom horizontal line
+    &::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        right: -10px;
+        bottom: -12px;
+        height: $border-width;
+        background-color: $border-color;
+    }
+    
+    // Left vertical line
+    .post-title::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        bottom: -12px;
+        width: $border-width;
+        height: 10px;
+        background-color: $border-color;
+    }
+    
+    // Right bottom vertical line
+    .post-content::after {
+        content: '';
+        position: absolute;
+        right: -10px;
+        bottom: -12px;
+        width: $border-width;
+        height: 10px;
+        background-color: $border-color;
+    }
+}
+
+.post-header {
+    margin-bottom: 30px;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.post-content {
+    line-height: 1.8;
+    margin-bottom: 30px;
+    
+    p {
+        margin-bottom: 20px;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    
+    ul, ol {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+    
+    blockquote {
+        border-left: 3px solid $text-color;
+        padding-left: 20px;
+        margin-left: 0;
+        font-style: italic;
+        margin-bottom: 20px;
+    }
+    
+    code {
+        font-family: $font-family-base;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
+    
+    pre {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 20px;
+        
+        code {
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+}
+
+// Mermaid diagram styling
+.mermaid {
+    text-align: center !important;
+    margin: 20px auto !important;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 100%;
+    overflow-x: auto;
+    
+    .label {
+        color: $text-color !important;
+        font-family: $font-family-base !important;
+    }
+    
+    .node rect,
+    .node circle,
+    .node ellipse,
+    .node polygon,
+    .node path {
+        fill: rgba(255, 255, 255, 0.1) !important;
+        stroke: $text-color !important;
+    }
+    
+    .edgePath .path {
+        stroke: $text-color !important;
+    }
+    
+    .edgeLabel {
+        background-color: rgba($primary-color, 0.7) !important;
+        color: $text-color !important;
+    }
+    
+    .cluster rect {
+        fill: rgba(255, 255, 255, 0.05) !important;
+        stroke: $text-color !important;
+    }
+}
+
+.post-navigation {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-to-blog {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: $text-color;
+    
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+// Mobile Navigation Toggle
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 100;
+}
+
+// Form success message
+.form-success {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    
+    h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    
+    p {
+        margin-bottom: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
