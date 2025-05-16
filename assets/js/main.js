@@ -4,11 +4,11 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Load header and footer
-    loadIncludes();
-    
     // Initialize the site when the DOM is fully loaded
     initSite();
+    
+    // Load header and footer if needed
+    loadIncludes();
 });
 
 /**
@@ -80,19 +80,32 @@ function initSite() {
  * Setup dropdown menus
  */
 function setupDropdownMenus() {
+    console.log('setupDropdownMenus called');
     const dropdowns = document.querySelectorAll('.dropdown');
+    console.log('Found dropdowns:', dropdowns.length);
     
     dropdowns.forEach(dropdown => {
+        console.log('Setting up dropdown:', dropdown);
         // Add hover event listeners for desktop
         dropdown.addEventListener('mouseenter', function() {
+            console.log('mouseenter event triggered');
             if (window.innerWidth > 768) {
-                this.querySelector('.dropdown-menu').style.display = 'flex';
+                const menu = this.querySelector('.dropdown-menu');
+                console.log('Adding show class to dropdown menu', menu);
+                if (menu) {
+                    menu.classList.add('show');
+                } else {
+                    console.error('Dropdown menu not found');
+                }
             }
         });
         
         dropdown.addEventListener('mouseleave', function() {
             if (window.innerWidth > 768) {
-                this.querySelector('.dropdown-menu').style.display = 'none';
+                const menu = this.querySelector('.dropdown-menu');
+                if (menu) {
+                    menu.classList.remove('show');
+                }
             }
         });
         
@@ -108,16 +121,12 @@ function setupDropdownMenus() {
                     // Close all other dropdowns first
                     document.querySelectorAll('.dropdown-menu').forEach(menu => {
                         if (menu !== this.nextElementSibling) {
-                            menu.style.display = 'none';
+                            menu.classList.remove('show');
                         }
                     });
                     
                     const menu = this.nextElementSibling;
-                    if (menu.style.display === 'flex') {
-                        menu.style.display = 'none';
-                    } else {
-                        menu.style.display = 'flex';
-                    }
+                    menu.classList.toggle('show');
                 }
             });
         }
@@ -129,7 +138,7 @@ function setupDropdownMenus() {
             // Check if the click was outside any dropdown
             if (!e.target.closest('.dropdown')) {
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                    menu.style.display = 'none';
+                    menu.classList.remove('show');
                 });
             }
         }
