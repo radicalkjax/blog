@@ -1,0 +1,137 @@
+---
+layout: default
+title: Presentations
+custom_css: |
+    .connections-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .connections-section {
+        background-color: rgba(122, 1, 119, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    .connections-section::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+    
+    .connections-intro {
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+    
+    .connections-intro p {
+        margin-bottom: 20px;
+    }
+    
+    .presentation-container {
+        margin-top: 20px;
+    }
+    
+    .presentation-frame {
+        width: 100%;
+        height: 600px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-tags {
+        margin-top: 20px;
+    }
+    
+    .project-tags a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #ffffff;
+        text-decoration: underline;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-tags a:hover {
+        opacity: 1;
+    }
+    
+    .project-links {
+        margin-top: 20px;
+    }
+    
+    .project-links a {
+        display: inline-block;
+        margin-right: 15px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 5px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    .project-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+---
+<div class="connections-container">
+    <section class="connections-section">
+        <h1 style="margin-bottom: 30px;">Presentations</h1>
+        <div class="connections-intro">
+            <p>This section features presentations I've created on various topics related to technology, security, and software development. These presentations are designed to be informative and accessible, providing insights into complex subjects.</p>
+        </div>
+        
+        <!-- Vibe Coding Presentation -->
+        <section class="connections-section">
+            <h2 class="project-title">Vibe Coding: It's A Legitimate Strategy</h2>
+            <div class="connections-intro">
+                <p>This presentation explores the concept of "vibe coding" - using AI for clean, effective, up-to-date, and secure code. It covers the AI-assisted development pipeline, different perspectives on the process, documentation responsibilities, impacts to users, and addresses common concerns about AI-assisted coding.</p>
+            </div>
+            <div class="presentation-container">
+                <iframe class="presentation-frame" src="/projects/presentations/presentation.html" allowfullscreen frameborder="0"></iframe>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const iframe = document.querySelector('.presentation-frame');
+                    
+                    // Add event listener to handle fullscreen mode
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'f' && iframe.contains(document.activeElement)) {
+                            if (iframe.requestFullscreen) {
+                                iframe.requestFullscreen();
+                            } else if (iframe.webkitRequestFullscreen) {
+                                iframe.webkitRequestFullscreen();
+                            }
+                        }
+                    });
+                });
+            </script>
+            <p style="text-align: center; margin-top: 10px; font-style: italic; font-size: 0.9em;">
+                Note: For the best experience, use the "Open in New Tab" button below and press "f" for fullscreen mode.
+            </p>
+            <div class="project-tags">
+                <a href="#">AI</a>
+                <a href="#">coding</a>
+                <a href="#">development</a>
+                <a href="#">best practices</a>
+            </div>
+            <div class="project-links">
+                <a href="/projects/presentations/presentation.html" target="_blank"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                <a href="/projects/presentations/presentation.md" download><i class="fas fa-download"></i> Download Source</a>
+            </div>
+        </section>
+    </section>
+</div>
