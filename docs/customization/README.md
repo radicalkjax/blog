@@ -404,7 +404,7 @@ Add social media feeds by embedding them in your pages. For example, to add a Tw
 Add Disqus comments to blog posts by adding the following code to `_layouts/post.html`:
 
 ```html
-{% if site.disqus_shortname %}
+{% raw %}{% if site.disqus_shortname %}
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
@@ -419,7 +419,7 @@ Add Disqus comments to blog posts by adding the following code to `_layouts/post
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endif %}
+{% endif %}{% endraw %}
 ```
 
 Add the following to `_config.yml`:
@@ -475,7 +475,7 @@ Add search functionality using Lunr.js by following these steps:
    layout: null
    ---
    [
-     {% for post in site.posts %}
+     {% raw %}{% for post in site.posts %}
        {
          "title"    : "{{ post.title | escape }}",
          "category" : "{{ post.category }}",
@@ -484,7 +484,7 @@ Add search functionality using Lunr.js by following these steps:
          "date"     : "{{ post.date | date: '%B %d, %Y' }}",
          "content"  : "{{ post.content | strip_html | strip_newlines | escape }}"
        } {% unless forloop.last %},{% endunless %}
-     {% endfor %}
+     {% endfor %}{% endraw %}
    ]
    ```
 
@@ -576,7 +576,7 @@ Add search functionality using Lunr.js by following these steps:
 Add Google Analytics by adding the following code to `_layouts/default.html` before the closing `</head>` tag:
 
 ```html
-{% if site.google_analytics %}
+{% raw %}{% if site.google_analytics %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
@@ -586,7 +586,7 @@ Add Google Analytics by adding the following code to `_layouts/default.html` bef
 
   gtag('config', '{{ site.google_analytics }}');
 </script>
-{% endif %}
+{% endif %}{% endraw %}
 ```
 
 Add the following to `_config.yml`:
@@ -600,9 +600,9 @@ google_analytics: UA-XXXXXXXXX-X
 Add Plausible Analytics by adding the following code to `_layouts/default.html` before the closing `</head>` tag:
 
 ```html
-{% if site.plausible_domain %}
+{% raw %}{% if site.plausible_domain %}
 <script defer data-domain="{{ site.plausible_domain }}" src="https://plausible.io/js/plausible.js"></script>
-{% endif %}
+{% endif %}{% endraw %}
 ```
 
 Add the following to `_config.yml`:
@@ -722,7 +722,7 @@ You can create custom Liquid templates to reuse code across multiple pages:
 2. **Use the Include File**: Use the include file in your pages:
 
    ```liquid
-   {% include your-include-file.html param1="value1" param2="value2" %}
+   {% raw %}{% include your-include-file.html param1="value1" param2="value2" %}{% endraw %}
    ```
 
 3. **Example Custom Include**: Here's an example of a custom include for a call-to-action section:
@@ -739,12 +739,12 @@ You can create custom Liquid templates to reuse code across multiple pages:
    Use the include in your pages:
 
    ```liquid
-   {% include cta.html 
-      title="Join Our Newsletter" 
-      description="Stay updated with our latest posts and projects." 
-      button_url="/subscribe.html" 
-      button_text="Subscribe Now" 
-   %}
+   {% raw %}{% include cta.html
+      title="Join Our Newsletter"
+      description="Stay updated with our latest posts and projects."
+      button_url="/subscribe.html"
+      button_text="Subscribe Now"
+   %}{% endraw %}
    ```
 
    Add the following CSS to `assets/css/main.css`:
@@ -849,35 +849,35 @@ You can create custom layouts for different types of pages:
    <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>{% if page.title %}{{ page.title }} - {% endif %}[SITE OWNER] (@USERNAME)</title>
+       <title>{% raw %}{% if page.title %}{{ page.title }} - {% endif %}{% endraw %}[SITE OWNER] (@USERNAME)</title>
        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>K</text></svg>">
-       <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
-       <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-       <link rel="stylesheet" href="{{ '/assets/css/landing.css' | relative_url }}">
+       <link rel="stylesheet" href="{% raw %}{{ '/assets/css/fonts.css' | relative_url }}{% endraw %}">
+       <link rel="stylesheet" href="{% raw %}{{ '/assets/css/main.css' | relative_url }}{% endraw %}">
+       <link rel="stylesheet" href="{% raw %}{{ '/assets/css/landing.css' | relative_url }}{% endraw %}">
        <!-- Font Awesome for social icons -->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
        <!-- Main JavaScript -->
-       <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-       {% if page.custom_css %}
+       <script src="{% raw %}{{ '/assets/js/main.js' | relative_url }}{% endraw %}" defer></script>
+       {% raw %}{% if page.custom_css %}
        <style>
            {{ page.custom_css }}
        </style>
-       {% endif %}
+       {% endif %}{% endraw %}
    </head>
    <body class="landing-page">
        <div class="landing-hero">
            <div class="landing-hero-content">
-               <h1>{{ page.hero_title }}</h1>
-               <p>{{ page.hero_description }}</p>
-               <a href="{{ page.hero_button_url }}" class="landing-hero-button">{{ page.hero_button_text }}</a>
+               <h1>{% raw %}{{ page.hero_title }}{% endraw %}</h1>
+               <p>{% raw %}{{ page.hero_description }}{% endraw %}</p>
+               <a href="{% raw %}{{ page.hero_button_url }}{% endraw %}" class="landing-hero-button">{% raw %}{{ page.hero_button_text }}{% endraw %}</a>
            </div>
        </div>
-       
+
        <main class="container">
-           {{ content }}
+           {% raw %}{{ content }}{% endraw %}
        </main>
-       
-       {% include footer.html %}
+
+       {% raw %}{% include footer.html %}{% endraw %}
    </body>
    </html>
    ```

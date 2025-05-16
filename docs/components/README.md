@@ -62,32 +62,32 @@ The default layout (`_layouts/default.html`) serves as the base template for all
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} - {% endif %}[SITE OWNER] (@USERNAME)</title>
+    <title>{% raw %}{% if page.title %}{{ page.title }} - {% endif %}{% endraw %}[SITE OWNER] (@USERNAME)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>K</text></svg>">
-    <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{% raw %}{{ '/assets/css/fonts.css' | relative_url }}{% endraw %}">
+    <link rel="stylesheet" href="{% raw %}{{ '/assets/css/main.css' | relative_url }}{% endraw %}">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main JavaScript -->
-    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-    {% if page.custom_css %}
+    <script src="{% raw %}{{ '/assets/js/main.js' | relative_url }}{% endraw %}" defer></script>
+    {% raw %}{% if page.custom_css %}
     <style>
         {{ page.custom_css }}
     </style>
-    {% endif %}
+    {% endif %}{% endraw %}
 </head>
 <body>
     <div class="site-logo-container">
-        <img src="{{ '/assets/images/logo/sitelogo.png' | relative_url }}" alt="Site Logo" class="site-logo-outside">
+        <img src="{% raw %}{{ '/assets/images/logo/sitelogo.png' | relative_url }}{% endraw %}" alt="Site Logo" class="site-logo-outside">
     </div>
-    
-    {% include header.html %}
+
+    {% raw %}{% include header.html %}
 
     <main class="container">
         {{ content }}
     </main>
 
-    {% include footer.html %}
+    {% include footer.html %}{% endraw %}
 </body>
 </html>
 ```
@@ -114,19 +114,19 @@ layout: default
 ---
 <article class="post">
     <header class="post-header">
-        <div class="post-date">{{ page.date | date: "%B %d, %Y" | upcase }}</div>
-        <h1 class="post-title">{{ page.title }}</h1>
-        {% if page.tags %}
+        <div class="post-date">{% raw %}{{ page.date | date: "%B %d, %Y" | upcase }}{% endraw %}</div>
+        <h1 class="post-title">{% raw %}{{ page.title }}{% endraw %}</h1>
+        {% raw %}{% if page.tags %}
         <div class="post-tags">
             {% for tag in page.tags %}
             <a href="#">{{ tag }}</a>
             {% endfor %}
         </div>
-        {% endif %}
+        {% endif %}{% endraw %}
     </header>
 
     <div class="post-content">
-        {{ content }}
+        {% raw %}{{ content }}{% endraw %}
     </div>
 </article>
 ```
@@ -168,34 +168,34 @@ The header include (`_includes/header.html`) contains the site header with navig
 <header>
     <div class="container">
         <div class="header-content">
-            <a href="{{ '/' | relative_url }}" class="site-title">[SITE OWNER] (@USERNAME)</a>
+            <a href="{% raw %}{{ '/' | relative_url }}{% endraw %}" class="site-title">[SITE OWNER] (@USERNAME)</a>
             <nav>
                 <ul>
-                    <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
+                    <li><a href="{% raw %}{{ '/blog.html' | relative_url }}{% endraw %}">Blog</a></li>
                     <li class="dropdown">
-                        <a href="{{ '/projects.html' | relative_url }}" class="dropdown-toggle">Projects</a>
+                        <a href="{% raw %}{{ '/projects.html' | relative_url }}{% endraw %}" class="dropdown-toggle">Projects</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ '/projects/rocket-pup.html' | relative_url }}">Rocket Pup</a></li>
-                            <li><a href="{{ '/projects/caliphoria.html' | relative_url }}">Caliphoria</a></li>
-                            <li><a href="{{ '/projects/wattz.html' | relative_url }}">Wattz</a></li>
+                            <li><a href="{% raw %}{{ '/projects/rocket-pup.html' | relative_url }}{% endraw %}">Rocket Pup</a></li>
+                            <li><a href="{% raw %}{{ '/projects/caliphoria.html' | relative_url }}{% endraw %}">Caliphoria</a></li>
+                            <li><a href="{% raw %}{{ '/projects/wattz.html' | relative_url }}{% endraw %}">Wattz</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="{{ '/art.html' | relative_url }}" class="dropdown-toggle">Art</a>
+                        <a href="{% raw %}{{ '/art.html' | relative_url }}{% endraw %}" class="dropdown-toggle">Art</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ '/art/photos.html' | relative_url }}">Photos</a></li>
-                            <li><a href="{{ '/art/other-things.html' | relative_url }}">Other Things</a></li>
+                            <li><a href="{% raw %}{{ '/art/photos.html' | relative_url }}{% endraw %}">Photos</a></li>
+                            <li><a href="{% raw %}{{ '/art/other-things.html' | relative_url }}{% endraw %}">Other Things</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="{{ '/about.html' | relative_url }}" class="dropdown-toggle">About Me</a>
+                        <a href="{% raw %}{{ '/about.html' | relative_url }}{% endraw %}" class="dropdown-toggle">About Me</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ '/about/general.html' | relative_url }}">General</a></li>
-                            <li><a href="{{ '/about/trans-journey.html' | relative_url }}">Trans Journey</a></li>
-                            <li><a href="{{ '/about/professional.html' | relative_url }}">Professional</a></li>
+                            <li><a href="{% raw %}{{ '/about/general.html' | relative_url }}{% endraw %}">General</a></li>
+                            <li><a href="{% raw %}{{ '/about/trans-journey.html' | relative_url }}{% endraw %}">Trans Journey</a></li>
+                            <li><a href="{% raw %}{{ '/about/professional.html' | relative_url }}{% endraw %}">Professional</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ '/connections.html' | relative_url }}">Connections</a></li>
+                    <li><a href="{% raw %}{{ '/connections.html' | relative_url }}{% endraw %}">Connections</a></li>
                 </ul>
             </nav>
         </div>
@@ -239,17 +239,17 @@ Blog post cards are used on the homepage and blog page to display post previews:
 
 ```html
 <article class="post-card">
-    <div class="post-date">{{ post.date | date: "%B %d, %Y" | upcase }}</div>
-    <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <div class="post-date">{% raw %}{{ post.date | date: "%B %d, %Y" | upcase }}{% endraw %}</div>
+    <h2 class="post-title"><a href="{% raw %}{{ post.url | relative_url }}{% endraw %}">{% raw %}{{ post.title }}{% endraw %}</a></h2>
     <div class="post-content">
-        <p>{{ post.content | strip_html | truncate: 300 }}…</p>
+        <p>{% raw %}{{ post.content | strip_html | truncate: 300 }}{% endraw %}…</p>
     </div>
     <div class="post-tags">
-        {% if post.tags %}
+        {% raw %}{% if post.tags %}
             {% for tag in post.tags %}
             <a href="#">{{ tag }}</a>
             {% endfor %}
-        {% endif %}
+        {% endif %}{% endraw %}
     </div>
 </article>
 ```
