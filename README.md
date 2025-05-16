@@ -193,15 +193,25 @@ The site now features a custom logo positioned in the top-left corner:
 - Optimized for performance and cross-browser compatibility
 - Automatically triggers mobile view when viewport size would cause logo to overlap with header
 
-### Detailed Documentation
+### Comprehensive Documentation
 
-A comprehensive migration documentation is available in `MIGRATION_DOCUMENTATION.md`, featuring:
+This repository now includes a comprehensive documentation system in the `docs/` directory:
 
-- Detailed technical implementation with code examples
+- **Architecture Documentation**: Detailed information about the site's structure and technical stack
+- **Components Documentation**: In-depth explanations of each component and its functionality
+- **Development Guide**: Instructions for local development, content creation, and testing
+- **Deployment Guide**: Step-by-step deployment process and custom domain setup
+- **Customization Guide**: How to customize the site's appearance and functionality
+
+The main documentation index is available at [docs/README.md](docs/README.md), featuring:
+
+- Detailed technical documentation with code examples
 - Visual diagrams using Mermaid
-- Step-by-step migration process explanation
-- Technical challenges and solutions
-- Performance considerations
+- Step-by-step guides for common tasks
+- Technical reference for all site components
+- Customization options and best practices
+
+Additionally, the original migration documentation is still available in `MIGRATION_DOCUMENTATION.md`.
 
 ## Design Features
 
