@@ -24,49 +24,118 @@ Again, I just continue to life-coast. Enjoying life with my girlfriend, puppies 
 Let's add a dilation history here to keep track:
 
 ```mermaid
-gantt
-    title Dilation Schedule Timeline
-    dateFormat  X
-    axisFormat %s
+graph TD
+    subgraph "Dilation Schedule Timeline"
     
-    section Recovery Phases
-    Initial Recovery (1-2 weeks)      :a1, 0, 2w
-    Transition Period (3-6 weeks)     :a2, after a1, 3w
-    Early Maintenance (6w-3m)         :a3, after a2, 6w
-    Late Maintenance (3m-6m)          :a4, after a3, 12w
-    Long-term Maintenance (6m+)       :a5, after a4, 24w
+    A[1-2 weeks] -->|"Green, full depth, 4x/day"| B
+    B[3-6 weeks] -->|"Orange, full depth, 4x/day"| C
+    C[6 weeks - 3 months] -->|"Orange, 5th notch, 3x/day"| D
+    D[3 months - 6 months] -->|"Orange, 5th notch, 2x/day"| E
+    E[6 months+] -->|"Orange, 4th notch, 1x/day"| F[Ongoing Maintenance]
     
-    section Dilator Size & Depth
-    Green Dilator (Full Depth)        :crit, 0, 2w
-    Orange Dilator (Full Depth)       :crit, after a1, 3w
-    Orange Dilator (5th Notch)        :crit, after a2, 18w
-    Orange Dilator (4th Notch)        :crit, after a4, 24w
+    style A fill:#d4f1d4,stroke:#5ca05c
+    style B fill:#ffd8b1,stroke:#d68c00
+    style C fill:#ffd8b1,stroke:#d68c00
+    style D fill:#ffd8b1,stroke:#d68c00
+    style E fill:#ffd8b1,stroke:#d68c00
+    style F fill:#e6e6e6,stroke:#999999
     
-    section Frequency
-    4 Times Daily                     :active, 0, 5w
-    3 Times Daily                     :active, after a2, 6w
-    2 Times Daily                     :active, after a3, 12w
-    1 Time Daily                      :active, after a4, 24w
-    
-    section Progress Milestones
-    Surgery                           :milestone, 0, 0
-    First Size Change                 :milestone, after a1, 0
-    First Frequency Reduction         :milestone, after a2, 0
-    Second Frequency Reduction        :milestone, after a3, 0
-    Final Maintenance Schedule        :milestone, after a4, 0
+    end
 ```
 
 Even with the complications I've had, money spent and life stressors added I would make this decision again. This was a life dream come true and I couldn't be happier ❤.
 
+-- Kali <3
+
 ---
 
-## Previous Post in this Series
+## Previous Blog
 
-<div class="previous-post-preview">
-  <h3><a href="/2024/10/30/bottom-surgery-hurdles-prep-and-joy.html">Bottom Surgery: Hurdles, Prep and Joy</a></h3>
-  <p class="post-date">October 30, 2024</p>
-  <p>
-    I've known bottom surgery was the answer to a major source of my dysphoria for a long time. Once I was ready to come out in 2021, searching for a surgeon and understanding how to correctly get permission for surgery became my number one priority...
-  </p>
-  <a href="/2024/10/30/bottom-surgery-hurdles-prep-and-joy.html" class="read-more">Read the full post →</a>
+<div class="thread-container">
+  <div class="thread-post">
+    <div class="thread-header">
+      <img src="/assets/images/logo/sitelogo.png" alt="Profile" class="thread-avatar">
+      <div class="thread-meta">
+        <span class="thread-author">Kali</span>
+        <span class="thread-date">October 30, 2024</span>
+      </div>
+    </div>
+    <h4><a href="/2024/10/30/bottom-surgery-hurdles-prep-and-joy.html">Bottom Surgery: Hurdles, Prep and Joy</a></h4>
+    <p class="thread-excerpt">
+      I've known bottom surgery was the answer to a major source of my dysphoria for a long time. Once I was ready to come out in 2021, searching for a surgeon and understanding how to correctly get permission for surgery became my number one priority...
+    </p>
+    <div class="thread-actions">
+      <a href="/2024/10/30/bottom-surgery-hurdles-prep-and-joy.html" class="thread-link">Read original post</a>
+    </div>
+  </div>
 </div>
+
+<style>
+.thread-container {
+  max-width: 500px;
+  margin: 20px 0;
+}
+.thread-post {
+  border: 1px solid #2d3748;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #1a202c;
+  color: #e2e8f0;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.thread-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.thread-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+  border: 2px solid #4a5568;
+}
+.thread-meta {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+}
+.thread-author {
+  font-weight: bold;
+  color: #ffffff;
+}
+.thread-date {
+  color: #a0aec0;
+  font-size: 0.85em;
+}
+.thread-excerpt {
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin: 10px 0;
+  color: #e2e8f0;
+}
+.thread-actions {
+  margin-top: 10px;
+  border-top: 1px solid #2d3748;
+  padding-top: 10px;
+}
+.thread-link {
+  color: #63b3ed;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+.thread-link:hover {
+  text-decoration: underline;
+  color: #90cdf4;
+}
+.thread-post h4 a {
+  color: #63b3ed;
+  text-decoration: none;
+}
+.thread-post h4 a:hover {
+  text-decoration: underline;
+  color: #90cdf4;
+}
+</style>
