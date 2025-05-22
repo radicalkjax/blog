@@ -24,23 +24,36 @@ Again, I just continue to life-coast. Enjoying life with my girlfriend, puppies 
 Let's add a dilation history here to keep track:
 
 ```mermaid
-timeline
+gantt
     title Dilation Schedule Timeline
-
-    section Initial Dilation
-    1-2 weeks : Green, full depth, 4x/day
-
-    section Size Adjustment
-    3-6 weeks : Orange, full depth, 4x/day
-
-    section Early Frequency Adjustment
-    6 weeks - 3 months : Orange, 5th notch, 3x/day
-
-    section Late Frequency Adjustment
-    3 months - 6 months : Orange, 5th notch, 2x/day
-
-    section Normalcy
-    6 months+ : Orange, 4th notch, 1x/day
+    dateFormat  X
+    axisFormat %s
+    
+    section Recovery Phases
+    Initial Recovery (1-2 weeks)      :a1, 0, 2w
+    Transition Period (3-6 weeks)     :a2, after a1, 3w
+    Early Maintenance (6w-3m)         :a3, after a2, 6w
+    Late Maintenance (3m-6m)          :a4, after a3, 12w
+    Long-term Maintenance (6m+)       :a5, after a4, 24w
+    
+    section Dilator Size & Depth
+    Green Dilator (Full Depth)        :crit, 0, 2w
+    Orange Dilator (Full Depth)       :crit, after a1, 3w
+    Orange Dilator (5th Notch)        :crit, after a2, 18w
+    Orange Dilator (4th Notch)        :crit, after a4, 24w
+    
+    section Frequency
+    4 Times Daily                     :active, 0, 5w
+    3 Times Daily                     :active, after a2, 6w
+    2 Times Daily                     :active, after a3, 12w
+    1 Time Daily                      :active, after a4, 24w
+    
+    section Progress Milestones
+    Surgery                           :milestone, 0, 0
+    First Size Change                 :milestone, after a1, 0
+    First Frequency Reduction         :milestone, after a2, 0
+    Second Frequency Reduction        :milestone, after a3, 0
+    Final Maintenance Schedule        :milestone, after a4, 0
 ```
 
 Even with the complications I've had, money spent and life stressors added I would make this decision again. This was a life dream come true and I couldn't be happier ❤.
