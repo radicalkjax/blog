@@ -135,9 +135,17 @@
 @media (max-width: 992px) {
   #key-terms-container {
     max-height: none;
+    position: relative !important;
+    overflow: visible;
   }
   
   #key-terms-content {
     max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  /* Ensure the input area doesn't stick */
+  #key-terms-input {
+    position: relative !important;
   }
 }

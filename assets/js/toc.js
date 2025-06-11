@@ -38,17 +38,44 @@ document.addEventListener('DOMContentLoaded', function() {
   tocContent.style.maxHeight = 'calc(40vh - 45px)';
   tocContainer.appendChild(tocContent);
   
-  // Add the TOC container to the post container (before the post)
-  const postContainer = document.querySelector('.post-container');
-  if (postContainer) {
-    postContainer.insertBefore(tocContainer, postContainer.firstChild);
-    console.log('TOC container added to post container');
-  } else {
-    console.log('No .post-container element found');
-    // Fallback: add to body if post container not found
-    document.body.appendChild(tocContainer);
-    console.log('TOC container added to body as fallback');
-  }
+  // Create mobile toggle button
+  const mobileToggle = document.createElement('button');
+  mobileToggle.className = 'mobile-toc-toggle';
+  mobileToggle.innerHTML = '☰';
+  mobileToggle.setAttribute('aria-label', 'Toggle navigation');
+  
+  // Add the TOC container to the body (not inside post container)
+  document.body.appendChild(tocContainer);
+  document.body.appendChild(mobileToggle);
+  console.log('TOC container and mobile toggle added to body');
+  
+  // Mobile toggle functionality
+  mobileToggle.addEventListener('click', function() {
+    tocContainer.classList.toggle('mobile-open');
+    document.body.classList.toggle('mobile-toc-open');
+    mobileToggle.innerHTML = tocContainer.classList.contains('mobile-open') ? '×' : '☰';
+  });
+  
+  // Close mobile TOC when clicking the header close button
+  tocHeader.addEventListener('click', function(e) {
+    if (window.innerWidth <= 992 && (e.target === tocHeader || e.offsetX > tocHeader.offsetWidth - 50)) {
+      tocContainer.classList.remove('mobile-open');
+      document.body.classList.remove('mobile-toc-open');
+      mobileToggle.innerHTML = '☰';
+    }
+  });
+  
+  // Close mobile TOC when clicking outside
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 992 && 
+        tocContainer.classList.contains('mobile-open') && 
+        !tocContainer.contains(e.target) && 
+        e.target !== mobileToggle) {
+      tocContainer.classList.remove('mobile-open');
+      document.body.classList.remove('mobile-toc-open');
+      mobileToggle.innerHTML = '☰';
+    }
+  });
   
   // Process headings and create TOC items
   const sections = [];
