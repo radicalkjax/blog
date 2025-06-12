@@ -648,24 +648,33 @@ function createMermaidModal() {
     });
 }
 
-// Function to handle mermaid diagram clicks
+// Function to handle mermaid diagram and SVG image clicks
 function setupMermaidClickHandlers() {
     document.addEventListener('click', function(e) {
-        // Check if clicked element is within a mermaid diagram
+        // Check if clicked element is within a mermaid diagram OR an SVG image
         const mermaidDiv = e.target.closest('.mermaid');
-        if (!mermaidDiv || !mermaidDiv.hasAttribute('data-processed')) return;
+        const svgImage = e.target.closest('img[src$=".svg"]');
+        
+        if (!mermaidDiv && !svgImage) return;
+        if (mermaidDiv && !mermaidDiv.hasAttribute('data-processed')) return;
         
         // Prevent default behavior
         e.preventDefault();
         e.stopPropagation();
         
-        // Get the SVG from the clicked diagram
-        const svg = mermaidDiv.querySelector('svg');
-        if (!svg) return;
+        let elementToClone, svgContent;
         
-        // Clone the entire mermaid div to preserve all styling
-        const mermaidClone = mermaidDiv.cloneNode(true);
-        const svgClone = mermaidClone.querySelector('svg');
+        if (mermaidDiv) {
+            // Handle mermaid diagram
+            const svg = mermaidDiv.querySelector('svg');
+            if (!svg) return;
+            elementToClone = mermaidDiv;
+            svgContent = svg;
+        } else if (svgImage) {
+            // Handle SVG image
+            elementToClone = svgImage.parentElement;
+            svgContent = svgImage;
+        }
         
         // Show modal
         const modal = document.getElementById('mermaid-modal');
@@ -674,56 +683,42 @@ function setupMermaidClickHandlers() {
         // Clear previous content
         diagramContainer.innerHTML = '';
         
-        // Add cloned mermaid div to modal
-        diagramContainer.appendChild(mermaidClone);
-        
-        // Remove click functionality from clone
-        mermaidClone.style.cursor = 'default';
-        mermaidClone.removeAttribute('title');
-        mermaidClone.removeAttribute('data-processed');
-        mermaidClone.style.transform = 'none';
-        mermaidClone.style.border = 'none';
-        mermaidClone.style.boxShadow = 'none';
-        mermaidClone.style.backgroundColor = 'transparent';
-        mermaidClone.style.padding = '0';
-        
-        // Style the SVG for larger view
-        if (svgClone) {
-            // Get original dimensions
-            const viewBox = svgClone.getAttribute('viewBox');
-            if (viewBox) {
-                const [, , width, height] = viewBox.split(' ').map(Number);
-                const aspectRatio = width / height;
-                
-                // Calculate optimal size based on viewport
-                const maxWidth = window.innerWidth * 0.9;
-                const maxHeight = window.innerHeight * 0.85;
-                
-                let newWidth, newHeight;
-                if (maxWidth / maxHeight > aspectRatio) {
-                    // Height is the limiting factor
-                    newHeight = maxHeight;
-                    newWidth = newHeight * aspectRatio;
-                } else {
-                    // Width is the limiting factor
-                    newWidth = maxWidth;
-                    newHeight = newWidth / aspectRatio;
-                }
-                
-                // Apply dimensions with minimum sizes
-                svgClone.style.width = Math.max(newWidth, 1200) + 'px';
-                svgClone.style.height = Math.max(newHeight, 600) + 'px';
-            } else {
-                // Fallback for SVGs without viewBox
-                svgClone.style.width = '100%';
-                svgClone.style.height = '100%';
-                svgClone.style.minWidth = '1200px';
-                svgClone.style.minHeight = '600px';
-            }
+        if (mermaidDiv) {
+            // Clone the entire mermaid div to preserve all styling
+            const mermaidClone = mermaidDiv.cloneNode(true);
+            const svgClone = mermaidClone.querySelector('svg');
             
-            svgClone.style.maxWidth = 'none';
-            svgClone.style.maxHeight = 'none';
-            svgClone.style.pointerEvents = 'auto';
+            // Add cloned mermaid div to modal
+            diagramContainer.appendChild(mermaidClone);
+            
+            // Remove click functionality from clone
+            mermaidClone.style.cursor = 'default';
+            mermaidClone.removeAttribute('title');
+            mermaidClone.removeAttribute('data-processed');
+            mermaidClone.style.transform = 'none';
+            mermaidClone.style.border = 'none';
+            mermaidClone.style.boxShadow = 'none';
+            mermaidClone.style.backgroundColor = 'transparent';
+            mermaidClone.style.padding = '0';
+            
+            // Style the SVG for larger view
+            handleSVGSizing(svgClone);
+        } else if (svgImage) {
+            // Clone the SVG image
+            const imgClone = svgImage.cloneNode(true);
+            
+            // Remove any inline styles that might constrain size
+            imgClone.style.maxWidth = 'none';
+            imgClone.style.border = 'none';
+            imgClone.style.boxShadow = 'none';
+            imgClone.style.backgroundColor = 'transparent';
+            imgClone.style.padding = '0';
+            
+            // Add to modal
+            diagramContainer.appendChild(imgClone);
+            
+            // Style the SVG image for larger view
+            handleSVGImageSizing(imgClone);
         }
         
         // Show modal
@@ -735,6 +730,65 @@ function setupMermaidClickHandlers() {
             modal.setZoom(1);
         }
     });
+}
+
+// Helper function to handle SVG sizing
+function handleSVGSizing(svgElement) {
+    if (svgElement) {
+        // Get original dimensions
+        const viewBox = svgElement.getAttribute('viewBox');
+        if (viewBox) {
+            const [, , width, height] = viewBox.split(' ').map(Number);
+            const aspectRatio = width / height;
+            
+            // Calculate optimal size based on viewport
+            const maxWidth = window.innerWidth * 0.9;
+            const maxHeight = window.innerHeight * 0.85;
+            
+            let newWidth, newHeight;
+            if (maxWidth / maxHeight > aspectRatio) {
+                // Height is the limiting factor
+                newHeight = maxHeight;
+                newWidth = newHeight * aspectRatio;
+            } else {
+                // Width is the limiting factor
+                newWidth = maxWidth;
+                newHeight = newWidth / aspectRatio;
+            }
+            
+            // Apply dimensions with minimum sizes
+            svgElement.style.width = Math.max(newWidth, 1200) + 'px';
+            svgElement.style.height = Math.max(newHeight, 600) + 'px';
+        } else {
+            // Fallback for SVGs without viewBox
+            svgElement.style.width = '100%';
+            svgElement.style.height = '100%';
+            svgElement.style.minWidth = '1200px';
+            svgElement.style.minHeight = '600px';
+        }
+        
+        svgElement.style.maxWidth = 'none';
+        svgElement.style.maxHeight = 'none';
+        svgElement.style.pointerEvents = 'auto';
+    }
+}
+
+// Helper function to handle SVG image sizing
+function handleSVGImageSizing(imgElement) {
+    if (imgElement) {
+        // Calculate optimal size based on viewport
+        const maxWidth = window.innerWidth * 0.9;
+        const maxHeight = window.innerHeight * 0.85;
+        
+        // For images, we'll set max dimensions and let the browser maintain aspect ratio
+        imgElement.style.width = 'auto';
+        imgElement.style.height = 'auto';
+        imgElement.style.maxWidth = maxWidth + 'px';
+        imgElement.style.maxHeight = maxHeight + 'px';
+        imgElement.style.minWidth = '800px';
+        imgElement.style.display = 'block';
+        imgElement.style.margin = '0 auto';
+    }
 }
 
 // Run setup when the page loads
