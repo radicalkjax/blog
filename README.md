@@ -161,6 +161,39 @@ To use a custom domain with this GitHub Pages site:
 
 ## Recent Updates
 
+### Enhanced Blog Post Features
+
+The blog system now includes three powerful features for improved reading experience and content management:
+
+#### Table of Contents (TOC)
+- **Automatic TOC Generation**: Creates a floating navigation sidebar from H2, H3, and H4 headings
+- **Smart Visibility**: Only appears when there are 2+ headings in a post
+- **Scroll Highlighting**: Highlights the currently visible section as you read
+- **Smooth Navigation**: Click any TOC link for smooth scrolling to that section
+- **Mobile Responsive**: Collapsible TOC with hamburger menu (☰) on mobile devices
+- **Fixed Positioning**: Stays visible on the right side while scrolling
+
+#### Key Terms System
+- **Automatic Term Detection**: Highlights technical terms with dotted purple underlines
+- **Interactive Storage**: Click any highlighted term to save it to your personal collection
+- **Persistent Storage**: Terms are saved locally and persist across sessions
+- **Quick Research**: Click stored term bubbles to search Google/Wikipedia
+- **Custom Terms**: Add your own terms via the manual input field
+- **Easy Management**: Remove terms with the × button
+- **Extensive Dictionary**: Pre-configured with cybersecurity, AI, and malware terms
+
+#### Print to PDF
+- **Floating Print Button**: Convenient printer emoji (🖨️) button in the bottom-right corner
+- **Optimized Print Styles**: 
+  - Hides navigation elements (TOC, header, footer)
+  - Converts to print-friendly black and white
+  - Shows URLs after links for reference
+  - Handles code blocks, tables, and images properly
+  - Preserves Mermaid diagrams and mathematical equations
+  - Prevents awkward page breaks
+- **Smart Loading**: Waits for all images to load before printing
+- **Mobile Friendly**: Responsive positioning on all devices
+
 ### Responsive Mobile View Enhancements
 
 The site now features improved responsive behavior for mobile devices:

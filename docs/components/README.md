@@ -23,6 +23,10 @@ This document provides detailed information about the components used in the sit
   - [Mermaid Diagrams](#mermaid-diagrams)
   - [Photo Gallery](#photo-gallery)
   - [Project Cards](#project-cards)
+- [Blog Enhancement Components](#blog-enhancement-components)
+  - [Table of Contents (TOC)](#table-of-contents-toc)
+  - [Key Terms System](#key-terms-system)
+  - [Print to PDF](#print-to-pdf)
 
 ## Layouts
 
@@ -741,6 +745,287 @@ The project cards component displays project information:
 .project-links a i {
     margin-right: 5px;
 }
+```
+
+## Blog Enhancement Components
+
+The blog system includes three powerful enhancement features that improve the reading experience and content management:
+
+### Table of Contents (TOC)
+
+The TOC component (`/assets/js/toc.js`) provides automatic navigation generation for blog posts:
+
+#### Features
+
+- **Automatic Generation**: Creates a floating sidebar from H2, H3, and H4 headings
+- **Smart Visibility**: Only appears when there are 2+ headings in the post
+- **Scroll Highlighting**: Highlights the currently visible section as you read
+- **Smooth Scrolling**: Click any TOC link for smooth navigation
+- **Mobile Responsive**: Collapsible with hamburger menu (☰) on mobile
+- **Fixed Positioning**: Stays visible on the right side while scrolling
+
+#### Implementation
+
+```javascript
+// TOC container structure
+<div id="toc-container">
+    <button id="toc-toggle" aria-label="Toggle Table of Contents">☰</button>
+    <div id="toc">
+        <h3>Table of Contents</h3>
+        <nav id="toc-nav">
+            <!-- Generated TOC links -->
+        </nav>
+        <div id="key-terms-storage">
+            <!-- Key terms integration -->
+        </div>
+    </div>
+</div>
+```
+
+#### CSS Styling
+
+```css
+#toc-container {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    width: 250px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background-color: rgba(122, 1, 119, 0.9);
+    border: 2px solid #ffffff;
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#toc h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+#toc-nav ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc-nav li {
+    margin-bottom: 8px;
+}
+
+#toc-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+#toc-nav a:hover {
+    padding-left: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#toc-nav a.active {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 5px;
+}
+```
+
+### Key Terms System
+
+The Key Terms component (`/assets/js/key-terms.js`) provides an interactive glossary system:
+
+#### Features
+
+- **Automatic Detection**: Highlights technical terms with dotted purple underlines
+- **Interactive Storage**: Click highlighted terms to save them
+- **Persistent Storage**: Uses localStorage to maintain terms across sessions
+- **Quick Research**: Click term bubbles to search Google/Wikipedia
+- **Manual Entry**: Add custom terms via input field
+- **Easy Management**: Remove terms with × button
+- **Extensive Dictionary**: Pre-configured with cybersecurity, AI, and malware terms
+
+#### Implementation
+
+```javascript
+// Key terms structure
+<div id="key-terms-storage">
+    <h4>Your Key Terms</h4>
+    <div id="key-terms-input-container">
+        <input type="text" id="key-terms-input" placeholder="Add a term...">
+        <button id="add-term-btn">+</button>
+    </div>
+    <div id="key-terms-list">
+        <!-- Stored term bubbles -->
+    </div>
+</div>
+```
+
+#### CSS Styling
+
+```css
+/* Highlighted terms in content */
+.key-term {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #6d105a;
+    text-underline-offset: 0.2em;
+    transition: all 0.3s ease;
+}
+
+.key-term:hover {
+    background-color: rgba(109, 16, 90, 0.2);
+    text-decoration-color: #ffffff;
+}
+
+/* Term bubbles */
+.key-term-bubble {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 5px 10px;
+    margin: 5px 5px 5px 0;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.key-term-bubble:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.key-term-bubble .remove-term {
+    margin-left: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.key-term-bubble .remove-term:hover {
+    opacity: 1;
+}
+```
+
+### Print to PDF
+
+The Print to PDF component (`/assets/js/print-pdf.js`) provides optimized printing functionality:
+
+#### Features
+
+- **Floating Button**: Printer emoji (🖨️) button in bottom-right corner
+- **Print Optimization**: 
+  - Hides navigation elements
+  - Converts to black and white
+  - Shows URLs after links
+  - Handles code blocks and tables
+  - Preserves diagrams and equations
+  - Prevents awkward page breaks
+- **Smart Loading**: Waits for all images before printing
+- **Mobile Responsive**: Adjusts position on small screens
+
+#### Implementation
+
+```javascript
+// Print button structure
+<button id="print-pdf-btn" aria-label="Print to PDF" title="Print this page to PDF">
+    🖨️
+</button>
+```
+
+#### Print Media Styles
+
+```css
+@media print {
+    /* Hide non-content elements */
+    header, footer, #toc-container, #print-pdf-btn,
+    .social-icons, nav, .site-logo-container {
+        display: none !important;
+    }
+    
+    /* Reset colors for print */
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+    
+    /* Show URLs after links */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+    
+    /* Optimize code blocks */
+    pre, code {
+        background-color: #f5f5f5 !important;
+        border: 1px solid #ddd !important;
+        color: black !important;
+    }
+    
+    /* Handle page breaks */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    
+    pre, blockquote, table, figure {
+        page-break-inside: avoid;
+    }
+    
+    /* Ensure images fit */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* Print button styling */
+#print-pdf-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(122, 1, 119, 0.9);
+    color: white;
+    border: 2px solid white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#print-pdf-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: rgba(122, 1, 119, 1);
+}
+```
+
+#### Integration
+
+All three components are loaded in the default layout:
+
+```html
+<!-- In _layouts/default.html -->
+<script src="{{ '/assets/js/toc.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/key-terms.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/print-pdf.js' | relative_url }}" defer></script>
+<link rel="stylesheet" href="{{ '/assets/css/key-terms.css' | relative_url }}">
 ```
 
 ## Next Steps
