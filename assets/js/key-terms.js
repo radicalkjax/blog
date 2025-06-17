@@ -294,6 +294,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize the key terms container after a short delay to ensure TOC is created
   setTimeout(function() {
+    // Only create key terms container if we're on a blog post page
+    const postContent = document.querySelector('.post-content');
+    if (!postContent) {
+      console.log('Not on a blog post page, skipping key terms initialization');
+      return;
+    }
+    
     createKeyTermsContainer();
     // Highlight key terms in the content after the container is created
     setTimeout(function() {

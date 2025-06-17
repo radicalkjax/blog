@@ -18,21 +18,24 @@ graph TD
     A --> C[Projects]
     A --> D[Art Gallery]
     A --> E[About Me]
-    A --> F[Connections]
+    A --> F[Personal Journey]
+    A --> G[Connections]
     
     B --> B1[Blog Posts]
     B --> B2[Tags System]
+    B --> B3[Enhanced Features]
     
     C --> C1[Rocket Pup]
     C --> C2[Caliphoria]
     C --> C3[Wattz]
+    C --> C4[Presentations]
     
     D --> D1[Photos]
     D --> D2[Other Art]
     
-    E --> E1[General]
-    E --> E2[Trans Journey]
-    E --> E3[Professional]
+    E --> E1[Professional Info]
+    E --> E2[Skills & Expertise]
+    E --> E3[Media I Love]
     
     style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
@@ -40,6 +43,7 @@ graph TD
     style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style G fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 ## Technologies Used
@@ -143,8 +147,9 @@ To use a custom domain with this GitHub Pages site:
 ├── projects/                # Individual project pages
 ├── art.html                 # Art gallery overview
 ├── art/                     # Individual art pages
-├── about.html               # About me overview
-├── about/                   # Individual about pages
+├── about.html               # Combined About Me page
+├── about/                   # Additional about pages
+│   └── trans-journey.html   # Personal Journey page
 ├── connections.html         # Contact information
 ├── MIGRATION_DOCUMENTATION.md # Detailed migration documentation
 └── README.md                # This file
@@ -160,6 +165,44 @@ To use a custom domain with this GitHub Pages site:
 - **Static Pages**: Main site pages in HTML with Liquid templating
 
 ## Recent Updates
+
+### About Page Redesign
+
+The About Me page has been completely redesigned with:
+
+- **Combined Content**: Merged personal and professional information into a single comprehensive page
+- **Navigator Sidebar**: 
+  - Floating navigation sidebar to jump between sections
+  - Displays "Navigator" as the header
+  - Shows "Summary" for the intro section
+  - Highlights currently visible section
+  - Mobile responsive with hamburger menu
+- **Interactive Components**: 
+  - Collapsible "Expanded Experience" section for detailed work history
+  - Interactive "Media I Love" section with collapsible category boxes
+  - Collapsible "Open Source Projects" section displaying GitHub repositories
+- **Enhanced Layout**:
+  - Skills grid system for organized technical skills display
+  - Professional experience with resume-style formatting
+  - Community leadership section highlighting DC916 involvement
+  - Dynamic GitHub repository display with organization support
+- **Improved Navigation**: 
+  - About Me is now a standalone navigation item
+  - Personal Journey (formerly Trans Journey) is a separate top-level navigation item
+
+### GitHub Repository Integration
+
+The About page now features dynamic GitHub repository integration:
+
+- **Automatic Repository Fetching**: Pulls public repositories from both personal (@radicalkjax) and organization (@goldenapplestudios) accounts
+- **Smart Display**: 
+  - Filters out forked repositories to show only original work
+  - Sorts by stars (popularity) then by most recently updated
+  - Shows programming language with color-coded indicators
+  - Displays repository statistics (stars, forks, open issues)
+- **Organization Support**: Clearly labels repositories from organizations you contribute to
+- **Lazy Loading**: Repositories are only fetched when the user expands the section, improving page load performance
+- **Responsive Grid**: Repository cards adapt to different screen sizes
 
 ### Enhanced Blog Post Features
 

@@ -90,8 +90,9 @@ graph TD
 ├── projects/                # Individual project pages
 ├── art.html                 # Art gallery overview
 ├── art/                     # Individual art pages
-├── about.html               # About me overview
-├── about/                   # Individual about pages
+├── about.html               # Combined About Me page
+├── about/                   # Additional about pages
+│   └── trans-journey.html   # Personal Journey page
 ├── connections.html         # Contact information
 ├── MIGRATION_DOCUMENTATION.md # Detailed migration documentation
 └── README.md                # Repository readme
@@ -188,6 +189,12 @@ graph TD
 - **Git**: Version control system
 - **GitHub**: Repository hosting and collaboration
 
+### External Integrations
+
+- **GitHub API**: Used in the About page to dynamically fetch and display public repositories from both personal (@radicalkjax) and organization (@goldenapplestudios) accounts
+- **Google Fonts**: DM Mono font integration
+- **Font Awesome**: Icon library for social media and UI elements
+
 ## Key Components
 
 ### Jekyll Configuration
@@ -255,7 +262,7 @@ Content is organized into several types:
 
 ## Navigation Structure
 
-The site uses a dropdown navigation system:
+The site uses a navigation system with dropdown menus for some sections:
 
 ```mermaid
 graph TD
@@ -263,18 +270,16 @@ graph TD
     A --> C[Projects]
     A --> D[Art]
     A --> E[About Me]
-    A --> F[Connections]
+    A --> F[Personal Journey]
+    A --> G[Connections]
     
     C --> C1[Rocket Pup]
     C --> C2[Caliphoria]
     C --> C3[Wattz]
+    C --> C4[Presentations]
     
     D --> D1[Photos]
     D --> D2[Other Things]
-    
-    E --> E1[General]
-    E --> E2[Trans Journey]
-    E --> E3[Professional]
     
     style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
@@ -282,6 +287,7 @@ graph TD
     style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
     style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+    style G fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 ## Visual Design Architecture

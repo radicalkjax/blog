@@ -20,6 +20,7 @@ This document provides detailed information about the components used in the sit
   - [Post Content](#post-content)
   - [Post Tags](#post-tags)
 - [Special Components](#special-components)
+  - [About Page Components](#about-page-components)
   - [Mermaid Diagrams](#mermaid-diagrams)
   - [Photo Gallery](#photo-gallery)
   - [Project Cards](#project-cards)
@@ -172,7 +173,7 @@ The header include (`_includes/header.html`) contains the site header with navig
 <header>
     <div class="container">
         <div class="header-content">
-            <a href="{% raw %}{{ '/' | relative_url }}{% endraw %}" class="site-title">[SITE OWNER] (@USERNAME)</a>
+            <a href="{% raw %}{{ '/' | relative_url }}{% endraw %}" class="site-title">KALI JACKSON (@RADICALKJAX)</a>
             <nav>
                 <ul>
                     <li><a href="{% raw %}{{ '/blog.html' | relative_url }}{% endraw %}">Blog</a></li>
@@ -182,6 +183,7 @@ The header include (`_includes/header.html`) contains the site header with navig
                             <li><a href="{% raw %}{{ '/projects/rocket-pup.html' | relative_url }}{% endraw %}">Rocket Pup</a></li>
                             <li><a href="{% raw %}{{ '/projects/caliphoria.html' | relative_url }}{% endraw %}">Caliphoria</a></li>
                             <li><a href="{% raw %}{{ '/projects/wattz.html' | relative_url }}{% endraw %}">Wattz</a></li>
+                            <li><a href="{% raw %}{{ '/projects/presentations.html' | relative_url }}{% endraw %}">Presentations</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -191,23 +193,17 @@ The header include (`_includes/header.html`) contains the site header with navig
                             <li><a href="{% raw %}{{ '/art/other-things.html' | relative_url }}{% endraw %}">Other Things</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a href="{% raw %}{{ '/about.html' | relative_url }}{% endraw %}" class="dropdown-toggle">About Me</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% raw %}{{ '/about/general.html' | relative_url }}{% endraw %}">General</a></li>
-                            <li><a href="{% raw %}{{ '/about/trans-journey.html' | relative_url }}{% endraw %}">Trans Journey</a></li>
-                            <li><a href="{% raw %}{{ '/about/professional.html' | relative_url }}{% endraw %}">Professional</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{% raw %}{{ '/about.html' | relative_url }}{% endraw %}">About Me</a></li>
+                    <li><a href="{% raw %}{{ '/about/trans-journey.html' | relative_url }}{% endraw %}">Personal Journey</a></li>
                     <li><a href="{% raw %}{{ '/connections.html' | relative_url }}{% endraw %}">Connections</a></li>
                 </ul>
             </nav>
         </div>
         <div class="social-icons">
             <a href="https://bsky.app/profile/radicalkjax.com" aria-label="BlueSky" target="_blank"><i class="fas fa-butterfly"></i></a>
-            <a href="https://www.linkedin.com/in/username" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/username/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/username" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/kali-jackson-647094245" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/radicalkjax/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/radicalkjax" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </div>
 </header>
@@ -215,10 +211,11 @@ The header include (`_includes/header.html`) contains the site header with navig
 
 #### Key Features
 
-- **Site Title**: Links to the homepage
-- **Navigation**: Main navigation with dropdown menus
-- **Social Icons**: Links to social media profiles
-- **Responsive Design**: Adapts to different screen sizes
+- **Site Title**: Links to the homepage (KALI JACKSON (@RADICALKJAX))
+- **Navigation**: Main navigation with dropdown menus for Projects and Art sections
+- **Standalone Pages**: About Me and Personal Journey as separate navigation items
+- **Social Icons**: Links to BlueSky, LinkedIn, Instagram, and GitHub profiles
+- **Responsive Design**: Adapts to different screen sizes with mobile-friendly dropdowns
 
 ### Footer
 
@@ -226,7 +223,7 @@ The footer include (`_includes/footer.html`) contains the site footer:
 
 ```html
 <footer class="container">
-    <p>Designed with love by [SITE OWNER] <3</p>
+    <p>Designed with love by Kali <3</p>
 </footer>
 ```
 
@@ -564,6 +561,255 @@ The post tags component displays the post tags:
 
 ## Special Components
 
+### About Page Components
+
+The About page includes several sophisticated components for organizing and displaying personal and professional information:
+
+#### Navigator
+
+The About page features a floating navigation sidebar based on the Document Navigator pattern:
+
+```javascript
+// Navigator implementation for About page
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all sections with IDs
+    const sections = aboutContainer.querySelectorAll('section[id]');
+    
+    // Create navigator header
+    tocHeader.textContent = 'Navigator'; // Not "Document Navigation"
+    
+    // Special handling for intro section
+    if (sectionId === 'intro') {
+        sectionTitle = 'Summary'; // Shows "Summary" instead of "Kali Jackson"
+    }
+});
+```
+
+**Features:**
+- **Custom Naming**: Displays "Navigator" as the header (not "Document Navigation")
+- **Summary Section**: Shows "Summary" for the intro section instead of extracting the h1 title
+- **Auto-detection**: Automatically detects all sections with IDs on the page
+- **Active Highlighting**: Highlights the currently visible section as you scroll
+- **Smooth Scrolling**: Click any link for smooth scrolling to that section
+- **Mobile Responsive**: Includes hamburger menu for mobile devices
+- **No Key Terms**: Unlike blog posts, the About page Navigator does not include the Key Terms functionality
+
+**CSS Styling:**
+```css
+#floating-toc {
+    position: fixed;
+    top: 120px;
+    left: 30px;
+    width: 250px;
+    background-color: #1a1a1a;
+    border: 1px solid #6d105a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#toc-header {
+    background-color: #6d105a;
+    color: #ffffff;
+    padding: 15px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+```
+
+#### Skills Grid System
+
+The skills grid displays technical skills in organized categories:
+
+```css
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.skill-category {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.skill-list {
+    line-height: 1.6;
+    opacity: 0.85;
+}
+```
+
+#### Collapsible Sections
+
+The About page features collapsible sections for expanded content:
+
+```javascript
+function toggleCollapsible(element) {
+    element.classList.toggle('active');
+    var content = element.nextElementSibling;
+    content.classList.toggle('show');
+}
+```
+
+```css
+.collapsible-header {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.collapsible-content {
+    display: none;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+}
+
+.collapsible-content.show {
+    display: block;
+}
+```
+
+#### Media I Love - Interactive Grid
+
+The Media I Love section features collapsible category boxes with centered title bubbles:
+
+```javascript
+function toggleMedia(element) {
+    element.classList.toggle('expanded');
+    element.classList.toggle('collapsed');
+}
+```
+
+```css
+.media-category {
+    position: relative;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.media-bubble {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(122, 1, 119, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: 600;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.media-category.expanded .media-bubble {
+    top: 20px;
+    transform: translate(-50%, 0);
+}
+
+.media-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding-top: 80px;
+}
+
+.media-category.expanded .media-content {
+    opacity: 1;
+    max-height: 500px;
+}
+```
+
+#### Open Source Projects - GitHub Integration
+
+The Open Source Projects section dynamically fetches and displays GitHub repositories:
+
+```javascript
+// Fetches repositories from personal and organization accounts
+const userReposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+const orgReposResponse = await fetch(`https://api.github.com/orgs/goldenapplestudios/repos?sort=updated&per_page=100`);
+
+// Combines and filters repositories
+const ownRepos = allRepos
+    .filter(repo => !repo.fork)
+    .sort((a, b) => {
+        if (b.stargazers_count !== a.stargazers_count) {
+            return b.stargazers_count - a.stargazers_count;
+        }
+        return new Date(b.updated_at) - new Date(a.updated_at);
+    });
+```
+
+```css
+.repo-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.repo-card:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.repo-language {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.language-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.repo-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: auto;
+}
+```
+
+##### Key Features
+
+- **Multi-Source Fetching**: Pulls repositories from both personal and organization accounts
+- **Smart Filtering**: Excludes forked repositories to show only original contributions
+- **Lazy Loading**: Only fetches data when the collapsible section is expanded
+- **Visual Indicators**: 
+  - Language color dots matching GitHub's color scheme
+  - Repository statistics (stars, forks, issues)
+  - Organization attribution for non-personal repos
+- **Responsive Layout**: Uses CSS Grid with auto-fit for responsive design
+
 ### Mermaid Diagrams
 
 The site includes comprehensive styling for mermaid diagrams:
@@ -749,7 +995,7 @@ The project cards component displays project information:
 
 ## Blog Enhancement Components
 
-The blog system includes three powerful enhancement features that improve the reading experience and content management:
+The blog system includes three powerful enhancement features that improve the reading experience and content management. These features are specific to blog posts and are only activated on pages with the `.post-content` class:
 
 ### Table of Contents (TOC)
 
@@ -837,7 +1083,7 @@ The TOC component (`/assets/js/toc.js`) provides automatic navigation generation
 
 ### Key Terms System
 
-The Key Terms component (`/assets/js/key-terms.js`) provides an interactive glossary system:
+The Key Terms component (`/assets/js/key-terms.js`) provides an interactive glossary system for blog posts only. This feature checks for the `.post-content` class and is not activated on other pages like the About page:
 
 #### Features
 
