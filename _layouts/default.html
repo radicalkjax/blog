@@ -8,70 +8,103 @@
     <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     {% if page.custom_css %}
-    <style>
+    <style type="text/css">
         {{ page.custom_css }}
     </style>
     {% endif %}
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom MathJax styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/mathjax-custom.css' | relative_url }}">
+    <!-- Custom Mermaid styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/mermaid-custom.css' | relative_url }}">
+    <!-- Key Terms styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/key-terms.css' | relative_url }}">
+    <!-- Collapsible References styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/collapsible-references.css' | relative_url }}">
     <!-- Mermaid for diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <!-- MathJax for mathematical formulas -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            startup: {
+                ready: function() {
+                    MathJax.startup.defaultReady();
+                    
+                    // Add custom styling after MathJax is loaded
+                    MathJax.startup.promise.then(function() {
+                        // Style block equations
+                        document.querySelectorAll('mjx-container[jax="CHTML"][display="true"]').forEach(function(container) {
+                            container.style.backgroundColor = '#1a1a1a';
+                            container.style.border = '2px solid #6d105a';
+                            container.style.borderRadius = '4px';
+                            container.style.padding = '15px';
+                            container.style.margin = '20px auto';
+                            container.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+                            container.style.maxWidth = '90%';
+                            container.style.overflowX = 'auto';
+                            container.style.display = 'block';
+                            
+                            // Style the math content
+                            var mathElement = container.querySelector('mjx-math');
+                            if (mathElement) {
+                                mathElement.style.color = '#ffffff';
+                                mathElement.style.fontSize = '1.1em';
+                            }
+                        });
+                        
+                        // Style inline equations - just set the color without background styling
+                        document.querySelectorAll('mjx-container:not([display="true"])').forEach(function(container) {
+                            container.style.color = '#ffffff';
+                            
+                            // No additional styling for inline math to keep it simple
+                            var mathElement = container.querySelector('mjx-math');
+                            if (mathElement) {
+                                mathElement.style.color = '#ffffff';
+                            }
+                        });
+                    });
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- Main JavaScript -->
     <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
     <!-- Social Links JavaScript -->
     <script src="{{ '/assets/js/social-links.js' | relative_url }}" defer></script>
-    <!-- Initialize Mermaid -->
+    <!-- Table of Contents JavaScript (for blog posts) -->
+    <script src="{{ '/assets/js/toc.js' | relative_url }}" defer></script>
+    <!-- Custom MathJax JavaScript -->
+    <script src="{{ '/assets/js/mathjax-custom.js' | relative_url }}" defer></script>
+    <!-- Custom Mermaid JavaScript -->
+    <script src="{{ '/assets/js/mermaid-custom.js' | relative_url }}" defer></script>
+    <!-- Key Terms JavaScript -->
+    <script src="{{ '/assets/js/key-terms.js' | relative_url }}" defer></script>
+    <!-- Print to PDF JavaScript -->
+    <script src="{{ '/assets/js/print-pdf.js' | relative_url }}" defer></script>
+    <!-- Collapsible References JavaScript -->
+    <script src="{{ '/assets/js/collapsible-references.js' | relative_url }}" defer></script>
+    <!-- Reference Links JavaScript -->
+    <script src="{{ '/assets/js/reference-links.js' | relative_url }}" defer></script>
+    <!-- Fix Escaped Dollars JavaScript -->
+    <script src="{{ '/assets/js/fix-escaped-dollars.js' | relative_url }}" defer></script>
+    <!-- Initialize Dropdown Menu Handling -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Mermaid with custom theme
-            mermaid.initialize({
-                startOnLoad: true,  // Changed to true for automatic initialization
-                theme: 'dark',
-                themeVariables: {
-                    primaryColor: '#6d105a',
-                    primaryTextColor: '#ffffff',
-                    primaryBorderColor: '#ffffff',
-                    lineColor: '#ffffff',
-                    secondaryColor: '#6d105a',
-                    tertiaryColor: '#6d105a'
-                }
-            });
-            
-            // Find all code blocks with language 'mermaid'
-            document.querySelectorAll('pre code.language-mermaid').forEach(function(element) {
-                // Create a div for mermaid
-                var mermaidDiv = document.createElement('div');
-                mermaidDiv.className = 'mermaid';
-                mermaidDiv.innerHTML = element.textContent;
-                
-                // Replace the code block with the mermaid div
-                var pre = element.parentNode;
-                pre.parentNode.replaceChild(mermaidDiv, pre);
-            });
-            
-            // Also handle code blocks inside divs (for our IEEE formatted posts)
-            document.querySelectorAll('div pre code').forEach(function(element) {
-                if (element.textContent.trim().startsWith('graph ') || 
-                    element.textContent.trim().startsWith('sequenceDiagram') || 
-                    element.textContent.trim().startsWith('classDiagram') || 
-                    element.textContent.trim().startsWith('gantt') || 
-                    element.textContent.trim().startsWith('pie') || 
-                    element.textContent.trim().startsWith('flowchart')) {
-                    
-                    // Create a div for mermaid
-                    var mermaidDiv = document.createElement('div');
-                    mermaidDiv.className = 'mermaid';
-                    mermaidDiv.innerHTML = element.textContent;
-                    
-                    // Replace the code block with the mermaid div
-                    var pre = element.parentNode;
-                    pre.parentNode.replaceChild(mermaidDiv, pre);
-                }
-            });
-            
-            // Initialize mermaid after replacing elements
-            mermaid.init(undefined, '.mermaid');
-            
             // Direct dropdown menu handling
             document.querySelectorAll('.dropdown').forEach(function(dropdown) {
                 dropdown.addEventListener('mouseenter', function() {
@@ -154,14 +187,8 @@
                                 <li><a href="{{ '/art/other-things.html' | relative_url }}">Other Things</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="{{ '/about.html' | relative_url }}" class="dropdown-toggle">About Me</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ '/about/general.html' | relative_url }}">General</a></li>
-                                <li><a href="{{ '/about/trans-journey.html' | relative_url }}">Trans Journey</a></li>
-                                <li><a href="{{ '/about/professional.html' | relative_url }}">The Professional Stuff...</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{ '/about.html' | relative_url }}">About Me</a></li>
+                        <li><a href="{{ '/about/trans-journey.html' | relative_url }}">Personal Journey</a></li>
                         <li><a href="{{ '/connections.html' | relative_url }}">Connections</a></li>
                     </ul>
                 </nav>
