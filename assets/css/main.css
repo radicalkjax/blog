@@ -590,16 +590,8 @@ nav ul li a.active {
     padding: 0;
 }
 
-/* Mermaid diagram styling */
-.mermaid {
-    text-align: center !important;
-    margin: 20px auto !important;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 5px;
-    max-width: 100%;
-    overflow-x: auto;
-}
+/* Mermaid diagram styling - defer to mermaid-custom.css */
+/* .mermaid styling moved to mermaid-custom.css */
 
 /* Code block styling for IEEE format */
 .post-content div[style*="text-align: center"] pre {
@@ -623,34 +615,7 @@ nav ul li a.active {
     margin-top: 5px;
 }
 
-/* Ensure mermaid diagrams are readable with our dark theme */
-.mermaid .label {
-    color: #ffffff !important;
-    font-family: 'DM Mono', monospace !important;
-}
-
-.mermaid .node rect,
-.mermaid .node circle,
-.mermaid .node ellipse,
-.mermaid .node polygon,
-.mermaid .node path {
-    fill: rgba(255, 255, 255, 0.1) !important;
-    stroke: #ffffff !important;
-}
-
-.mermaid .edgePath .path {
-    stroke: #ffffff !important;
-}
-
-.mermaid .edgeLabel {
-    background-color: rgba(109, 16, 90, 0.7) !important;
-    color: #ffffff !important;
-}
-
-.mermaid .cluster rect {
-    fill: rgba(255, 255, 255, 0.05) !important;
-    stroke: #ffffff !important;
-}
+/* Mermaid styling moved to mermaid-custom.css */
 
 .post-navigation {
     margin-top: 40px;
@@ -920,5 +885,205 @@ nav ul li a.active {
         margin: 5px;
         padding: 5px;
         font-size: 1.2rem;
+    }
+}
+
+/* Floating Table of Contents Styles */
+#floating-toc {
+    position: fixed;
+    left: 20px;
+    top: 150px;
+    width: 280px; /* Increased from 250px to 280px */
+    max-height: 70vh;
+    overflow-y: hidden; /* Changed from auto to hidden to prevent scrolling the entire TOC */
+    background-color: #1a1a1a;
+    border: 2px solid #6d105a;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    color: #ffffff;
+    font-size: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: #6d105a #1a1a1a;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+#floating-toc::-webkit-scrollbar {
+    width: 8px;
+}
+
+#floating-toc::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+#floating-toc::-webkit-scrollbar-thumb {
+    background-color: #6d105a;
+    border-radius: 4px;
+}
+
+#toc-header {
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #ffffff;
+    background-color: #6d105a;
+    border-radius: 4px 4px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#toc-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffffff 0%, #9c1f8c 100%);
+    border-radius: 4px 4px 0 0;
+}
+
+#toc-content {
+    padding: 10px 0;
+    max-height: calc(40vh - 45px); /* Reduced to make room for key terms */
+    overflow-y: auto;
+}
+
+#toc-content a {
+    display: block;
+    padding: 5px 15px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+#toc-content a:hover {
+    background-color: #2a2a2a;
+}
+
+#toc-content a.active {
+    background-color: #2a2a2a;
+    border-left: 3px solid #9c1f8c;
+}
+
+#toc-content .toc-h2 {
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+#toc-content .toc-h3 {
+    padding-left: 30px;
+    font-size: 13px;
+}
+
+#toc-content .toc-h4 {
+    padding-left: 45px;
+    font-size: 12px;
+    color: #cccccc;
+}
+
+/* Responsive TOC styles */
+@media (max-width: 1400px) {
+    #floating-toc {
+        width: 230px; /* Increased from 200px to 230px */
+        font-size: 13px;
+    }
+    
+    #toc-content {
+        max-height: calc(35vh - 45px); /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 1200px) {
+    #floating-toc {
+        left: 10px;
+        width: 210px; /* Increased from 180px to 210px */
+    }
+}
+
+/* Mobile TOC Styles */
+.mobile-toc-toggle {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #6d105a;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 992px) {
+    .mobile-toc-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #floating-toc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 1002;
+    }
+    
+    #floating-toc.mobile-open {
+        transform: translateX(0);
+    }
+    
+    #toc-content {
+        max-height: calc(100vh - 200px); /* Leave room for header and key terms */
+        overflow-y: auto;
+    }
+    
+    /* Add close button to mobile TOC */
+    #toc-header::after {
+        content: '×';
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 28px;
+        cursor: pointer;
+    }
+    
+    /* Mobile overlay */
+    #floating-toc.mobile-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+    
+    /* Ensure body doesn't scroll when mobile TOC is open */
+    body.mobile-toc-open {
+        overflow: hidden;
     }
 }
