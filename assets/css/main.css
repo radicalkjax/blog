@@ -545,6 +545,11 @@ nav ul li a.active {
     margin-bottom: 15px;
 }
 
+/* Center blog post titles */
+.post-content h1 {
+    text-align: center;
+}
+
 .post-content ul, 
 .post-content ol {
     margin-left: 20px;
