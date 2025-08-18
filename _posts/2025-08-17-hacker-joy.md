@@ -21,30 +21,248 @@ I would stay connected to the DEF CON community to practice what I was learning 
 
 By taking the lead by example approach I've seen from the DEF CON community, I helped pick back up my local DEF CON Group to let it grow. For over a year it was fantastic to see happy humans enter the door to find more people like them. To have their DEF CON at home. Many life stressors and recovery from a serious surgery led me to leave my local DEF CON Group knowing it was healthy enough to stay alive on its own. Spending time within a DEF CON Group helped solidify my need to go to Vegas to find more people like me. Also to give hugs to many of the friends I had made online over the years.
 
-My girlfriend, Kat ([@usrbinkat](https://bsky.app/profile/usrbinkat.io)), and I both work in tech and really were excited to go to DEF CON 33. I had made 2025 the year I planned to go to as many security cons as I could afford, and she was happy to join me. We drove to BSidesSF together where we were spoiled with movie theater seating for each talk. She had also never seen [the hills from the Windows XP background](https://en.wikipedia.org/wiki/California_State_Route_121) before so those were fun to drive by. I pretty much never left the room because it was so comfortable I could talk myself into staying for the next track. I will forever compare all cons to BSidesSF level of comfort. The people at all the villages were very engaging and technical. It was a small taste of what I was looking for out of DEF CON.
+My girlfriend, Kat ([@usrbinkat](https://bsky.app/profile/usrbinkat.io)), and I both work in tech and really were excited to go to DEF CON 33. I had made 2025 the year I planned to go to as many security cons as I could afford, and she was happy to join me. We drove to BSidesSF together where we were spoiled with movie theater seating for each talk.
+
+<div class="image-pair">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/K&K SF.jpg" alt="Kali and Kat in San Francisco">
+    <figcaption>Kat and I exploring San Francisco during BSidesSF</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/BsidesSF Open.jpg" alt="BSidesSF Opening Screen">
+    <figcaption>The amazing movie theater setup at BSidesSF 2025</figcaption>
+  </figure>
+</div>
+
+She had also never seen [the hills from the Windows XP background](https://en.wikipedia.org/wiki/California_State_Route_121) before so those were fun to drive by. I pretty much never left the room because it was so comfortable I could talk myself into staying for the next track. I will forever compare all cons to BSidesSF level of comfort. The people at all the villages were very engaging and technical. It was a small taste of what I was looking for out of DEF CON.
 
 Later that year I found myself at RSA where I felt incredibly out of place. I only stayed for a day and drove back home to Sacramento because it didn't feel like a welcoming space for me. Everything just seemed hollow. I also went to Cisco Live which felt more like a state fair with shiny new tech. All of these experiences combined just proved further why I was trying to make my way to DEF CON.
 
-A couple months pass by and it's time to travel to DEF CON 33. Kat and I are making our way down to Vegas, NV from Sacramento, CA by driving. I've driven enough of Highway 99 for a lifetime so we chose to go up through [El Dorado](https://en.wikipedia.org/wiki/Eldorado_National_Forest) and into Nevada. We found all kinds of amazing beautiful nature as we traversed from [the mountains](https://en.wikipedia.org/wiki/Sierra_Nevada) during the day time to down into [the desert](https://en.wikipedia.org/wiki/Death_Valley) through the evening. Goofing off for 10 hours in the car is one of my favorite parts of road trips and glad I have someone who can match the energy.
+A couple months pass by and it's time to travel to DEF CON 33. Kat and I are making our way down to Vegas, NV from Sacramento, CA by driving.
 
-For badge and merch day we were there in the morning to make sure we got our physical badges. The lines were confusing. Most goons I asked didn't seem to know which line was which. Eventually we made our way far enough to one end of the convention hall where other lines were forming. The only reason I knew it was the right line was because I overheard someone ask a Goon for confirmation. As a person who's worked for years to develop linebuster devices and build lobby experiences, it was hard to deal with. However, I still enjoyed my time in linecon once I figured out which line to be in. Eventually we got our badges and made our way back to the hotel to continue unpacking and prepping for day one of DEF CON. We made use of the [Hacker Tracker App](https://hackertracker.app/) and booklet we got with our badges to plan out the areas we wanted to invest time in. We planned to basically hang out in the [Adversary](https://adversaryvillage.org/), [Policy](https://x.com/defconpolicy), and [Malware](https://malwarevillage.org/) villages and float to associated talks. You'll see how that plan went.
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/Packed.jpg" alt="Packed and ready">
+  <div class="post-image-caption">All packed up and ready for our DEF CON adventure</div>
+</div>
 
-Day one of DEF CON and we both hit the floor. I'm excited to see [AIMal](https://defcon.org/html/defcon-33/dc-33-demolabs.html) be demo'd as I'm currently working on a [AI-Assisted Malware Reverse Analysis program](https://github.com/radicalkjax/Athena). I wanted to see where threats are moving and how they're transforming to best build my tool. AIMal was horrifyingly cool and gave me a new sense of urgency to build my project, Athena. After the demo we made our way to a DEF CON Groups discussion to meet some people I hadn't gotten the opportunity to say hi to when a part of my local DEF CON group. Kat and I decided to break for lunch and that's when I came back on my own to meetup for another DEF CON Groups event. I got to meet new friends in line and have some great conversations. I also got to give a hug to a friend I had only known online ([@Blenster](https://bsky.app/profile/blenster.com)). I was so happy to see them enjoying the energy of the room. Later I met up with my girlfriend again so we could catch a talk, [Secure Code Is Critical Infrastructure](https://hackertracker.app/event/?conf=DEFCON33&event=61536) with [Tanya Janca](https://shehackspurple.ca/). We loved every moment of the talk and it charged us both up to be the policy nerds we didn't know we were. Later that evening we dropped into the [Diana Initiative](https://www.dianainitiative.org/) space to play with some Lego and interact with others before returning to our rooms to prepare for day two.
+I've driven enough of Highway 99 for a lifetime so we chose to go up through [El Dorado](https://en.wikipedia.org/wiki/Eldorado_National_Forest) and into Nevada.
 
-We're a bit more sluggish with day two and not looking to get into any particular talks in the morning. A friend ([@inclusivelittleunicorn](https://linktr.ee/InclusiveLittleUnicorn)) was hosting her own con, Polycon, within the [Queercon](https://x.com/queercon) space so I wanted to make sure I showed up to support her. During my time there I was able to talk about personal projects with a couple other people at my table. I was so excited to see everyone else's projects which led to some great professional connections. Our conversation subsided and the group table disbanded. Suddenly, I was hit with a panic attack. I was locked at the table and not sure what to do. I took my gabapentin and then chose to start coloring a picture that was at the table with coloring pencils. Having the comfy space and something to distract myself with as the Gabapentin worked its way through my system was exactly what I needed. I appreciate spaces like this exist at DEF CON. After my panic attack had mostly subsided I said hi to my friend, traded stickers and was off to my next talk to line up for.
+<div class="image-gallery">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/El Dorado River.jpg" alt="El Dorado River">
+    <figcaption>El Dorado National Forest river</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/Tahoe.jpg" alt="Lake Tahoe">
+    <figcaption>Lake Tahoe vista</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/Sierras2.jpg" alt="Sierra Nevada">
+    <figcaption>Sierra Nevada mountains</figcaption>
+  </figure>
+</div>
+
+We found all kinds of amazing beautiful nature as we traversed from [the mountains](https://en.wikipedia.org/wiki/Sierra_Nevada) during the day time to down into [the desert](https://en.wikipedia.org/wiki/Death_Valley) through the evening.
+
+<div class="image-gallery">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/CentralNV.jpg" alt="Central Nevada">
+    <figcaption>Central Nevada mountains</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/Solararray.jpg" alt="Solar Array">
+    <figcaption>Massive solar array</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/Clowntel .JPG" alt="Clown Motel">
+    <figcaption>The infamous Clown Motel</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/Joshua Trees.jpg" alt="Joshua Trees">
+    <figcaption>Joshua trees in the desert</figcaption>
+  </figure>
+</div>
+
+The route was filled with interesting roadside attractions that we couldn't resist googling as we passed by. Eventually we stopped at a 76 along the way:
+
+<div class="image-gallery">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2394.jpg" alt="Gas Station Sign">
+    <figcaption>Classic roadside billboard</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2395.jpg" alt="Alien Statues">
+    <figcaption>Alien statues at gas station</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2396.jpg" alt="Alien Family">
+    <figcaption>Alien family welcoming visitors</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2397.jpg" alt="World's Largest Firecracker">
+    <figcaption>M-800 World's Largest Firecracker</figcaption>
+  </figure>
+</div>
+
+<div class="image-pair">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2404.jpg" alt="Area 51 Alien Center">
+    <figcaption>Area 51 Alien Center</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2405.jpg" alt="Area 51 Full View">
+    <figcaption>The full glory of the Alien Center</figcaption>
+  </figure>
+</div>
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2408.jpg" alt="Alien Cathouse">
+  <div class="post-image-caption">The Alien Cathouse, loving the desert even more</div>
+</div>
+
+<div class="image-gallery">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2412.JPG" alt="Desert Sunset">
+    <figcaption>Desert landscape at sunset</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2413.jpg" alt="Desert Moon">
+    <figcaption>Moon rising over the desert</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2417.jpg" alt="Desert Clouds">
+    <figcaption>Interesting cloud formations</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/Death Valley Mountains.jpg" alt="Death Valley">
+    <figcaption>Death Valley mountains</figcaption>
+  </figure>
+</div>
+
+Goofing off for 10 hours in the car is one of my favorite parts of road trips and glad I have someone who can match the energy.
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/PXL_20250806_080702520~2_Original.jpg" alt="Vegas Sphere">
+  <div class="post-image-caption">The Vegas Sphere crying, it knew we had arrived!</div>
+</div>
+
+For badge and merch day we were there in the morning to make sure we got our physical badges.
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2430.JPG" alt="Hotel Breakfast">
+  <div class="post-image-caption">Morning fuel for day 1</div>
+</div>
+
+The lines were confusing. Most goons I asked didn't seem to know which line was which. Eventually we made our way far enough to one end of the convention hall where other lines were forming. The only reason I knew it was the right line was because I overheard someone ask a Goon for confirmation. As a person who's worked for years to develop linebuster devices and build lobby experiences, it was hard to deal with. However, I still enjoyed my time in linecon once I figured out which line to be in. Eventually we got our badges and made our way back to the hotel to continue unpacking and prepping for day one of DEF CON.
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2463.JPG" alt="DEF CON Swag">
+  <div class="post-image-caption">DEF CON poster and swag spread out on the hotel bed</div>
+</div>
+
+We made use of the [Hacker Tracker App](https://hackertracker.app/) and booklet we got with our badges to plan out the areas we wanted to invest time in. We planned to basically hang out in the [Adversary](https://adversaryvillage.org/), [Policy](https://x.com/defconpolicy), and [Malware](https://malwarevillage.org/) villages and float to associated talks. You'll see how that plan went.
+
+Day one of DEF CON and we both hit the floor.
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/PXL_20250807_2357575032.JPG" alt="Kali and Kat at DEF CON">
+  <div class="post-image-caption">Kat and I with our badges at the DEF CON wall art</div>
+</div>
+
+I'm excited to see [AIMal](https://defcon.org/html/defcon-33/dc-33-demolabs.html) be demo'd as I'm currently working on a [AI-Assisted Malware Reverse Analysis program](https://github.com/radicalkjax/Athena). I wanted to see where threats are moving and how they're transforming to best build my tool.
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2471.JPG" alt="AIMal Presentation">
+  <div class="post-image-caption">AIMal v1 presentation slide at Demo Labs</div>
+</div>
+
+AIMal was horrifyingly cool and gave me a new sense of urgency to build my project, Athena. After the demo we made our way to a DEF CON Groups discussion to meet some people I hadn't gotten the opportunity to say hi to when a part of my local DEF CON group. Kat and I decided to break for lunch and that's when I came back on my own to meetup for another DEF CON Groups event. I got to meet new friends in line and have some great conversations. I also got to give a hug to a friend I had only known online ([@Blenster](https://bsky.app/profile/blenster.com)). I was so happy to see them enjoying the energy of the room. Later I met up with my girlfriend again so we could catch a talk, [Secure Code Is Critical Infrastructure](https://hackertracker.app/event/?conf=DEFCON33&event=61536) with [Tanya Janca](https://shehackspurple.ca/). We loved every moment of the talk and it charged us both up to be the policy nerds we didn't know we were.
+
+<div class="image-pair">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2474.JPG" alt="Badge Front">
+    <figcaption>Front of DEF CON NEXTGEN soldering kit</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2475.JPG" alt="Badge Back">
+    <figcaption>Back of DEF CON NEXTGEN soldering kit</figcaption>
+  </figure>
+</div>
+
+Later that evening we dropped into the [Diana Initiative](https://www.dianainitiative.org/) space to play with some Lego and interact with others before returning to our rooms to prepare for day two.
+
+We're a bit more sluggish with day two and not looking to get into any particular talks in the morning.
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2492.JPG" alt="Food Court Selfie">
+  <div class="post-image-caption">Kat and I taking a break in the convention food court</div>
+</div>
+
+A friend ([@inclusivelittleunicorn](https://linktr.ee/InclusiveLittleUnicorn)) was hosting her own con, Polycon, within the [Queercon](https://x.com/queercon) space so I wanted to make sure I showed up to support her. During my time there I was able to talk about personal projects with a couple other people at my table. I was so excited to see everyone else's projects which led to some great professional connections. Our conversation subsided and the group table disbanded. Suddenly, I was hit with a panic attack. I was locked at the table and not sure what to do. I took my gabapentin and then chose to start coloring a picture that was at the table with coloring pencils. Having the comfy space and something to distract myself with as the Gabapentin worked its way through my system was exactly what I needed. I appreciate spaces like this exist at DEF CON. After my panic attack had mostly subsided I said hi to my friend, traded stickers and was off to my next talk to line up for.
 
 I made it a priority to the community talk for [Veilid](https://veilid.com/). I wanted to help with the project and needed a little more insight for alignment. I was happy to talk to others helping. Sometimes face-to-face meetings can be incredibly helpful with making everyone feel more comfortable working with each other. I was surprised to see how many people showed up. I felt there should be more advocates for something like Veilid as our information era is crumbling before our eyes. If you haven't heard of Veilid, [I highly suggest you check it out and see if you're able to contribute](https://veilid.com/community/). After the talk Kat and I left back to our room to rest until dinner.
 
-The last day we didn't make plans. Just a day for us to check out a few things on the floor and see what's left at the merch booths. While wandering the floor Kat saw the Red Team Village was doing an exercise on exploiting Kubernetes. After a little bit of time Kat had realized that the advanced skills were her day-to-day basic skills she uses in her job. The light on her face when she realized she was ahead of the average hacker was priceless. While Kat was working on the Red Team challenge I wandered the floor and met some people at the Malware Village. I was really excited for the [Malmons](https://www.linkedin.com/posts/lenaaaa_heres-the-latest-list-of-malmons-aka-malware-activity-7331677119573360642-q6EX) and was happy I got a chance to thank [Lena Yu](https://uk.linkedin.com/in/lenaaaa) for helping create them. We continued to wander and were able to catch another panel that [Tanya Janca](https://shehackspurple.ca/) happened to be on with others in the [AppSec Village](https://www.appsecvillage.com/). We stopped in and had a seat to listen. It was a great conversation on how to build tools and policy to keep the issue of AI slop and unsecure code at bay. We headed over to the merch area to get some hardware from Hak5 and took a look at some other merch booths until we got in line waiting for the closing ceremonies.
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/PXL_20250810_052152774_Original.jpg" alt="Dressed Up">
+  <div class="post-image-caption">Kat and I dressed up for one of the DEF CON parties</div>
+</div>
+
+The last day we didn't make plans. Just a day for us to check out a few things on the floor and see what's left at the merch booths.
+
+While wandering the floor Kat saw the Red Team Village was doing an exercise on exploiting Kubernetes. After a little bit of time Kat had realized that the advanced skills were her day-to-day basic skills she uses in her job. The light on her face when she realized she was ahead of the average hacker was priceless. While Kat was working on the Red Team challenge I wandered the floor and met some people at the Malware Village. I was really excited for the [Malmons](https://www.linkedin.com/posts/lenaaaa_heres-the-latest-list-of-malmons-aka-malware-activity-7331677119573360642-q6EX) and was happy I got a chance to thank [Lena Yu](https://uk.linkedin.com/in/lenaaaa) for helping create them.
+
+<div class="image-gallery">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2507.JPG" alt="Leaving Vegas">
+    <figcaption>Selfie with Lena</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2503.jpg" alt="Trading Cards">
+    <figcaption>Malmons!</figcaption>
+  </figure>
+</div>
+
+We continued to wander and were able to catch another panel that [Tanya Janca](https://shehackspurple.ca/) happened to be on with others in the [AppSec Village](https://www.appsecvillage.com/).
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2493.JPG" alt="AppSec Panel">
+  <div class="post-image-caption">Panel discussion at the AppSec Village</div>
+</div>
+
+We stopped in and had a seat to listen. It was a great conversation on how to build tools and policy to keep the issue of AI slop and unsecure code at bay.
+
+<div class="image-gallery">
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/IMG_2496.JPG" alt="Vegas Architecture">
+    <figcaption>Danger Noodle spotted - possible OMG cable</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/images/photos/DC33-travel-pics/PXL_20250810_161409577~2_Original.jpg" alt="GothCon Badge">
+    <figcaption>GothCon 2025 badge</figcaption>
+  </figure>
+</div>
+
+We headed over to the merch area to get some hardware from Hak5 and took a look at some other merch booths until we got in line waiting for the closing ceremonies.
 
 While waiting for closing ceremonies my right leg had finally given out. I have [neuropathy](https://www.mayoclinic.org/diseases-conditions/peripheral-neuropathy/symptoms-causes/syc-20352061) in my right leg and foot from past [back surgeries](https://www.mayoclinic.org/tests-procedures/laminectomy/about/pac-20394533). I was proud of myself for making 95% of the con after struggling through BsidesSF. I leaned a little on my girlfriend and my left leg to keep myself vertical. Closing ceremonies were appreciated but were a little long for me. I can't sit very long, especially in molded plastic. Sitting for hours listening to stats was difficult to focus on while my body was aching from walking all weekend. I wanted to respect the time put into the con and the efforts in reporting so I stayed for the ceremonies instead of leaving early. Eventually, we left for our rooms and began packing to checkout the next morning. We'd had enough of the Vegas heat and dust.
 
 We took a slightly different route coming back home. Instead of following along the Sierra-Nevada border on the way back up we cut through most of Central Nevada leading to Reno. This meant we got to see a lot of the new tech development taking place in Sparks, Nevada. I didn't realize on the other side of the mountain was a developing tech city. Sparks has a number of renewable energy and datacenter companies popping up all near each other. However, like we already noticed when getting closer to Sparks, their highway is not meant to handle the kind of traffic those jobs will draw. Another note is there's little to no water run off near where they're building. It seems they're going to take a page out of central CA's book and drain their local water aquifers in the area for these "farms." It'll be sad to see how the area develops over time. Especially since it seems the people currently surviving off these aquifers are part of the [Walker River Reservation](https://en.wikipedia.org/wiki/Walker_River_Indian_Reservation).
 
-We've been home for about a week and I'm listening to [Soma.fm](https://soma.fm) while writing this (love Groove Salad). Over a decade of tunes helped bring me back to the hum of DEF CON no matter how far I stray. Which is what I think DEF CON is all about, the culture. It's permeated our music, the way we communicate with each other, along with the ethics and morals we share. Without that culture many of us would be lost and I feel that's something worth cherishing and protecting.
+We've been home for about a week and I'm listening to [Soma.fm](https://soma.fm) while writing this (love Groove Salad).
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2517.JPG" alt="Laptop Stickers">
+  <div class="post-image-caption">Kali's laptop with new stickers</div>
+</div>
+
+Over a decade of tunes helped bring me back to the hum of DEF CON no matter how far I stray. Which is what I think DEF CON is all about, the culture. It's permeated our music, the way we communicate with each other, along with the ethics and morals we share. Without that culture many of us would be lost and I feel that's something worth cherishing and protecting.
 
 I can see DEF CON is still growing. They stumble like many of us. As a fellow 33 year old not understanding how I got here or what to do, I get you DEF CON. I'm happy that despite all your criticism you make an effort to always be better. I'm happy to grow together and spread the hacker joy you were so kind enough to share with me.
 
 With much love,
 
 Kali J. <3
+
+<div class="post-image">
+  <img src="/assets/images/photos/DC33-travel-pics/IMG_2521.JPG" alt="End Sign">
+</div>
