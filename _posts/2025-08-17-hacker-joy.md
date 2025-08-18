@@ -45,99 +45,480 @@ A couple months pass by and it's time to travel to DEF CON 33. Kat and I are mak
   <div class="post-image-caption">All packed up and ready for our DEF CON adventure</div>
 </div>
 
-I've driven enough of Highway 99 for a lifetime so we chose to go up through [El Dorado](https://en.wikipedia.org/wiki/Eldorado_National_Forest) and into Nevada.
+I've driven enough of Highway 99 for a lifetime so we chose to go up through [El Dorado](https://en.wikipedia.org/wiki/Eldorado_National_Forest) and into Nevada. We found all kinds of amazing beautiful nature as we traversed from [the mountains](https://en.wikipedia.org/wiki/Sierra_Nevada) during the day time to down into [the desert](https://en.wikipedia.org/wiki/Death_Valley) through the evening.
 
-<div class="image-gallery">
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/El Dorado River.jpg" alt="El Dorado River">
-    <figcaption>El Dorado National Forest river</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/Tahoe.jpg" alt="Lake Tahoe">
-    <figcaption>Lake Tahoe vista</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/Sierras2.jpg" alt="Sierra Nevada">
-    <figcaption>Sierra Nevada mountains</figcaption>
-  </figure>
+<!-- Include Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Include Leaflet MarkerCluster plugin -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<div class="road-trip-map">
+  <div id="map"></div>
+  <div class="map-legend">
+    <h4>Our Route to Vegas</h4>
+    <div class="legend-item">
+      <div class="legend-marker"></div>
+      <span>Photo Location</span>
+    </div>
+  </div>
 </div>
 
-We found all kinds of amazing beautiful nature as we traversed from [the mountains](https://en.wikipedia.org/wiki/Sierra_Nevada) during the day time to down into [the desert](https://en.wikipedia.org/wiki/Death_Valley) through the evening.
-
-<div class="image-gallery">
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/CentralNV.jpg" alt="Central Nevada">
-    <figcaption>Central Nevada mountains</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/Solararray.jpg" alt="Solar Array">
-    <figcaption>Massive solar array</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/Clowntel .JPG" alt="Clown Motel">
-    <figcaption>The infamous Clown Motel</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/Joshua Trees.jpg" alt="Joshua Trees">
-    <figcaption>Joshua trees in the desert</figcaption>
-  </figure>
+<!-- Photo preview area - positioned to the right side -->
+<div class="photo-preview" id="photoPreview" style="display: none; position: fixed; right: 20px; top: 50%; transform: translateY(-50%); width: 400px; z-index: 1000; background: #1a1a1a; border: 2px solid #6d105a; border-radius: 8px; padding: 10px;">
+  <img src="" alt="" style="width: 380px !important; height: 240px !important; object-fit: cover !important; display: block !important; border-radius: 4px;">
+  <div class="caption" style="width: 380px; padding: 10px 0 5px 0; color: white; text-align: center; font-size: 13px;"></div>
 </div>
 
-The route was filled with interesting roadside attractions that we couldn't resist googling as we passed by. Eventually we stopped at a 76 along the way:
-
-<div class="image-gallery">
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2394.jpg" alt="Gas Station Sign">
-    <figcaption>Classic roadside billboard</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2395.jpg" alt="Alien Statues">
-    <figcaption>Alien statues at gas station</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2396.jpg" alt="Alien Family">
-    <figcaption>Alien family welcoming visitors</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2397.jpg" alt="World's Largest Firecracker">
-    <figcaption>M-800 World's Largest Firecracker</figcaption>
-  </figure>
+<!-- Lightbox for full view -->
+<div class="map-lightbox" id="mapLightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img src="" alt="">
+  <div class="lightbox-caption"></div>
 </div>
 
-<div class="image-pair">
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2404.jpg" alt="Area 51 Alien Center">
-    <figcaption>Area 51 Alien Center</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2405.jpg" alt="Area 51 Full View">
-    <figcaption>The full glory of the Alien Center</figcaption>
-  </figure>
-</div>
+<script>
+// Photo locations data with GPS coordinates where available, others approximated based on route
+const photoLocations = [
+  {
+    lat: 38.7712, lng: -120.5238,
+    photo: '/assets/images/photos/DC33-travel-pics/El Dorado River.jpg',
+    caption: 'El Dorado National Forest river',
+    title: 'El Dorado'
+  },
+  {
+    lat: 39.0968, lng: -120.0324,
+    photo: '/assets/images/photos/DC33-travel-pics/Tahoe.jpg',
+    caption: 'Lake Tahoe vista - crystal blue waters surrounded by mountains',
+    title: 'Lake Tahoe'
+  },
+  {
+    lat: 38.9320, lng: -119.9844,
+    photo: '/assets/images/photos/DC33-travel-pics/Sierras2.jpg',
+    caption: 'Sierra Nevada mountains with evergreen forests',
+    title: 'Sierra Nevada'
+  },
+  {
+    lat: 38.8936, lng: -119.9124,
+    photo: '/assets/images/photos/DC33-travel-pics/Sierras.jpg',
+    caption: 'Sierra Nevada mountain views',
+    title: 'Sierra Mountains'
+  },
+  {
+    lat: 38.0608, lng: -117.2306,
+    photo: '/assets/images/photos/DC33-travel-pics/Clowntel .JPG',
+    caption: 'The infamous Clown Motel in Tonopah',
+    title: 'Tonopah'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2394.jpg',
+    caption: '76 Gas Station - Amargosa Valley',
+    title: '76 Station'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2395.jpg',
+    caption: 'Alien statues at gas station',
+    title: 'Alien Statues'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2396.jpg',
+    caption: 'Alien family welcoming visitors',
+    title: 'Alien Family'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2397.jpg',
+    caption: 'M-800 World\'s Largest Firecracker',
+    title: 'Giant Firecracker'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2404.jpg',
+    caption: 'Area 51 Alien Center',
+    title: 'Area 51'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2405.jpg',
+    caption: 'Area 51 Alien Center full view',
+    title: 'Area 51 Center'
+  },
+  {
+    lat: 36.6422, lng: -116.3979,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2408.jpg',
+    caption: 'Alien Cathouse sign',
+    title: 'Alien Cathouse'
+  },
+  {
+    lat: 37.1500, lng: -116.4500,
+    photo: '/assets/images/photos/DC33-travel-pics/Death Valley Mountains.jpg',
+    caption: 'Death Valley mountains viewed from Highway 95',
+    title: 'Death Valley View'
+  },
+  {
+    lat: 37.0000, lng: -116.1000,
+    photo: '/assets/images/photos/DC33-travel-pics/Joshua Trees.jpg',
+    caption: 'Joshua trees in the desert',
+    title: 'Joshua Trees'
+  },
+  {
+    lat: 38.5449, lng: -118.1712,
+    photo: '/assets/images/photos/DC33-travel-pics/CentralNV.jpg',
+    caption: 'Central Nevada mountains',
+    title: 'Central Nevada'
+  },
+  {
+    lat: 37.5000, lng: -116.8000,
+    photo: '/assets/images/photos/DC33-travel-pics/Solararray.jpg',
+    caption: 'Massive solar array with tower in Nevada desert',
+    title: 'Solar Array'
+  },
+  {
+    lat: 36.4072, lng: -116.4560,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2412.JPG',
+    caption: 'Desert landscape at sunset',
+    title: 'Desert Sunset'
+  },
+  {
+    lat: 36.4072, lng: -116.4560,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2413.jpg',
+    caption: 'Moon rising over the desert',
+    title: 'Desert Moon'
+  },
+  {
+    lat: 36.4072, lng: -116.4560,
+    photo: '/assets/images/photos/DC33-travel-pics/IMG_2417.jpg',
+    caption: 'Interesting cloud formations',
+    title: 'Desert Clouds'
+  },
+  {
+    lat: 36.1382, lng: -115.15966,  // GPS from Vegas Sphere photo
+    photo: '/assets/images/photos/DC33-travel-pics/PXL_20250806_080702520~2_Original.jpg',
+    caption: 'The Vegas Sphere crying, it knew we had arrived!',
+    title: 'Vegas Sphere'
+  }
+];
 
-<div class="post-image">
-  <img src="/assets/images/photos/DC33-travel-pics/IMG_2408.jpg" alt="Alien Cathouse">
-  <div class="post-image-caption">The Alien Cathouse, loving the desert even more</div>
-</div>
+// Initialize map when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  // Create map centered on the route
+  const map = L.map('map').setView([37.5, -117.5], 6);
 
-<div class="image-gallery">
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2412.JPG" alt="Desert Sunset">
-    <figcaption>Desert landscape at sunset</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2413.jpg" alt="Desert Moon">
-    <figcaption>Moon rising over the desert</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/IMG_2417.jpg" alt="Desert Clouds">
-    <figcaption>Interesting cloud formations</figcaption>
-  </figure>
-  <figure>
-    <img src="/assets/images/photos/DC33-travel-pics/Death Valley Mountains.jpg" alt="Death Valley">
-    <figcaption>Death Valley mountains</figcaption>
-  </figure>
-</div>
+  // Add dark themed tile layer
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap contributors © CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  // Define the route coordinates based on your Google Maps link
+  const routeCoordinates = [
+    [38.5781, -121.4944], // Sacramento
+    [38.7712, -120.5238], // El Dorado area
+    [39.0968, -120.0324], // Lake Tahoe
+    [38.5449, -118.1712], // Central Nevada
+    [38.0608, -117.2306], // Tonopah
+    [36.6422, -116.3979], // 76 Gas Station Amargosa Valley
+    [36.1374, -115.1594]  // Fontainebleau Las Vegas
+  ];
+
+  // Create and add the route polyline
+  const routePath = L.polyline(routeCoordinates, {
+    color: '#d62598',
+    weight: 4,
+    opacity: 0.8
+  }).addTo(map);
+
+  // Custom icon for markers
+  const customIcon = L.divIcon({
+    className: 'custom-map-marker',
+    html: '<div style="width: 20px; height: 20px; background: #9c1f8c; border: 3px solid #ffffff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);"></div>',
+    iconSize: [26, 26],
+    iconAnchor: [13, 13]
+  });
+
+  // Create marker cluster group with custom options
+  const markers = L.markerClusterGroup({
+    showCoverageOnHover: false,
+    maxClusterRadius: 60,
+    spiderfyOnMaxZoom: true,
+    zoomToBoundsOnClick: false, // Disable automatic zoom on cluster click
+    iconCreateFunction: function(cluster) {
+      // Count total photos in the cluster, not just markers
+      let photoCount = 0;
+      cluster.getAllChildMarkers().forEach(marker => {
+        photoCount += marker.photoCount || 1;
+      });
+      
+      return L.divIcon({
+        html: '<div style="background: #d62598; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 3px solid #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); cursor: pointer;">' + photoCount + '</div>',
+        className: 'custom-cluster-icon',
+        iconSize: [46, 46],
+        iconAnchor: [23, 23]
+      });
+    }
+  });
+
+  // Group photos by location
+  const locationGroups = {};
+  photoLocations.forEach((location) => {
+    const key = `${location.lat},${location.lng}`;
+    if (!locationGroups[key]) {
+      locationGroups[key] = [];
+    }
+    locationGroups[key].push(location);
+  });
+  
+  // Log the groups for debugging
+  console.log('Location groups:', Object.entries(locationGroups).map(([key, locs]) => 
+    `${key}: ${locs.length} photos`
+  ));
+
+  // Add markers for each photo location
+  Object.entries(locationGroups).forEach(([coords, locations]) => {
+    if (locations.length === 1) {
+      // Single photo at this location
+      const location = locations[0];
+      const marker = L.marker([location.lat, location.lng], { icon: customIcon })
+        .bindTooltip(location.title, { permanent: false, direction: 'top' });
+      
+      // Store photo count on the marker
+      marker.photoCount = 1;
+      marker.photoLocations = [location];
+
+      // Show preview on hover
+      marker.on('mouseover', function(e) {
+        showPhotoPreview(location, e);
+      });
+
+      marker.on('mouseout', function() {
+        hidePhotoPreview();
+      });
+
+      // Show full image on click
+      marker.on('click', function() {
+        showLightbox(location);
+      });
+
+      markers.addLayer(marker);
+    } else {
+      // Multiple photos at this location - create carousel
+      const [lat, lng] = coords.split(',').map(Number);
+      
+      // Create custom icon with photo count inside
+      const multiPhotoIcon = L.divIcon({
+        className: 'custom-map-marker-multi',
+        html: `<div style="width: 28px; height: 28px; background: #9c1f8c; border: 3px solid #ffffff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold;">${locations.length}</div>`,
+        iconSize: [34, 34],
+        iconAnchor: [17, 17]
+      });
+      
+      const marker = L.marker([lat, lng], { icon: multiPhotoIcon })
+        .bindTooltip(`${locations.length} photos`, { permanent: false, direction: 'top' });
+      
+      // Store photo count on the marker
+      marker.photoCount = locations.length;
+      marker.photoLocations = locations;
+
+      // Store carousel data globally for navigation
+      window.carouselData = window.carouselData || {};
+      window.carouselData[coords] = {
+        locations: locations,
+        currentIndex: 0,
+        marker: marker
+      };
+
+      // Create carousel popup content function
+      function createCarouselContent() {
+        const data = window.carouselData[coords];
+        const location = data.locations[data.currentIndex];
+        // Store current location for easy access
+        window.currentCarouselLocation = location;
+        
+        return `
+          <div class="carousel-popup" style="width: 250px;">
+            <img src="${location.photo}" alt="${location.caption}" 
+                 class="carousel-image"
+                 style="width: 100%; height: auto; cursor: pointer;">
+            <div style="padding: 10px;">
+              <div style="font-weight: bold; margin-bottom: 5px;">${location.title}</div>
+              <div style="font-size: 12px; color: #666;">${location.caption}</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                <button onclick="changeCarouselPhoto(-1, '${coords}')" style="background: #9c1f8c; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">◀ Prev</button>
+                <span style="font-size: 12px;">${data.currentIndex + 1} / ${data.locations.length}</span>
+                <button onclick="changeCarouselPhoto(1, '${coords}')" style="background: #9c1f8c; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Next ▶</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      marker.bindPopup(createCarouselContent, { maxWidth: 250 });
+      
+      markers.addLayer(marker);
+    }
+  });
+
+  // Add the marker cluster group to the map
+  map.addLayer(markers);
+
+  // Handle cluster clicks to show selection of locations
+  markers.on('clusterclick', function (event) {
+    const cluster = event.layer;
+    const childMarkers = cluster.getAllChildMarkers();
+    
+    // Get all unique locations from the cluster
+    const allLocations = [];
+    childMarkers.forEach(marker => {
+      if (marker.photoLocations) {
+        allLocations.push(...marker.photoLocations);
+      }
+    });
+
+    // Create cluster popup with thumbnails
+    let popupContent = '<div style="max-width: 300px; max-height: 400px; overflow-y: auto;">';
+    popupContent += '<h4 style="margin: 0 0 10px 0;">Select a photo to view:</h4>';
+    popupContent += '<div class="cluster-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">';
+    
+    allLocations.forEach((location, index) => {
+      // Store location data in window for easy access
+      const locationKey = `loc_${Date.now()}_${index}`;
+      window[locationKey] = location;
+      
+      popupContent += `
+        <div class="cluster-thumb" style="cursor: pointer; text-align: center;" 
+             data-location="${locationKey}">
+          <img src="${location.photo}" alt="${location.title}" style="width: 100%; height: 100px; object-fit: cover; border-radius: 5px; pointer-events: none;">
+          <div style="font-size: 11px; margin-top: 5px; pointer-events: none;">${location.title}</div>
+        </div>
+      `;
+    });
+    
+    popupContent += '</div></div>';
+    
+    const popup = L.popup()
+      .setLatLng(cluster.getLatLng())
+      .setContent(popupContent)
+      .openOn(map);
+  });
+
+  // Fit map to show entire route
+  map.fitBounds(routePath.getBounds(), { padding: [50, 50] });
+  
+  // Add event delegation for cluster thumbnails and carousel images
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest('.cluster-thumb')) {
+      const thumb = e.target.closest('.cluster-thumb');
+      const locationKey = thumb.dataset.location;
+      if (window[locationKey]) {
+        showPhotoPreview(window[locationKey], e);
+      }
+    } else if (e.target.classList && e.target.classList.contains('carousel-image')) {
+      if (window.currentCarouselLocation) {
+        showPhotoPreview(window.currentCarouselLocation, e);
+      }
+    }
+  });
+  
+  document.addEventListener('mouseout', function(e) {
+    if (e.target.closest('.cluster-thumb') || (e.target.classList && e.target.classList.contains('carousel-image'))) {
+      hidePhotoPreview();
+    }
+  });
+  
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.cluster-thumb')) {
+      const thumb = e.target.closest('.cluster-thumb');
+      const locationKey = thumb.dataset.location;
+      if (window[locationKey]) {
+        showLightbox(window[locationKey]);
+      }
+    } else if (e.target.classList && e.target.classList.contains('carousel-image')) {
+      if (window.currentCarouselLocation) {
+        showLightbox(window.currentCarouselLocation);
+      }
+    }
+  });
+});
+
+// Function to change carousel photo
+window.changeCarouselPhoto = function(direction, coords) {
+  const data = window.carouselData[coords];
+  data.currentIndex = (data.currentIndex + direction + data.locations.length) % data.locations.length;
+  const location = data.locations[data.currentIndex];
+  
+  // Update stored location for event handlers
+  window.currentCarouselLocation = location;
+  
+  const popupContent = `
+    <div class="carousel-popup" style="width: 250px;">
+      <img src="${location.photo}" alt="${location.caption}" 
+           class="carousel-image"
+           style="width: 100%; height: auto; cursor: pointer;">
+      <div style="padding: 10px;">
+        <div style="font-weight: bold; margin-bottom: 5px;">${location.title}</div>
+        <div style="font-size: 12px; color: #666;">${location.caption}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+          <button onclick="changeCarouselPhoto(-1, '${coords}')" style="background: #9c1f8c; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">◀ Prev</button>
+          <span style="font-size: 12px;">${data.currentIndex + 1} / ${data.locations.length}</span>
+          <button onclick="changeCarouselPhoto(1, '${coords}')" style="background: #9c1f8c; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Next ▶</button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Update the popup without closing it
+  if (data.marker._popup && data.marker._popup.isOpen()) {
+    data.marker._popup.setContent(popupContent);
+  } else {
+    data.marker.setPopupContent(popupContent);
+  }
+};
+
+function showPhotoPreview(location, event) {
+  const preview = document.getElementById('photoPreview');
+  const img = preview.querySelector('img');
+  const caption = preview.querySelector('.caption');
+  
+  img.src = location.photo;
+  caption.textContent = location.caption;
+  
+  // Just show the preview in its fixed location
+  preview.style.display = 'block';
+}
+
+function hidePhotoPreview() {
+  document.getElementById('photoPreview').style.display = 'none';
+}
+
+function showLightbox(location) {
+  const lightbox = document.getElementById('mapLightbox');
+  const img = lightbox.querySelector('img');
+  const caption = lightbox.querySelector('.lightbox-caption');
+  
+  img.src = location.photo;
+  caption.textContent = location.caption;
+  lightbox.classList.add('active');
+}
+
+function closeLightbox() {
+  document.getElementById('mapLightbox').classList.remove('active');
+}
+
+// Close lightbox on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+</script>
+
+The route was filled with interesting roadside attractions that we couldn't resist stopping at and googling as we passed by.
 
 Goofing off for 10 hours in the car is one of my favorite parts of road trips and glad I have someone who can match the energy.
 
