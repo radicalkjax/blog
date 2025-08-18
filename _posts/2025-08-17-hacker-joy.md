@@ -7,11 +7,13 @@ tags: [blog, defcon, hacking, security, conferences, community, trans, personal]
 
 # Hacker Joy
 
-During the rise of Stitcher, Pandora and Spotify in 2013 I was looking for internet radio I felt was more controlled by your everyday people. Like pirate internet radio. With some light searching I came across [Soma.fm](https://soma.fm) which I was excited to find was based out of SF, not far away. While scrolling through different channels I found DEF CON Radio. I clicked over and realised it was for a convention. With some curiosity and my decade of experience honing my google-fu skills I began to dig into what [DEF CON](https://defcon.org/) was.
+{% include somafm-player.html %}
+
+During the rise of Stitcher, Pandora and Spotify in 2013 I was looking for internet radio I felt was more controlled by your everyday people. Like pirate internet radio. With some light searching I came across [Soma.fm](https://soma.fm) <button class="inline-play-btn" onclick="startSomaFM()" aria-label="Play DEF CON Radio"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14" fill="#ff00ff"/></svg></button> which I was excited to find was based out of SF, not far away. While scrolling through different channels I found DEF CON Radio. I clicked over and realised it was for a convention. With some curiosity and my decade of experience honing my google-fu skills I began to dig into what [DEF CON](https://defcon.org/) was.
 
 Making computers do odd things was something I was already familiar with, but a whole con for that? I got excited, but like most things in life, I put a pin in it and said, "maybe some day." I was working at Geek Squad and going to college at this time. Affording a convention, let alone tuition, was aspirational. While working for Geek Squad and going to school for my Computer Science degree I became more interested in malware. Watching how it devastated small businesses in my area and doing the best I could to help get them going with new reliable equipment and active protection. Being on Twitter allowed me to be connected with everyone, big and small, to stay current on malware or infosec news. Following all these people meant every August I'd hear and read about DEF CON. This network that DEF CON cultivates helped me find people like Amanda Rousseau ([@malwareunicorn](https://x.com/malwareunicorn)) so I could practice her [reverse engineering guides](https://malwareunicorn.org/#/workshops).
 
-Listening to [Soma.fm](https://soma.fm) kept the hum of DEF CON dancing in the back of my mind as I studied and worked late into the night for years toward my degree. As I was graduating I was also taking note that the DEF CON space seemed welcoming to people like me, a closeted trans-woman. I found inspirational hacker trans women through the DEF CON social grapevine that showed me it's possible to live as myself and be taken seriously for my skills. Seeing these examples helped me have the courage to come out openly as trans a couple years after graduation while working my first corporate job.
+Listening to [Soma.fm](https://soma.fm) <button class="inline-play-btn" onclick="startSomaFM()" aria-label="Play DEF CON Radio"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14" fill="#ff00ff"/></svg></button> kept the hum of DEF CON dancing in the back of my mind as I studied and worked late into the night for years toward my degree. As I was graduating I was also taking note that the DEF CON space seemed welcoming to people like me, a closeted trans-woman. I found inspirational hacker trans women through the DEF CON social grapevine that showed me it's possible to live as myself and be taken seriously for my skills. Seeing these examples helped me have the courage to come out openly as trans a couple years after graduation while working my first corporate job.
 
 After coming out I made fantastic new connections online and was welcomed by many in the DEF CON community. That's not something I've traditionally experienced by any community. By simply being me I kept gravitating closer to others within the DEF CON community online until I found myself completely nested within infosec conversations. That's when I realized I had found some of my people and I needed more of what I was finding.
 
@@ -629,7 +631,7 @@ While waiting for closing ceremonies my right leg had finally given out. I have 
 
 We took a slightly different route coming back home. Instead of following along the Sierra-Nevada border on the way back up we cut through most of Central Nevada leading to Reno. This meant we got to see a lot of the new tech development taking place in Sparks, Nevada. I didn't realize on the other side of the mountain was a developing tech city. Sparks has a number of renewable energy and datacenter companies popping up all near each other. However, like we already noticed when getting closer to Sparks, their highway is not meant to handle the kind of traffic those jobs will draw. Another note is there's little to no water run off near where they're building. It seems they're going to take a page out of central CA's book and drain their local water aquifers in the area for these "farms." It'll be sad to see how the area develops over time. Especially since it seems the people currently surviving off these aquifers are part of the [Walker River Reservation](https://en.wikipedia.org/wiki/Walker_River_Indian_Reservation).
 
-We've been home for about a week and I'm listening to [Soma.fm](https://soma.fm) while writing this (love Groove Salad).
+We've been home for about a week and I'm listening to [Soma.fm](https://soma.fm) <button class="inline-play-btn" onclick="startSomaFM()" aria-label="Play DEF CON Radio"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14" fill="#ff00ff"/></svg></button> while writing this (love Groove Salad).
 
 <div class="post-image">
   <img src="/assets/images/photos/DC33-travel-pics/IMG_2517.JPG" alt="Laptop Stickers">
@@ -647,3 +649,38 @@ Kali J. <3
 <div class="post-image">
   <img src="/assets/images/photos/DC33-travel-pics/IMG_2521.JPG" alt="End Sign">
 </div>
+
+<script>
+function startSomaFM() {
+  const audio = document.getElementById('defcon-audio');
+  const playBtn = document.querySelector('.play-icon');
+  const pauseBtn = document.querySelector('.pause-icon');
+  
+  // If player is minimized, expand it
+  const playerBody = document.querySelector('.player-body');
+  const playerHeader = document.querySelector('.player-header');
+  const playerMinimized = document.querySelector('.player-minimized');
+  
+  if (playerBody.style.display === 'none') {
+    playerBody.style.display = 'block';
+    playerHeader.style.display = 'flex';
+    playerMinimized.style.display = 'none';
+  }
+  
+  // Start playing if not already playing
+  if (audio.paused) {
+    audio.play().then(() => {
+      playBtn.style.display = 'none';
+      pauseBtn.style.display = 'inline';
+      updateNowPlaying();
+      // Update song info every 30 seconds while playing
+      if (typeof songUpdateInterval !== 'undefined' && songUpdateInterval) {
+        clearInterval(songUpdateInterval);
+      }
+      songUpdateInterval = setInterval(updateNowPlaying, 30000);
+    }).catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  }
+}
+</script>
