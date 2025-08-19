@@ -12,6 +12,7 @@ theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-polyglot
 
 # Process HTML files
 include:
@@ -27,6 +28,23 @@ exclude:
   - vendor
   - .gitignore
   - README.md
+
+# Internationalization settings
+languages: ["en", "es", "fr", "ja", "zh", "ar", "de", "pt"]
+default_lang: "en"
+exclude_from_localization: ["assets", "js", "css", "fonts", "vendor"]
+parallel_localization: false
+
+# Language display names
+language_names:
+  en: "English"
+  es: "Español"
+  fr: "Français"
+  ja: "日本語"
+  zh: "中文"
+  ar: "العربية"
+  de: "Deutsch"
+  pt: "Português"
 
 # Custom settings
 author:
