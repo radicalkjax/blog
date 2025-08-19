@@ -1,0 +1,81 @@
+# Arabic translations
+
+# Site metadata
+site:
+  title: "كالي جاكسون (@RADICALKJAX)"
+  description: "الموقع الشخصي والمدونة لكالي جاكسون، مهندس برمجيات وباحث أمني وخبير ذكاء اصطناعي."
+  author: "كالي جاكسون"
+  tagline: "مهندس برمجيات | باحث أمني | خبير ذكاء اصطناعي"
+
+# Navigation
+navigation:
+  home: "الرئيسية"
+  blog: "المدونة"
+  projects: "المشاريع"
+  art: "الفن"
+  about_me: "عني"
+  personal_journey: "رحلتي الشخصية"
+  connections: "الاتصالات"
+
+# Dropdown menus
+dropdown:
+  photos: "الصور"
+  other_things: "أشياء أخرى"
+  rocket_pup: "Rocket Pup"
+  caliphoria: "Caliphoria"
+  wattz: "Wattz"
+  presentations: "العروض التقديمية"
+
+# UI Elements
+ui:
+  read_more: "اقرأ المزيد"
+  back_to_top: "العودة للأعلى"
+  search: "بحث"
+  tags: "الوسوم"
+  categories: "الفئات"
+  share: "مشاركة"
+  previous: "السابق"
+  next: "التالي"
+  loading: "جاري التحميل..."
+  error: "خطأ"
+  close: "إغلاق"
+
+# Footer
+footer:
+  designed_by: "صُمم بحب من قبل كالي"
+  copyright: "© 2025 كالي جاكسون. جميع الحقوق محفوظة."
+
+# Blog
+blog:
+  recent_posts: "المنشورات الأخيرة"
+  all_posts: "جميع المنشورات"
+  written_by: "كتبه"
+  posted_on: "نُشر في"
+  read_time: "دقائق للقراءة"
+  no_posts: "لم يتم العثور على منشورات."
+
+# Social
+social:
+  follow_me: "تابعني"
+  github: "GitHub"
+  linkedin: "LinkedIn"
+  instagram: "Instagram"
+  bluesky: "BlueSky"
+
+# 404 Page
+error_404:
+  title: "404 - الصفحة غير موجودة"
+  message: "عذراً، الصفحة التي تبحث عنها غير موجودة."
+  home_link: "العودة للرئيسية"
+
+# Thank You Page
+thank_you:
+  title: "شكراً لك!"
+  message: "تم إرسال رسالتك بنجاح."
+
+# Date formats
+date:
+  formats:
+    default: "%d %B %Y"
+    long: "%d %B %Y الساعة %H:%M"
+    short: "%d %b %Y"

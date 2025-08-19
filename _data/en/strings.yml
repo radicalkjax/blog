@@ -1,0 +1,81 @@
+# English translations
+
+# Site metadata
+site:
+  title: "KALI JACKSON (@RADICALKJAX)"
+  description: "Personal website and blog of Kali Jackson, software engineer, security researcher, and AI expert."
+  author: "Kali Jackson"
+  tagline: "Software Engineer | Security Researcher | AI Expert"
+
+# Navigation
+navigation:
+  home: "Home"
+  blog: "Blog"
+  projects: "Projects"
+  art: "Art"
+  about_me: "About Me"
+  personal_journey: "Personal Journey"
+  connections: "Connections"
+
+# Dropdown menus
+dropdown:
+  photos: "Photos"
+  other_things: "Other Things"
+  rocket_pup: "Rocket Pup"
+  caliphoria: "Caliphoria"
+  wattz: "Wattz"
+  presentations: "Presentations"
+
+# UI Elements
+ui:
+  read_more: "Read more"
+  back_to_top: "Back to top"
+  search: "Search"
+  tags: "Tags"
+  categories: "Categories"
+  share: "Share"
+  previous: "Previous"
+  next: "Next"
+  loading: "Loading..."
+  error: "Error"
+  close: "Close"
+
+# Footer
+footer:
+  designed_by: "Designed with love by Kali"
+  copyright: "© 2025 Kali Jackson. All rights reserved."
+
+# Blog
+blog:
+  recent_posts: "Recent Posts"
+  all_posts: "All Posts"
+  written_by: "Written by"
+  posted_on: "Posted on"
+  read_time: "min read"
+  no_posts: "No posts found."
+
+# Social
+social:
+  follow_me: "Follow me"
+  github: "GitHub"
+  linkedin: "LinkedIn"
+  instagram: "Instagram"
+  bluesky: "BlueSky"
+
+# 404 Page
+error_404:
+  title: "404 - Page Not Found"
+  message: "Sorry, the page you're looking for doesn't exist."
+  home_link: "Return to Home"
+
+# Thank You Page
+thank_you:
+  title: "Thank You!"
+  message: "Your message has been sent successfully."
+
+# Date formats
+date:
+  formats:
+    default: "%B %d, %Y"
+    long: "%B %d, %Y at %I:%M %p"
+    short: "%b %d, %Y"

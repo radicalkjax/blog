@@ -1,0 +1,81 @@
+# German translations
+
+# Site metadata
+site:
+  title: "KALI JACKSON (@RADICALKJAX)"
+  description: "Persönliche Website und Blog von Kali Jackson, Softwareentwicklerin, Sicherheitsforscherin und KI-Expertin."
+  author: "Kali Jackson"
+  tagline: "Softwareentwicklerin | Sicherheitsforscherin | KI-Expertin"
+
+# Navigation
+navigation:
+  home: "Startseite"
+  blog: "Blog"
+  projects: "Projekte"
+  art: "Kunst"
+  about_me: "Über mich"
+  personal_journey: "Persönliche Reise"
+  connections: "Verbindungen"
+
+# Dropdown menus
+dropdown:
+  photos: "Fotos"
+  other_things: "Andere Dinge"
+  rocket_pup: "Rocket Pup"
+  caliphoria: "Caliphoria"
+  wattz: "Wattz"
+  presentations: "Präsentationen"
+
+# UI Elements
+ui:
+  read_more: "Weiterlesen"
+  back_to_top: "Nach oben"
+  search: "Suchen"
+  tags: "Tags"
+  categories: "Kategorien"
+  share: "Teilen"
+  previous: "Zurück"
+  next: "Weiter"
+  loading: "Lädt..."
+  error: "Fehler"
+  close: "Schließen"
+
+# Footer
+footer:
+  designed_by: "Mit Liebe gestaltet von Kali"
+  copyright: "© 2025 Kali Jackson. Alle Rechte vorbehalten."
+
+# Blog
+blog:
+  recent_posts: "Neueste Beiträge"
+  all_posts: "Alle Beiträge"
+  written_by: "Geschrieben von"
+  posted_on: "Veröffentlicht am"
+  read_time: "Min. Lesezeit"
+  no_posts: "Keine Beiträge gefunden."
+
+# Social
+social:
+  follow_me: "Folge mir"
+  github: "GitHub"
+  linkedin: "LinkedIn"
+  instagram: "Instagram"
+  bluesky: "BlueSky"
+
+# 404 Page
+error_404:
+  title: "404 - Seite nicht gefunden"
+  message: "Entschuldigung, die gesuchte Seite existiert nicht."
+  home_link: "Zur Startseite"
+
+# Thank You Page
+thank_you:
+  title: "Vielen Dank!"
+  message: "Ihre Nachricht wurde erfolgreich gesendet."
+
+# Date formats
+date:
+  formats:
+    default: "%d. %B %Y"
+    long: "%d. %B %Y um %H:%M Uhr"
+    short: "%d. %b %Y"

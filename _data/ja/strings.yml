@@ -1,0 +1,81 @@
+# Japanese translations
+
+# Site metadata
+site:
+  title: "KALI JACKSON (@RADICALKJAX)"
+  description: "Kali Jacksonの個人ウェブサイトとブログ。ソフトウェアエンジニア、セキュリティ研究者、AI専門家。"
+  author: "Kali Jackson"
+  tagline: "ソフトウェアエンジニア | セキュリティ研究者 | AI専門家"
+
+# Navigation
+navigation:
+  home: "ホーム"
+  blog: "ブログ"
+  projects: "プロジェクト"
+  art: "アート"
+  about_me: "私について"
+  personal_journey: "個人的な旅"
+  connections: "つながり"
+
+# Dropdown menus
+dropdown:
+  photos: "写真"
+  other_things: "その他"
+  rocket_pup: "Rocket Pup"
+  caliphoria: "Caliphoria"
+  wattz: "Wattz"
+  presentations: "プレゼンテーション"
+
+# UI Elements
+ui:
+  read_more: "続きを読む"
+  back_to_top: "トップへ戻る"
+  search: "検索"
+  tags: "タグ"
+  categories: "カテゴリ"
+  share: "共有"
+  previous: "前へ"
+  next: "次へ"
+  loading: "読み込み中..."
+  error: "エラー"
+  close: "閉じる"
+
+# Footer
+footer:
+  designed_by: "Kaliが愛を込めてデザイン"
+  copyright: "© 2025 Kali Jackson. 全著作権所有。"
+
+# Blog
+blog:
+  recent_posts: "最近の投稿"
+  all_posts: "すべての投稿"
+  written_by: "著者"
+  posted_on: "投稿日"
+  read_time: "分で読めます"
+  no_posts: "投稿が見つかりません。"
+
+# Social
+social:
+  follow_me: "フォローする"
+  github: "GitHub"
+  linkedin: "LinkedIn"
+  instagram: "Instagram"
+  bluesky: "BlueSky"
+
+# 404 Page
+error_404:
+  title: "404 - ページが見つかりません"
+  message: "申し訳ございません。お探しのページは存在しません。"
+  home_link: "ホームに戻る"
+
+# Thank You Page
+thank_you:
+  title: "ありがとうございます！"
+  message: "メッセージは正常に送信されました。"
+
+# Date formats
+date:
+  formats:
+    default: "%Y年%m月%d日"
+    long: "%Y年%m月%d日 %H:%M"
+    short: "%Y/%m/%d"

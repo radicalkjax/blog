@@ -1,0 +1,57 @@
+---
+layout: default
+title: Debug Page
+---
+
+<h2>Debug Information</h2>
+
+<h3>Site Variables:</h3>
+<ul>
+  <li>site.languages: {{ site.languages | join: ", " }}</li>
+  <li>site.default_lang: {{ site.default_lang }}</li>
+  <li>site.active_lang: {{ site.active_lang }}</li>
+  <li>site.baseurl: {{ site.baseurl }}</li>
+  <li>site.url: {{ site.url }}</li>
+</ul>
+
+<h3>Page Variables:</h3>
+<ul>
+  <li>page.url: {{ page.url }}</li>
+  <li>page.lang: {{ page.lang }}</li>
+  <li>page.permalink: {{ page.permalink }}</li>
+  <li>page.permalink_lang exists?: {% if page.permalink_lang %}Yes{% else %}No{% endif %}</li>
+  {% if page.permalink_lang %}
+  <li>page.permalink_lang[en]: {{ page.permalink_lang["en"] }}</li>
+  <li>page.permalink_lang[es]: {{ page.permalink_lang["es"] }}</li>
+  <li>page.permalink_lang[fr]: {{ page.permalink_lang["fr"] }}</li>
+  <li>page.permalink_lang[ja]: {{ page.permalink_lang["ja"] }}</li>
+  {% endif %}
+</ul>
+
+<h3>Language Links Test:</h3>
+<ul>
+  {% for lang in site.languages %}
+  <li>
+    Language: {{ lang }}<br>
+    Is Active?: {% if lang == site.active_lang %}YES{% else %}NO{% endif %}<br>
+    Is Default?: {% if lang == site.default_lang %}YES{% else %}NO{% endif %}<br>
+    {% if lang == site.default_lang %}
+      URL would be: {{ site.baseurl }}{{ page.url }}<br>
+    {% else %}
+      URL would be: {{ site.baseurl }}/{{ lang }}{{ page.url }}<br>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<h3>Test Links:</h3>
+<p>Current page.url: {{ page.url }}</p>
+<p>Current site.active_lang: {{ site.active_lang }}</p>
+<p>Current site.default_lang: {{ site.default_lang }}</p>
+<ul>
+  <li><a href="{{ page.url }}">Link to English (page.url only)</a></li>
+  <li><a href="/debug.html">Link to English (hardcoded /debug.html)</a></li>
+  <li><a href="/es{{ page.url }}">Link to Spanish</a></li>
+  <li><a href="/fr{{ page.url }}">Link to French</a></li>
+  <li><a href="/ja{{ page.url }}">Link to Japanese</a></li>
+</ul>

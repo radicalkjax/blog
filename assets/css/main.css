@@ -1649,3 +1649,109 @@ nav ul li a.active {
         overflow: hidden;
     }
 }
+
+/* RTL Support for Arabic */
+:root[lang="ar"] {
+    direction: rtl;
+}
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .container {
+    direction: rtl;
+}
+
+/* Keep header elements in LTR layout */
+[dir="rtl"] header {
+    direction: ltr; /* Keep header layout unchanged */
+}
+
+[dir="rtl"] header h1,
+[dir="rtl"] header p {
+    text-align: right; /* Only text alignment changes */
+    direction: rtl;
+}
+
+/* Keep navigation in original order */
+[dir="rtl"] nav {
+    direction: ltr;
+}
+
+[dir="rtl"] nav ul {
+    direction: ltr; /* Keep navigation items in original order */
+}
+
+/* Keep site logo in original position */
+[dir="rtl"] .site-logo-container {
+    /* Keep original positioning - no changes */
+}
+
+/* Keep social icons in original layout */
+[dir="rtl"] .social-icons {
+    direction: ltr; /* Prevent icon order reversal */
+}
+
+/* Keep language switcher unchanged */
+[dir="rtl"] .language-switcher {
+    direction: ltr;
+}
+
+/* Apply RTL to content areas only */
+[dir="rtl"] .blog-post,
+[dir="rtl"] .blog-content,
+[dir="rtl"] article,
+[dir="rtl"] main {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] main ul,
+[dir="rtl"] main ol,
+[dir="rtl"] article ul,
+[dir="rtl"] article ol {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+[dir="rtl"] blockquote {
+    border-left: none;
+    border-right: 3px solid #f84ef8;
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+/* Keep floating TOC in original position */
+[dir="rtl"] #floating-toc {
+    direction: ltr; /* Keep TOC layout unchanged */
+}
+
+[dir="rtl"] #floating-toc .toc-content {
+    text-align: right; /* Only change text alignment */
+    direction: rtl;
+}
+
+/* RTL specific adjustments for forms */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Footer adjustments */
+[dir="rtl"] footer {
+    text-align: center; /* Keep footer centered */
+}
+
+/* Keep dropdown in original position */
+[dir="rtl"] .dropdown {
+    direction: ltr;
+}
+
+[dir="rtl"] .dropdown-content {
+    direction: ltr;
+    text-align: left; /* Keep dropdown items left-aligned */
+}
