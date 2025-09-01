@@ -50,8 +50,12 @@ A couple months pass by and it's time to travel to DEF CON 33. Kat and I are mak
 I've driven enough of Highway 99 for a lifetime so we chose to go up through [El Dorado](https://en.wikipedia.org/wiki/Eldorado_National_Forest) and into Nevada. We found all kinds of amazing beautiful nature as we traversed from [the mountains](https://en.wikipedia.org/wiki/Sierra_Nevada) during the day time to down into [the desert](https://en.wikipedia.org/wiki/Death_Valley) through the evening.
 
 <!-- Include Leaflet CSS and JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+      crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+        crossorigin=""></script>
 <!-- Include Leaflet MarkerCluster plugin -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
@@ -206,10 +210,55 @@ const photoLocations = [
   }
 ];
 
-// Initialize map when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  // Create map centered on the route
-  const map = L.map('map').setView([37.5, -117.5], 6);
+// Initialize map when everything is loaded
+(function() {
+  let mapInitialized = false;
+  
+  function tryInitMap() {
+    if (mapInitialized) return;
+    
+    if (typeof L === 'undefined') {
+      console.error('Leaflet is not loaded yet. Retrying...');
+      setTimeout(tryInitMap, 500);
+      return;
+    }
+    
+    if (typeof L.markerClusterGroup === 'undefined') {
+      console.error('MarkerCluster plugin is not loaded yet. Retrying...');
+      setTimeout(tryInitMap, 500);
+      return;
+    }
+    
+    console.log('Leaflet and plugins loaded, initializing map...');
+    mapInitialized = true;
+    initializeMap();
+  }
+  
+  // Try on DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryInitMap);
+  } else {
+    // DOM is already loaded
+    tryInitMap();
+  }
+  
+  // Also try on window load as fallback
+  window.addEventListener('load', tryInitMap);
+})();
+
+function initializeMap() {
+  try {
+    // Check if map container exists
+    const mapElement = document.getElementById('map');
+    if (!mapElement) {
+      console.error('Map container element not found!');
+      return;
+    }
+    
+    console.log('Creating map...');
+    // Create map centered on the route
+    const map = L.map('map').setView([37.5, -117.5], 6);
+    console.log('Map created successfully');
 
   // Add dark themed tile layer
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -446,7 +495,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
-});
+  
+  } catch (error) {
+    console.error('Error initializing map:', error);
+  }
+}
 
 // Function to change carousel photo
 window.changeCarouselPhoto = function(direction, coords) {
