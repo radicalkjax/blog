@@ -18,13 +18,13 @@ mjx-container[jax="CHTML"][display="true"] {
 
 /* Style for the actual MathJax content in block equations */
 mjx-container[jax="CHTML"][display="true"] mjx-math {
-    color: #ffffff !important;
+    color: #fff !important;
     font-size: 1.1em !important;
 }
 
 /* Style for inline equations (displayed using $...$) */
 mjx-container:not([display="true"]) {
-    color: #ffffff !important;
+    color: #fff !important;
 }
 
 /* Style for MathJax error messages */

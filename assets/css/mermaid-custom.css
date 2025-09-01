@@ -55,8 +55,8 @@
 .mermaid .pieLabel,
 .mermaid .pieTitleText {
     font-family: 'DM Mono', monospace !important;
-    fill: #ffffff !important;
-    color: #ffffff !important;
+    fill: #fff !important;
+    color: #fff !important;
 }
 
 /* Style nodes - using original coloring */
@@ -66,19 +66,19 @@
 .mermaid .node polygon,
 .mermaid .node path {
     fill: rgba(255, 255, 255, 0.1) !important;
-    stroke: #ffffff !important;
+    stroke: #fff !important;
     stroke-width: 2px !important;
 }
 
 /* Style edges - using original coloring */
 .mermaid .edgePath .path {
-    stroke: #ffffff !important;
+    stroke: #fff !important;
     stroke-width: 2px !important;
 }
 
 /* Style edge labels - using original coloring */
 .mermaid .edgeLabel {
-    color: #ffffff !important;
+    color: #fff !important;
     background-color: rgba(109, 16, 90, 0.7) !important;
     font-family: 'DM Mono', monospace !important;
 }
@@ -86,25 +86,25 @@
 /* Style clusters - using original coloring */
 .mermaid .cluster rect {
     fill: rgba(255, 255, 255, 0.05) !important;
-    stroke: #ffffff !important;
+    stroke: #fff !important;
     stroke-width: 2px !important;
 }
 
 /* Style for flowchart - using original coloring */
 .mermaid .flowchart-link {
-    stroke: #ffffff !important;
+    stroke: #fff !important;
     stroke-width: 2px !important;
 }
 
 /* Style for sequence diagrams - using original coloring */
 .mermaid .actor {
     fill: rgba(255, 255, 255, 0.1) !important;
-    stroke: #ffffff !important;
+    stroke: #fff !important;
 }
 
 .mermaid .messageLine0,
 .mermaid .messageLine1 {
-    stroke: #ffffff !important;
+    stroke: #fff !important;
 }
 
 /* Style for gantt charts - using original coloring */
@@ -119,26 +119,26 @@
 .mermaid .task2,
 .mermaid .task3 {
     fill: rgba(255, 255, 255, 0.1) !important;
-    stroke: #ffffff !important;
+    stroke: #fff !important;
 }
 
 /* Style for class diagrams - using original coloring */
 .mermaid .classLabel .label {
-    fill: #ffffff !important;
+    fill: #fff !important;
 }
 
 /* Style for state diagrams - using original coloring */
 .mermaid .stateLabel {
-    fill: #ffffff !important;
+    fill: #fff !important;
 }
 
 /* Style for pie charts - using original coloring */
 .mermaid .pieTitleText {
-    fill: #ffffff !important;
+    fill: #fff !important;
 }
 
 .mermaid .slice {
-    stroke: #ffffff !important;
+    stroke: #fff !important;
 }
 
 /* Responsive adjustments */
