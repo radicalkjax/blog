@@ -4,9 +4,9 @@
  */
 
 import ThemeManager from './modules/theme.js';
-import Navigation from './modules/navigation.js';
-import LazyLoader from './modules/lazy-loader.js';
-import PWAManager from './modules/pwa.js';
+import NavigationModule from './modules/navigation.js';
+import LazyLoaderModule from './modules/lazy-loader.js';
+import PWAManagerModule from './modules/pwa.js';
 
 // Import Web Components
 import { initializeComponents } from './components/index.js';
@@ -30,26 +30,25 @@ class App {
     try {
       // Initialize Web Components first
       await initializeComponents();
-      
+
       // Initialize core modules
       this.modules.theme = new ThemeManager();
-      this.modules.navigation = new Navigation();
-      this.modules.lazyLoader = new LazyLoader();
-      
+      this.modules.navigation = new NavigationModule();
+      this.modules.lazyLoader = new LazyLoaderModule();
+
       // Initialize PWA features
       if ('serviceWorker' in navigator) {
-        this.modules.pwa = new PWAManager();
+        this.modules.pwa = new PWAManagerModule();
       }
-      
+
       // Initialize page-specific features
       this.initializePageFeatures();
-      
+
       // Set up global event listeners
       this.setupEventListeners();
-      
+
       // Mark app as initialized
       document.body.classList.add('app-initialized');
-      
     } catch (error) {
       console.error('Failed to initialize app:', error);
     }
@@ -61,13 +60,13 @@ class App {
     if (contactForm) {
       this.initContactForm(contactForm);
     }
-    
+
     // Initialize gallery if present
     const galleries = document.querySelectorAll('.gallery-grid');
     if (galleries.length) {
       this.initGalleries(galleries);
     }
-    
+
     // Initialize social icons animation
     this.animateSocialIcons();
   }
@@ -75,26 +74,26 @@ class App {
   initContactForm(form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const formData = new FormData(form);
       const data = Object.fromEntries(formData);
-      
+
       // Validate
       if (!this.validateFormData(data)) {
         this.showNotification('Please fill in all required fields', 'error');
         return;
       }
-      
+
       // Show loading state
       const submitButton = form.querySelector('button[type="submit"]');
       const originalText = submitButton.textContent;
       submitButton.textContent = 'Sending...';
       submitButton.disabled = true;
-      
+
       try {
         // In production, this would send to a real endpoint
         await this.simulateFormSubmission(data);
-        
+
         this.showNotification('Message sent successfully!', 'success');
         form.reset();
       } catch (error) {
@@ -108,10 +107,10 @@ class App {
 
   validateFormData(data) {
     const required = ['name', 'email', 'message'];
-    return required.every(field => data[field]?.trim());
+    return required.every((field) => data[field]?.trim());
   }
 
-  simulateFormSubmission(data) {
+  simulateFormSubmission(_data) {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
@@ -120,10 +119,10 @@ class App {
   }
 
   initGalleries(galleries) {
-    galleries.forEach(gallery => {
+    galleries.forEach((gallery) => {
       const images = gallery.querySelectorAll('img');
-      
-      images.forEach(img => {
+
+      images.forEach((img) => {
         img.addEventListener('click', () => {
           this.openLightbox(img.src, img.alt);
         });
@@ -140,15 +139,15 @@ class App {
         <img src="${src}" alt="${alt}">
       </div>
     `;
-    
+
     document.body.appendChild(lightbox);
     document.body.style.overflow = 'hidden';
-    
+
     // Animate in
     requestAnimationFrame(() => {
       lightbox.classList.add('active');
     });
-    
+
     // Close handlers
     const closeBtn = lightbox.querySelector('.lightbox-close');
     const closeLightbox = () => {
@@ -158,12 +157,12 @@ class App {
         document.body.style.overflow = '';
       }, 300);
     };
-    
+
     closeBtn.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
-    
+
     // ESC key to close
     const escHandler = (e) => {
       if (e.key === 'Escape') {
@@ -176,7 +175,7 @@ class App {
 
   animateSocialIcons() {
     const icons = document.querySelectorAll('.social-icons a');
-    
+
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
@@ -188,8 +187,8 @@ class App {
           }
         });
       });
-      
-      icons.forEach(icon => observer.observe(icon));
+
+      icons.forEach((icon) => observer.observe(icon));
     } else {
       // Fallback for older browsers
       icons.forEach((icon, index) => {
@@ -207,7 +206,7 @@ class App {
     backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
     backToTop.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(backToTop);
-    
+
     let scrollTimeout;
     window.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
@@ -219,19 +218,19 @@ class App {
         }
       }, 100);
     });
-    
+
     backToTop.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     });
-    
+
     // Handle print styles
     window.addEventListener('beforeprint', () => {
       document.body.classList.add('printing');
     });
-    
+
     window.addEventListener('afterprint', () => {
       document.body.classList.remove('printing');
     });
@@ -241,14 +240,14 @@ class App {
     const notification = document.createElement('div');
     notification.className = `notification notification--${type}`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     requestAnimationFrame(() => {
       notification.classList.add('visible');
     });
-    
+
     // Auto-remove after 5 seconds
     setTimeout(() => {
       notification.classList.remove('visible');

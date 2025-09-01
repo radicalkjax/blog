@@ -10,10 +10,10 @@
 .language-switcher-toggle {
   cursor: pointer;
   padding: 2px 6px;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   border-radius: 3px;
   background-color: transparent;
-  color: #ffffff;
+  color: #fff;
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   display: inline-flex;
@@ -44,14 +44,13 @@
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 4px;
   min-width: 60px;
   background-color: #1a1a1a;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   border-radius: 3px;
   list-style: none;
   padding: 0;
-  margin: 4px 0 0 0;
+  margin: 4px 0 0;
   display: none;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -71,7 +70,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6px 10px;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-family: 'DM Mono', monospace;
   font-size: 11px;

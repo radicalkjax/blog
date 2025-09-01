@@ -22,12 +22,24 @@
     "import/extensions": ["error", "always", { "ignorePackages": true }],
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
-    "max-len": ["error", { "code": 120, "ignoreComments": true }],
-    "no-underscore-dangle": "off"
+    "max-len": ["error", { "code": 120, "ignoreComments": true, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
+    "no-underscore-dangle": "off",
+    "no-use-before-define": ["error", { "functions": false, "classes": true, "variables": true }],
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+    "no-await-in-loop": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-restricted-globals": ["error", "event", "fdescribe"],
+    "radix": "off",
+    "consistent-return": "off",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-cond-assign": ["error", "except-parens"],
+    "no-lonely-if": "off"
   },
   "globals": {
     "jekyll": "readonly",
     "customElements": "readonly",
-    "HTMLElement": "readonly"
+    "HTMLElement": "readonly",
+    "MathJax": "readonly",
+    "mermaid": "readonly"
   }
 }

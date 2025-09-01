@@ -18,8 +18,8 @@ class ThemeManager {
 
   getStoredTheme() {
     try {
-      return localStorage.getItem('theme') || 
-             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      return localStorage.getItem('theme')
+             || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     } catch (e) {
       return 'light';
     }
@@ -28,7 +28,7 @@ class ThemeManager {
   applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     this.theme = theme;
-    
+
     try {
       localStorage.setItem('theme', theme);
     } catch (e) {
@@ -40,21 +40,21 @@ class ThemeManager {
     this.toggleButton.className = 'theme-toggle';
     this.toggleButton.setAttribute('aria-label', 'Toggle dark mode');
     this.toggleButton.innerHTML = this.getIconForTheme(this.theme);
-    
+
     document.body.appendChild(this.toggleButton);
   }
 
   getIconForTheme(theme) {
     const icons = {
       light: '<i class="fas fa-moon"></i>',
-      dark: '<i class="fas fa-sun"></i>'
+      dark: '<i class="fas fa-sun"></i>',
     };
     return icons[theme] || icons.light;
   }
 
   bindEvents() {
     this.toggleButton?.addEventListener('click', () => this.toggleTheme());
-    
+
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
@@ -68,7 +68,7 @@ class ThemeManager {
     const newTheme = this.theme === 'light' ? 'dark' : 'light';
     this.applyTheme(newTheme);
     this.updateToggleButton();
-    
+
     // Dispatch custom event
     window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: newTheme } }));
   }

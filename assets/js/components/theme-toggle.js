@@ -11,17 +11,17 @@ class ThemeToggle extends HTMLElement {
 
   constructor() {
     super();
-    
+
     // Create Shadow DOM for encapsulation
     this.attachShadow({ mode: 'open' });
-    
+
     // Component state
     this.state = {
       theme: 'auto',
       systemPreference: null,
-      storageKey: 'theme-preference'
+      storageKey: 'theme-preference',
     };
-    
+
     // Bind methods
     this.handleClick = this.handleClick.bind(this);
     this.handleSystemChange = this.handleSystemChange.bind(this);
@@ -39,7 +39,7 @@ class ThemeToggle extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
-    
+
     switch (name) {
       case 'theme':
         this.state.theme = newValue;
@@ -52,6 +52,8 @@ class ThemeToggle extends HTMLElement {
         if (newValue === 'true') {
           this.detectSystemPreference();
         }
+        break;
+      default:
         break;
     }
   }
@@ -207,7 +209,7 @@ class ThemeToggle extends HTMLElement {
     if (window.matchMedia) {
       const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       this.state.systemPreference = isDark ? 'dark' : 'light';
-      
+
       if (this.state.theme === 'auto') {
         this.applyTheme(this.state.systemPreference);
       }
@@ -219,24 +221,24 @@ class ThemeToggle extends HTMLElement {
     const themes = ['light', 'dark', 'auto'];
     const currentIndex = themes.indexOf(this.state.theme);
     const nextIndex = (currentIndex + 1) % themes.length;
-    
+
     this.state.theme = themes[nextIndex];
     this.updateTheme();
-    
+
     // Save preference
     localStorage.setItem(this.state.storageKey, this.state.theme);
-    
+
     // Dispatch custom event
     this.dispatchEvent(new CustomEvent('theme-change', {
       detail: { theme: this.state.theme },
       bubbles: true,
-      composed: true
+      composed: true,
     }));
   }
 
   handleSystemChange(e) {
     this.state.systemPreference = e.matches ? 'dark' : 'light';
-    
+
     if (this.state.theme === 'auto') {
       this.applyTheme(this.state.systemPreference);
     }
@@ -244,11 +246,11 @@ class ThemeToggle extends HTMLElement {
 
   updateTheme() {
     this.setAttribute('theme', this.state.theme);
-    
-    const effectiveTheme = this.state.theme === 'auto' 
+
+    const effectiveTheme = this.state.theme === 'auto'
       ? this.state.systemPreference || 'light'
       : this.state.theme;
-    
+
     this.applyTheme(effectiveTheme);
     this.render();
   }
@@ -256,7 +258,7 @@ class ThemeToggle extends HTMLElement {
   applyTheme(theme) {
     // Apply theme to document
     document.documentElement.setAttribute('data-theme', theme);
-    
+
     // Update meta theme-color for mobile browsers
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     if (metaTheme) {

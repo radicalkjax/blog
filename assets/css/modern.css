@@ -9,10 +9,10 @@
 :root {
   /* Color Palette */
   --color-primary: #6d105a;
-  --color-secondary: #ffffff;
+  --color-secondary: #fff;
   --color-accent: #f84ef8;
   --color-background: #6d105a;
-  --color-text: #ffffff;
+  --color-text: #fff;
   --color-link: #f84ef8;
   --color-link-hover: #ff6bff;
   --color-border: rgba(255, 255, 255, 0.2);
@@ -116,12 +116,7 @@ body {
 /* CSS Grid for main layout */
 .page-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+  grid-template: "header" auto "main" 1fr "footer" auto / 1fr;
   min-height: 100vh;
 }
 

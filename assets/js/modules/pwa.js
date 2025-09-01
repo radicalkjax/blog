@@ -22,20 +22,18 @@ export class PWAManager {
   async registerServiceWorker() {
     try {
       this.registration = await navigator.serviceWorker.register('/service-worker.js', {
-        scope: '/'
+        scope: '/',
       });
-      
-      
+
       // Check for updates
       this.registration.addEventListener('updatefound', () => {
         this.handleUpdate();
       });
-      
+
       // Check registration status
       if (this.registration.waiting) {
         this.promptUpdate();
       }
-      
     } catch (error) {
       console.error('Service Worker registration failed:', error);
     }
@@ -43,7 +41,7 @@ export class PWAManager {
 
   handleUpdate() {
     const newWorker = this.registration.installing;
-    
+
     newWorker.addEventListener('statechange', () => {
       if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
         this.promptUpdate();
@@ -60,7 +58,7 @@ export class PWAManager {
   skipWaiting() {
     if (this.registration.waiting) {
       this.registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-      
+
       // Reload when the new service worker takes control
       navigator.serviceWorker.addEventListener('controllerchange', () => {
         window.location.reload();
@@ -73,14 +71,14 @@ export class PWAManager {
     window.addEventListener('beforeinstallprompt', (e) => {
       // Prevent the default prompt
       e.preventDefault();
-      
+
       // Store the event for later use
       this.deferredPrompt = e;
-      
+
       // Show custom install button
       this.showInstallButton();
     });
-    
+
     // Listen for app installed event
     window.addEventListener('appinstalled', () => {
       this.hideInstallButton();
@@ -91,16 +89,16 @@ export class PWAManager {
   showInstallButton() {
     // Check if button already exists
     if (document.querySelector('.pwa-install-button')) return;
-    
+
     const button = document.createElement('button');
     button.className = 'pwa-install-button';
     button.innerHTML = '<i class="fas fa-download"></i> Install App';
     button.setAttribute('aria-label', 'Install application');
-    
+
     button.addEventListener('click', () => this.promptInstall());
-    
+
     document.body.appendChild(button);
-    
+
     // Animate in
     requestAnimationFrame(() => {
       button.classList.add('visible');
@@ -119,18 +117,17 @@ export class PWAManager {
     if (!this.deferredPrompt) {
       return;
     }
-    
+
     // Show the install prompt
     this.deferredPrompt.prompt();
-    
+
     // Wait for the user's response
     const { outcome } = await this.deferredPrompt.userChoice;
-    
-    
+
     if (outcome === 'accepted') {
       this.hideInstallButton();
     }
-    
+
     // Clear the deferred prompt
     this.deferredPrompt = null;
   }
@@ -147,7 +144,7 @@ export class PWAManager {
   setupOfflineDetection() {
     // Check initial online status
     this.updateOnlineStatus();
-    
+
     // Listen for online/offline events
     window.addEventListener('online', () => this.updateOnlineStatus());
     window.addEventListener('offline', () => this.updateOnlineStatus());
@@ -155,9 +152,9 @@ export class PWAManager {
 
   updateOnlineStatus() {
     const isOnline = navigator.onLine;
-    
+
     document.body.classList.toggle('offline', !isOnline);
-    
+
     if (!isOnline) {
       this.showOfflineNotification();
     } else {
@@ -168,16 +165,16 @@ export class PWAManager {
   showOfflineNotification() {
     // Check if notification already exists
     if (document.querySelector('.offline-notification')) return;
-    
+
     const notification = document.createElement('div');
     notification.className = 'offline-notification';
     notification.innerHTML = `
       <i class="fas fa-wifi-slash"></i>
       <span>You are currently offline. Some features may be limited.</span>
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     requestAnimationFrame(() => {
       notification.classList.add('visible');
@@ -196,14 +193,14 @@ export class PWAManager {
     const notification = document.createElement('div');
     notification.className = `pwa-notification pwa-notification--${type}`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     requestAnimationFrame(() => {
       notification.classList.add('visible');
     });
-    
+
     // Auto-remove after 3 seconds
     setTimeout(() => {
       notification.classList.remove('visible');
@@ -224,12 +221,12 @@ export class PWAManager {
     if (window.matchMedia('(display-mode: standalone)').matches) {
       return true;
     }
-    
+
     // Check if running in iOS standalone mode
     if (window.navigator.standalone === true) {
       return true;
     }
-    
+
     return false;
   }
 }

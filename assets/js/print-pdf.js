@@ -3,8 +3,7 @@
  * Creates a button below Key Terms that allows printing the document with custom styling
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-  
+document.addEventListener('DOMContentLoaded', () => {
   // Function to create print styles
   function createPrintStyles() {
     const printStyle = document.createElement('style');
@@ -554,22 +553,20 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(printStyle);
   }
-  
+
   // Function to prepare document for printing
   function preparePrint() {
     // Ensure all images are loaded
     const images = document.querySelectorAll('img');
-    const imagePromises = Array.from(images).map(img => {
-      return new Promise((resolve, reject) => {
-        if (img.complete) {
-          resolve();
-        } else {
-          img.onload = resolve;
-          img.onerror = resolve; // Resolve even on error to not block printing
-        }
-      });
-    });
-    
+    const imagePromises = Array.from(images).map((img) => new Promise((resolve, _reject) => {
+      if (img.complete) {
+        resolve();
+      } else {
+        img.onload = resolve;
+        img.onerror = resolve; // Resolve even on error to not block printing
+      }
+    }));
+
     // Wait for all images and then print
     Promise.all(imagePromises).then(() => {
       // Give a small delay for any final rendering
@@ -578,14 +575,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 500);
     });
   }
-  
+
   // Function to create the print button container
   function createPrintContainer() {
     const tocContainer = document.getElementById('floating-toc');
     if (!tocContainer || !tocContainer.parentNode) {
       return;
     }
-    
+
     // Create the print button container
     const printContainer = document.createElement('div');
     printContainer.id = 'print-pdf-container';
@@ -602,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
       width: 56px;
       height: 56px;
     `;
-    
+
     // Create the print button
     const printButton = document.createElement('button');
     printButton.id = 'print-to-pdf-button';
@@ -622,34 +619,34 @@ document.addEventListener('DOMContentLoaded', function() {
       align-items: center;
       justify-content: center;
     `;
-    
+
     // Add hover effect
-    printButton.onmouseover = function() {
+    printButton.onmouseover = function () {
       this.style.backgroundColor = '#ff6b6b';
       this.style.transform = 'scale(1.05)';
     };
-    printButton.onmouseout = function() {
+    printButton.onmouseout = function () {
       this.style.backgroundColor = '#6d105a';
       this.style.transform = 'scale(1)';
     };
-    
+
     // Add click handler
-    printButton.addEventListener('click', function() {
+    printButton.addEventListener('click', () => {
       preparePrint();
     });
-    
+
     // Assemble the container
     printContainer.appendChild(printButton);
-    
+
     // Insert in the body to ensure it's independent
     document.body.appendChild(printContainer);
   }
-  
+
   // Initialize print functionality
   createPrintStyles();
-  
+
   // Wait for other components to load
-  setTimeout(function() {
+  setTimeout(() => {
     createPrintContainer();
   }, 1000);
 });

@@ -12,14 +12,14 @@ class CodeViewer extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    
+
     this.state = {
       code: '',
       language: 'javascript',
       filename: null,
       highlightLines: [],
       showLineNumbers: true,
-      copied: false
+      copied: false,
     };
   }
 
@@ -36,7 +36,7 @@ class CodeViewer extends HTMLElement {
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
-    
+
     switch (name) {
       case 'language':
         this.state.language = newValue;
@@ -45,13 +45,15 @@ class CodeViewer extends HTMLElement {
         this.state.filename = newValue;
         break;
       case 'highlight-lines':
-        this.state.highlightLines = newValue.split(',').map(n => parseInt(n.trim()));
+        this.state.highlightLines = newValue.split(',').map((n) => parseInt(n.trim(), 10));
         break;
       case 'show-line-numbers':
         this.state.showLineNumbers = newValue !== 'false';
         break;
+      default:
+        break;
     }
-    
+
     if (this.shadowRoot) {
       this.render();
     }
@@ -263,7 +265,7 @@ class CodeViewer extends HTMLElement {
       const lineNumber = index + 1;
       const isHighlighted = this.state.highlightLines.includes(lineNumber);
       const highlightedLine = this.highlightSyntax(line, this.state.language);
-      
+
       return `
         <div class="code-line ${isHighlighted ? 'highlighted' : ''}">
           ${this.state.showLineNumbers ? `<span class="line-number">${lineNumber}</span>` : ''}
@@ -307,20 +309,20 @@ class CodeViewer extends HTMLElement {
         { regex: /\/\*[\s\S]*?\*\//g, class: 'token-comment' },
         { regex: /\b([a-zA-Z_]\w*)\s*\(/g, class: 'token-function', group: 1 },
         { regex: /[{}[\]()]/g, class: 'token-punctuation' },
-        { regex: /[+\-*/%=<>!&|?:]/g, class: 'token-operator' }
+        { regex: /[+\-*/%=<>!&|?:]/g, class: 'token-operator' },
       ],
       css: [
         { regex: /[.#][\w-]+/g, class: 'token-class' },
         { regex: /\b(px|em|rem|%|vh|vw|deg|s|ms)\b/g, class: 'token-number' },
         { regex: /:[\w-]+/g, class: 'token-property' },
-        { regex: /\/\*[\s\S]*?\*\//g, class: 'token-comment' }
+        { regex: /\/\*[\s\S]*?\*\//g, class: 'token-comment' },
       ],
       html: [
         { regex: /&lt;\/?[\w-]+/g, class: 'token-keyword' },
         { regex: /[\w-]+=/g, class: 'token-property' },
         { regex: /(["'])(?:(?=(\\?))\2.)*?\1/g, class: 'token-string' },
-        { regex: /&lt;!--[\s\S]*?--&gt;/g, class: 'token-comment' }
-      ]
+        { regex: /&lt;!--[\s\S]*?--&gt;/g, class: 'token-comment' },
+      ],
     };
 
     let highlighted = this.escapeHtml(code);
@@ -328,9 +330,7 @@ class CodeViewer extends HTMLElement {
 
     langPatterns.forEach(({ regex, class: className, group }) => {
       if (group) {
-        highlighted = highlighted.replace(regex, (match, p1) => 
-          match.replace(p1, `<span class="${className}">${p1}</span>`)
-        );
+        highlighted = highlighted.replace(regex, (match, p1) => match.replace(p1, `<span class="${className}">${p1}</span>`));
       } else {
         highlighted = highlighted.replace(regex, `<span class="${className}">$&</span>`);
       }
@@ -360,7 +360,7 @@ class CodeViewer extends HTMLElement {
       await navigator.clipboard.writeText(this.state.code);
       this.state.copied = true;
       this.render();
-      
+
       setTimeout(() => {
         this.state.copied = false;
         this.render();
@@ -370,7 +370,7 @@ class CodeViewer extends HTMLElement {
       this.dispatchEvent(new CustomEvent('code-copied', {
         detail: { code: this.state.code, language: this.state.language },
         bubbles: true,
-        composed: true
+        composed: true,
       }));
     } catch (err) {
       console.error('Failed to copy:', err);

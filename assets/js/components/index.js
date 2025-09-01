@@ -11,7 +11,7 @@ import CodeViewer from './code-viewer.js';
 // Component registry
 const components = {
   'theme-toggle': ThemeToggle,
-  'code-viewer': CodeViewer
+  'code-viewer': CodeViewer,
 };
 
 /**
@@ -26,9 +26,7 @@ export async function initializeComponents() {
   }
 
   // Wait for all components to be defined
-  const promises = Object.keys(components).map(name => 
-    customElements.whenDefined(name)
-  );
+  const promises = Object.keys(components).map((name) => customElements.whenDefined(name));
 
   try {
     await Promise.all(promises);
@@ -79,5 +77,5 @@ export default {
   initializeComponents,
   loadComponent,
   isComponentRegistered,
-  components
+  components,
 };

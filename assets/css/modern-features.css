@@ -138,8 +138,8 @@ nav li {
 @layer base {
   :root {
     /* Modern color system with color-mix() */
-    --color-primary-light: color-mix(in srgb, var(--color-primary) 80%, white);
-    --color-primary-dark: color-mix(in srgb, var(--color-primary) 80%, black);
+    --color-primary-light: color-mix(in sRGB, var(--color-primary) 80%, white);
+    --color-primary-dark: color-mix(in sRGB, var(--color-primary) 80%, black);
     
     /* Dynamic viewport units */
     --vh: 1dvh;
@@ -224,6 +224,7 @@ nav li {
     from {
       transform: translateY(0);
     }
+
     to {
       transform: translateY(-50%);
     }
