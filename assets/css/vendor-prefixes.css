@@ -1,0 +1,61 @@
+/* Vendor-specific CSS prefixes for cross-browser compatibility
+ * These are separated to keep main.css W3C compliant
+ * Include this file after main.css
+ */
+
+/* Volume slider styling for WebKit browsers */
+.volume-slider {
+  -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #9c1f8c;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Volume slider styling for Firefox */
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #9c1f8c;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Custom scrollbar for WebKit browsers (TOC) */
+#floating-toc::-webkit-scrollbar {
+  width: 8px;
+}
+
+#floating-toc::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#floating-toc::-webkit-scrollbar-thumb {
+  background-color: #6d105a;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar for references */
+.references-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.references-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.references-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.references-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}

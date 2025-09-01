@@ -1,10 +1,118 @@
 /* 
  * Main CSS for radicalkjax.com GitHub Pages site
- * Based on the Pixl theme with DM Mono font
+ * Modernized with CSS Grid, Flexbox, and Custom Properties
  */
 
-/* Font import */
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+/* Font imports have been moved to fonts.css for better organization */
+
+/* ===========================
+   CSS Custom Properties
+   =========================== */
+:root {
+  /* Color Palette */
+  --color-primary: #6d105a;
+  --color-secondary: #ffffff;
+  --color-accent: #f84ef8;
+  --color-background: #6d105a;
+  --color-text: #ffffff;
+  --color-link: #f84ef8;
+  --color-link-hover: #ff6bff;
+  --color-border: rgba(255, 255, 255, 0.2);
+  
+  /* Dark Mode Colors */
+  --dark-background: #1a1a1a;
+  --dark-primary: #3a0d2e;
+  --dark-text: #e0e0e0;
+  --dark-border: rgba(255, 255, 255, 0.1);
+  
+  /* Typography */
+  --font-family: 'DM Mono', monospace;
+  --font-size-base: 16px;
+  --line-height: 1.6;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  
+  /* Layout */
+  --container-width: 1000px;
+  --header-padding: 30px;
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+}
+
+/* Skip Links for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Footer Links */
+.footer-separator {
+  margin: 0 1rem;
+  opacity: 0.5;
+}
+
+.footer-link {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--color-link-hover);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-background: var(--dark-background);
+  --color-primary: var(--dark-primary);
+  --color-text: var(--dark-text);
+  --color-border: var(--dark-border);
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1000;
+  color: var(--color-text);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-accent);
+}
+
+.theme-toggle i {
+  font-size: 20px;
+}
 
 /* Reset and base styles */
 * {
@@ -14,20 +122,23 @@
 }
 
 body {
-    font-family: 'DM Mono', monospace;
-    background-color: #6d105a; /* Updated to match original website */
-    color: #ffffff;
-    line-height: 1.6;
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: var(--line-height);
     padding: 0;
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Container */
+/* Container with modern responsive design */
 .container {
-    width: 80%;
-    max-width: 1000px; /* Reduced from 1200px */
-    margin: 0 auto; /* Center the container */
-    padding: 0;
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
 }
 
 /* Site Logo */
@@ -47,17 +158,17 @@ body {
 
 /* Header */
 header {
-    padding: 30px 0; /* Increased vertical padding from 20px to 30px */
+    padding: 12px 0; /* Remove horizontal padding */
     border: 2px solid #ffffff; /* White border all around */
     background-color: #6d105a; /* Match body background */
     position: relative;
-    margin: 20px auto 60px auto; /* Doubled the bottom margin from 30px to 60px */
+    margin: 15px auto 25px auto; /* Appropriate margins */
     width: 90vw; /* Reduced from 95vw to make room for the logo */
     left: 50%;
     transform: translateX(-50%);
-    position: relative;
     box-sizing: border-box;
     z-index: 9999; /* Ensure header is above all other content */
+    min-height: 60px; /* Reasonable minimum height */
 }
 
 /* Create a second border box underneath */
@@ -66,7 +177,7 @@ header::after {
     position: absolute;
     left: 10px; /* Shifted to the right */
     right: -10px; /* Extended to the right */
-    bottom: -12px;
+    bottom: -8px; /* Moved closer to header */
     height: 2px;
     background-color: #ffffff;
 }
@@ -76,29 +187,33 @@ header::before {
     content: '';
     position: absolute;
     left: 10px; /* Aligned with the bottom line */
-    bottom: -12px;
+    bottom: -8px; /* Adjusted to match new position */
     width: 2px;
-    height: 10px;
+    height: 6px; /* Reduced height */
     background-color: #ffffff;
 }
 
 /* Right vertical line */
-.header-content::after {
+header .container::after {
     content: '';
     position: absolute;
     right: -10px; /* Aligned with the bottom line */
-    bottom: -12px;
+    bottom: -8px; /* Adjusted to match new position */
     width: 2px;
-    height: 10px;
+    height: 6px; /* Reduced height */
     background-color: #ffffff;
 }
 
-.header-content {
+header .container {
     display: flex;
-    justify-content: flex-start; /* Align items to the start */
+    justify-content: space-between;
     align-items: center;
-    padding: 0;
     width: 100%;
+    padding: 0 15px; /* Padding for content spacing */
+    margin: 0;
+    position: relative;
+    gap: 15px; /* Add gap to prevent elements from touching */
+    max-width: none; /* Override any container max-width */
 }
 
 .logo-container {
@@ -116,38 +231,39 @@ header::before {
 
 .site-title {
     font-family: 'Uni 05_53', 'DM Mono', monospace;
-    font-size: 0.75rem; /* Slightly reduced from 0.8rem */
+    font-size: 0.8rem; /* Slightly larger for better readability */
     font-weight: 500;
     color: #ffffff;
     text-decoration: none;
     margin: 0;
     padding: 0;
-    position: absolute;
-    left: 10px; /* Position at the far left with minimal padding */
-    width: 200px; /* Give the title a fixed width */
-    max-width: 25%; /* Ensure the title doesn't take up too much space */
+    flex-shrink: 0; /* Prevent title from shrinking */
+    white-space: nowrap; /* Prevent wrapping */
+    order: 1; /* First in flex order */
 }
 
 /* Navigation */
 nav {
-    flex: 0;
+    flex: 1 1 auto; /* Take up available space */
     display: flex;
     justify-content: center;
-    position: absolute;
-    z-index: 10000; /* Even higher z-index than header */
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
+    align-items: center;
+    order: 2; /* Second in flex order */
+    margin: 0 20px; /* Add margin to create space */
 }
 
 nav ul {
     display: flex;
     list-style: none;
     justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* Allow wrapping if needed */
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 6px; /* Further reduced horizontal spacing */
     position: relative;
 }
 
@@ -155,7 +271,10 @@ nav ul li a {
     color: #ffffff;
     text-decoration: none;
     transition: opacity 0.3s ease;
-    font-size: 1.2rem; /* Increased from 1rem to 1.2rem */
+    font-size: 0.75rem; /* Smaller for more compact layout */
+    padding: 6px 4px; /* Smaller padding */
+    display: inline-block;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 nav ul li a:hover {
@@ -170,9 +289,9 @@ nav ul li a:hover {
     left: 0;
     background-color: #6d105a;
     border: 1px solid #ffffff;
-    min-width: 200px;
+    min-width: 180px; /* Slightly reduced width */
     z-index: 9999; /* Increased z-index to ensure dropdowns appear above all other elements */
-    padding: 10px 0;
+    padding: 5px 0; /* Reduced padding */
     flex-direction: column;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -185,9 +304,9 @@ nav ul li a:hover {
 }
 
 .dropdown-menu li a {
-    padding: 8px 15px;
+    padding: 6px 12px; /* Reduced padding */
     display: block;
-    font-size: 1rem;
+    font-size: 0.75rem; /* Further reduced for compact header */
     white-space: nowrap;
     position: relative;
     z-index: 10002; /* Higher than dropdown-menu li */
@@ -208,16 +327,22 @@ nav ul li a:hover {
 .social-icons {
     display: flex;
     align-items: center;
-    position: absolute;
-    right: 20px;
-    top: 20px;
+    flex-shrink: 0; /* Don't shrink */
+    gap: 8px; /* Consistent spacing between icons */
+    order: 3; /* Third in flex order */
+    margin-left: auto; /* Push to the right */
 }
 
 .social-icons a {
-    margin-right: 15px;
+    margin-right: 0; /* Use gap instead */
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1rem; /* Standard icon size */
     transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
 }
 
 .social-icons a:hover {
@@ -896,27 +1021,9 @@ nav ul li a.active {
     height: 4px;
     background: #333;
     outline: none;
-    -webkit-appearance: none;
 }
 
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    background: #9c1f8c;
-    border-radius: 50%;
-    cursor: pointer;
-}
 
-.volume-slider::-moz-range-thumb {
-    width: 12px;
-    height: 12px;
-    background: #9c1f8c;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-}
 
 .now-playing {
     font-size: 11px;
@@ -1200,76 +1307,106 @@ nav ul li a.active {
 }
 
 /* Responsive Design */
-/* Switch to mobile view when the site title would touch the navigation */
+/* Compact layout for medium screens */
 @media (max-width: 1200px) and (min-width: 1025px) {
     /* Adjust the site title to prevent it from touching the navigation */
     .site-title {
-        max-width: 20%; /* Reduce max-width to prevent overlap */
+        max-width: 180px; /* Reduce max-width to prevent overlap */
         font-size: 0.7rem; /* Slightly reduce font size */
     }
     
-    /* Adjust navigation position to make more room */
-    nav {
-        left: 55%; /* Shift navigation slightly to the right */
+    /* Make navigation more compact */
+    nav ul li {
+        margin: 0 4px; /* Even less spacing */
     }
     
-    /* Ensure social icons have margin */
+    nav ul li a {
+        font-size: 0.7rem; /* Smaller font */
+        padding: 5px 3px; /* Less padding */
+    }
+    
+    /* Ensure social icons remain visible */
     .social-icons {
-        right: 30px; /* Increased right margin */
+        display: flex !important;
+        visibility: visible !important;
+        margin-left: auto;
     }
 }
 
-/* Switch to mobile view when the logo would enter the header box */
+/* Transitional layout between desktop and mobile */
 @media (max-width: 1024px) and (min-width: 901px) {
-    /* Adjust header width and position to make room for the logo */
+    /* Keep header full width but adjust content */
     header {
-        width: 80vw; /* Reduced from 90vw to make more room for the logo */
-        left: 55%; /* Shifted right to avoid the logo */
+        width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
     }
     
-    /* Ensure the logo stays fixed in its original position */
-    .site-logo-container {
-        position: fixed;
-        left: 10px;
-        top: 1px;
-        transform: none;
+    /* Stack elements vertically */
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
     
-    /* Ensure social icons have margin */
-    .social-icons {
-        right: 30px; /* Increased right margin */
-    }
-}
-
-/* Switch to mobile view when the site title would touch the navigation */
-@media (max-width: 1000px) and (min-width: 901px) {
-    /* Switch to mobile view when the site title would touch the navigation */
+    /* Site title centered */
     .site-title {
         position: static;
-        margin: 0 auto 20px;
+        margin: 0 auto;
         text-align: center;
         width: 100%;
         max-width: 100%;
+        font-size: 0.75rem;
     }
     
-    .header-content {
-        position: relative;
-        flex-direction: column;
-        padding-top: 20px;
-    }
-    
+    /* Navigation below title */
     nav {
-        position: relative;
-        left: 0;
-        transform: none;
+        position: static;
         width: 100%;
-        display: flex;
+        display: flex !important;
+        justify-content: center;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
         justify-content: center;
     }
     
-    /* Ensure social icons have margin */
+    nav ul li {
+        margin: 5px;
+    }
+    
+    nav ul li a {
+        font-size: 0.7rem;
+        padding: 5px 8px;
+    }
+    
+    /* Social icons below nav */
     .social-icons {
-        right: 30px; /* Increased right margin */
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static;
+        margin: 0 auto;
+        justify-content: center;
+        order: 3;
+    }
+    
+    /* Ensure language selector remains visible */
+    .language-switcher {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Logo adjusts position */
+    .site-logo-container {
+        position: static;
+        margin: 10px auto 20px;
+        text-align: center;
     }
 }
 
@@ -1304,26 +1441,33 @@ nav ul li a.active {
         padding-top: 40px;
     }
     
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
     .mobile-nav-toggle {
         display: block;
-        top: 20px;
-        right: 20px;
-        position: absolute;
+        position: static; /* Change from absolute to static */
+        margin: 0 auto 15px; /* Center it and add bottom margin */
         z-index: 20010; /* Higher than other mobile elements */
-        margin: 10px; /* Add margin for better spacing */
         padding: 10px; /* Increase padding for a larger touch target */
         background-color: rgba(109, 16, 90, 0.8); /* Slight background for visibility */
         border-radius: 5px; /* Rounded corners */
+        width: 50px; /* Fixed width */
+        text-align: center;
+        order: 1; /* Place after social icons */
     }
     
     .site-title {
         position: static;
-        margin: 0 0 20px 0;
+        margin: 0 auto 10px; /* Reduce bottom margin */
         text-align: center;
-        width: 70%; /* Limit width to prevent touching hamburger menu */
-        max-width: 70%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%; /* Full width */
+        max-width: 100%;
+        padding: 0 20px; /* Normal padding */
+        order: -1; /* Make title appear first */
     }
     
     nav {
@@ -1394,10 +1538,14 @@ nav ul li a.active {
     /* Site title styling is already defined above */
     
     .social-icons {
+        display: flex !important; /* Ensure they're visible */
         position: static;
-        margin-top: 20px;
+        margin: 10px auto 15px; /* Center and add spacing */
+        margin-left: 0; /* Reset margin for mobile */
         justify-content: center;
         width: 100%;
+        order: 0; /* Place after site title (which has order: -1) */
+        gap: 10px;
     }
     
     .social-icons a:last-child {
@@ -1416,13 +1564,11 @@ nav ul li a.active {
     /* Make site title smaller on very small screens */
     .site-title {
         font-size: 0.65rem; /* Reduce font size further */
-        width: 60%; /* Reduce width to prevent touching hamburger menu */
-        max-width: 60%;
+        padding: 0 50px; /* Slightly less padding for smaller screens */
     }
     
-    /* Adjust hamburger menu position for better spacing */
+    /* Adjust hamburger menu for smaller screens */
     .mobile-nav-toggle {
-        margin: 8px; /* Slightly smaller margin */
         padding: 8px; /* Slightly smaller padding */
         font-size: 1.3rem; /* Slightly smaller icon */
     }
@@ -1438,15 +1584,17 @@ nav ul li a.active {
     /* Make site title even smaller on extremely small screens */
     .site-title {
         font-size: 0.6rem; /* Reduce font size even further */
-        width: 50%; /* Reduce width even more */
-        max-width: 50%;
+        padding: 0 45px; /* Less padding for very small screens */
     }
     
     /* Further adjust hamburger menu */
     .mobile-nav-toggle {
-        margin: 5px;
         padding: 5px;
         font-size: 1.2rem;
+    }
+    
+    .social-icons {
+        font-size: 0.9rem; /* Smaller icons for tiny screens */
     }
 }
 
@@ -1472,18 +1620,6 @@ nav ul li a.active {
     flex-direction: column;
 }
 
-#floating-toc::-webkit-scrollbar {
-    width: 8px;
-}
-
-#floating-toc::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-#floating-toc::-webkit-scrollbar-thumb {
-    background-color: #6d105a;
-    border-radius: 4px;
-}
 
 #toc-header {
     padding: 12px 15px;

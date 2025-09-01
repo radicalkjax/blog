@@ -1,0 +1,155 @@
+# Jekyll Theme Globalized - Default Configuration
+# Users can override any of these settings in their own _config.yml
+
+# Theme metadata
+theme_name: jekyll-theme-globalized
+theme_version: 1.0.0
+
+# Default theme configuration
+theme_config:
+  # Color scheme
+  colors:
+    primary: "#6d105a"
+    secondary: "#ffffff"
+    accent: "#f84ef8"
+    background: "#6d105a"
+    text: "#ffffff"
+    link: "#f84ef8"
+  
+  # Typography
+  fonts:
+    heading: "'DM Mono', monospace"
+    body: "'DM Mono', monospace"
+    code: "'DM Mono', monospace"
+  
+  # Layout options
+  layout:
+    container_width: "1000px"
+    sidebar_enabled: false
+    header_style: "default" # options: default, minimal, centered
+    footer_style: "default" # options: default, minimal, centered
+  
+  # Feature toggles
+  features:
+    language_switcher: true
+    social_links: true
+    search: false
+    comments: false
+    analytics: false
+    somafm_player: false
+    dark_mode: false
+    smooth_scroll: true
+    back_to_top: true
+  
+  # Internationalization
+  i18n:
+    enabled: true
+    default_language: "en"
+    languages: ["en", "es", "fr", "ja", "zh", "ar", "de", "pt"]
+    rtl_languages: ["ar", "he", "fa", "ur"]
+    language_names:
+      en: "English"
+      es: "Español"
+      fr: "Français"
+      ja: "日本語"
+      zh: "中文"
+      ar: "العربية"
+      de: "Deutsch"
+      pt: "Português"
+      he: "עברית"
+      fa: "فارسی"
+      ur: "اردو"
+
+# Jekyll configuration
+markdown: kramdown
+highlighter: rouge
+
+# Default plugins (users should include these in their Gemfile)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-polyglot
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: false
+      share: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "page"
+
+# Pagination (if using jekyll-paginate)
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md
+  - LICENSE
+  - "*.gemspec"
+  - example/
+
+# Include specific files
+include:
+  - _pages
+  - _redirects
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Compression
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  ignore:
+    envs: [development]
+
+# SEO and Meta
+title: Your Site Title
+description: Your site description
+url: "" # Your site URL
+baseurl: "" # Subpath if needed
+author:
+  name: Your Name
+  email: your-email@example.com
+
+# Social links (optional - users can override)
+social:
+  github: username
+  twitter: username
+  linkedin: username
+  instagram: username
+  bluesky: username
+
+# Google Analytics (optional)
+google_analytics: # UA-XXXXXXXX-X
+
+# Disqus Comments (optional)
+disqus:
+  shortname: # your-disqus-shortname

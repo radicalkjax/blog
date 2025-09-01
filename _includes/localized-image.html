@@ -1,0 +1,43 @@
+{% comment %}
+  Localized Image Component
+  Usage: {% include localized-image.html src="/path/to/image.jpg" alt="Description" class="optional-class" %}
+  
+  The component will look for language-specific versions:
+  - /path/to/image.jpg (default)
+  - /path/to/image.en.jpg
+  - /path/to/image.es.jpg
+  - etc.
+{% endcomment %}
+
+{% assign image_src = include.src %}
+{% assign image_alt = include.alt | default: "" %}
+{% assign image_class = include.class | default: "" %}
+{% assign image_width = include.width | default: "" %}
+{% assign image_height = include.height | default: "" %}
+{% assign image_loading = include.loading | default: "lazy" %}
+
+{% comment %} Extract base name and extension {% endcomment %}
+{% assign image_parts = image_src | split: "." %}
+{% assign extension = image_parts | last %}
+{% assign base_parts = image_parts | reverse | shift | reverse %}
+{% assign base_name = base_parts | join: "." %}
+
+{% comment %} Check for language-specific version {% endcomment %}
+{% assign localized_src = base_name | append: "." | append: site.active_lang | append: "." | append: extension %}
+{% assign fallback_src = image_src %}
+
+{% comment %} Build image tag with fallback {% endcomment %}
+<picture>
+  {% comment %} Try language-specific version first {% endcomment %}
+  <source srcset="{{ localized_src | relative_url }}" 
+          onerror="this.onerror=null; this.remove();">
+  
+  {% comment %} Fallback to default image {% endcomment %}
+  <img src="{{ fallback_src | relative_url }}"
+       alt="{{ image_alt }}"
+       {% if image_class != "" %}class="{{ image_class }}"{% endif %}
+       {% if image_width != "" %}width="{{ image_width }}"{% endif %}
+       {% if image_height != "" %}height="{{ image_height }}"{% endif %}
+       loading="{{ image_loading }}"
+       data-lang="{{ site.active_lang }}">
+</picture>

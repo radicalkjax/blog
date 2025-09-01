@@ -1,0 +1,465 @@
+/* 
+ * Modern CSS for radicalkjax.com
+ * Using CSS Grid, Flexbox, Custom Properties, and modern features
+ */
+
+/* ===========================
+   CSS Custom Properties (Variables)
+   =========================== */
+:root {
+  /* Color Palette */
+  --color-primary: #6d105a;
+  --color-secondary: #ffffff;
+  --color-accent: #f84ef8;
+  --color-background: #6d105a;
+  --color-text: #ffffff;
+  --color-link: #f84ef8;
+  --color-link-hover: #ff6bff;
+  --color-border: rgba(255, 255, 255, 0.2);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  
+  /* Dark Mode Colors (prepared for toggle) */
+  --color-dark-background: #1a1a1a;
+  --color-dark-primary: #3a0d2e;
+  --color-dark-text: #e0e0e0;
+  --color-dark-border: rgba(255, 255, 255, 0.1);
+  
+  /* Typography */
+  --font-family-base: 'DM Mono', monospace;
+  --font-family-heading: 'DM Mono', monospace;
+  --font-size-base: clamp(14px, 2vw, 16px);
+  --font-size-small: clamp(12px, 1.5vw, 14px);
+  --font-size-large: clamp(16px, 2.5vw, 18px);
+  --font-size-h1: clamp(1.8rem, 5vw, 2.5rem);
+  --font-size-h2: clamp(1.5rem, 4vw, 2rem);
+  --font-size-h3: clamp(1.3rem, 3vw, 1.75rem);
+  --line-height-base: 1.6;
+  
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-xs: calc(var(--spacing-unit) * 1);
+  --spacing-sm: calc(var(--spacing-unit) * 2);
+  --spacing-md: calc(var(--spacing-unit) * 3);
+  --spacing-lg: calc(var(--spacing-unit) * 4);
+  --spacing-xl: calc(var(--spacing-unit) * 6);
+  --spacing-xxl: calc(var(--spacing-unit) * 8);
+  
+  /* Layout */
+  --container-max-width: 1000px;
+  --container-padding: var(--spacing-md);
+  --header-height: 80px;
+  --nav-height: 60px;
+  
+  /* Transitions */
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Borders & Radius */
+  --border-width: 2px;
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+  
+  /* Z-index layers */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal: 1050;
+  --z-tooltip: 1070;
+  --z-logo: 10000;
+}
+
+/* Dark mode custom properties */
+[data-theme="dark"] {
+  --color-background: var(--color-dark-background);
+  --color-primary: var(--color-dark-primary);
+  --color-text: var(--color-dark-text);
+  --color-border: var(--color-dark-border);
+}
+
+/* ===========================
+   Base Styles & Reset
+   =========================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================
+   Modern Grid Layout System
+   =========================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* CSS Grid for main layout */
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+.page-layout--with-sidebar {
+  grid-template-columns: 1fr 300px;
+  grid-template-areas:
+    "header header"
+    "main sidebar"
+    "footer footer";
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .page-layout--with-sidebar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+  }
+}
+
+/* ===========================
+   Header with Modern Flexbox
+   =========================== */
+header {
+  grid-area: header;
+  padding: var(--spacing-lg) 0;
+  border: var(--border-width) solid var(--color-secondary);
+  background-color: var(--color-background);
+  position: relative;
+  margin: var(--spacing-md) auto var(--spacing-xxl) auto;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+/* Navigation using Flexbox */
+nav {
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  position: relative;
+}
+
+nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  transition: var(--transition-fast);
+  display: inline-block;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   Main Content Area
+   =========================== */
+main {
+  grid-area: main;
+  flex: 1;
+  padding: var(--spacing-xl) 0;
+}
+
+/* Blog Grid Layout */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+}
+
+.blog-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  transition: var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px var(--color-shadow);
+  border-color: var(--color-accent);
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-sm);
+  margin: var(--spacing-xl) 0;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-base);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* ===========================
+   Footer
+   =========================== */
+footer {
+  grid-area: footer;
+  padding: var(--spacing-xl) 0;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  margin-top: auto;
+}
+
+/* ===========================
+   Sidebar
+   =========================== */
+.sidebar {
+  grid-area: sidebar;
+  position: sticky;
+  top: var(--spacing-lg);
+  height: fit-content;
+}
+
+/* ===========================
+   Dark Mode Toggle Button
+   =========================== */
+.theme-toggle {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-base);
+  z-index: var(--z-fixed);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-accent);
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-text);
+}
+
+/* ===========================
+   Modern Form Styles
+   =========================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  transition: var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(248, 78, 248, 0.2);
+}
+
+/* ===========================
+   Buttons with Modern Styling
+   =========================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition-base);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--color-accent);
+}
+
+.btn--large {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-large);
+}
+
+/* ===========================
+   Utility Classes
+   =========================== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+/* ===========================
+   Responsive Typography
+   =========================== */
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+
+/* ===========================
+   Loading States
+   =========================== */
+.skeleton {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===========================
+   Accessibility Improvements
+   =========================== */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

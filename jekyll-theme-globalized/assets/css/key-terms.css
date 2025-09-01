@@ -1,0 +1,151 @@
+/**
+ * Key Terms Storage CSS
+ * Styles for the key terms storage feature
+ */
+
+/* Key Terms Container */
+#key-terms-container {
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  max-height: 30vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Key Terms Header */
+#key-terms-header {
+  padding: 12px 15px;
+  font-weight: 600;
+  background-color: #6d105a;
+  border-radius: 4px 4px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#key-terms-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff 0%, #9c1f8c 100%);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Key Terms Content */
+#key-terms-content {
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 20vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Key Term Bubbles */
+.key-term-bubble {
+  background-color: #2a2a2a;
+  border: 1px solid #6d105a;
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 5px;
+  transition: background-color 0.2s;
+}
+
+.key-term-bubble:hover {
+  background-color: #3a3a3a;
+}
+
+.key-term-text {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.key-term-remove {
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s;
+}
+
+.key-term-remove:hover {
+  color: #ff6b6b;
+}
+
+/* Key Terms Input */
+#key-terms-input {
+  padding: 8px;
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 40px;
+}
+
+#key-terms-input input {
+  flex: 1;
+  background-color: #2a2a2a;
+  border: 1px solid #6d105a;
+  border-radius: 4px 0 0 4px;
+  padding: 4px 8px;
+  color: #ffffff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  height: 24px;
+}
+
+#key-terms-input input:focus {
+  outline: none;
+  border-color: #9c1f8c;
+}
+
+#key-terms-input button {
+  background-color: #6d105a;
+  border: 1px solid #6d105a;
+  border-radius: 0 4px 4px 0;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  height: 24px;
+}
+
+#key-terms-input button:hover {
+  background-color: #9c1f8c;
+}
+
+/* Responsive styles */
+@media (max-width: 1400px) {
+  #key-terms-content {
+    max-height: 15vh;
+  }
+}
+
+@media (max-width: 992px) {
+  #key-terms-container {
+    max-height: none;
+    position: relative !important;
+    overflow: visible;
+  }
+  
+  #key-terms-content {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  /* Ensure the input area doesn't stick */
+  #key-terms-input {
+    position: relative !important;
+  }
+}

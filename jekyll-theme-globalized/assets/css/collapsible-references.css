@@ -1,0 +1,207 @@
+/* Collapsible References Styles */
+.references-container {
+    position: relative;
+    margin: 40px 0;
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 2px solid #ffffff;
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Frame design similar to post cards */
+.references-container::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: -12px;
+    right: -10px;
+    width: 2px;
+    background-color: #ffffff;
+}
+
+.references-container::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: -10px;
+    bottom: -12px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* References header */
+.references-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(122, 1, 119, 0.9);
+    border-bottom: 2px solid #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.references-header:hover {
+    background-color: rgba(122, 1, 119, 1);
+}
+
+.references-header span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.references-count {
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-left: 10px;
+    opacity: 0.8;
+}
+
+/* Toggle button */
+.references-toggle {
+    background: none;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.references-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Content wrapper */
+.references-content {
+    padding: 30px;
+    max-height: 600px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    background-color: rgba(26, 26, 26, 0.5);
+}
+
+/* Collapsed state */
+.references-container.collapsed .references-content {
+    max-height: 0;
+    padding: 0 30px;
+    overflow: hidden;
+}
+
+.references-container.collapsed .references-header {
+    border-bottom: none;
+}
+
+/* Style the references list */
+.references-content ol {
+    margin: 0;
+    padding-left: 30px;
+    list-style-type: decimal;
+}
+
+.references-content li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Prevent MathJax processing in references */
+.references-content p,
+.references-content li {
+    font-family: 'DM Mono', monospace !important;
+}
+
+/* Ensure dollar signs and math-like content display correctly */
+.references-content .MathJax,
+.references-content .MathJax_Display,
+.references-content mjx-container {
+    display: none !important;
+}
+
+.references-content a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.2em;
+    transition: all 0.3s ease;
+}
+
+.references-content a:hover {
+    text-decoration-style: solid;
+    opacity: 0.8;
+}
+
+/* Scrollbar styling */
+.references-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.references-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.references-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.references-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Citation links styling */
+.citation-link {
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.citation-link:hover {
+    border-bottom-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .references-container {
+        margin: 20px -15px;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .references-container::after,
+    .references-container::before {
+        display: none;
+    }
+    
+    .references-header {
+        padding: 15px 20px;
+    }
+    
+    .references-header span {
+        font-size: 1.2rem;
+    }
+    
+    .references-content {
+        padding: 20px;
+        max-height: 400px;
+    }
+    
+    .references-content ol {
+        padding-left: 20px;
+    }
+}

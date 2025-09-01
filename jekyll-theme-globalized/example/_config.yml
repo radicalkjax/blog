@@ -1,0 +1,64 @@
+# Example site configuration using jekyll-theme-globalized
+
+# Use the theme (in production, this would be: gem "jekyll-theme-globalized")
+theme: jekyll-theme-globalized
+
+# Site settings
+title: My Multilingual Site
+description: A beautiful multilingual website powered by Jekyll Theme Globalized
+url: "https://example.com"
+baseurl: ""
+
+# Author information
+author:
+  name: Your Name
+  email: your-email@example.com
+
+# Theme configuration overrides
+theme_config:
+  # Custom colors
+  colors:
+    primary: "#6d105a"
+    accent: "#f84ef8"
+  
+  # Enable features
+  features:
+    language_switcher: true
+    social_links: true
+    somafm_player: true
+    dark_mode: false
+    
+  # Configure languages
+  i18n:
+    languages: ["en", "es", "fr", "ja", "zh", "ar", "de", "pt"]
+    default_language: "en"
+
+# Social links
+social:
+  github: yourusername
+  twitter: yourusername
+  linkedin: yourusername
+  instagram: yourusername
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-polyglot
+
+# Jekyll Polyglot settings
+languages: ["en", "es", "fr", "ja", "zh", "ar", "de", "pt"]
+default_lang: "en"
+exclude_from_localization: ["assets", "js", "css", "fonts"]
+parallel_localization: false
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

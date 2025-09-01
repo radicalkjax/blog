@@ -107,11 +107,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Bits of Adventures</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign adventure_images = site.static_files | where: "path", "/assets/images/photos/adventures/" %}
-                {% assign random_adventure = adventure_images | sample: 1 | first %}
-                {% if random_adventure %}
-                <img src="{{ random_adventure.path }}" alt="Adventure Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign adventure_folder = "/assets/images/photos/adventures" %}
+            {% assign adventure_images = site.static_files | where_exp: "file", "file.path contains adventure_folder" %}
+            {% capture adventure_photos %}[{% for img in adventure_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ adventure_folder }}" data-photos='{{ adventure_photos }}'>
+                {% if adventure_images.size > 0 %}
+                <img src="{{ adventure_images.first.path }}" alt="Adventure Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/adventures/nature-trail.jpg" alt="Nature Trail" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -131,11 +132,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Bottom Surgery (10/2024)</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign surgery_images = site.static_files | where: "path", "/assets/images/photos/bottom-surgery/" %}
-                {% assign random_surgery = surgery_images | sample: 1 | first %}
-                {% if random_surgery %}
-                <img src="{{ random_surgery.path }}" alt="Surgery Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign surgery_folder = "/assets/images/photos/bottom-surgery" %}
+            {% assign surgery_images = site.static_files | where_exp: "file", "file.path contains surgery_folder" %}
+            {% capture surgery_photos %}[{% for img in surgery_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ surgery_folder }}" data-photos='{{ surgery_photos }}'>
+                {% if surgery_images.size > 0 %}
+                <img src="{{ surgery_images.first.path }}" alt="Surgery Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/bottom-surgery/image000000-1.webp" alt="Surgery Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -158,11 +160,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Flight Pics</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign flight_images = site.static_files | where: "path", "/assets/images/photos/flight-pics/" %}
-                {% assign random_flight = flight_images | sample: 1 | first %}
-                {% if random_flight %}
-                <img src="{{ random_flight.path }}" alt="Flight Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign flight_folder = "/assets/images/photos/flight-pics" %}
+            {% assign flight_images = site.static_files | where_exp: "file", "file.path contains flight_folder" %}
+            {% capture flight_photos %}[{% for img in flight_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ flight_folder }}" data-photos='{{ flight_photos }}'>
+                {% if flight_images.size > 0 %}
+                <img src="{{ flight_images.first.path }}" alt="Flight Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/flight-pics/img_7566-1.webp" alt="Flight View" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -182,11 +185,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Cesar Chavez Park 2023</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign park_images = site.static_files | where: "path", "/assets/images/photos/cesar-chavez-park/" %}
-                {% assign random_park = park_images | sample: 1 | first %}
-                {% if random_park %}
-                <img src="{{ random_park.path }}" alt="Park Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign park_folder = "/assets/images/photos/cesar-chavez-park" %}
+            {% assign park_images = site.static_files | where_exp: "file", "file.path contains park_folder" %}
+            {% capture park_photos %}[{% for img in park_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ park_folder }}" data-photos='{{ park_photos }}'>
+                {% if park_images.size > 0 %}
+                <img src="{{ park_images.first.path }}" alt="Park Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/cesar-chavez-park/fx1jb-xaeaekp3u.webp" alt="Park Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -209,11 +213,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Museum of Science and Curiosity</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign museum_images = site.static_files | where: "path", "/assets/images/photos/museum/" %}
-                {% assign random_museum = museum_images | sample: 1 | first %}
-                {% if random_museum %}
-                <img src="{{ random_museum.path }}" alt="Museum Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign museum_folder = "/assets/images/photos/museum" %}
+            {% assign museum_images = site.static_files | where_exp: "file", "file.path contains museum_folder" %}
+            {% capture museum_photos %}[{% for img in museum_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ museum_folder }}" data-photos='{{ museum_photos }}'>
+                {% if museum_images.size > 0 %}
+                <img src="{{ museum_images.first.path }}" alt="Museum Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/museum/img_9211.webp" alt="Museum Exhibit" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -233,11 +238,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Sacramento Pride 2023</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign pride_images = site.static_files | where: "path", "/assets/images/photos/pride/" %}
-                {% assign random_pride = pride_images | sample: 1 | first %}
-                {% if random_pride %}
-                <img src="{{ random_pride.path }}" alt="Pride Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign pride_folder = "/assets/images/photos/pride" %}
+            {% assign pride_images = site.static_files | where_exp: "file", "file.path contains pride_folder" %}
+            {% capture pride_photos %}[{% for img in pride_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ pride_folder }}" data-photos='{{ pride_photos }}'>
+                {% if pride_images.size > 0 %}
+                <img src="{{ pride_images.first.path }}" alt="Pride Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/pride/347578899_271865858673521_5827022320032448754_n-1.webp" alt="Pride Celebration" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -261,11 +267,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Gaming and Nerding</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign gaming_images = site.static_files | where: "path", "/assets/images/photos/gaming/" %}
-                {% assign random_gaming = gaming_images | sample: 1 | first %}
-                {% if random_gaming %}
-                <img src="{{ random_gaming.path }}" alt="Gaming Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign gaming_folder = "/assets/images/photos/gaming" %}
+            {% assign gaming_images = site.static_files | where_exp: "file", "file.path contains gaming_folder" %}
+            {% capture gaming_photos %}[{% for img in gaming_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ gaming_folder }}" data-photos='{{ gaming_photos }}'>
+                {% if gaming_images.size > 0 %}
+                <img src="{{ gaming_images.first.path }}" alt="Gaming Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/gaming/350520489_221983123930077_1512794410258828999_n.webp" alt="Gaming Session" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -285,11 +292,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Fur Babies</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign pet_images = site.static_files | where: "path", "/assets/images/photos/fur-babies/" %}
-                {% assign random_pet = pet_images | sample: 1 | first %}
-                {% if random_pet %}
-                <img src="{{ random_pet.path }}" alt="Pet Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign pet_folder = "/assets/images/photos/fur-babies" %}
+            {% assign pet_images = site.static_files | where_exp: "file", "file.path contains pet_folder" %}
+            {% capture pet_photos %}[{% for img in pet_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ pet_folder }}" data-photos='{{ pet_photos }}'>
+                {% if pet_images.size > 0 %}
+                <img src="{{ pet_images.first.path }}" alt="Pet Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/fur-babies/347397799_283764544150319_9037679336154103916_n.webp" alt="Pet Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -312,11 +320,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Vehicles</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign vehicle_images = site.static_files | where: "path", "/assets/images/photos/vehicles/" %}
-                {% assign random_vehicle = vehicle_images | sample: 1 | first %}
-                {% if random_vehicle %}
-                <img src="{{ random_vehicle.path }}" alt="Vehicle Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign vehicle_folder = "/assets/images/photos/vehicles" %}
+            {% assign vehicle_images = site.static_files | where_exp: "file", "file.path contains vehicle_folder" %}
+            {% capture vehicle_photos %}[{% for img in vehicle_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ vehicle_folder }}" data-photos='{{ vehicle_photos }}'>
+                {% if vehicle_images.size > 0 %}
+                <img src="{{ vehicle_images.first.path }}" alt="Vehicle Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/vehicles/ftot6reaaaa5nbk.jpg" alt="Vehicle Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -336,11 +345,12 @@ custom_css: |
     <div class="category">
         <h2 style="margin-bottom: 20px;">Oddities Spotted</h2>
         <div class="photo-gallery">
-            <div class="photo-item">
-                {% assign oddity_images = site.static_files | where: "path", "/assets/images/photos/oddities/" %}
-                {% assign random_oddity = oddity_images | sample: 1 | first %}
-                {% if random_oddity %}
-                <img src="{{ random_oddity.path }}" alt="Oddity Photo" style="width: 100%; height: 250px; object-fit: cover;">
+            {% assign oddity_folder = "/assets/images/photos/oddities" %}
+            {% assign oddity_images = site.static_files | where_exp: "file", "file.path contains oddity_folder" %}
+            {% capture oddity_photos %}[{% for img in oddity_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
+            <div class="photo-item" data-folder="{{ oddity_folder }}" data-photos='{{ oddity_photos }}'>
+                {% if oddity_images.size > 0 %}
+                <img src="{{ oddity_images.first.path }}" alt="Oddity Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
                 <img src="/assets/images/photos/oddities/img_1023.webp" alt="Oddity Photo" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
@@ -357,3 +367,6 @@ custom_css: |
         </div>
     </div>
 </div>
+
+<!-- Load Photo Gallery JavaScript -->
+<script src="{{ '/assets/js/photo-gallery.js' | relative_url }}"></script>

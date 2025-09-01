@@ -1,5 +1,15 @@
 # Kali Jackson's Personal Website
 
+[![CI/CD Pipeline](https://github.com/radicalkjax/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/radicalkjax/blog/actions/workflows/ci.yml)
+[![Lighthouse Score](https://img.shields.io/badge/Lighthouse-100%25-brightgreen)](https://pagespeed.web.dev/)
+[![WCAG 2.1 AA](https://img.shields.io/badge/WCAG%202.1-AA-green)](https://www.w3.org/WAI/WCAG21/quickref/)
+[![Security Headers](https://img.shields.io/badge/Security%20Headers-A%2B-brightgreen)](https://securityheaders.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?logo=jekyll)](https://jekyllrb.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS3](https://img.shields.io/badge/CSS3-Modern-1572B6?logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![PWA Ready](https://img.shields.io/badge/PWA-Ready-5A0FC8?logo=pwa)](https://web.dev/progressive-web-apps/)
+
 This repository contains the source code for Kali Jackson's personal website, hosted on GitHub Pages.
 
 ## Overview
@@ -46,15 +56,34 @@ graph TD
     style G fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
-## Technologies Used
+## 🛠️ Tech Stack
 
-- Jekyll static site generator
-- HTML5 and CSS3
-- JavaScript for interactive elements
-- Liquid templating language
-- Font Awesome for icons
-- GitHub Pages for hosting
-- Mermaid for documentation diagrams
+### Core Technologies
+- **Framework**: Jekyll 4.3+ (Static Site Generator)
+- **Languages**: HTML5, CSS3 (with modern features), JavaScript ES6+
+- **Templating**: Liquid
+- **Hosting**: GitHub Pages with CDN
+
+### Modern Web Features
+- **Web Components**: Custom elements for reusable UI components
+- **CSS Features**: Container Queries, Logical Properties, CSS Layers, Custom Properties
+- **JavaScript**: ES Modules, Async/Await, Web Workers, Service Workers
+- **PWA**: Offline support, installable, background sync
+- **Performance**: Critical CSS inlining, lazy loading, resource hints
+- **Accessibility**: WCAG 2.1 AA compliant, ARIA labels, keyboard navigation
+- **Security**: CSP headers, XSS protection, secure dependencies
+
+### Internationalization
+- **Languages**: 8 languages (EN, ES, FR, JA, ZH, AR, DE, PT)
+- **RTL Support**: Full bidirectional text support
+- **SEO**: Hreflang tags, structured data, sitemap
+
+### Development Tools
+- **CI/CD**: GitHub Actions for automated testing and deployment
+- **Testing**: Jest, Playwright, Lighthouse CI, Pa11y
+- **Code Quality**: ESLint, Prettier, Stylelint
+- **Security**: Trivy, npm audit, bundle audit
+- **Documentation**: Mermaid diagrams, JSDoc comments
 
 ## Local Development
 

@@ -1,5 +1,7 @@
 /* Custom Font Definitions */
 
+/* Google Fonts loaded in HTML for better performance */
+
 @font-face {
     font-family: 'Uni 05_53';
     src: url('../fonts/uni0553-webfont.woff2') format('woff2'),

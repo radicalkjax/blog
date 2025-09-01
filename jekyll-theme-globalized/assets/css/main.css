@@ -1,0 +1,1889 @@
+/* 
+ * Main CSS for radicalkjax.com GitHub Pages site
+ * Modernized with CSS Grid, Flexbox, and Custom Properties
+ */
+
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+/* ===========================
+   CSS Custom Properties
+   =========================== */
+:root {
+  /* Color Palette */
+  --color-primary: #6d105a;
+  --color-secondary: #ffffff;
+  --color-accent: #f84ef8;
+  --color-background: #6d105a;
+  --color-text: #ffffff;
+  --color-link: #f84ef8;
+  --color-link-hover: #ff6bff;
+  --color-border: rgba(255, 255, 255, 0.2);
+  
+  /* Dark Mode Colors */
+  --dark-background: #1a1a1a;
+  --dark-primary: #3a0d2e;
+  --dark-text: #e0e0e0;
+  --dark-border: rgba(255, 255, 255, 0.1);
+  
+  /* Typography */
+  --font-family: 'DM Mono', monospace;
+  --font-size-base: 16px;
+  --line-height: 1.6;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  
+  /* Layout */
+  --container-width: 1000px;
+  --header-padding: 30px;
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+}
+
+/* Skip Links for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Footer Links */
+.footer-separator {
+  margin: 0 1rem;
+  opacity: 0.5;
+}
+
+.footer-link {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--color-link-hover);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-background: var(--dark-background);
+  --color-primary: var(--dark-primary);
+  --color-text: var(--dark-text);
+  --color-border: var(--dark-border);
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1000;
+  color: var(--color-text);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-accent);
+}
+
+.theme-toggle i {
+  font-size: 20px;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: var(--line-height);
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container with modern responsive design */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Site Logo */
+.site-logo-container {
+    position: fixed;
+    left: 10px; /* Moved more to the left */
+    top: 1px; /* Moved higher up on the page */
+    transform: none; /* Removed vertical centering */
+    z-index: 10000;
+}
+
+.site-logo-outside {
+    width: 120px; /* Significantly increased from 85px */
+    height: 120px; /* Significantly increased from 85px */
+    display: block;
+}
+
+/* Header */
+header {
+    padding: 12px 0; /* Remove horizontal padding */
+    border: 2px solid #ffffff; /* White border all around */
+    background-color: #6d105a; /* Match body background */
+    position: relative;
+    margin: 15px auto 25px auto; /* Appropriate margins */
+    width: 90vw; /* Reduced from 95vw to make room for the logo */
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    z-index: 9999; /* Ensure header is above all other content */
+    min-height: 60px; /* Reasonable minimum height */
+}
+
+/* Create a second border box underneath */
+header::after {
+    content: '';
+    position: absolute;
+    left: 10px; /* Shifted to the right */
+    right: -10px; /* Extended to the right */
+    bottom: -8px; /* Moved closer to header */
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* Add vertical lines to create box effect */
+header::before {
+    content: '';
+    position: absolute;
+    left: 10px; /* Aligned with the bottom line */
+    bottom: -8px; /* Adjusted to match new position */
+    width: 2px;
+    height: 6px; /* Reduced height */
+    background-color: #ffffff;
+}
+
+/* Right vertical line */
+header .container::after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Aligned with the bottom line */
+    bottom: -8px; /* Adjusted to match new position */
+    width: 2px;
+    height: 6px; /* Reduced height */
+    background-color: #ffffff;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px; /* Padding for content spacing */
+    margin: 0;
+    position: relative;
+    gap: 15px; /* Add gap to prevent elements from touching */
+    max-width: none; /* Override any container max-width */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.site-title {
+    font-family: 'Uni 05_53', 'DM Mono', monospace;
+    font-size: 0.8rem; /* Slightly larger for better readability */
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0; /* Prevent title from shrinking */
+    white-space: nowrap; /* Prevent wrapping */
+    order: 1; /* First in flex order */
+}
+
+/* Navigation */
+nav {
+    flex: 1 1 auto; /* Take up available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2; /* Second in flex order */
+    margin: 0 20px; /* Add margin to create space */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+nav ul li {
+    margin: 0 6px; /* Further reduced horizontal spacing */
+    position: relative;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    font-size: 0.75rem; /* Smaller for more compact layout */
+    padding: 6px 4px; /* Smaller padding */
+    display: inline-block;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default, shown via JavaScript */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #6d105a;
+    border: 1px solid #ffffff;
+    min-width: 180px; /* Slightly reduced width */
+    z-index: 9999; /* Increased z-index to ensure dropdowns appear above all other elements */
+    padding: 5px 0; /* Reduced padding */
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    z-index: 10001; /* Higher than nav */
+}
+
+.dropdown-menu li a {
+    padding: 6px 12px; /* Reduced padding */
+    display: block;
+    font-size: 0.75rem; /* Further reduced for compact header */
+    white-space: nowrap;
+    position: relative;
+    z-index: 10002; /* Higher than dropdown-menu li */
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Don't shrink */
+    gap: 8px; /* Consistent spacing between icons */
+    order: 3; /* Third in flex order */
+    margin-left: auto; /* Push to the right */
+}
+
+.social-icons a {
+    margin-right: 0; /* Use gap instead */
+    color: #ffffff;
+    font-size: 1rem; /* Standard icon size */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
+/* Animated social icons */
+.social-icons a.animated {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+
+/* Post Card */
+.post-card {
+    background-color: rgba(109, 16, 90, 0.7); /* Slightly lighter than body background */
+    border: 2px solid #ffffff; /* White border all around */
+    padding: 30px;
+    margin-bottom: 40px; /* Increased to make room for the second border */
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1; /* Lower z-index to ensure dropdown menus appear above */
+}
+
+/* Create a second border box underneath - similar to header */
+.post-card::after {
+    content: '';
+    position: absolute;
+    top: 10px; /* Start at the same position as the horizontal line */
+    bottom: -12px;
+    right: -10px;
+    width: 2px;
+    background-color: #ffffff;
+}
+
+/* Right horizontal line connecting to main box */
+.post-card .post-date::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* Create bottom horizontal line */
+.post-card::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: -10px;
+    bottom: -12px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* Left vertical line */
+.post-card .post-title::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: -12px;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+/* Right bottom vertical line */
+.post-content::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    bottom: -12px;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.post-tags {
+    margin-top: 20px;
+}
+
+.post-tags a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.post-tags a:hover {
+    opacity: 1;
+}
+
+/* Links */
+.post-content a, .post-card .post-content a, .post-title a, .post-card .post-title a,
+.social-item, .network-description a, .connections-intro a, .project-tags a, .project-links a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.post-content a:hover, .post-card .post-content a:hover, .post-title a:hover, .post-card .post-title a:hover,
+.social-item:hover, .network-description a:hover, .connections-intro a:hover, .project-tags a:hover, .project-links a:hover {
+    opacity: 0.8;
+}
+
+/* Social items don't need underline since they're styled as buttons */
+.social-item {
+    text-decoration: none;
+}
+
+/* Custom butterfly icon */
+.fa-butterfly::before {
+    content: "\1F98B"; /* Unicode butterfly character */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 100;
+}
+
+/* Active navigation link */
+nav ul li a.active {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/* Form success message */
+.form-success {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-success h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.form-success p {
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Blog Post Styles */
+.post-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post {
+    background-color: rgba(109, 16, 90, 0.7);
+    border: 2px solid #ffffff;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Create a second border box underneath - similar to header */
+.post::after {
+    content: '';
+    position: absolute;
+    top: 10px; /* Start at the same position as the horizontal line */
+    bottom: -12px;
+    right: -10px;
+    width: 2px;
+    background-color: #ffffff;
+}
+
+/* Right horizontal line connecting to main box */
+.post .post-date::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* Create bottom horizontal line */
+.post::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: -10px;
+    bottom: -12px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+/* Left vertical line */
+.post .post-title::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: -12px;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+/* Right bottom vertical line */
+.post .post-content::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    bottom: -12px;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.post-header {
+    margin-bottom: 30px;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.post-content {
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.post-content p {
+    margin-bottom: 20px;
+}
+
+.post-content h1, 
+.post-content h2, 
+.post-content h3, 
+.post-content h4, 
+.post-content h5, 
+.post-content h6 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Center and style blog post titles */
+.post-content h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+/* Blog post image styling - default for unmarked images */
+.post-content > img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Single image container */
+.post-image {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.post-content .post-image img {
+    max-width: 375px !important;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Smaller inline images */
+.post-image-small img {
+    max-width: 300px;
+}
+
+/* Medium sized images */
+.post-image-medium img {
+    max-width: 450px;
+}
+
+.post-image-caption {
+    font-style: italic;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Image gallery for multiple related images */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.image-gallery figure {
+    margin: 0;
+    text-align: center;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.image-gallery figcaption {
+    font-style: italic;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+/* Side-by-side images */
+.image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.image-pair figure {
+    margin: 0;
+    text-align: center;
+}
+
+.image-pair img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto 5px;
+}
+
+.image-pair figcaption {
+    font-style: italic;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+/* Interactive Road Trip Map */
+.road-trip-map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 40px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%);
+    border: 2px solid #6d105a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom map marker styles */
+.map-marker {
+    width: 30px;
+    height: 30px;
+    background: #9c1f8c;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.map-marker:hover {
+    transform: scale(1.2);
+    background: #d62598;
+    box-shadow: 0 4px 12px rgba(214, 37, 152, 0.6);
+}
+
+.map-marker.active {
+    background: #d62598;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(214, 37, 152, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(214, 37, 152, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(214, 37, 152, 0);
+    }
+}
+
+/* Photo preview popup */
+.photo-preview {
+    position: absolute;
+    background: #1a1a1a;
+    border: 2px solid #6d105a;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+    pointer-events: none;
+}
+
+.photo-preview img {
+    width: 400px !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.photo-preview .caption {
+    color: #ffffff;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 8px;
+    max-width: 400px;
+}
+
+/* SomaFM Floating Player */
+.somafm-player {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    width: 280px;
+    background: #1a1a1a;
+    border: 2px solid #9c1f8c;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    font-family: 'DM Mono', monospace;
+    color: #ffffff;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #9c1f8c;
+    background: rgba(156, 31, 140, 0.1);
+}
+
+.station-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.station-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.station-icon svg {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.station-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.station-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #d62598;
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+}
+
+.station-tagline {
+    font-size: 11px;
+    color: #888;
+}
+
+.via-somafm {
+    font-size: 10px;
+    font-weight: normal;
+    color: #888;
+    margin-left: 5px;
+}
+
+.via-somafm a {
+    color: #ff00ff;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.via-somafm a:hover {
+    color: #d62598;
+    text-decoration: underline;
+}
+
+.player-close {
+    background: transparent;
+    border: 1px solid #9c1f8c;
+    color: #9c1f8c;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.player-close:hover {
+    background: #9c1f8c;
+    color: #ffffff;
+}
+
+.player-body {
+    padding: 12px;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.play-pause-btn {
+    background: #9c1f8c;
+    border: none;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.play-pause-btn:hover {
+    background: #d62598;
+    transform: scale(1.05);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.mute-btn {
+    background: transparent;
+    border: none;
+    color: #9c1f8c;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+.volume-slider {
+    flex: 1;
+    height: 4px;
+    background: #333;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #9c1f8c;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #9c1f8c;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.now-playing {
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.np-label {
+    color: #666;
+}
+
+.np-text {
+    color: #d62598;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.player-minimized {
+    padding: 8px;
+}
+
+.player-minimized button {
+    background: rgba(156, 31, 140, 0.2);
+    border: 1px solid #9c1f8c;
+    color: #d62598;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.player-minimized button:hover {
+    background: rgba(156, 31, 140, 0.4);
+}
+
+/* Inline play buttons for Soma.fm links */
+.inline-play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid #ff00ff;
+    border-radius: 50%;
+    margin-left: 0;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+
+.inline-play-btn:hover {
+    background: rgba(255, 0, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.inline-play-btn svg {
+    width: 10px;
+    height: 10px;
+    margin-left: 1px;
+}
+
+.inline-play-btn:hover svg polygon {
+    fill: #d62598;
+}
+
+.mini-icon {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .somafm-player {
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 320px;
+    }
+}
+
+/* Lightbox for full view */
+.map-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-lightbox.active {
+    display: flex;
+}
+
+.map-lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: 2px solid #6d105a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.map-lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.map-lightbox .close:hover {
+    color: #d62598;
+}
+
+.map-lightbox .lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(26, 26, 26, 0.8);
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #6d105a;
+}
+
+/* Map legend */
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #6d105a;
+    border-radius: 4px;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 12px;
+    z-index: 500;
+}
+
+.map-legend h4 {
+    margin: 0 0 8px 0;
+    color: #d62598;
+    font-size: 14px;
+}
+
+.map-legend .legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.map-legend .legend-marker {
+    width: 12px;
+    height: 12px;
+    background: #9c1f8c;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .image-pair {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-image img {
+        max-width: 375px;
+    }
+}
+
+.post-content ul, 
+.post-content ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.post-content blockquote {
+    border-left: 3px solid #ffffff;
+    padding-left: 20px;
+    margin-left: 0;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.post-content code {
+    font-family: 'DM Mono', monospace;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.post-content pre {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.post-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Mermaid diagram styling - defer to mermaid-custom.css */
+/* .mermaid styling moved to mermaid-custom.css */
+
+/* Code block styling for IEEE format */
+.post-content div[style*="text-align: center"] pre {
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.post-content div[style*="text-align: center"] pre code {
+    background-color: transparent;
+    padding: 0;
+    font-family: 'DM Mono', monospace;
+}
+
+.post-content div[style*="text-align: center"] p {
+    margin-top: 5px;
+}
+
+/* Mermaid styling moved to mermaid-custom.css */
+
+.post-navigation {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-to-blog {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.back-to-blog:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+/* Switch to mobile view when the site title would touch the navigation */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    /* Adjust the site title to prevent it from touching the navigation */
+    .site-title {
+        max-width: 180px; /* Reduce max-width to prevent overlap */
+        font-size: 0.7rem; /* Slightly reduce font size */
+    }
+    
+    /* Make navigation more compact */
+    nav ul li {
+        margin: 0 4px; /* Even less spacing */
+    }
+    
+    nav ul li a {
+        font-size: 0.7rem; /* Smaller font */
+        padding: 5px 3px; /* Less padding */
+    }
+    
+    /* Social icons already pushed right with margin-left: auto */
+    .social-icons {
+        /* Using flexbox, no absolute positioning needed */
+    }
+}
+
+/* Switch to mobile view when the logo would enter the header box */
+@media (max-width: 1024px) and (min-width: 901px) {
+    /* Adjust header width and position to make room for the logo */
+    header {
+        width: 80vw; /* Reduced from 90vw to make more room for the logo */
+        left: 55%; /* Shifted right to avoid the logo */
+    }
+    
+    /* Ensure the logo stays fixed in its original position */
+    .site-logo-container {
+        position: fixed;
+        left: 10px;
+        top: 1px;
+        transform: none;
+    }
+    
+    /* Social icons already pushed right with margin-left: auto */
+    .social-icons {
+        /* Using flexbox, no absolute positioning needed */
+    }
+}
+
+/* Switch to mobile view when the site title would touch the navigation */
+@media (max-width: 1000px) and (min-width: 901px) {
+    /* Switch to mobile view when the site title would touch the navigation */
+    .site-title {
+        position: static;
+        margin: 0 auto 20px;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .header-content {
+        position: relative;
+        flex-direction: column;
+        padding-top: 20px;
+    }
+    
+    nav {
+        position: relative;
+        left: 0;
+        transform: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Social icons already pushed right with margin-left: auto */
+    .social-icons {
+        /* Using flexbox, no absolute positioning needed */
+    }
+}
+
+/* When viewport gets even smaller, switch to full mobile view */
+@media (max-width: 900px) {
+    /* Apply mobile styles earlier to prevent logo from entering header */
+    .site-logo-container {
+        position: static;
+        left: auto;
+        top: auto;
+        transform: none;
+        text-align: center;
+        margin: 10px auto 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .site-logo-outside {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        left: 0;
+    }
+    
+    .header-content {
+        position: relative;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .mobile-nav-toggle {
+        display: block;
+        top: 20px;
+        right: 20px;
+        position: absolute;
+        z-index: 20010; /* Higher than other mobile elements */
+        margin: 10px; /* Add margin for better spacing */
+        padding: 10px; /* Increase padding for a larger touch target */
+        background-color: rgba(109, 16, 90, 0.8); /* Slight background for visibility */
+        border-radius: 5px; /* Rounded corners */
+    }
+    
+    .site-title {
+        position: static;
+        margin: 0 0 20px 0;
+        text-align: center;
+        width: 70%; /* Limit width to prevent touching hamburger menu */
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        position: relative;
+        z-index: 20000; /* Increased z-index for mobile nav */
+    }
+    
+    .nav-open nav {
+        max-height: 500px; /* Increased from 300px to accommodate dropdowns */
+        overflow: visible; /* Allow dropdowns to overflow */
+    }
+    
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+    
+    /* Mobile dropdown menu styling */
+    .dropdown-menu {
+        position: absolute; /* Change back to absolute for mobile */
+        top: 100%; /* Position below the parent */
+        left: 0;
+        width: 100%;
+        z-index: 20001; /* Higher z-index for mobile dropdown */
+        max-height: 200px; /* Limit height */
+        overflow-y: auto; /* Make scrollable if needed */
+        background-color: #6d105a; /* Ensure background color is set */
+        border: 1px solid #ffffff; /* Ensure border is visible */
+    }
+    
+    .dropdown-menu li {
+        z-index: 20002; /* Higher z-index for mobile dropdown items */
+    }
+    
+    .dropdown-menu li a {
+        white-space: normal; /* Allow text to wrap */
+        word-wrap: break-word; /* Break long words if needed */
+        overflow-wrap: break-word; /* Modern version of word-wrap */
+        padding: 10px 15px; /* Increased padding for better readability */
+        font-size: 0.95rem; /* Slightly smaller font size to fit more text */
+        z-index: 20003; /* Higher z-index for mobile dropdown links */
+    }
+    
+    .logo-container {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .site-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Site title styling is already defined above */
+    
+    .social-icons {
+        margin-top: 20px;
+        margin-left: 0; /* Reset margin for mobile */
+        justify-content: center;
+        width: 100%;
+        order: 3; /* Keep order */
+    }
+    
+    .social-icons a:last-child {
+        margin-right: 0;
+    }
+    
+    .post {
+        padding: 20px;
+    }
+}
+
+/* Styles for 768px and below are already covered by the 900px media query above */
+
+/* Extra small devices (phones, 500px and down) */
+@media (max-width: 500px) {
+    /* Make site title smaller on very small screens */
+    .site-title {
+        font-size: 0.65rem; /* Reduce font size further */
+        width: 60%; /* Reduce width to prevent touching hamburger menu */
+        max-width: 60%;
+    }
+    
+    /* Adjust hamburger menu position for better spacing */
+    .mobile-nav-toggle {
+        margin: 8px; /* Slightly smaller margin */
+        padding: 8px; /* Slightly smaller padding */
+        font-size: 1.3rem; /* Slightly smaller icon */
+    }
+    
+    /* Reduce header padding for smaller screens */
+    header {
+        padding: 25px 0;
+    }
+}
+
+/* Extra extra small devices (small phones, 350px and down) */
+@media (max-width: 350px) {
+    /* Make site title even smaller on extremely small screens */
+    .site-title {
+        font-size: 0.6rem; /* Reduce font size even further */
+        width: 50%; /* Reduce width even more */
+        max-width: 50%;
+    }
+    
+    /* Further adjust hamburger menu */
+    .mobile-nav-toggle {
+        margin: 5px;
+        padding: 5px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Floating Table of Contents Styles */
+#floating-toc {
+    position: fixed;
+    left: 20px;
+    top: 150px;
+    width: 280px; /* Increased from 250px to 280px */
+    max-height: 70vh;
+    overflow-y: hidden; /* Changed from auto to hidden to prevent scrolling the entire TOC */
+    background-color: #1a1a1a;
+    border: 2px solid #6d105a;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    color: #ffffff;
+    font-size: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: #6d105a #1a1a1a;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+#floating-toc::-webkit-scrollbar {
+    width: 8px;
+}
+
+#floating-toc::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+#floating-toc::-webkit-scrollbar-thumb {
+    background-color: #6d105a;
+    border-radius: 4px;
+}
+
+#toc-header {
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #ffffff;
+    background-color: #6d105a;
+    border-radius: 4px 4px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#toc-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffffff 0%, #9c1f8c 100%);
+    border-radius: 4px 4px 0 0;
+}
+
+#toc-content {
+    padding: 10px 0;
+    max-height: calc(40vh - 45px); /* Reduced to make room for key terms */
+    overflow-y: auto;
+}
+
+#toc-content a {
+    display: block;
+    padding: 5px 15px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+}
+
+#toc-content a:hover {
+    background-color: #2a2a2a;
+}
+
+#toc-content a.active {
+    background-color: #2a2a2a;
+    border-left: 3px solid #9c1f8c;
+}
+
+#toc-content .toc-h2 {
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+#toc-content .toc-h3 {
+    padding-left: 30px;
+    font-size: 13px;
+}
+
+#toc-content .toc-h4 {
+    padding-left: 45px;
+    font-size: 12px;
+    color: #cccccc;
+}
+
+/* Responsive TOC styles */
+@media (max-width: 1400px) {
+    #floating-toc {
+        width: 230px; /* Increased from 200px to 230px */
+        font-size: 13px;
+    }
+    
+    #toc-content {
+        max-height: calc(35vh - 45px); /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 1200px) {
+    #floating-toc {
+        left: 10px;
+        width: 210px; /* Increased from 180px to 210px */
+    }
+}
+
+/* Mobile TOC Styles */
+.mobile-toc-toggle {
+    display: none;
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #6d105a;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 992px) {
+    .mobile-toc-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #floating-toc {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 1002;
+    }
+    
+    #floating-toc.mobile-open {
+        transform: translateX(0);
+    }
+    
+    #toc-content {
+        max-height: calc(100vh - 200px); /* Leave room for header and key terms */
+        overflow-y: auto;
+    }
+    
+    /* Add close button to mobile TOC */
+    #toc-header::after {
+        content: '×';
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 28px;
+        cursor: pointer;
+    }
+    
+    /* Mobile overlay */
+    #floating-toc.mobile-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+    
+    /* Ensure body doesn't scroll when mobile TOC is open */
+    body.mobile-toc-open {
+        overflow: hidden;
+    }
+}
+
+/* RTL Support for Arabic */
+:root[lang="ar"] {
+    direction: rtl;
+}
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .container {
+    direction: rtl;
+}
+
+/* Keep header elements in LTR layout */
+[dir="rtl"] header {
+    direction: ltr; /* Keep header layout unchanged */
+}
+
+[dir="rtl"] header h1,
+[dir="rtl"] header p {
+    text-align: right; /* Only text alignment changes */
+    direction: rtl;
+}
+
+/* Keep navigation in original order */
+[dir="rtl"] nav {
+    direction: ltr;
+}
+
+[dir="rtl"] nav ul {
+    direction: ltr; /* Keep navigation items in original order */
+}
+
+/* Keep site logo in original position */
+[dir="rtl"] .site-logo-container {
+    /* Keep original positioning - no changes */
+}
+
+/* Keep social icons in original layout */
+[dir="rtl"] .social-icons {
+    direction: ltr; /* Prevent icon order reversal */
+}
+
+/* Keep language switcher unchanged */
+[dir="rtl"] .language-switcher {
+    direction: ltr;
+}
+
+/* Apply RTL to content areas only */
+[dir="rtl"] .blog-post,
+[dir="rtl"] .blog-content,
+[dir="rtl"] article,
+[dir="rtl"] main {
+    text-align: right;
+    direction: rtl;
+}
+
+[dir="rtl"] main ul,
+[dir="rtl"] main ol,
+[dir="rtl"] article ul,
+[dir="rtl"] article ol {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+[dir="rtl"] blockquote {
+    border-left: none;
+    border-right: 3px solid #f84ef8;
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+/* Keep floating TOC in original position */
+[dir="rtl"] #floating-toc {
+    direction: ltr; /* Keep TOC layout unchanged */
+}
+
+[dir="rtl"] #floating-toc .toc-content {
+    text-align: right; /* Only change text alignment */
+    direction: rtl;
+}
+
+/* RTL specific adjustments for forms */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Footer adjustments */
+[dir="rtl"] footer {
+    text-align: center; /* Keep footer centered */
+}
+
+/* Keep dropdown in original position */
+[dir="rtl"] .dropdown {
+    direction: ltr;
+}
+
+[dir="rtl"] .dropdown-content {
+    direction: ltr;
+    text-align: left; /* Keep dropdown items left-aligned */
+}

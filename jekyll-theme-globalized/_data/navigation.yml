@@ -1,0 +1,102 @@
+# Main navigation structure
+# Supports multilingual labels and dropdown menus
+
+main:
+  - title: 
+      en: "Home"
+      es: "Inicio"
+      fr: "Accueil"
+      ja: "ホーム"
+      zh: "首页"
+      ar: "الرئيسية"
+      de: "Startseite"
+      pt: "Início"
+    url: /
+    
+  - title:
+      en: "Blog"
+      es: "Blog"
+      fr: "Blog"
+      ja: "ブログ"
+      zh: "博客"
+      ar: "المدونة"
+      de: "Blog"
+      pt: "Blog"
+    url: /blog/
+    
+  - title:
+      en: "Projects"
+      es: "Proyectos"
+      fr: "Projets"
+      ja: "プロジェクト"
+      zh: "项目"
+      ar: "المشاريع"
+      de: "Projekte"
+      pt: "Projetos"
+    url: /projects/
+    
+  - title:
+      en: "About"
+      es: "Acerca de"
+      fr: "À propos"
+      ja: "約"
+      zh: "关于"
+      ar: "عن"
+      de: "Über"
+      pt: "Sobre"
+    url: /about/
+    dropdown:
+      - title:
+          en: "Personal Journey"
+          es: "Viaje Personal"
+          fr: "Parcours Personnel"
+          ja: "個人的な旅"
+          zh: "个人历程"
+          ar: "الرحلة الشخصية"
+          de: "Persönliche Reise"
+          pt: "Jornada Pessoal"
+        url: /about/journey/
+      - title:
+          en: "Connections"
+          es: "Conexiones"
+          fr: "Connexions"
+          ja: "つながり"
+          zh: "联系"
+          ar: "الاتصالات"
+          de: "Verbindungen"
+          pt: "Conexões"
+        url: /about/connections/
+
+footer:
+  - title:
+      en: "Privacy Policy"
+      es: "Política de Privacidad"
+      fr: "Politique de Confidentialité"
+      ja: "プライバシーポリシー"
+      zh: "隐私政策"
+      ar: "سياسة الخصوصية"
+      de: "Datenschutz"
+      pt: "Política de Privacidade"
+    url: /privacy/
+    
+  - title:
+      en: "Terms of Service"
+      es: "Términos de Servicio"
+      fr: "Conditions d'Utilisation"
+      ja: "利用規約"
+      zh: "服务条款"
+      ar: "شروط الخدمة"
+      de: "Nutzungsbedingungen"
+      pt: "Termos de Serviço"
+    url: /terms/
+    
+  - title:
+      en: "Contact"
+      es: "Contacto"
+      fr: "Contact"
+      ja: "お問い合わせ"
+      zh: "联系"
+      ar: "اتصل"
+      de: "Kontakt"
+      pt: "Contato"
+    url: /contact/

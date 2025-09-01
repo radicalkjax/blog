@@ -1,0 +1,60 @@
+---
+layout: null
+---
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": {{ site.title | jsonify }},
+  "description": {{ site.description | jsonify }},
+  "home_page_url": "{{ site.url }}{{ site.baseurl }}/",
+  "feed_url": "{{ "/feed.json" | absolute_url }}",
+  "icon": "{{ "/assets/images/logo/sitelogo.png" | absolute_url }}",
+  "favicon": "{{ "/favicon.ico" | absolute_url }}",
+  "language": "{{ site.lang | default: "en-US" }}",
+  "expired": false,
+  "authors": [
+    {
+      "name": {{ site.author.name | default: "Kali Jackson" | jsonify }},
+      "url": "{{ site.url }}{{ site.baseurl }}/about.html",
+      "avatar": "{{ "/assets/images/logo/sitelogo.png" | absolute_url }}"
+    }
+  ],
+  "items": [
+    {% for post in site.posts limit:20 %}
+    {
+      "id": "{{ post.url | absolute_url }}",
+      "url": "{{ post.url | absolute_url }}",
+      "title": {{ post.title | jsonify }},
+      "summary": {{ post.excerpt | strip_html | strip_newlines | truncatewords: 50 | jsonify }},
+      "content_html": {{ post.content | jsonify }},
+      "content_text": {{ post.content | strip_html | strip_newlines | jsonify }},
+      "date_published": "{{ post.date | date_to_xmlschema }}",
+      {% if post.modified %}
+      "date_modified": "{{ post.modified | date_to_xmlschema }}",
+      {% else %}
+      "date_modified": "{{ post.date | date_to_xmlschema }}",
+      {% endif %}
+      "authors": [
+        {
+          "name": {{ post.author | default: site.author.name | default: "Kali Jackson" | jsonify }}
+        }
+      ],
+      "tags": {{ post.tags | jsonify }},
+      {% if post.image %}
+      "image": "{{ post.image | absolute_url }}",
+      "banner_image": "{{ post.image | absolute_url }}",
+      {% endif %}
+      "language": "{{ post.lang | default: site.lang | default: "en-US" }}",
+      "_meta": {
+        "categories": {{ post.categories | jsonify }},
+        "word_count": {{ post.content | strip_html | number_of_words }},
+        "reading_time_minutes": {{ post.content | strip_html | number_of_words | divided_by: 200 | plus: 1 }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "_meta": {
+    "generated_at": "{{ site.time | date_to_xmlschema }}",
+    "generator": "Jekyll v{{ jekyll.version }}",
+    "total_posts": {{ site.posts | size }}
+  }
+}

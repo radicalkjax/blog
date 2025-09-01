@@ -1,0 +1,341 @@
+/* 
+ * Modern CSS Features Showcase
+ * Demonstrates cutting-edge CSS capabilities for professional portfolio
+ */
+
+/* ===========================
+   Container Queries
+   =========================== */
+
+/* Define container contexts */
+.post-card {
+  container-type: inline-size;
+  container-name: card;
+}
+
+.sidebar {
+  container-type: inline-size;
+  container-name: sidebar;
+}
+
+.main-content {
+  container-type: inline-size;
+  container-name: content;
+}
+
+/* Container query responsive design */
+@container card (min-width: 400px) {
+  .post-card__title {
+    font-size: 1.5rem;
+  }
+  
+  .post-card__content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+  }
+}
+
+@container sidebar (max-width: 300px) {
+  .sidebar__nav {
+    flex-direction: column;
+  }
+  
+  .sidebar__item {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@container content (min-width: 800px) {
+  .content__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===========================
+   CSS Logical Properties
+   =========================== */
+
+/* Replace physical properties with logical ones for better i18n */
+.header-content,
+.container,
+.post-content {
+  /* Logical margins */
+  margin-inline: auto;
+  margin-block: 0;
+  
+  /* Logical padding */
+  padding-inline: var(--spacing-md);
+  padding-block: var(--spacing-lg);
+}
+
+/* Navigation with logical properties */
+nav ul {
+  display: flex;
+  gap: 1rem;
+  padding-inline-start: 0;
+  margin-block: 0;
+}
+
+nav li {
+  list-style: none;
+  padding-inline: var(--spacing-sm);
+}
+
+/* Logical borders */
+.post-meta {
+  border-inline-start: 4px solid var(--color-accent);
+  padding-inline-start: var(--spacing-sm);
+}
+
+/* Logical positioning */
+.language-switcher {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10001; /* Higher than social icons */
+}
+
+/* RTL-aware layout with logical properties */
+.card {
+  border-start-start-radius: var(--radius-lg);
+  border-start-end-radius: var(--radius-lg);
+  margin-inline-end: var(--spacing-md);
+}
+
+/* ===========================
+   CSS Layers
+   =========================== */
+
+@layer reset, base, components, utilities;
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer base {
+  :root {
+    /* Modern color system with color-mix() */
+    --color-primary-light: color-mix(in srgb, var(--color-primary) 80%, white);
+    --color-primary-dark: color-mix(in srgb, var(--color-primary) 80%, black);
+    
+    /* Dynamic viewport units */
+    --vh: 1dvh;
+    --vw: 1dvw;
+    --vi: 1dvi;
+    --vb: 1dvb;
+  }
+}
+
+@layer components {
+  .modern-card {
+    /* Aspect ratio for responsive images */
+    aspect-ratio: 16 / 9;
+    
+    /* Modern gradient with color-mix */
+    background: linear-gradient(
+      135deg,
+      color-mix(in lch, var(--color-primary) 70%, transparent),
+      color-mix(in lch, var(--color-accent) 70%, transparent)
+    );
+    
+    /* Subgrid for nested layouts */
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* ===========================
+   Advanced Selectors
+   =========================== */
+
+/* :has() pseudo-class for parent selection */
+.post-list:has(.post-card:hover) .post-card:not(:hover) {
+  opacity: 0.7;
+  transform: scale(0.98);
+}
+
+/* :is() and :where() for efficient grouping */
+:is(article, section, aside):has(> h2) {
+  padding-block-start: var(--spacing-xl);
+}
+
+:where(.card, .post-card, .feature-card) {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===========================
+   CSS Scroll Features
+   =========================== */
+
+/* Scroll snap for smooth navigation */
+.gallery {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+
+.gallery__item {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+/* Scroll-driven animations */
+@supports (animation-timeline: scroll()) {
+  .parallax-header {
+    animation: parallax linear;
+    animation-timeline: scroll(root block);
+  }
+  
+  @keyframes parallax {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+}
+
+/* ===========================
+   Modern Layout Techniques
+   =========================== */
+
+/* CSS Grid with masonry layout (when supported) */
+@supports (grid-template-rows: masonry) {
+  .masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: masonry;
+    gap: var(--spacing-md);
+  }
+}
+
+/* Flexbox with modern gap property */
+.modern-flex {
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   CSS Shapes and Clip Paths
+   =========================== */
+
+.shaped-image {
+  shape-outside: circle(50%);
+  clip-path: circle(50%);
+  float: inline-start;
+  margin-inline-end: var(--spacing-md);
+}
+
+.diagonal-section {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* ===========================
+   Modern Typography
+   =========================== */
+
+.modern-text {
+  /* Variable fonts */
+  font-variation-settings: "wght" 400, "slnt" 0;
+  
+  /* Advanced text features */
+  font-feature-settings: "liga" 1, "calt" 1, "ss01" 1;
+  
+  /* Leading trim for precise spacing */
+  text-box-trim: both;
+  text-box-edge: cap alphabetic;
+}
+
+/* Responsive typography with clamp() */
+.responsive-heading {
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+  line-height: clamp(1.2, 1.5vw + 1, 1.4);
+}
+
+/* ===========================
+   Performance Optimizations
+   =========================== */
+
+/* Content-visibility for performance */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Will-change for animations */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* ===========================
+   Accessibility Features
+   =========================== */
+
+/* Focus-visible for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #000;
+    --color-secondary: #fff;
+    --color-accent: #00f;
+  }
+}
+
+/* ===========================
+   Modern Color Features
+   =========================== */
+
+/* Wide gamut colors for modern displays */
+@supports (color: color(display-p3 1 0 0)) {
+  .vibrant {
+    --color-primary: color(display-p3 0.427 0.063 0.353);
+    --color-accent: color(display-p3 0.973 0.31 0.973);
+  }
+}
+
+/* Light-dark() function for automatic theming */
+@supports (color: light-dark(white, black)) {
+  .auto-theme {
+    color: light-dark(var(--color-text), var(--dark-text));
+    background-color: light-dark(var(--color-background), var(--dark-background));
+  }
+}

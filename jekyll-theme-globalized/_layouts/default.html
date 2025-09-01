@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="{{ site.active_lang | default: site.default_lang }}"{% if site.active_lang == 'ar' %} dir="rtl"{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.data[site.active_lang].strings.site.title | default: "KALI JACKSON (@RADICALKJAX)" }}</title>
+    
+    <!-- Security Headers via Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.github.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ page.image | default: '/assets/images/og-image.png' | absolute_url }}">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@radicalkjax">
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+    <meta name="twitter:image" content="{{ page.image | default: '/assets/images/og-image.png' | absolute_url }}">
+    
+    <!-- hreflang tags for SEO -->
+    {% for lang in site.languages %}
+    <link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}{% if lang != site.default_lang %}/{{ lang }}{% endif %}{{ page.url }}" />
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}" />
+    
+    <!-- Feed Discovery -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - RSS Feed" href="{{ "/feed.xml" | absolute_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }} - Atom Feed" href="{{ "/atom.xml" | absolute_url }}">
+    <link rel="alternate" type="application/json" title="{{ site.title }} - JSON Feed" href="{{ "/feed.json" | absolute_url }}">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>K</text></svg>">
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="{{ '/assets/fonts/uni0553-webfont.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Critical CSS (inline for performance) -->
+    <style>
+        /* Critical above-the-fold CSS */
+        :root{--color-primary:#6d105a;--color-secondary:#fff;--color-text:#fff;--color-background:#6d105a;--font-family:'DM Mono',monospace;--spacing-sm:16px;--spacing-md:24px;--container-width:1000px}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:var(--font-family);background-color:var(--color-background);color:var(--color-text);line-height:1.6;min-height:100vh}
+        header{background:rgba(0,0,0,.2)}
+        .container{max-width:var(--container-width);margin:0 auto;padding:0 var(--spacing-sm)}
+        .skip-link{position:absolute;top:-40px;left:0;background:var(--color-primary);color:var(--color-secondary);padding:8px;text-decoration:none;z-index:100}
+        .skip-link:focus{top:0}
+        [data-theme="dark"]{--color-background:#1a1a1a;--color-primary:#3a0d2e;--color-text:#e0e0e0}
+    </style>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+    <meta name="theme-color" content="#6d105a">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/icons/icon-192x192.png' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
+    <link rel="preload" href="{{ '/assets/css/main.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"></noscript>
+    <link rel="preload" href="{{ '/assets/css/modern-features.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ '/assets/css/modern-features.css' | relative_url }}"></noscript>
+    {% if page.custom_css %}
+    <style type="text/css">
+        {{ page.custom_css }}
+    </style>
+    {% endif %}
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom MathJax styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/mathjax-custom.css' | relative_url }}">
+    <!-- Custom Mermaid styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/mermaid-custom.css' | relative_url }}">
+    <!-- Key Terms styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/key-terms.css' | relative_url }}">
+    <!-- Collapsible References styling -->
+    <link rel="stylesheet" href="{{ '/assets/css/collapsible-references.css' | relative_url }}">
+    <!-- Mermaid for diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <!-- MathJax for mathematical formulas -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            startup: {
+                ready: function() {
+                    MathJax.startup.defaultReady();
+                    
+                    // Add custom styling after MathJax is loaded
+                    MathJax.startup.promise.then(function() {
+                        // Style block equations
+                        document.querySelectorAll('mjx-container[jax="CHTML"][display="true"]').forEach(function(container) {
+                            container.style.backgroundColor = '#1a1a1a';
+                            container.style.border = '2px solid #6d105a';
+                            container.style.borderRadius = '4px';
+                            container.style.padding = '15px';
+                            container.style.margin = '20px auto';
+                            container.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.2)';
+                            container.style.maxWidth = '90%';
+                            container.style.overflowX = 'auto';
+                            container.style.display = 'block';
+                            
+                            // Style the math content
+                            var mathElement = container.querySelector('mjx-math');
+                            if (mathElement) {
+                                mathElement.style.color = '#ffffff';
+                                mathElement.style.fontSize = '1.1em';
+                            }
+                        });
+                        
+                        // Style inline equations - just set the color without background styling
+                        document.querySelectorAll('mjx-container:not([display="true"])').forEach(function(container) {
+                            container.style.color = '#ffffff';
+                            
+                            // No additional styling for inline math to keep it simple
+                            var mathElement = container.querySelector('mjx-math');
+                            if (mathElement) {
+                                mathElement.style.color = '#ffffff';
+                            }
+                        });
+                    });
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Main JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+    <!-- Social Links JavaScript -->
+    <script src="{{ '/assets/js/social-links.js' | relative_url }}" defer></script>
+    <!-- Table of Contents JavaScript (for blog posts) -->
+    <script src="{{ '/assets/js/toc.js' | relative_url }}" defer></script>
+    <!-- Custom MathJax JavaScript -->
+    <script src="{{ '/assets/js/mathjax-custom.js' | relative_url }}" defer></script>
+    <!-- Custom Mermaid JavaScript -->
+    <script src="{{ '/assets/js/mermaid-custom.js' | relative_url }}" defer></script>
+    <!-- Key Terms JavaScript -->
+    <script src="{{ '/assets/js/key-terms.js' | relative_url }}" defer></script>
+    <!-- Print to PDF JavaScript -->
+    <script src="{{ '/assets/js/print-pdf.js' | relative_url }}" defer></script>
+    <!-- Collapsible References JavaScript -->
+    <script src="{{ '/assets/js/collapsible-references.js' | relative_url }}" defer></script>
+    <!-- Reference Links JavaScript -->
+    <script src="{{ '/assets/js/reference-links.js' | relative_url }}" defer></script>
+    <!-- Fix Escaped Dollars JavaScript -->
+    <script src="{{ '/assets/js/fix-escaped-dollars.js' | relative_url }}" defer></script>
+    <!-- Locale Detection JavaScript -->
+    <script src="{{ '/assets/js/modules/locale-detector.js' | relative_url }}" defer></script>
+    <!-- Localized Images JavaScript -->
+    <script src="{{ '/assets/js/modules/localized-images.js' | relative_url }}" defer></script>
+    <!-- Structured Data -->
+    {% include structured-data.html %}
+    
+    <!-- Initialize Dropdown Menu Handling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Direct dropdown menu handling
+            document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+                dropdown.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        var menu = this.querySelector('.dropdown-menu');
+                        if (menu) {
+                            menu.style.display = 'flex';
+                        }
+                    }
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        var menu = this.querySelector('.dropdown-menu');
+                        if (menu) {
+                            menu.style.display = 'none';
+                        }
+                    }
+                });
+                
+                var toggle = dropdown.querySelector('.dropdown-toggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            
+                            var menu = this.nextElementSibling;
+                            if (menu.style.display === 'flex') {
+                                menu.style.display = 'none';
+                            } else {
+                                // Close all other dropdowns first
+                                document.querySelectorAll('.dropdown-menu').forEach(function(m) {
+                                    if (m !== menu) {
+                                        m.style.display = 'none';
+                                    }
+                                });
+                                menu.style.display = 'flex';
+                            }
+                        }
+                    });
+                }
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
+                        menu.style.display = 'none';
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#navigation" class="skip-link">Skip to navigation</a>
+    <div class="site-logo-container">
+        <img src="{{ '/assets/images/logo/sitelogo.png' | relative_url }}" alt="Site Logo" class="site-logo-outside">
+    </div>
+    <header>
+        <div class="container">
+            <a href="{{ '/' | relative_url }}" class="site-title">{{ site.data[site.active_lang].strings.site.title | default: "KALI JACKSON (@RADICALKJAX)" }}</a>
+            <nav id="navigation">
+                <ul>
+                    <li><a href="{{ '/blog.html' | relative_url }}">{{ site.data[site.active_lang].strings.navigation.blog | default: "Blog" }}</a></li>
+                    <li class="dropdown">
+                        <a href="{{ '/projects.html' | relative_url }}" class="dropdown-toggle">{{ site.data[site.active_lang].strings.navigation.projects | default: "Projects" }}</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ '/projects/rocket-pup.html' | relative_url }}">{{ site.data[site.active_lang].strings.dropdown.rocket_pup | default: "Rocket Pup" }}</a></li>
+                            <li><a href="{{ '/projects/caliphoria.html' | relative_url }}">{{ site.data[site.active_lang].strings.dropdown.caliphoria | default: "Caliphoria" }}</a></li>
+                            <li><a href="{{ '/projects/wattz.html' | relative_url }}">{{ site.data[site.active_lang].strings.dropdown.wattz | default: "Wattz" }}</a></li>
+                            <li><a href="{{ '/projects/presentations.html' | relative_url }}">{{ site.data[site.active_lang].strings.dropdown.presentations | default: "Presentations" }}</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ '/art.html' | relative_url }}" class="dropdown-toggle">{{ site.data[site.active_lang].strings.navigation.art | default: "Art" }}</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ '/art/photos.html' | relative_url }}">{{ site.data[site.active_lang].strings.dropdown.photos | default: "Photos" }}</a></li>
+                            <li><a href="{{ '/art/other-things.html' | relative_url }}">{{ site.data[site.active_lang].strings.dropdown.other_things | default: "Other Things" }}</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ '/about.html' | relative_url }}">{{ site.data[site.active_lang].strings.navigation.about_me | default: "About Me" }}</a></li>
+                    <li><a href="{{ '/about/trans-journey.html' | relative_url }}">{{ site.data[site.active_lang].strings.navigation.personal_journey | default: "Personal Journey" }}</a></li>
+                    <li><a href="{{ '/connections.html' | relative_url }}">{{ site.data[site.active_lang].strings.navigation.connections | default: "Connections" }}</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://bsky.app/profile/radicalkjax.com" aria-label="BlueSky" target="_blank" title="BlueSky">
+                    <i class="fab fa-bluesky"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/kali-jackson-647094245" aria-label="LinkedIn" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/radicalkjax/" aria-label="Instagram" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/radicalkjax" aria-label="GitHub" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS Feed" target="_blank" title="RSS Feed">
+                    <i class="fas fa-rss"></i>
+                </a>
+                {% include language-switcher.html %}
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container">
+        {{ content }}
+    </main>
+
+    <footer class="container">
+        <p>{{ site.data[site.active_lang].strings.footer.designed_by | default: "Designed with love by Kali" }} <3</p>
+    </footer>
+</body>
+</html>

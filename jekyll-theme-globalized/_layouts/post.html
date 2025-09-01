@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="post-container">
+    <!-- This div is needed for the TOC to be properly positioned -->
+    <article class="post">
+        <div class="post-content mermaid-container">
+            {{ content }}
+        </div>
+        
+        {% if page.tags %}
+        <div class="post-tags">
+            {% for tag in page.tags %}
+            <a href="#">{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="post-navigation">
+            <a href="{{ '/blog.html' | relative_url }}" class="back-to-blog">← Back to Blog</a>
+        </div>
+    </article>
+</div>
