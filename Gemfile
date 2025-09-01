@@ -1,13 +1,17 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.10.0"  # GitHub Pages uses Jekyll 3.10.0
-gem "jekyll-feed"
-gem "jekyll-seo-tag"
+# Jekyll version compatible with GitHub Pages
+gem "jekyll", "~> 3.10.0"
 
-# If you want to use GitHub Pages themes
-gem "jekyll-theme-minimal"
+# GitHub Pages supported plugins
+gem "jekyll-feed", "~> 0.12"
+gem "jekyll-seo-tag", "~> 2.6"
 
-# Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
+# Optional but commonly used
+gem "kramdown-parser-gfm"
+gem "webrick", "~> 1.7"  # Required for Ruby 3.0+
+
+# Windows and JRuby does not include zoneinfo files
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", "~> 1.2"
   gem "tzinfo-data"
