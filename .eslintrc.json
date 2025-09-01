@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "prefer-const": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "object-shorthand": "error",
+    "no-param-reassign": ["error", { "props": false }],
+    "import/extensions": ["error", "always", { "ignorePackages": true }],
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "max-len": ["error", { "code": 120, "ignoreComments": true }],
+    "no-underscore-dangle": "off"
+  },
+  "globals": {
+    "jekyll": "readonly",
+    "customElements": "readonly",
+    "HTMLElement": "readonly"
+  }
+}

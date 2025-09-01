@@ -4,20 +4,16 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('TOC script loaded');
   
   // Only initialize TOC if we're on a blog post page with headings
   const postContent = document.querySelector('.post-content');
   if (!postContent) {
-    console.log('No .post-content element found');
     return;
   }
   
   const headings = postContent.querySelectorAll('h2, h3, h4');
-  console.log('Found ' + headings.length + ' headings');
   
   if (headings.length < 2) {
-    console.log('Not enough headings to create TOC');
     return; // Only show TOC if there are at least 2 headings
   }
   
@@ -47,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add the TOC container to the body (not inside post container)
   document.body.appendChild(tocContainer);
   document.body.appendChild(mobileToggle);
-  console.log('TOC container and mobile toggle added to body');
   
   // Mobile toggle functionality
   mobileToggle.addEventListener('click', function() {
@@ -84,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create an ID for the heading if it doesn't have one
     if (!heading.id) {
       heading.id = 'section-' + index + '-' + heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
-      console.log('Created ID for heading: ' + heading.id);
     }
     
     const level = heading.tagName.toLowerCase();
@@ -125,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (!currentSection) {
-      console.log('No current section found');
       return;
     }
     

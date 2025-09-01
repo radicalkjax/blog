@@ -1,71 +1,8 @@
-<!-- SomaFM DEF CON Radio Player -->
-<div id="somafm-player" class="somafm-player">
-  <div class="player-header" style="display: flex;">
-    <div class="station-info">
-      <div class="station-icon">
-        <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-          <!-- Radio wave circles -->
-          <circle cx="20" cy="20" r="18" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.3"/>
-          <circle cx="20" cy="20" r="14" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.5"/>
-          <circle cx="20" cy="20" r="10" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.7"/>
-          <!-- Center dot -->
-          <circle cx="20" cy="20" r="4" fill="#9c1f8c"/>
-          <!-- Signal bars -->
-          <rect x="8" y="28" width="3" height="4" fill="#ff00ff" opacity="0.8"/>
-          <rect x="13" y="26" width="3" height="6" fill="#ff00ff" opacity="0.8"/>
-          <rect x="18" y="24" width="3" height="8" fill="#ff00ff" opacity="0.8"/>
-          <rect x="23" y="26" width="3" height="6" fill="#ff00ff" opacity="0.8"/>
-          <rect x="28" y="28" width="3" height="4" fill="#ff00ff" opacity="0.8"/>
-        </svg>
-      </div>
-      <div class="station-text">
-        <span class="station-name">DEF CON Radio <span class="via-somafm">via <a href="https://somafm.com/defcon/" target="_blank" rel="noopener">SomaFM</a></span></span>
-        <span class="station-tagline">Music for Hacking</span>
-      </div>
-    </div>
-    <button class="player-close" onclick="togglePlayer()" aria-label="Minimize player">
-      <span>_</span>
-    </button>
-  </div>
-  
-  <div class="player-body" style="display: block;">
-    <audio id="defcon-audio" class="audio-element" preload="none">
-      <!-- Multiple sources for redundancy -->
-      <source src="https://ice1.somafm.com/defcon-128-mp3" type="audio/mpeg">
-      <source src="https://ice4.somafm.com/defcon-128-mp3" type="audio/mpeg">
-      <source src="https://ice2.somafm.com/defcon-128-mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    
-    <div class="player-controls">
-      <button class="play-pause-btn" onclick="togglePlayPause()" aria-label="Play/Pause">
-        <span class="play-icon">▶</span>
-        <span class="pause-icon" style="display: none;">❚❚</span>
-      </button>
-      
-      <div class="volume-control">
-        <button class="mute-btn" onclick="toggleMute()" aria-label="Mute/Unmute">
-          <span class="volume-icon">🔊</span>
-          <span class="mute-icon" style="display: none;">🔇</span>
-        </button>
-        <input type="range" class="volume-slider" min="0" max="100" value="25" onchange="changeVolume(this.value)">
-      </div>
-    </div>
-    
-    <div class="now-playing">
-      <span class="np-label">Now Playing:</span>
-      <span class="np-text">Click play to start streaming</span>
-    </div>
-  </div>
-  
-  <!-- Minimized state -->
-  <div class="player-minimized" style="display: none;">
-    <button onclick="togglePlayer()" aria-label="Expand player">
-      <span class="mini-icon">🎵</span>
-      <span class="mini-text">DEF CON Radio</span>
-    </button>
-  </div>
-</div>
+<!-- SomaFM DEF CON Radio Player --><div id="somafm-player" class="somafm-player"><div class="player-header" style="display: flex;"><div class="station-info"><div class="station-icon"><svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.3"/><circle cx="20" cy="20" r="14" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.5"/><circle cx="20" cy="20" r="10" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.7"/><circle cx="20" cy="20" r="4" fill="#9c1f8c"/><rect x="8" y="28" width="3" height="4" fill="#ff00ff" opacity="0.8"/><rect x="13" y="26" width="3" height="6" fill="#ff00ff" opacity="0.8"/><rect x="18" y="24" width="3" height="8" fill="#ff00ff" opacity="0.8"/><rect x="23" y="26" width="3" height="6" fill="#ff00ff" opacity="0.8"/><rect x="28" y="28" width="3" height="4" fill="#ff00ff" opacity="0.8"/></svg></div><div class="station-text"><span class="station-name">DEF CON Radio <span class="via-somafm">via <a href="https://somafm.com/defcon/" target="_blank" rel="noopener">SomaFM</a></span></span><span class="station-tagline">Music for Hacking</span></div></div><button type="button" class="player-close" onclick="togglePlayer()" aria-label="Minimize player"><span>_</span></button></div>
+
+<div class="player-body" style="display: block;"><audio id="defcon-audio" class="audio-element" preload="none"><source src="https://ice1.somafm.com/defcon-128-mp3" type="audio/mpeg"><source src="https://ice4.somafm.com/defcon-128-mp3" type="audio/mpeg"><source src="https://ice2.somafm.com/defcon-128-mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+
+<div class="player-controls"><button type="button" class="play-pause-btn" onclick="togglePlayPause()" aria-label="Play/Pause"><span class="play-icon">▶</span><span class="pause-icon" style="display: none;">❚❚</span></button><div class="volume-control"><button type="button" class="mute-btn" onclick="toggleMute()" aria-label="Mute/Unmute"><span class="volume-icon">🔊</span><span class="mute-icon" style="display: none;">🔇</span></button><input type="range" class="volume-slider" min="0" max="100" value="25" onchange="changeVolume(this.value)"></div></div><div class="now-playing"><span class="np-label">Now Playing:</span><span class="np-text">Click play to start streaming</span></div></div><div class="player-minimized" style="display: none;"><button type="button" onclick="togglePlayer()" aria-label="Expand player"><span class="mini-icon">🎵</span><span class="mini-text">DEF CON Radio</span></button></div></div>
 
 <script>
 // SomaFM Player JavaScript
@@ -154,10 +91,15 @@ function togglePlayer() {
 // Fetch and update currently playing song
 function updateNowPlaying() {
   const npText = document.querySelector('.np-text');
-  
-  // Fetch current song from SomaFM API
-  fetch('https://somafm.com/songs/defcon.json')
-    .then(response => response.json())
+
+  // Try the CORS-friendly API endpoint first
+  fetch('https://api.somafm.com/songs/defcon.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('API endpoint not available');
+      }
+      return response.json();
+    })
     .then(data => {
       if (data.songs && data.songs.length > 0) {
         const currentSong = data.songs[0]; // Most recent song
@@ -167,8 +109,21 @@ function updateNowPlaying() {
       }
     })
     .catch(error => {
-      console.error('Error fetching song data:', error);
-      npText.textContent = 'Streaming DEF CON Radio';
+      // Fallback to the regular endpoint (may be blocked by CORS)
+      fetch('https://somafm.com/songs/defcon.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data.songs && data.songs.length > 0) {
+            const currentSong = data.songs[0];
+            npText.textContent = `${currentSong.artist} - ${currentSong.title}`;
+          } else {
+            npText.textContent = 'Streaming DEF CON Radio';
+          }
+        })
+        .catch(fallbackError => {
+          console.error('Error fetching song data:', fallbackError);
+          npText.textContent = 'Streaming DEF CON Radio';
+        });
     });
 }
 
@@ -179,7 +134,7 @@ let songUpdateInterval;
 audio.addEventListener('error', function() {
   const sources = audio.querySelectorAll('source');
   const currentSrc = audio.currentSrc;
-  
+
   sources.forEach((source, index) => {
     if (source.src === currentSrc && index < sources.length - 1) {
       audio.src = sources[index + 1].src;
@@ -190,4 +145,67 @@ audio.addEventListener('error', function() {
     }
   });
 });
+
+// Collision detection to move player to bottom when overlapping with content
+let wasAtBottom = false;
+
+function checkCollision() {
+  const player = document.getElementById('somafm-player');
+  const mainContent = document.querySelector('.content-wrapper') || document.querySelector('.post-content') || document.querySelector('article') || document.querySelector('main');
+
+  if (!player || !mainContent) return;
+
+  // Reset player styles first to get accurate measurements
+  player.style.position = 'fixed';
+  player.style.top = '120px';
+  player.style.bottom = 'auto';
+  player.style.left = '20px';
+  player.style.transform = 'none';
+  player.style.width = '280px';
+  player.style.maxWidth = 'none';
+
+  const playerRect = player.getBoundingClientRect();
+  const contentRect = mainContent.getBoundingClientRect();
+
+  // Check if player overlaps with main content
+  const isOverlapping = !(
+    playerRect.right < contentRect.left ||
+    playerRect.left > contentRect.right ||
+    playerRect.bottom < contentRect.top ||
+    playerRect.top > contentRect.bottom
+  );
+
+  if (isOverlapping || window.innerWidth <= 768) {
+    // Move player to bottom and minimize it
+    player.style.position = 'fixed';
+    player.style.top = 'auto';
+    player.style.bottom = '20px';
+    player.style.left = '50%';
+    player.style.transform = 'translateX(-50%)';
+    player.style.width = '90%';
+    player.style.maxWidth = '320px';
+
+    // Auto-minimize when moved to bottom
+    if (!wasAtBottom) {
+      playerBody.style.display = 'none';
+      playerHeader.style.display = 'none';
+      playerMinimized.style.display = 'block';
+      wasAtBottom = true;
+    }
+  } else {
+    // Keep in sidebar position when no collision
+    wasAtBottom = false;
+  }
+}
+
+// Check collision on load, resize, and scroll
+window.addEventListener('load', checkCollision);
+window.addEventListener('resize', checkCollision);
+window.addEventListener('scroll', checkCollision);
+
+// Also check when content changes (for dynamic content)
+const observer = new MutationObserver(checkCollision);
+const observerConfig = { childList: true, subtree: true };
+const targetNode = document.body;
+observer.observe(targetNode, observerConfig);
 </script>

@@ -28,6 +28,10 @@ exclude:
   - vendor
   - .gitignore
   - README.md
+  - jekyll-theme-globalized/example
+  - jekyll-theme-globalized/spec
+  - jekyll-theme-globalized/Gemfile
+  - jekyll-theme-globalized/README.md
 
 # Internationalization settings
 languages: ["en", "es", "fr", "ja", "zh", "ar", "de", "pt"]

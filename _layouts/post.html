@@ -8,13 +8,13 @@ layout: default
             {{ content }}
         </div>
         
-        {% if page.tags %}
+        {%- if page.tags -%}
         <div class="post-tags">
-            {% for tag in page.tags %}
+            {%- for tag in page.tags -%}
             <a href="#">{{ tag }}</a>
-            {% endfor %}
+            {%- endfor -%}
         </div>
-        {% endif %}
+        {%- endif -%}
         
         <div class="post-navigation">
             <a href="{{ '/blog.html' | relative_url }}" class="back-to-blog">← Back to Blog</a>

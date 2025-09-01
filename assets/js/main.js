@@ -80,22 +80,16 @@ function initSite() {
  * Setup dropdown menus
  */
 function setupDropdownMenus() {
-    console.log('setupDropdownMenus called');
     const dropdowns = document.querySelectorAll('.dropdown');
-    console.log('Found dropdowns:', dropdowns.length);
     
     dropdowns.forEach(dropdown => {
-        console.log('Setting up dropdown:', dropdown);
         // Add hover event listeners for desktop
         dropdown.addEventListener('mouseenter', function() {
-            console.log('mouseenter event triggered');
             if (window.innerWidth > 768) {
                 const menu = this.querySelector('.dropdown-menu');
-                console.log('Adding show class to dropdown menu', menu);
                 if (menu) {
                     menu.classList.add('show');
                 } else {
-                    console.error('Dropdown menu not found');
                 }
             }
         });
@@ -149,10 +143,6 @@ function setupDropdownMenus() {
  * Setup mobile navigation toggle
  */
 function setupMobileNav() {
-    // This would be implemented if we had a mobile menu toggle button
-    // For now, we're using CSS media queries for responsive design
-    
-    // Future implementation could add a hamburger menu for mobile
     const header = document.querySelector('header');
     
     // Create mobile nav toggle button (hidden by default, shown in CSS for small screens)
@@ -161,22 +151,25 @@ function setupMobileNav() {
     mobileNavToggle.setAttribute('aria-label', 'Toggle navigation menu');
     mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
     
-    // Insert the button into the header
-    if (header && header.querySelector('.header-content')) {
-        header.querySelector('.header-content').appendChild(mobileNavToggle);
-        
-        // Add event listener
-        mobileNavToggle.addEventListener('click', function() {
-            document.body.classList.toggle('nav-open');
+    // Insert the button into the header container
+    if (header) {
+        const container = header.querySelector('.container');
+        if (container) {
+            container.appendChild(mobileNavToggle);
             
-            // Change icon based on state
-            const icon = this.querySelector('i');
-            if (document.body.classList.contains('nav-open')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-bars';
-            }
-        });
+            // Add event listener
+            mobileNavToggle.addEventListener('click', function() {
+                document.body.classList.toggle('nav-open');
+                
+                // Change icon based on state
+                const icon = this.querySelector('i');
+                if (document.body.classList.contains('nav-open')) {
+                    icon.className = 'fas fa-times';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+        }
     }
 }
 

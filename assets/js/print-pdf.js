@@ -4,7 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Print PDF script loaded');
   
   // Function to create print styles
   function createPrintStyles() {
@@ -584,7 +583,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function createPrintContainer() {
     const tocContainer = document.getElementById('floating-toc');
     if (!tocContainer || !tocContainer.parentNode) {
-      console.log('No TOC container or parent found');
       return;
     }
     

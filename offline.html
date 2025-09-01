@@ -1,0 +1,108 @@
+---
+layout: default
+title: Offline
+permalink: /offline.html
+---
+
+<div class="offline-page">
+  <div class="container">
+    <div class="offline-content">
+      <i class="fas fa-wifi-slash offline-icon"></i>
+      <h1>You're Offline</h1>
+      <p>It looks like you've lost your internet connection.</p>
+      <p>Don't worry! You can still browse pages you've visited before.</p>
+      
+      <div class="offline-actions">
+        <button onclick="window.location.reload()" class="btn">
+          <i class="fas fa-redo"></i> Try Again
+        </button>
+        <a href="/" class="btn btn--secondary">
+          <i class="fas fa-home"></i> Go Home
+        </a>
+      </div>
+      
+      <div class="offline-cached">
+        <h2>Available Offline:</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.offline-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.offline-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.offline-icon {
+  font-size: 4rem;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.offline-page h1 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.offline-page p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.offline-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin: var(--spacing-lg) 0;
+  flex-wrap: wrap;
+}
+
+.offline-cached {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.offline-cached h2 {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.offline-cached ul {
+  list-style: none;
+  padding: 0;
+}
+
+.offline-cached li {
+  margin: var(--spacing-xs) 0;
+}
+
+.offline-cached a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.offline-cached a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+</style>

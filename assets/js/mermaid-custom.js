@@ -391,7 +391,6 @@ function processMermaidInitBlocks() {
                     mermaidDiv.innerHTML = newContent;
                 }
             } catch (e) {
-                console.error('Error processing mermaid init:', e);
             }
         }
     });

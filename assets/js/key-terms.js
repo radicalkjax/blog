@@ -6,7 +6,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Key Terms script loaded');
   
   // List of potential key terms to highlight in the content
   const potentialKeyTerms = [
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('keyTerms')) {
     try {
       keyTerms = JSON.parse(localStorage.getItem('keyTerms'));
-      console.log('Loaded key terms from localStorage:', keyTerms);
     } catch (e) {
       console.error('Error loading key terms from localStorage:', e);
       localStorage.removeItem('keyTerms');
@@ -55,21 +53,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to save key terms to localStorage
   function saveKeyTerms() {
     localStorage.setItem('keyTerms', JSON.stringify(keyTerms));
-    console.log('Saved key terms to localStorage:', keyTerms);
   }
   
   // Function to add a key term
   function addKeyTerm(term) {
     // Check if term already exists
     if (keyTerms.includes(term)) {
-      console.log('Term already exists:', term);
       return;
     }
     
     keyTerms.push(term);
     saveKeyTerms();
     renderKeyTerms();
-    console.log('Added key term:', term);
   }
   
   // Function to remove a key term
@@ -79,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
       keyTerms.splice(index, 1);
       saveKeyTerms();
       renderKeyTerms();
-      console.log('Removed key term:', term);
     }
   }
   
@@ -87,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderKeyTerms() {
     const keyTermsContainer = document.getElementById('key-terms-content');
     if (!keyTermsContainer) {
-      console.log('No key terms container found');
       return;
     }
     
@@ -128,11 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function highlightKeyTerms() {
     const postContent = document.querySelector('.post-content');
     if (!postContent) {
-      console.log('No post content found');
       return;
     }
     
-    console.log('Found post content:', postContent);
     
     // Get all text nodes in the post content
     const textNodes = [];
@@ -165,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
       textNodes.push(node);
     }
     
-    console.log('Found ' + textNodes.length + ' text nodes');
     
     // Process each text node
     textNodes.forEach(textNode => {
@@ -233,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function() {
   function createKeyTermsContainer() {
     const tocContainer = document.getElementById('floating-toc');
     if (!tocContainer) {
-      console.log('No TOC container found');
       return;
     }
     
@@ -297,20 +286,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Only create key terms container if we're on a blog post page
     const postContent = document.querySelector('.post-content');
     if (!postContent) {
-      console.log('Not on a blog post page, skipping key terms initialization');
       return;
     }
     
     createKeyTermsContainer();
     // Highlight key terms in the content after the container is created
     setTimeout(function() {
-      console.log('Running highlightKeyTerms');
       highlightKeyTerms();
       
       // If no terms were highlighted on the first try, try again after a longer delay
       // This helps with dynamic content that might load after the initial page load
       setTimeout(function() {
-        console.log('Running highlightKeyTerms again');
         highlightKeyTerms();
       }, 1000);
     }, 100);
