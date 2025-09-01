@@ -89,14 +89,14 @@
     <link rel="preload" href="{{ '/assets/css/mermaid-custom.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="{{ '/assets/css/key-terms.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="{{ '/assets/css/collapsible-references.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="{{ '/assets/css/language-switcher.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    {%- comment -%}<link rel="preload" href="{{ '/assets/css/language-switcher.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{%- endcomment -%}
     <link rel="preload" href="{{ '/assets/css/vendor-prefixes.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="{{ '/assets/css/mathjax-custom.css' | relative_url }}">
         <link rel="stylesheet" href="{{ '/assets/css/mermaid-custom.css' | relative_url }}">
         <link rel="stylesheet" href="{{ '/assets/css/key-terms.css' | relative_url }}">
         <link rel="stylesheet" href="{{ '/assets/css/collapsible-references.css' | relative_url }}">
-        <link rel="stylesheet" href="{{ '/assets/css/language-switcher.css' | relative_url }}">
+        {%- comment -%}<link rel="stylesheet" href="{{ '/assets/css/language-switcher.css' | relative_url }}">{%- endcomment -%}
         <link rel="stylesheet" href="{{ '/assets/css/vendor-prefixes.css' | relative_url }}">
     </noscript>
     <!-- Mermaid for diagrams - loaded async -->
@@ -301,7 +301,8 @@
                 <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS Feed" target="_blank" title="RSS Feed">
                     <i class="fas fa-rss"></i>
                 </a>
-                {%- include language-switcher.html -%}
+                {%- comment -%}Language switcher disabled for GitHub Pages compatibility{%- endcomment -%}
+                {%- comment -%}{%- include language-switcher.html -%}{%- endcomment -%}
             </div>
         </div>
     </header>
