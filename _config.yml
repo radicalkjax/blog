@@ -8,6 +8,8 @@ baseurl: ""
 
 # Build settings
 markdown: kramdown
+# Theme is provided by GitHub Pages, don't specify here
+# theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
