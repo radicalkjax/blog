@@ -1,6 +1,8 @@
 # Development Guide
 
-This document provides comprehensive instructions for local development, content creation, and testing for the site.
+This document provides comprehensive instructions for local development, content creation, and testing for radicalkjax.com.
+
+**Last Updated:** September 2025
 
 ## Table of Contents
 
@@ -11,9 +13,9 @@ This document provides comprehensive instructions for local development, content
   - [Development Workflow](#development-workflow)
 - [Content Creation](#content-creation)
   - [Blog Posts](#blog-posts)
-  - [Pages](#pages)
+  - [Static Pages](#static-pages)
   - [Projects](#projects)
-  - [Photos](#photos)
+  - [Photo Gallery](#photo-gallery)
 - [Testing](#testing)
   - [Local Testing](#local-testing)
   - [Cross-Browser Testing](#cross-browser-testing)
@@ -62,7 +64,7 @@ Before you begin, ensure you have the following installed:
 1. **Start the Jekyll Server**:
 
    ```bash
-   bundle exec jekyll serve
+   bundle exec jekyll serve --host 0.0.0.0 --port 4000
    ```
 
 2. **Access the Site**:

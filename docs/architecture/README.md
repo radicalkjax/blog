@@ -2,32 +2,39 @@
 
 This document provides a comprehensive overview of the site's architecture, including its structure, data flow, and technical stack.
 
-## Site Structure
+## Site Structure (Updated September 2025)
 
-The site follows a standard Jekyll project structure with some customizations:
+The site follows a modern Jekyll project structure with organized directories:
 
 ```mermaid
 graph TD
     A[Root Directory] --> B[_config.yml]
-    A --> C[_includes/]
-    A --> D[_layouts/]
-    A --> E[_posts/]
-    A --> F[assets/]
-    A --> G[HTML Pages]
-    A --> H[docs/]
+    A --> C[Jekyll Directories]
+    A --> D[Content Directories]
+    A --> E[Static Files]
+    A --> F[Documentation]
     
-    C --> C1[header.html]
-    C --> C2[footer.html]
+    C --> C1[_includes/]
+    C --> C2[_layouts/]
+    C --> C3[_posts/]
+    C --> C4[_data/]
+    C --> C5[_i18n/]
+    C --> C6[_config/]
+    C --> C7[_feeds/]
+    C --> C8[_tests/]
     
-    D --> D1[default.html]
-    D --> D2[post.html]
+    D --> D1[pages/]
+    D --> D2[projects/]
+    D --> D3[art/]
+    D --> D4[about/]
     
-    E --> E1[Blog Post Markdown Files]
+    E --> E1[assets/]
+    E --> E2[index.html]
+    E --> E3[feed.xml]
+    E --> E4[manifest.json]
+    E --> E5[service-worker.js]
     
-    F --> F1[css/]
-    F --> F2[js/]
-    F --> F3[fonts/]
-    F --> F4[images/]
+    F --> F1[docs/]
     
     G --> G1[index.html]
     G --> G2[blog.html]

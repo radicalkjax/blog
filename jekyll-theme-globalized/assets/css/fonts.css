@@ -1,9 +1,0 @@
-/* Custom Font Definitions */
-
-@font-face {
-    font-family: 'Uni 05_53';
-    src: url('../fonts/uni0553-webfont.woff2') format('woff2'),
-         url('../fonts/uni0553-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}

@@ -1,6 +1,8 @@
 # Customization Guide
 
-This document provides comprehensive instructions for customizing the site's appearance and functionality.
+This document provides comprehensive instructions for customizing radicalkjax.com's appearance and functionality.
+
+**Last Updated:** September 2025
 
 ## Table of Contents
 

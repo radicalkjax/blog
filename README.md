@@ -150,38 +150,60 @@ To use a custom domain with this GitHub Pages site:
 ```
 .
 ├── _config.yml              # Jekyll configuration
+├── _config/                 # Deployment configurations
+│   ├── nginx.conf.example   # Nginx configuration
+│   ├── vercel.json         # Vercel deployment config
+│   └── _headers            # Security headers
+├── _data/                   # Data files for Jekyll
+├── _feeds/                  # Alternative feed formats
+│   ├── atom.xml            # Atom feed
+│   └── feed.json           # JSON feed
+├── _i18n/                   # Internationalization files
 ├── _includes/               # Reusable components
-│   ├── header.html          # Site header with navigation
-│   └── footer.html          # Site footer
+│   ├── header.html         # Site header with navigation
+│   ├── footer.html         # Site footer
+│   └── somafm-player.html  # SomaFM radio player
 ├── _layouts/                # Page templates
-│   ├── default.html         # Base layout
-│   └── post.html            # Blog post layout
+│   ├── default.html        # Base layout
+│   └── post.html           # Blog post layout
 ├── _posts/                  # Blog posts (Markdown)
-│   ├── 2023-07-16-hello-world.md
-│   └── ...
+├── _sass/                   # SCSS source files
+├── _tests/                  # Test scripts
+│   ├── validate-w3c.js     # W3C validation
+│   └── test-security-headers.js # Security testing
+├── about/                   # About section pages
+│   └── trans-journey.html  # Personal Journey page
+├── art/                     # Art gallery pages
+│   ├── photos.html         # Photo gallery
+│   └── other-things.html   # Other artwork
 ├── assets/                  # Static assets
-│   ├── css/                 # Stylesheets
-│   │   ├── main.css         # Main styling
-│   │   └── fonts.css        # Font definitions
-│   ├── js/                  # JavaScript files
-│   │   ├── main.js          # Main functionality
-│   │   └── social-links.js  # Social media integration
-│   ├── fonts/               # Web fonts
-│   └── images/              # Images and media
-│       ├── logo/            # Site logo
-│       └── photos/          # Photo galleries
-├── index.html               # Homepage
-├── blog.html                # Blog listing page
-├── projects.html            # Projects overview
+│   ├── css/                # Compiled stylesheets
+│   ├── fonts/              # Web fonts
+│   ├── images/             # Images and icons
+│   ├── js/                 # JavaScript files
+│   └── post_resources/     # Blog post resources
+├── docs/                    # Documentation
+│   └── REPO_ORGANIZATION.md # Repository structure guide
+├── pages/                   # Static pages with permalinks
+│   ├── about.html          # About Me page
+│   ├── art.html            # Art gallery overview
+│   ├── blog.html           # Blog listing page
+│   ├── connections.html    # Contact information
+│   ├── projects.html       # Projects overview
+│   └── subscribe.html      # Feed subscription page
 ├── projects/                # Individual project pages
-├── art.html                 # Art gallery overview
-├── art/                     # Individual art pages
-├── about.html               # Combined About Me page
-├── about/                   # Additional about pages
-│   └── trans-journey.html   # Personal Journey page
-├── connections.html         # Contact information
-├── MIGRATION_DOCUMENTATION.md # Detailed migration documentation
-└── README.md                # This file
+│   ├── caliphoria.html     # Caliphoria project
+│   ├── presentations.html  # Presentations
+│   ├── rocket-pup.html     # Rocket Pup project
+│   └── wattz.html          # Wattz project
+├── index.html              # Homepage
+├── feed.xml                # Main RSS feed
+├── manifest.json           # PWA manifest
+├── offline.html            # Offline page for PWA
+├── service-worker.js       # PWA service worker
+├── robots.txt              # SEO robots file
+├── sitemap.xml             # XML sitemap
+└── README.md               # This file
 ```
 
 ### Key Components

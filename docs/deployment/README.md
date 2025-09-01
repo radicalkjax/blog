@@ -1,6 +1,8 @@
 # Deployment Guide
 
-This document provides comprehensive instructions for deploying the site to GitHub Pages and setting up a custom domain.
+This document provides comprehensive instructions for deploying radicalkjax.com to GitHub Pages and setting up a custom domain.
+
+**Last Updated:** September 2025
 
 ## Table of Contents
 

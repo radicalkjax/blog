@@ -1,6 +1,8 @@
 # Components Documentation
 
-This document provides detailed information about the components used in the site, including layouts, includes, and page components.
+This document provides detailed information about the components used in radicalkjax.com, including layouts, includes, and page components.
+
+**Last Updated:** September 2025
 
 ## Table of Contents
 
@@ -10,6 +12,9 @@ This document provides detailed information about the components used in the sit
 - [Includes](#includes)
   - [Header](#header)
   - [Footer](#footer)
+  - [SomaFM Player](#somafm-player)
+  - [Language Switcher](#language-switcher)
+  - [Structured Data](#structured-data)
 - [Page Components](#page-components)
   - [Blog Post Cards](#blog-post-cards)
   - [Navigation](#navigation)

@@ -1,8 +1,18 @@
-# Documentation
+# Documentation Hub
 
-Welcome to the comprehensive documentation for the site. This documentation provides detailed information about the site's architecture, components, development process, deployment, and customization options.
+Welcome to the comprehensive documentation for radicalkjax.com. This documentation provides detailed information about the site's architecture, components, development process, deployment, and customization options.
 
-## Table of Contents
+## Quick Links
+
+### Current Status
+- [🔄 Current State](./CURRENT_STATE.md) - Latest status and features (September 2025)
+- [📁 Repository Organization](./REPO_ORGANIZATION.md) - Directory structure guide
+- [🔒 Security Headers](./SECURITY-HEADERS.md) - Security configuration
+
+### Historical Documentation
+- [📋 Migration Documentation](./MIGRATION_DOCUMENTATION.md) - WordPress to Jekyll migration details
+
+## Documentation Sections
 
 - [Architecture Documentation](#architecture-documentation)
 - [Components Documentation](#components-documentation)
