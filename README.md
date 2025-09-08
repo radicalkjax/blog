@@ -37,7 +37,7 @@ graph TD
     
     C --> C1[Rocket Pup]
     C --> C2[Caliphoria]
-    C --> C3[Wattz]
+    C --> C3[malwarEvangelist]
     C --> C4[Presentations]
     
     D --> D1[Photos]
@@ -195,7 +195,7 @@ To use a custom domain with this GitHub Pages site:
 │   ├── caliphoria.html     # Caliphoria project
 │   ├── presentations.html  # Presentations
 │   ├── rocket-pup.html     # Rocket Pup project
-│   └── wattz.html          # Wattz project
+│   └── malwarEvangelist.html          # malwarEvangelist project
 ├── index.html              # Homepage
 ├── feed.xml                # Main RSS feed
 ├── manifest.json           # PWA manifest
