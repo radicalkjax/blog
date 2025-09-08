@@ -187,7 +187,7 @@ The header include (`_includes/header.html`) contains the site header with navig
                         <ul class="dropdown-menu">
                             <li><a href="{% raw %}{{ '/projects/rocket-pup.html' | relative_url }}{% endraw %}">Rocket Pup</a></li>
                             <li><a href="{% raw %}{{ '/projects/caliphoria.html' | relative_url }}{% endraw %}">Caliphoria</a></li>
-                            <li><a href="{% raw %}{{ '/projects/wattz.html' | relative_url }}{% endraw %}">Wattz</a></li>
+                            <li><a href="{% raw %}{{ '/projects/malwarEvangelist.html' | relative_url }}{% endraw %}">malwarEvangelist</a></li>
                             <li><a href="{% raw %}{{ '/projects/presentations.html' | relative_url }}{% endraw %}">Presentations</a></li>
                         </ul>
                     </li>
