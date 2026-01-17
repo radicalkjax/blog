@@ -22,11 +22,6 @@ include:
   - projects
   - art
   - "*.html"
-  - _timeline
-
-# Keep static files from timeline resources
-keep_files:
-  - _timeline
 
 # Exclude from processing
 exclude:
@@ -39,7 +34,7 @@ exclude:
   - _config
   - _tests
   - _feeds
-  - docs/reports
+  - docs
   - package-lock.json
   - .eslintrc.json
   - .prettierrc.json
