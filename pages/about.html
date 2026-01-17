@@ -120,24 +120,43 @@ custom_css: |
         justify-content: space-between;
         align-items: flex-start;
         margin-bottom: 15px;
-        flex-wrap: wrap;
+        gap: 20px;
     }
-    
+
+    .employment-header > div:first-child {
+        flex: 1;
+        min-width: 0;
+    }
+
     .employment-title {
         font-size: 1.2rem;
         font-weight: 600;
         margin-bottom: 5px;
     }
-    
+
     .employment-company {
         font-size: 1.1rem;
         opacity: 0.9;
     }
-    
+
     .employment-date {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         opacity: 0.8;
         text-align: right;
+        flex-shrink: 0;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .employment-header {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .employment-date {
+            text-align: left;
+            white-space: normal;
+        }
     }
     
     .employment-description ul {
@@ -718,11 +737,18 @@ custom_css: |
                 <span class="collapsible-icon">▼</span>
             </div>
             <div class="collapsible-content">
-                <div class="experience-item">
-                    <div class="experience-title">Advanced Repair Agent</div>
-                    <div class="experience-company">Geek Squad</div>
-                    <div class="experience-date">November 2014 – June 2019 | Merced, CA</div>
-                    <div class="experience-description">
+                <div class="employment-item">
+                    <div class="employment-header">
+                        <div>
+                            <div class="employment-title">Advanced Repair Agent</div>
+                            <div class="employment-company">Geek Squad</div>
+                        </div>
+                        <div class="employment-date">
+                            November 2014 – June 2019<br>
+                            Merced, CA
+                        </div>
+                    </div>
+                    <div class="employment-description">
                         <ul>
                             <li>Provided comprehensive PC, Linux, and Mac repair services (software and hardware)</li>
                             <li>Grew productivity of business year over year by 80% since starting position</li>
@@ -734,11 +760,18 @@ custom_css: |
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="experience-title">IT Engineer - Contractor</div>
-                    <div class="experience-company">W.J. Koenig CPA</div>
-                    <div class="experience-date">September 2017 | Merced, CA</div>
-                    <div class="experience-description">
+                <div class="employment-item">
+                    <div class="employment-header">
+                        <div>
+                            <div class="employment-title">IT Engineer - Contractor</div>
+                            <div class="employment-company">W.J. Koenig CPA</div>
+                        </div>
+                        <div class="employment-date">
+                            September 2017<br>
+                            Merced, CA
+                        </div>
+                    </div>
+                    <div class="employment-description">
                         <ul>
                             <li>Rebuilt entire business network infrastructure for CPA firm</li>
                             <li>Installed new ethernet CAT-6 shielded lines and patch panel for improved network management</li>
