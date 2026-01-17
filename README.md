@@ -324,11 +324,12 @@ The site now features a custom logo positioned in the top-left corner:
 
 This repository now includes a comprehensive documentation system in the `docs/` directory:
 
-- **Architecture Documentation**: Detailed information about the site's structure and technical stack
-- **Components Documentation**: In-depth explanations of each component and its functionality
-- **Development Guide**: Instructions for local development, content creation, and testing
-- **Deployment Guide**: Step-by-step deployment process and custom domain setup
-- **Customization Guide**: How to customize the site's appearance and functionality
+- **[Design System](docs/DESIGN_SYSTEM.md)**: Complete design system reference with color palette, typography, components, and guidelines
+- **[Architecture Documentation](docs/architecture/README.md)**: Detailed information about the site's structure and technical stack
+- **[Components Documentation](docs/components/README.md)**: In-depth explanations of each component and its functionality
+- **[Development Guide](docs/development/README.md)**: Instructions for local development, content creation, and testing
+- **[Deployment Guide](docs/deployment/README.md)**: Step-by-step deployment process and custom domain setup
+- **[Customization Guide](docs/customization/README.md)**: How to customize the site's appearance and functionality
 
 The main documentation index is available at [docs/README.md](docs/README.md), featuring:
 
@@ -338,7 +339,7 @@ The main documentation index is available at [docs/README.md](docs/README.md), f
 - Technical reference for all site components
 - Customization options and best practices
 
-Additionally, the original migration documentation is still available in `MIGRATION_DOCUMENTATION.md`.
+Additionally, the original migration documentation is still available in [docs/MIGRATION_DOCUMENTATION.md](docs/MIGRATION_DOCUMENTATION.md).
 
 ## Design Features
 

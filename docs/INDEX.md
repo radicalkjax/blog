@@ -8,9 +8,16 @@
 - **[Documentation Hub](./README.md)** - Main documentation portal
 
 ### 🏗️ Architecture & Technical
+- **[Design System](./DESIGN_SYSTEM.md)** - Complete design system with colors, typography, components, and guidelines
 - **[Architecture Overview](./architecture/README.md)** - Site structure, data flow, technical stack
 - **[Components Guide](./components/README.md)** - Layouts, includes, and component documentation
 - **[Security Headers](./SECURITY-HEADERS.md)** - Security configuration and headers
+
+### ⏱️ Timeline System
+- **[Timeline Documentation Hub](./timeline/README.md)** - Complete timeline system documentation
+- **[Timeline Implementation](./timeline/IMPLEMENTATION_STRATEGY.md)** - Technical implementation guide
+- **[Timeline Resources Feature](./timeline/RESOURCES.md)** - Attach files to timeline markers with real previews
+- **[Timeline Tagging Guide](./timeline/TIMELINE_TAGGING.md)** - Link timeline markers with blog posts
 
 ### 💻 Development
 - **[Development Guide](./development/README.md)** - Local setup, content creation, testing

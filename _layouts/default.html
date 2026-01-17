@@ -89,14 +89,12 @@
     <link rel="preload" href="{{ '/assets/css/mermaid-custom.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="{{ '/assets/css/key-terms.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="{{ '/assets/css/collapsible-references.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    {%- comment -%}<link rel="preload" href="{{ '/assets/css/language-switcher.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">{%- endcomment -%}
     <link rel="preload" href="{{ '/assets/css/vendor-prefixes.css' | relative_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="{{ '/assets/css/mathjax-custom.css' | relative_url }}">
         <link rel="stylesheet" href="{{ '/assets/css/mermaid-custom.css' | relative_url }}">
         <link rel="stylesheet" href="{{ '/assets/css/key-terms.css' | relative_url }}">
         <link rel="stylesheet" href="{{ '/assets/css/collapsible-references.css' | relative_url }}">
-        {%- comment -%}<link rel="stylesheet" href="{{ '/assets/css/language-switcher.css' | relative_url }}">{%- endcomment -%}
         <link rel="stylesheet" href="{{ '/assets/css/vendor-prefixes.css' | relative_url }}">
     </noscript>
     <!-- Mermaid for diagrams - loaded async -->
@@ -289,6 +287,9 @@
                 <a href="https://bsky.app/profile/radicalkjax.com" aria-label="BlueSky" target="_blank" title="BlueSky">
                     <i class="fab fa-bluesky"></i>
                 </a>
+                <a href="https://twitter.com/RadicalKjax" aria-label="Twitter" target="_blank" title="Twitter">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
                 <a href="https://www.linkedin.com/in/kali-jackson-647094245" aria-label="LinkedIn" target="_blank" title="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
@@ -301,8 +302,6 @@
                 <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS Feed" target="_blank" title="RSS Feed">
                     <i class="fas fa-rss"></i>
                 </a>
-                {%- comment -%}Language switcher disabled for GitHub Pages compatibility{%- endcomment -%}
-                {%- comment -%}{%- include language-switcher.html -%}{%- endcomment -%}
             </div>
         </div>
     </header>

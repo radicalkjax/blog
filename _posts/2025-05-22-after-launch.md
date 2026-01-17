@@ -2,7 +2,7 @@
 layout: post
 title: "After Launch: Continuing the Bottom Surgery Journey"
 date: 2025-05-22
-tags: [blog, bottom surgery, health, hospital, lgbtq, surgery, trans, vaginoplasty, recovery]
+tags: [blog, bottom-surgery, vaginoplasty, recovery, health]
 ---
 
 # After Launch: Continuing the Bottom Surgery Journey

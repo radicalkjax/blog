@@ -2,7 +2,7 @@
 layout: post
 title: "The Shifting State of Motherhood"
 date: 2024-02-23
-tags: [blog, general, trans motherhood infertility]
+tags: [blog, motherhood, infertility, hrt, surgery-prep]
 ---
 
 # The Shifting State of Motherhood

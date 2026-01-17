@@ -1,0 +1,670 @@
+/* ============================================
+   SCROLLYTELLING SIDEBAR STYLES
+   For trans-journey.html reading guide
+   Following radicalkjax.com Design System
+   ============================================ */
+
+/* ============================================
+   MAIN PAGE LAYOUT
+   ============================================ */
+
+.scrolly-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Override container for scrolly page */
+.container:has(.scrolly-page) {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   SCROLLYTELLING SIDEBAR (FIXED LEFT)
+   ============================================ */
+
+.scrolly-sidebar {
+  position: fixed;
+  left: 20px;
+  top: 150px;
+  width: 300px;
+  max-height: calc(100vh - 200px);
+  background-color: #1a1a1a;
+  border: 2px solid #6d105a;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Collapsed state */
+.scrolly-sidebar.collapsed {
+  transform: translateX(-280px);
+}
+
+.scrolly-sidebar.collapsed .scrolly-collapse-btn {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   SIDEBAR HEADER
+   ============================================ */
+
+.scrolly-header {
+  background-color: #6d105a;
+  color: #ffffff;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.scrolly-header h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.scrolly-collapse-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 1rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  line-height: 1;
+}
+
+.scrolly-collapse-btn:hover {
+  opacity: 0.7;
+}
+
+/* ============================================
+   CURRENT SECTION DISPLAY
+   ============================================ */
+
+.scrolly-current-section {
+  padding: 15px;
+  background: rgba(109, 16, 90, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.section-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 5px;
+}
+
+#current-section-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f84ef8;
+  line-height: 1.3;
+}
+
+.current-section-icon {
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.scrolly-progress {
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #f84ef8;
+  flex-shrink: 0;
+}
+
+.scrolly-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolly-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6d105a, #f84ef8);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.15s ease-out;
+}
+
+/* CSS Scroll-Driven Animation for progress bar (Chrome 115+) */
+@supports (animation-timeline: scroll()) {
+  .scrolly-progress-bar {
+    animation: scrollProgress linear;
+    animation-timeline: scroll(root);
+  }
+
+  @keyframes scrollProgress {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+}
+
+.scrolly-progress-text {
+  display: block;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  margin-top: 5px;
+}
+
+/* ============================================
+   RELATED POSTS SECTION
+   ============================================ */
+
+.scrolly-related {
+  padding: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #f84ef8;
+  flex-shrink: 0;
+  max-height: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #6d105a #1a1a1a;
+}
+
+.scrolly-related h4 {
+  position: sticky;
+  top: 0;
+  background: rgba(26, 26, 26, 0.95);
+  padding: 12px 15px 8px;
+  margin: 0;
+  z-index: 5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scrolly-related .related-posts-list {
+  padding: 10px 15px 15px;
+}
+
+.scrolly-related::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrolly-related::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.scrolly-related::-webkit-scrollbar-thumb {
+  background-color: #6d105a;
+  border-radius: 3px;
+}
+
+/* h4 styling moved to sticky header above */
+
+.related-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Related Post Card */
+.related-post-card {
+  display: block;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(248, 78, 248, 0.3);
+  border-radius: 4px;
+  padding: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.related-post-card:hover {
+  border-color: rgba(248, 78, 248, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  transform: translateX(3px);
+}
+
+.related-post-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.related-post-card:hover .related-post-title {
+  color: #f84ef8;
+}
+
+.related-post-excerpt {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.related-post-arrow {
+  color: #f84ef8;
+  transition: transform 0.3s ease;
+}
+
+.related-post-card:hover .related-post-arrow {
+  transform: translateX(3px);
+}
+
+/* Empty state */
+.related-posts-empty {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ============================================
+   SECTION NAVIGATION
+   ============================================ */
+
+.scrolly-sections {
+  flex: 1;
+  padding: 0;
+  background: rgba(109, 16, 90, 0.15);
+  border-top: 2px solid rgba(109, 16, 90, 0.8);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #6d105a #1a1a1a;
+  display: block;
+}
+
+.scrolly-sections::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrolly-sections::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.scrolly-sections::-webkit-scrollbar-thumb {
+  background-color: #6d105a;
+  border-radius: 3px;
+}
+
+.scrolly-sections h4 {
+  position: sticky;
+  top: 0;
+  background: rgba(45, 20, 40, 0.98);
+  padding: 12px 15px 8px;
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#section-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 10px 15px 25px;
+  position: relative;  /* This becomes the containing block for ALL dots */
+}
+
+
+.section-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 28px;
+  margin-bottom: 6px;
+  scroll-margin-top: 40px;
+}
+
+.section-nav-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Section dot */
+.section-nav-item::before {
+  content: '';
+  position: absolute;
+  left: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f84ef8;
+  transition: all 0.3s ease;
+}
+
+.section-nav-item.active::before {
+  background: #fff;
+  box-shadow: 0 0 8px rgba(248, 78, 248, 0.8);
+}
+
+.section-nav-item.visited::before {
+  background: #6d105a;
+}
+
+/* Section link */
+.section-nav-link {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 4px 8px 4px 6px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.75rem;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.section-nav-link:hover {
+  background: rgba(248, 78, 248, 0.1);
+  color: #fff;
+}
+
+.section-nav-item.active .section-nav-link {
+  background: rgba(248, 78, 248, 0.2);
+  color: #f84ef8;
+  font-weight: 600;
+}
+
+.section-nav-icon {
+  margin-right: 8px;
+  width: 16px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.section-nav-item.active .section-nav-icon {
+  opacity: 1;
+}
+
+/* ============================================
+   MOBILE TOGGLE BUTTON
+   ============================================ */
+
+.scrolly-mobile-toggle {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #6d105a;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrolly-mobile-toggle:hover {
+  transform: scale(1.1);
+  background: #f84ef8;
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
+
+.scrolly-content-area {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-left: calc(320px + 40px);
+}
+
+/* Section markers in content */
+.journey-section {
+  scroll-margin-top: 100px;
+}
+
+.journey-section[data-section-active="true"] {
+  /* Optional: highlight active section */
+}
+
+/* ============================================
+   RETURN BANNER (for blog posts)
+   ============================================ */
+
+.return-to-journey {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #6d105a, #3d0833);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.return-to-journey.visible {
+  transform: translateY(0);
+}
+
+.return-to-journey-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.return-to-journey-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.return-to-journey-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.return-to-journey-close {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 4px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.return-to-journey-close:hover {
+  color: #fff;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet: Narrower sidebar */
+@media (max-width: 1200px) and (min-width: 993px) {
+  .scrolly-sidebar {
+    width: 260px;
+    left: 15px;
+  }
+
+  .scrolly-content-area {
+    padding-left: calc(275px + 30px);
+  }
+}
+
+/* Mobile: Overlay sidebar */
+@media (max-width: 992px) {
+  .scrolly-page {
+    flex-direction: column;
+  }
+
+  .scrolly-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 350px;
+    height: 100%;
+    max-height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 2000;
+    border-radius: 0;
+    border-left: none;
+  }
+
+  .scrolly-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .scrolly-sidebar.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .scrolly-mobile-toggle {
+    display: flex;
+  }
+
+  .scrolly-content-area {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+  }
+
+  /* Mobile overlay backdrop */
+  .scrolly-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+  }
+
+  .scrolly-backdrop.visible {
+    display: block;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 576px) {
+  .scrolly-sidebar {
+    max-width: 100%;
+  }
+
+  .scrolly-mobile-toggle {
+    bottom: 70px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .scrolly-content-area {
+    padding: 15px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus states */
+.scrolly-collapse-btn:focus,
+.section-nav-link:focus,
+.related-post-card:focus,
+.scrolly-mobile-toggle:focus {
+  outline: 2px solid #f84ef8;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scrolly-sidebar,
+  .scrolly-progress-bar,
+  .section-nav-item::before,
+  .related-post-card,
+  .return-to-journey {
+    transition: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .scrolly-progress-bar {
+      animation: none;
+    }
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .scrolly-sidebar,
+  .scrolly-mobile-toggle,
+  .return-to-journey {
+    display: none !important;
+  }
+
+  .scrolly-content-area {
+    padding-left: 0 !important;
+    max-width: 100% !important;
+  }
+}

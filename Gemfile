@@ -10,6 +10,8 @@ gem "jekyll-seo-tag", "~> 2.6"
 # Optional but commonly used
 gem "kramdown-parser-gfm"
 gem "webrick", "~> 1.7"  # Required for Ruby 3.0+
+gem "base64"             # Required for Ruby 3.4+
+gem "bigdecimal"         # Required for Ruby 3.4+
 
 # Windows and JRuby does not include zoneinfo files
 platforms :mingw, :x64_mingw, :mswin, :jruby do

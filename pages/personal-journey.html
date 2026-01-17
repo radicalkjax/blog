@@ -1,0 +1,242 @@
+---
+layout: default
+title: Personal Journey
+permalink: /personal-journey.html
+---
+
+<div class="journey-page">
+  <!-- Timeline Sidebar (Fixed Left) -->
+  <aside id="timeline-container" class="timeline-container" role="navigation" aria-label="Personal Journey Timeline">
+    <!-- Timeline Header -->
+    <div class="timeline-header">
+      <h2 class="timeline-title">Personal Journey</h2>
+      <button class="timeline-collapse-btn" aria-label="Minimize timeline" title="Minimize timeline">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+
+    <!-- Timeline Content Area -->
+    <div class="timeline-scroll-area">
+      <!-- Timeline vertical line -->
+      <div class="timeline-line" aria-hidden="true"></div>
+
+      <!-- Timeline markers will be generated here by JavaScript -->
+      <div id="timeline-markers" class="timeline-markers">
+        <!-- Loading placeholder -->
+        <div class="timeline-loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading timeline...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breadcrumb Navigation (for nested timelines) -->
+    <nav class="timeline-breadcrumb" aria-label="Timeline navigation">
+      <button class="breadcrumb-back" aria-label="Back to previous timeline" title="Back" hidden>
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item active" data-timeline-id="personal-journey">Personal Journey</li>
+      </ol>
+    </nav>
+
+    <!-- Mobile Toggle Button -->
+    <button class="timeline-mobile-toggle" aria-label="Toggle timeline" title="Open timeline">
+      <span class="toggle-icon">⏱️</span>
+    </button>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="journey-content-area" id="journey-content">
+    <!-- Introduction -->
+    <section class="journey-intro">
+      <h1>Welcome to My Personal Journey</h1>
+      <p>
+        This interactive timeline represents key moments in my life journey.
+        Click on any marker to explore that moment in detail. Some markers
+        expand into deeper timelines with more specific events.
+      </p>
+      <p>
+        Use the timeline on the left to navigate through different periods
+        and aspects of my journey. Watch for markers with the <i class="fas fa-chevron-right"></i> icon -
+        these expand into more detailed timelines.
+      </p>
+      <div class="journey-legend">
+        <h3>How to Navigate</h3>
+        <ul>
+          <li><i class="fas fa-circle"></i> Click a marker to view details</li>
+          <li><i class="fas fa-chevron-right"></i> Click "View Journey" to expand into sub-timelines</li>
+          <li><i class="fas fa-arrow-left"></i> Click the back arrow to return to previous timeline</li>
+          <li><i class="fas fa-bars"></i> On mobile, tap ⏱️ to open the timeline</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Content cards will be dynamically inserted here -->
+    <div id="timeline-content-cards" class="timeline-content-cards">
+      <!-- JavaScript will populate this area with content cards -->
+    </div>
+  </main>
+</div>
+
+<!-- Generate timeline data from Jekyll collection -->
+<script id="timeline-data" type="application/json">
+{
+  "timeline": {
+    "id": "personal-journey",
+    "title": "Personal Journey",
+    "description": "My personal life journey",
+    "type": "main",
+    "markers": [
+      {% assign personal_markers = site.timeline | where: "timeline", "personal-journey" | sort: "date" | reverse %}
+      {% for marker in personal_markers %}
+      {
+        "id": "{{ marker.marker_id }}",
+        "date": "{{ marker.date | date: '%Y-%m-%d' }}",
+        "dateBegin": "{{ marker.date_begin | date: '%Y-%m-%d' }}",
+        "dateEnd": "{{ marker.date_end | date: '%Y-%m-%d' }}",
+        "title": "{{ marker.title | escape }}",
+        "description": "{{ marker.description | escape }}",
+        "icon": "{{ marker.icon }}",
+        "color": "{{ marker.color | default: '#f84ef8' }}",
+        "hasBreakout": {{ marker.has_breakout | default: false }},
+        "content": {{ marker.content | markdownify | jsonify }},
+        "links": {{ marker.links | default: '[]' | jsonify }},
+        "tags": {{ marker.tags | default: '[]' | jsonify }},
+        {% if marker.has_breakout and marker.breakout_timeline %}
+          {% assign resource_path = "/assets/timeline-resources/" | append: marker.breakout_timeline | append: "/resources/" %}
+        {% else %}
+          {% assign resource_path = "/assets/timeline-resources/" | append: marker.timeline | append: "/resources/" %}
+        {% endif %}
+        {% assign marker_resources = site.static_files | where_exp: "file", "file.path contains resource_path" %}
+        "hasResources": {% if marker_resources.size > 0 %}true{% else %}false{% endif %},
+        "resources": [
+          {% for file in marker_resources %}
+            {
+              "name": "{{ file.name }}",
+              "path": "{{ file.path }}",
+              "extname": "{{ file.extname }}",
+              "url": "{{ file.path | relative_url }}"
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ],
+        {% if marker.has_breakout and marker.breakout_timeline %}
+        "breakoutTimeline": {
+          "id": "{{ marker.breakout_timeline }}",
+          "title": "{{ marker.title | escape }}",
+          "type": "breakout",
+          "markers": [
+            {% assign breakout_markers = site.timeline | where: "timeline", marker.breakout_timeline | sort: "date" | reverse %}
+            {% for sub_marker in breakout_markers %}
+            {
+              "id": "{{ sub_marker.marker_id }}",
+              "date": "{{ sub_marker.date | date: '%Y-%m-%d' }}",
+              "dateBegin": "{{ sub_marker.date_begin | date: '%Y-%m-%d' }}",
+              "dateEnd": "{{ sub_marker.date_end | date: '%Y-%m-%d' }}",
+              "title": "{{ sub_marker.title | escape }}",
+              "description": "{{ sub_marker.description | escape }}",
+              "icon": "{{ sub_marker.icon }}",
+              "color": "{{ sub_marker.color | default: '#f84ef8' }}",
+              "hasBreakout": {{ sub_marker.has_breakout | default: false }},
+              "content": {{ sub_marker.content | markdownify | jsonify }},
+              "links": {{ sub_marker.links | default: '[]' | jsonify }},
+              "tags": {{ sub_marker.tags | default: '[]' | jsonify }},
+              {% if sub_marker.has_breakout and sub_marker.breakout_timeline %}
+                {% assign sub_resource_path = "/assets/timeline-resources/" | append: sub_marker.breakout_timeline | append: "/resources/" %}
+              {% else %}
+                {% assign sub_resource_path = "/assets/timeline-resources/" | append: sub_marker.timeline | append: "/resources/" %}
+              {% endif %}
+              {% assign sub_marker_resources = site.static_files | where_exp: "file", "file.path contains sub_resource_path" %}
+              "hasResources": {% if sub_marker_resources.size > 0 %}true{% else %}false{% endif %},
+              "resources": [
+                {% for file in sub_marker_resources %}
+                  {
+                    "name": "{{ file.name }}",
+                    "path": "{{ file.path }}",
+                    "extname": "{{ file.extname }}",
+                    "url": "{{ file.path | relative_url }}"
+                  }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              ],
+              {% if sub_marker.has_breakout and sub_marker.breakout_timeline %}
+              "breakoutTimeline": {
+                "id": "{{ sub_marker.breakout_timeline }}",
+                "title": "{{ sub_marker.title | escape }}",
+                "type": "sub-timeline",
+                "markers": [
+                  {% assign sub_sub_markers = site.timeline | where: "timeline", sub_marker.breakout_timeline | sort: "date" | reverse %}
+                  {% for sub_sub_marker in sub_sub_markers %}
+                  {
+                    "id": "{{ sub_sub_marker.marker_id }}",
+                    "date": "{{ sub_sub_marker.date | date: '%Y-%m-%d' }}",
+                    "dateBegin": "{{ sub_sub_marker.date_begin | date: '%Y-%m-%d' }}",
+                    "dateEnd": "{{ sub_sub_marker.date_end | date: '%Y-%m-%d' }}",
+                    "title": "{{ sub_sub_marker.title | escape }}",
+                    "description": "{{ sub_sub_marker.description | escape }}",
+                    "icon": "{{ sub_sub_marker.icon }}",
+                    "color": "{{ sub_sub_marker.color | default: '#f84ef8' }}",
+                    "hasBreakout": false,
+                    "content": {{ sub_sub_marker.content | markdownify | jsonify }},
+                    "links": {{ sub_sub_marker.links | default: '[]' | jsonify }},
+                    "tags": {{ sub_sub_marker.tags | default: '[]' | jsonify }},
+                    {% assign sub_sub_resource_path = "/assets/timeline-resources/" | append: sub_sub_marker.timeline | append: "/resources/" %}
+                    {% assign sub_sub_marker_resources = site.static_files | where_exp: "file", "file.path contains sub_sub_resource_path" %}
+                    "hasResources": {% if sub_sub_marker_resources.size > 0 %}true{% else %}false{% endif %},
+                    "resources": [
+                      {% for file in sub_sub_marker_resources %}
+                        {
+                          "name": "{{ file.name }}",
+                          "path": "{{ file.path }}",
+                          "extname": "{{ file.extname }}",
+                          "url": "{{ file.path | relative_url }}"
+                        }{% unless forloop.last %},{% endunless %}
+                      {% endfor %}
+                    ]
+                  }{% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                ]
+              }
+              {% else %}
+              "breakoutTimeline": null
+              {% endif %}
+            }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        }
+        {% else %}
+        "breakoutTimeline": null
+        {% endif %}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+<!-- Generate blog posts data for tag matching -->
+<script id="blog-posts-data" type="application/json">
+{
+  "posts": [
+    {% for post in site.posts %}
+    {
+      "title": {{ post.title | jsonify }},
+      "url": "{{ post.url | relative_url }}",
+      "date": "{{ post.date | date: '%Y-%m-%d' }}",
+      "timeline_date": "{{ post.timeline_date | default: post.date | date: '%Y-%m-%d' }}",
+      "excerpt": {{ post.excerpt | strip_html | truncate: 200 | strip_newlines | jsonify }},
+      "tags": {{ post.tags | jsonify }},
+      "timeline_marker": "{{ post.timeline_marker }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<!-- Load Timeline Styles -->
+<link rel="stylesheet" href="{{ '/assets/css/timeline.css' | relative_url }}">
+
+<!-- Load SheetJS for Excel file parsing -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+<!-- Load Timeline JavaScript -->
+<script src="{{ '/assets/js/timeline.js' | relative_url }}" defer></script>

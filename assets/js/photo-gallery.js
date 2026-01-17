@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const photos = JSON.parse(photosJson);
           showPhotoGallery(categoryTitle, photos);
         } catch (err) {
-          console.error('Error parsing photos data:', err);
+          // Error parsing photos data
         }
       }
     });
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create gallery modal
   function showPhotoGallery(title, photos) {
     if (!photos || photos.length === 0) {
-      console.log('No photos available for this category');
       return;
     }
 

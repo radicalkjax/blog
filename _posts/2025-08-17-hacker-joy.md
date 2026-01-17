@@ -2,7 +2,7 @@
 layout: post
 title: "Hacker Joy"
 date: 2025-08-17
-tags: [blog, defcon, hacking, security, conferences, community, trans, personal]
+tags: [blog, defcon, hacking, security, conferences, community, personal]
 ---
 
 # Hacker Joy

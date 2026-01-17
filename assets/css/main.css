@@ -343,6 +343,7 @@ nav ul li a:hover {
     justify-content: center;
     width: 24px;
     height: 24px;
+    text-decoration: none;
 }
 
 .social-icons a:hover {
