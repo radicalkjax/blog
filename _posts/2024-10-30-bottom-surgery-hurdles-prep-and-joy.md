@@ -2,7 +2,13 @@
 layout: post
 title: "Bottom Surgery: Hurdles, Prep and Joy"
 date: 2024-10-30
-tags: [blog, bottom surgery, health, hospital, lgbtq, surgery, trans, vaginoplasty]
+tags:
+  - bottom-surgery
+  - surgery-prep
+  - vaginoplasty
+  - medical
+  - health
+  - blog
 ---
 
 # Bottom Surgery: Hurdles, Prep and Joy

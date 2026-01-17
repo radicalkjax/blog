@@ -1011,7 +1011,6 @@ async function loadGitHubRepos() {
         }
         
     } catch (error) {
-        console.error('Error loading GitHub repos:', error);
         loadingDiv.style.display = 'none';
         errorDiv.style.display = 'block';
     }
@@ -1021,20 +1020,15 @@ async function loadGitHubRepos() {
 
 // Document Navigator functionality (based on toc.js pattern)
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Navigator script loaded');
-    
     // Get all sections with IDs
     const aboutContainer = document.querySelector('.about-container');
     if (!aboutContainer) {
-        console.log('No .about-container element found');
         return;
     }
-    
+
     const sections = aboutContainer.querySelectorAll('section[id]');
-    console.log('Found ' + sections.length + ' sections');
-    
+
     if (sections.length < 2) {
-        console.log('Not enough sections to create Navigator');
         return; // Only show Navigator if there are at least 2 sections
     }
     
@@ -1062,7 +1056,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add the TOC container to the body
     document.body.appendChild(tocContainer);
     document.body.appendChild(mobileToggle);
-    console.log('TOC container and mobile toggle added to body');
     
     // Mobile toggle functionality
     mobileToggle.addEventListener('click', function() {
@@ -1167,12 +1160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-        
-        if (!currentSection) {
-            console.log('No current section found');
-            return;
-        }
-        
+
         // Remove active class from all links
         document.querySelectorAll('#toc-content a').forEach(function(link) {
             link.classList.remove('active');

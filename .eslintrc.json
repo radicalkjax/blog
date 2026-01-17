@@ -8,6 +8,13 @@
     "eslint:recommended",
     "airbnb-base"
   ],
+  "ignorePatterns": [
+    "**/*.html",
+    "**/*.md",
+    "_site/**",
+    "vendor/**",
+    "node_modules/**"
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -40,6 +47,8 @@
     "customElements": "readonly",
     "HTMLElement": "readonly",
     "MathJax": "readonly",
-    "mermaid": "readonly"
+    "mermaid": "readonly",
+    "XLSX": "readonly",
+    "timeline": "writable"
   }
 }

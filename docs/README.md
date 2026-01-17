@@ -60,6 +60,20 @@ graph TD
     style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
+## Design System
+
+The [Design System](DESIGN_SYSTEM.md) provides the comprehensive design reference for the entire site. It covers:
+
+- **Color Palette**: Complete color system with CSS variables and usage guidelines
+- **Typography**: Font stack, type scale, and typography hierarchy
+- **Layout Architecture**: Container system, spacing, grid layouts, and z-index layers
+- **Component Patterns**: Double-border frames, cards, buttons, navigation, and all reusable components
+- **Responsive Design**: Breakpoints and responsive patterns for all screen sizes
+- **Accessibility**: ARIA labels, focus states, color contrast, and reduced motion support
+- **CSS Architecture**: File structure, methodology, and critical CSS strategy
+- **JavaScript Modules**: Core modules and loading strategy
+- **Creating New Components**: Step-by-step guide with checklist for building new components
+
 ## Architecture Documentation
 
 The [Architecture Documentation](architecture/README.md) provides a comprehensive overview of the site's architecture, including its structure, data flow, and technical stack. It covers:

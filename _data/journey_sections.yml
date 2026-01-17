@@ -1,0 +1,149 @@
+# Journey Sections Configuration
+# This file defines the sections for the trans journey page scrollytelling sidebar
+# Each section will be detected by finding the start_marker text in the page content
+#
+# NOTE: Use SPECIFIC tags only - avoid broad tags like "transgender" which match too many posts
+# Posts must have matching specific tags to appear in a section's related posts
+
+- id: intro
+  title: "Introduction"
+  description: "Setting the stage for my story"
+  icon: book-open
+  tags:
+    - intro
+  start_marker: "Like all people"
+
+- id: childhood
+  title: "Childhood (1991-1996)"
+  description: "Early gender expression and suppression"
+  icon: child
+  tags:
+    - childhood
+    - early-years
+  start_marker: "my egg hatched"
+
+- id: farm-years
+  title: "Farm Years (1998)"
+  description: "Pushed into masculine roles"
+  icon: tractor
+  tags:
+    - childhood
+    - farm
+  start_marker: "When I was 7"
+
+- id: discovery
+  title: "Discovery (2000)"
+  description: "Learning the name for my feelings"
+  icon: lightbulb
+  tags:
+    - discovery
+    - awakening
+  start_marker: "Fast forward a few years till I'm 9"
+
+- id: prop-8
+  title: "Prop 8 Era (2008)"
+  description: "Realizing I couldn't come out at home"
+  icon: house-chimney-crack
+  tags:
+    - prop-8
+    - california
+  start_marker: "About a year passed and then Prop 8"
+
+- id: teenage
+  title: "Teenage Years"
+  description: "Growing hair, hiding in plain sight"
+  icon: user-secret
+  tags:
+    - teenage
+    - high-school
+  start_marker: "By this time I had began growing out my hair"
+
+- id: early-adulthood
+  title: "Early Adulthood (2011-2019)"
+  description: "Education, career, waiting"
+  icon: graduation-cap
+  tags:
+    - education
+    - career
+    - college
+  start_marker: "until I eventually got enough money"
+
+- id: coming-out
+  title: "Coming Out (2021)"
+  description: "Finally living authentically"
+  icon: door-open
+  tags:
+    - coming-out
+  start_marker: "day before Thanksgiving I came out"
+
+- id: hrt-start
+  title: "Starting HRT (2021)"
+  description: "Beginning medical transition"
+  icon: pills
+  tags:
+    - hrt
+    - estrogen
+  start_marker: "I had finally met my Endocrinologist"
+
+- id: family-rejection
+  title: "Family Rejection (2022)"
+  description: "Navigating changed relationships"
+  icon: heart-crack
+  tags:
+    - family-rejection
+    - rejection
+  start_marker: "my niece was born"
+
+- id: family-aftermath
+  title: "Family Aftermath (2022-2023)"
+  description: "Complicated reconnections"
+  icon: people-arrows
+  tags:
+    - family-reconnection
+    - reconciliation
+  start_marker: "A few months passed and I traveled down for Mother's Day"
+
+- id: surgery-prep
+  title: "Surgery Prep (2024)"
+  description: "Preparing for bottom surgery"
+  icon: clipboard-check
+  tags:
+    - surgery-prep
+    - bottom-surgery
+  start_marker: "By June of 2024"
+
+- id: bottom-surgery
+  title: "Bottom Surgery (2024)"
+  description: "Vaginoplasty - decades of dysphoria resolved"
+  icon: hospital
+  tags:
+    - bottom-surgery
+    - vaginoplasty
+  start_marker: "surgery date was 10/09/24"
+
+- id: present
+  title: "Present & Future (2025)"
+  description: "What comes next"
+  icon: rocket
+  tags:
+    - ffs
+    - future
+    - politics
+  start_marker: "Now it's the end of January 2025"
+
+- id: joy
+  title: "Trans Joy"
+  description: "Finding happiness and self-love"
+  icon: heart
+  tags:
+    - trans-joy
+    - joy
+  start_marker: "This is trans joy"
+
+# Future sections - add entries as they happen:
+# - id: ffs
+#   title: "Facial Feminization Surgery (202X)"
+#   description: "FFS journey"
+#   icon: face-smile
+#   tags: [transgender, ffs, surgery, medical]
+#   start_marker: "unique text that starts FFS section"
