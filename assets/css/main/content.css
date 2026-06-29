@@ -1,0 +1,455 @@
+/* Post Card */
+.post-card {
+    background-color: rgba(109, 16, 90, 0.7); /* Slightly lighter than body background */
+    border: 2px solid #fff; /* White border all around */
+    padding: 30px;
+    margin-bottom: 40px; /* Increased to make room for the second border */
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1; /* Lower z-index to ensure dropdown menus appear above */
+}
+
+/* Stacked pages effect - right vertical line */
+.post-card::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: -10px;
+    right: -10px;
+    width: 2px;
+    background-color: #fff;
+}
+
+/* Stacked pages effect - bottom horizontal line */
+.post-card::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Top-right horizontal connector */
+.post-card .post-date::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Bottom-left vertical connector */
+.post-card .post-title::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: -10px;
+    width: 2px;
+    height: 10px;
+    background-color: #fff;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.post-tags {
+    margin-top: 20px;
+}
+
+.post-tags a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.post-tags a:hover {
+    opacity: 1;
+}
+
+/* Links */
+.post-content a, .post-card .post-content a, .post-title a, .post-card .post-title a,
+.social-item, .network-description a, .connections-intro a, .project-tags a, .project-links a {
+    color: #fff;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.post-content a:hover, .post-card .post-content a:hover, .post-title a:hover, .post-card .post-title a:hover,
+.social-item:hover, .network-description a:hover, .connections-intro a:hover, .project-tags a:hover, .project-links a:hover {
+    opacity: 0.8;
+}
+
+/* Social items don't need underline since they're styled as buttons */
+.social-item {
+    text-decoration: none;
+}
+
+/* Custom butterfly icon */
+.fa-butterfly::before {
+    content: "\1F98B"; /* Unicode butterfly character */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Navigation Toggle */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 100;
+}
+
+/* Active navigation link */
+nav ul li a.active {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+/* Form success message */
+.form-success {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    animation: fade-in 0.5s ease;
+}
+
+.form-success h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.form-success p {
+    margin-bottom: 20px;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Blog Post Styles */
+.post-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post {
+    background-color: rgba(109, 16, 90, 0.7);
+    border: 2px solid #fff;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Stacked pages effect - right vertical line */
+.post::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: -10px;
+    right: -10px;
+    width: 2px;
+    background-color: #fff;
+}
+
+/* Stacked pages effect - bottom horizontal line */
+.post::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Top-right horizontal connector */
+.post .post-content::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Bottom-left vertical connector */
+.post .post-content::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: -10px;
+    width: 2px;
+    height: 10px;
+    background-color: #fff;
+}
+
+.post-header {
+    margin-bottom: 30px;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+
+.post-content p {
+    margin-bottom: 20px;
+}
+
+.post-content h1, 
+.post-content h2, 
+.post-content h3, 
+.post-content h4, 
+.post-content h5, 
+.post-content h6 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Center and style blog post titles */
+.post-content h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+/* Blog post image styling - default for unmarked images */
+.post-content > img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Single image container */
+.post-image {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.post-content .post-image img {
+    max-width: 375px !important;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Smaller inline images */
+.post-image-small img {
+    max-width: 300px;
+}
+
+/* Medium sized images */
+.post-image-medium img {
+    max-width: 450px;
+}
+
+.post-image-caption {
+    font-style: italic;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Image gallery for multiple related images */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.image-gallery figure {
+    margin: 0;
+    text-align: center;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.image-gallery figcaption {
+    font-style: italic;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+/* Side-by-side images */
+.image-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.image-pair figure {
+    margin: 0;
+    text-align: center;
+}
+
+.image-pair img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto 5px;
+}
+
+.image-pair figcaption {
+    font-style: italic;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+/* Interactive Road Trip Map */
+.road-trip-map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 40px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%);
+    border: 2px solid #6d105a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom map marker styles */
+.map-marker {
+    width: 30px;
+    height: 30px;
+    background: #9c1f8c;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.map-marker:hover {
+    transform: scale(1.2);
+    background: #d62598;
+    box-shadow: 0 4px 12px rgba(214, 37, 152, 0.6);
+}
+
+.map-marker.active {
+    background: #d62598;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(214, 37, 152, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(214, 37, 152, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(214, 37, 152, 0);
+    }
+}
+
+/* Photo preview popup */
+.photo-preview {
+    position: absolute;
+    background: #1a1a1a;
+    border: 2px solid #6d105a;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+    pointer-events: none;
+}
+
+.photo-preview img {
+    width: 400px !important;
+    height: auto !important;
+    max-height: 300px !important;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.photo-preview .caption {
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 8px;
+    max-width: 400px;
+}
+

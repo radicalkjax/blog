@@ -1,0 +1,388 @@
+/* 
+ * Main CSS for radicalkjax.com GitHub Pages site
+ * Modernized with CSS Grid, Flexbox, and Custom Properties
+ */
+
+/* Font imports have been moved to fonts.css for better organization */
+
+/* ===========================
+   CSS Custom Properties
+   =========================== */
+:root {
+  /* Color Palette */
+  --color-primary: #6d105a;
+  --color-secondary: #fff;
+  --color-accent: #f84ef8;
+  --color-background: #6d105a;
+  --color-text: #fff;
+  --color-link: #f84ef8;
+  --color-link-hover: #ff6bff;
+  --color-border: rgba(255, 255, 255, 0.2);
+  
+  /* Dark Mode Colors */
+  --dark-background: #1a1a1a;
+  --dark-primary: #3a0d2e;
+  --dark-text: #e0e0e0;
+  --dark-border: rgba(255, 255, 255, 0.1);
+  
+  /* Typography */
+  --font-family: 'DM Mono', monospace;
+  --font-size-base: 16px;
+  --line-height: 1.6;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  
+  /* Layout */
+  --container-width: 1000px;
+  --header-padding: 30px;
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+}
+
+/* Skip Links for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Footer Links */
+.footer-separator {
+  margin: 0 1rem;
+  opacity: 0.5;
+}
+
+.footer-link {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--color-link-hover);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-background: var(--dark-background);
+  --color-primary: var(--dark-primary);
+  --color-text: var(--dark-text);
+  --color-border: var(--dark-border);
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1000;
+  color: var(--color-text);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-accent);
+}
+
+.theme-toggle i {
+  font-size: 20px;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: var(--line-height);
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Container with modern responsive design */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Site Logo */
+.site-logo-container {
+    position: fixed;
+    left: 10px; /* Moved more to the left */
+    top: 1px; /* Moved higher up on the page */
+    transform: none; /* Removed vertical centering */
+    z-index: 10000;
+}
+
+.site-logo-outside {
+    width: 120px; /* Significantly increased from 85px */
+    height: 120px; /* Significantly increased from 85px */
+    display: block;
+}
+
+/* Header */
+header {
+    padding: 12px 0; /* Remove horizontal padding */
+    border: 2px solid #fff; /* White border all around */
+    background-color: #6d105a; /* Match body background */
+    position: relative;
+    margin: 15px auto 25px; /* Appropriate margins */
+    width: 90vw; /* Reduced from 95vw to make room for the logo */
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    z-index: 9999; /* Ensure header is above all other content */
+    min-height: 60px; /* Reasonable minimum height */
+}
+
+/* Stacked pages effect - right vertical line */
+header::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: -10px;
+    right: -10px;
+    width: 2px;
+    background-color: #fff;
+}
+
+/* Stacked pages effect - bottom horizontal line */
+header::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: -10px;
+    bottom: -10px;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Top-right horizontal connector (adjusted for header's 12px padding) */
+header .container::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -10px;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Bottom-left vertical connector (adjusted for header's 12px padding) */
+header .container::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: -22px;
+    width: 2px;
+    height: 10px;
+    background-color: #fff;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px; /* Padding for content spacing */
+    margin: 0;
+    position: relative;
+    gap: 15px; /* Add gap to prevent elements from touching */
+    max-width: none; /* Override any container max-width */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+}
+
+.site-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.site-title {
+    font-family: 'Uni 05_53', 'DM Mono', monospace;
+    font-size: 0.8rem; /* Slightly larger for better readability */
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0; /* Prevent title from shrinking */
+    white-space: nowrap; /* Prevent wrapping */
+    order: 1; /* First in flex order */
+}
+
+/* Navigation */
+nav {
+    flex: 1 1 auto; /* Take up available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2; /* Second in flex order */
+    margin: 0 20px; /* Add margin to create space */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+nav ul li {
+    margin: 0 6px; /* Further reduced horizontal spacing */
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    font-size: 0.75rem; /* Smaller for more compact layout */
+    padding: 6px 4px; /* Smaller padding */
+    display: inline-block;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default, shown via JavaScript */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #6d105a;
+    border: 1px solid #fff;
+    min-width: 180px; /* Slightly reduced width */
+    z-index: 9999; /* Increased z-index to ensure dropdowns appear above all other elements */
+    padding: 5px 0; /* Reduced padding */
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    z-index: 10001; /* Higher than nav */
+}
+
+.dropdown-menu li a {
+    padding: 6px 12px; /* Reduced padding */
+    display: block;
+    font-size: 0.75rem; /* Further reduced for compact header */
+    white-space: nowrap;
+    position: relative;
+    z-index: 10002; /* Higher than dropdown-menu li */
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7em;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Don't shrink */
+    gap: 8px; /* Consistent spacing between icons */
+    order: 3; /* Third in flex order */
+    margin-left: auto; /* Push to the right */
+}
+
+.social-icons a {
+    margin-right: 0; /* Use gap instead */
+    color: #fff;
+    font-size: 1rem; /* Standard icon size */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
+/* Animated social icons */
+.social-icons a.animated {
+    animation: fade-in-up 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+

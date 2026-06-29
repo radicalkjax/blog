@@ -1,0 +1,441 @@
+/* SomaFM Floating Player */
+.somafm-player {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    width: 280px;
+    background: #1a1a1a;
+    border: 2px solid #9c1f8c;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    font-family: 'DM Mono', monospace;
+    color: #fff;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #9c1f8c;
+    background: rgba(156, 31, 140, 0.1);
+}
+
+.station-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.station-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.station-icon svg {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.station-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.station-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #d62598;
+    display: flex;
+    align-items: baseline;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+}
+
+.station-tagline {
+    font-size: 11px;
+    color: #888;
+}
+
+.via-somafm {
+    font-size: 10px;
+    font-weight: normal;
+    color: #888;
+    margin-left: 5px;
+}
+
+.via-somafm a {
+    color: #f0f;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.via-somafm a:hover {
+    color: #d62598;
+    text-decoration: underline;
+}
+
+.player-close {
+    background: transparent;
+    border: 1px solid #9c1f8c;
+    color: #9c1f8c;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.player-close:hover {
+    background: #9c1f8c;
+    color: #fff;
+}
+
+.player-body {
+    padding: 12px;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.play-pause-btn {
+    background: #9c1f8c;
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.play-pause-btn:hover {
+    background: #d62598;
+    transform: scale(1.05);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.mute-btn {
+    background: transparent;
+    border: none;
+    color: #9c1f8c;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+.volume-slider {
+    flex: 1;
+    height: 4px;
+    background: #333;
+    outline: none;
+}
+
+
+
+.now-playing {
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.np-label {
+    color: #666;
+}
+
+.np-text {
+    color: #d62598;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.player-minimized {
+    padding: 8px;
+}
+
+.player-minimized button {
+    background: rgba(156, 31, 140, 0.2);
+    border: 1px solid #9c1f8c;
+    color: #d62598;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.player-minimized button:hover {
+    background: rgba(156, 31, 140, 0.4);
+}
+
+/* Inline play buttons for Soma.fm links */
+.inline-play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid #f0f;
+    border-radius: 50%;
+    margin-left: 0;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+}
+
+.inline-play-btn:hover {
+    background: rgba(255, 0, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.inline-play-btn svg {
+    width: 10px;
+    height: 10px;
+    margin-left: 1px;
+}
+
+.inline-play-btn:hover svg polygon {
+    fill: #d62598;
+}
+
+.mini-icon {
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .somafm-player {
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 320px;
+    }
+}
+
+/* Lightbox for full view */
+.map-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-lightbox.active {
+    display: flex;
+}
+
+.map-lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: 2px solid #6d105a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.map-lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.map-lightbox .close:hover {
+    color: #d62598;
+}
+
+.map-lightbox .lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    background: rgba(26, 26, 26, 0.8);
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid #6d105a;
+}
+
+/* Map legend */
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #6d105a;
+    border-radius: 4px;
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    z-index: 500;
+}
+
+.map-legend h4 {
+    margin: 0 0 8px;
+    color: #d62598;
+    font-size: 14px;
+}
+
+.map-legend .legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.map-legend .legend-marker {
+    width: 12px;
+    height: 12px;
+    background: #9c1f8c;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .image-pair {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-image img {
+        max-width: 375px;
+    }
+}
+
+.post-content ul, 
+.post-content ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.post-content blockquote {
+    border-left: 3px solid #fff;
+    padding-left: 20px;
+    margin-left: 0;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.post-content code {
+    font-family: 'DM Mono', monospace;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.post-content pre {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.post-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Mermaid diagram styling - defer to mermaid-custom.css */
+/* .mermaid styling moved to mermaid-custom.css */
+
+/* Code block styling for IEEE format */
+.post-content div[style*="text-align: center"] pre {
+    text-align: left;
+    margin: 0 auto;
+    display: inline-block;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.post-content div[style*="text-align: center"] pre code {
+    background-color: transparent;
+    padding: 0;
+    font-family: 'DM Mono', monospace;
+}
+
+.post-content div[style*="text-align: center"] p {
+    margin-top: 5px;
+}
+
+/* Mermaid styling moved to mermaid-custom.css */
+
+.post-navigation {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-to-blog {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+}
+
+.back-to-blog:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+

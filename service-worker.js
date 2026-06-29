@@ -3,14 +3,15 @@
  * Provides offline support and caching strategies
  */
 
-const CACHE_NAME = 'radicalkjax-v1.0.0';
+const CACHE_NAME = 'radicalkjax-v1.0.1';
 const RUNTIME_CACHE = 'radicalkjax-runtime';
 
 // Files to cache on install
 const STATIC_CACHE_URLS = [
   '/',
   '/offline.html',
-  '/assets/css/main.css',
+  '/assets/css/main/base.css',
+  '/assets/css/main/content.css',
   '/assets/css/fonts.css',
   '/assets/js/main.js',
   '/assets/fonts/uni0553-webfont.woff2',

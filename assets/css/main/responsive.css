@@ -1,0 +1,341 @@
+/* Responsive Design */
+/* Compact layout for medium screens */
+@media (max-width: 1200px) and (min-width: 1025px) {
+    /* Adjust the site title to prevent it from touching the navigation */
+    .site-title {
+        max-width: 180px; /* Reduce max-width to prevent overlap */
+        font-size: 0.7rem; /* Slightly reduce font size */
+    }
+    
+    /* Make navigation more compact */
+    nav ul li {
+        margin: 0 4px; /* Even less spacing */
+    }
+    
+    nav ul li a {
+        font-size: 0.7rem; /* Smaller font */
+        padding: 5px 3px; /* Less padding */
+    }
+    
+    /* Ensure social icons remain visible */
+    .social-icons {
+        display: flex !important;
+        visibility: visible !important;
+        margin-left: auto;
+    }
+}
+
+/* Transitional layout between desktop and mobile */
+@media (max-width: 1024px) and (min-width: 901px) {
+    /* Keep header full width but adjust content */
+    header {
+        width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Stack elements vertically */
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    /* Site title centered */
+    .site-title {
+        position: static;
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        font-size: 0.75rem;
+    }
+    
+    /* Navigation below title */
+    nav {
+        position: static;
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin: 0;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px;
+    }
+    
+    nav ul li a {
+        font-size: 0.7rem;
+        padding: 5px 8px;
+    }
+    
+    /* Social icons below nav */
+    .social-icons {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static;
+        margin: 0 auto;
+        justify-content: center;
+        order: 3;
+    }
+    
+    /* Ensure language selector remains visible */
+    .language-switcher {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Logo adjusts position */
+    .site-logo-container {
+        position: static;
+        margin: 10px auto 20px;
+        text-align: center;
+    }
+}
+
+/* When viewport gets even smaller, switch to full mobile view */
+@media (max-width: 900px) {
+    /* Center header and add top padding for logo */
+    header {
+        left: auto;
+        transform: none;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 70px;
+    }
+
+    /* Adjust stacked pages effect for mobile - keep line near top */
+    header::after {
+        top: 10px;
+    }
+
+    /* Adjust top-right connector for mobile padding */
+    header .container::after {
+        top: -60px;
+    }
+
+    /* Position logo inside header on mobile */
+    .site-logo-container {
+        position: absolute;
+        left: 50%;
+        top: 25px;
+        transform: translateX(-50%);
+        z-index: 10001;
+        margin: 0;
+        width: auto;
+    }
+
+    .site-logo-outside {
+        width: 50px;
+        height: 50px;
+        display: block;
+    }
+    
+    .header-content {
+        position: relative;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .mobile-nav-toggle {
+        display: block;
+        position: static; /* Change from absolute to static */
+        margin: 0 auto 15px; /* Center it and add bottom margin */
+        z-index: 20010; /* Higher than other mobile elements */
+        padding: 10px; /* Increase padding for a larger touch target */
+        background-color: rgba(109, 16, 90, 0.8); /* Slight background for visibility */
+        border-radius: 5px; /* Rounded corners */
+        width: 50px; /* Fixed width */
+        text-align: center;
+        order: 1; /* Place after social icons */
+    }
+    
+    .site-title {
+        position: static;
+        margin: 0 auto 10px; /* Reduce bottom margin */
+        text-align: center;
+        width: 100%; /* Full width */
+        max-width: 100%;
+        padding: 0 20px; /* Normal padding */
+        order: -1; /* Make title appear first */
+    }
+    
+    nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        position: relative;
+        z-index: 20000; /* Increased z-index for mobile nav */
+    }
+    
+    .nav-open nav {
+        max-height: 500px; /* Increased from 300px to accommodate dropdowns */
+        overflow: visible; /* Allow dropdowns to overflow */
+    }
+    
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+    
+    /* Mobile dropdown menu styling */
+    .dropdown-menu {
+        position: absolute; /* Change back to absolute for mobile */
+        top: 100%; /* Position below the parent */
+        left: 0;
+        width: 100%;
+        z-index: 20001; /* Higher z-index for mobile dropdown */
+        max-height: 200px; /* Limit height */
+        overflow-y: auto; /* Make scrollable if needed */
+        background-color: #6d105a; /* Ensure background color is set */
+        border: 1px solid #fff; /* Ensure border is visible */
+    }
+    
+    .dropdown-menu li {
+        z-index: 20002; /* Higher z-index for mobile dropdown items */
+    }
+    
+    .dropdown-menu li a {
+        white-space: normal; /* Allow text to wrap */
+        word-wrap: break-word; /* Break long words if needed */
+        overflow-wrap: break-word; /* Modern version of word-wrap */
+        padding: 10px 15px; /* Increased padding for better readability */
+        font-size: 0.95rem; /* Slightly smaller font size to fit more text */
+        z-index: 20003; /* Higher z-index for mobile dropdown links */
+    }
+    
+    .logo-container {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .site-logo {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Site title styling is already defined above */
+    
+    .social-icons {
+        display: flex !important; /* Ensure they're visible */
+        position: static;
+        margin: 10px auto 15px; /* Center and add spacing */
+        margin-left: 0; /* Reset margin for mobile */
+        justify-content: center;
+        width: 100%;
+        order: 0; /* Place after site title (which has order: -1) */
+        gap: 10px;
+    }
+    
+    .social-icons a:last-child {
+        margin-right: 0;
+    }
+    
+    .post {
+        padding: 20px;
+    }
+}
+
+/* Styles for 768px and below are already covered by the 900px media query above */
+
+/* Extra small devices (phones, 500px and down) */
+@media (max-width: 500px) {
+    /* Make site title smaller on very small screens */
+    .site-title {
+        font-size: 0.65rem; /* Reduce font size further */
+        padding: 0 50px; /* Slightly less padding for smaller screens */
+    }
+
+    /* Adjust hamburger menu for smaller screens */
+    .mobile-nav-toggle {
+        padding: 8px; /* Slightly smaller padding */
+        font-size: 1.3rem; /* Slightly smaller icon */
+    }
+
+    /* Keep header padding for logo, adjust top padding */
+    header {
+        padding-top: 60px;
+        padding-bottom: 12px;
+    }
+
+    /* Adjust top-right connector for this padding */
+    header .container::after {
+        top: -50px;
+    }
+
+    /* Adjust logo position for smaller screens */
+    .site-logo-container {
+        top: 15px;
+    }
+
+    .site-logo-outside {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Extra extra small devices (small phones, 350px and down) */
+@media (max-width: 350px) {
+    /* Make site title even smaller on extremely small screens */
+    .site-title {
+        font-size: 0.6rem; /* Reduce font size even further */
+        padding: 0 45px; /* Less padding for very small screens */
+    }
+
+    /* Further adjust hamburger menu */
+    .mobile-nav-toggle {
+        padding: 5px;
+        font-size: 1.2rem;
+    }
+
+    .social-icons {
+        font-size: 0.9rem; /* Smaller icons for tiny screens */
+    }
+
+    /* Keep header padding for logo */
+    header {
+        padding-top: 55px;
+    }
+
+    /* Adjust top-right connector for this padding */
+    header .container::after {
+        top: -45px;
+    }
+
+    /* Smaller logo for tiny screens */
+    .site-logo-container {
+        top: 12px;
+    }
+
+    .site-logo-outside {
+        width: 35px;
+        height: 35px;
+    }
+}
+
