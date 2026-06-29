@@ -31,8 +31,15 @@ jobs:
         run: |
           if [ -d "_site" ]; then
             echo "Build successful! Site generated."
-            ls -la _site/
           else
             echo "Build failed - no _site directory"
             exit 1
           fi
+
+      - name: Validate HTML and internal links
+        run: |
+          gem install html-proofer
+          htmlproofer ./_site \
+            --disable-external \
+            --allow-hash-href \
+            --ignore-files "/.*\/presentation\.html/,/.*\/hacker-joy\.html/"

@@ -14,14 +14,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Process HTML files
-include:
-  - _includes
-  - assets
-  - pages
-  - projects
-  - art
-  - "*.html"
 
 # Exclude from processing
 exclude:
@@ -35,6 +27,14 @@ exclude:
   - package-lock.json
   - .eslintrc.json
   - .prettierrc.json
+
+# Front-matter defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      rich_content: true   # load MathJax/Mermaid/key-terms/print assets only on posts
 
 # Custom settings
 author:

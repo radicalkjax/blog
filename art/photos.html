@@ -19,9 +19,9 @@ page_css:
             {% capture adventure_photos %}[{% for img in adventure_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ adventure_folder }}" data-photos='{{ adventure_photos }}'>
                 {% if adventure_images.size > 0 %}
-                <img src="{{ adventure_images.first.path }}" alt="Adventure Photo" class="u-cover-img">
+                <img src="{{ adventure_images.first.path }}" alt="Adventure Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/adventures/nature-trail.jpg" alt="Random pics from my travels" class="u-cover-img">
+                <img src="/assets/images/photos/adventures/nature-trail.jpg" alt="Random pics from my travels" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Random pics from my travels</h3>
@@ -44,9 +44,9 @@ page_css:
             {% capture surgery_photos %}[{% for img in surgery_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ surgery_folder }}" data-photos='{{ surgery_photos }}'>
                 {% if surgery_images.size > 0 %}
-                <img src="{{ surgery_images.first.path }}" alt="Surgery Photo" class="u-cover-img">
+                <img src="{{ surgery_images.first.path }}" alt="Surgery Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/bottom-surgery/image000000-1.webp" alt="Surgery Photo" class="u-cover-img">
+                <img src="/assets/images/photos/bottom-surgery/image000000-1.webp" alt="Surgery Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Recovery Journey</h3>
@@ -72,9 +72,9 @@ page_css:
             {% capture flight_photos %}[{% for img in flight_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ flight_folder }}" data-photos='{{ flight_photos }}'>
                 {% if flight_images.size > 0 %}
-                <img src="{{ flight_images.first.path }}" alt="Flight Photo" class="u-cover-img">
+                <img src="{{ flight_images.first.path }}" alt="Flight Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/flight-pics/img_7566-1.webp" alt="Flight View" class="u-cover-img">
+                <img src="/assets/images/photos/flight-pics/img_7566-1.webp" alt="Flight View" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Above the Clouds</h3>
@@ -97,9 +97,9 @@ page_css:
             {% capture park_photos %}[{% for img in park_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ park_folder }}" data-photos='{{ park_photos }}'>
                 {% if park_images.size > 0 %}
-                <img src="{{ park_images.first.path }}" alt="Park Photo" class="u-cover-img">
+                <img src="{{ park_images.first.path }}" alt="Park Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/cesar-chavez-park/fx1jb-xaeaekp3u.webp" alt="Park Photo" class="u-cover-img">
+                <img src="/assets/images/photos/cesar-chavez-park/fx1jb-xaeaekp3u.webp" alt="Park Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Park Visit</h3>
@@ -125,9 +125,9 @@ page_css:
             {% capture museum_photos %}[{% for img in museum_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ museum_folder }}" data-photos='{{ museum_photos }}'>
                 {% if museum_images.size > 0 %}
-                <img src="{{ museum_images.first.path }}" alt="Museum Photo" class="u-cover-img">
+                <img src="{{ museum_images.first.path }}" alt="Museum Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/museum/img_9211.webp" alt="Museum Exhibit" class="u-cover-img">
+                <img src="/assets/images/photos/museum/img_9211.webp" alt="Museum Exhibit" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Science Exhibits</h3>
@@ -150,9 +150,9 @@ page_css:
             {% capture pride_photos %}[{% for img in pride_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ pride_folder }}" data-photos='{{ pride_photos }}'>
                 {% if pride_images.size > 0 %}
-                <img src="{{ pride_images.first.path }}" alt="Pride Photo" class="u-cover-img">
+                <img src="{{ pride_images.first.path }}" alt="Pride Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/pride/347578899_271865858673521_5827022320032448754_n-1.webp" alt="Pride Celebration" class="u-cover-img">
+                <img src="/assets/images/photos/pride/347578899_271865858673521_5827022320032448754_n-1.webp" alt="Pride Celebration" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Pride Celebration</h3>
@@ -179,9 +179,9 @@ page_css:
             {% capture gaming_photos %}[{% for img in gaming_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ gaming_folder }}" data-photos='{{ gaming_photos }}'>
                 {% if gaming_images.size > 0 %}
-                <img src="{{ gaming_images.first.path }}" alt="Gaming Photo" class="u-cover-img">
+                <img src="{{ gaming_images.first.path }}" alt="Gaming Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/gaming/350520489_221983123930077_1512794410258828999_n.webp" alt="Gaming Session" class="u-cover-img">
+                <img src="/assets/images/photos/gaming/350520489_221983123930077_1512794410258828999_n.webp" alt="Gaming Session" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Game Night</h3>
@@ -204,9 +204,9 @@ page_css:
             {% capture pet_photos %}[{% for img in pet_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ pet_folder }}" data-photos='{{ pet_photos }}'>
                 {% if pet_images.size > 0 %}
-                <img src="{{ pet_images.first.path }}" alt="Pet Photo" class="u-cover-img">
+                <img src="{{ pet_images.first.path }}" alt="Pet Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/fur-babies/347397799_283764544150319_9037679336154103916_n.webp" alt="Pet Photo" class="u-cover-img">
+                <img src="/assets/images/photos/fur-babies/347397799_283764544150319_9037679336154103916_n.webp" alt="Pet Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Furry Friends</h3>
@@ -232,9 +232,9 @@ page_css:
             {% capture vehicle_photos %}[{% for img in vehicle_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ vehicle_folder }}" data-photos='{{ vehicle_photos }}'>
                 {% if vehicle_images.size > 0 %}
-                <img src="{{ vehicle_images.first.path }}" alt="Vehicle Photo" class="u-cover-img">
+                <img src="{{ vehicle_images.first.path }}" alt="Vehicle Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/vehicles/ftot6reaaaa5nbk.jpg" alt="Vehicle Photo" class="u-cover-img">
+                <img src="/assets/images/photos/vehicles/ftot6reaaaa5nbk.jpg" alt="Vehicle Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">The Plow & The Bebop</h3>
@@ -257,9 +257,9 @@ page_css:
             {% capture oddity_photos %}[{% for img in oddity_images %}"{{ img.path }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% endcapture %}
             <div class="photo-item" data-folder="{{ oddity_folder }}" data-photos='{{ oddity_photos }}'>
                 {% if oddity_images.size > 0 %}
-                <img src="{{ oddity_images.first.path }}" alt="Oddity Photo" class="u-cover-img">
+                <img src="{{ oddity_images.first.path }}" alt="Oddity Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% else %}
-                <img src="/assets/images/photos/oddities/img_1023.webp" alt="Oddity Photo" class="u-cover-img">
+                <img src="/assets/images/photos/oddities/img_1023.webp" alt="Oddity Photo" class="u-cover-img" loading="lazy" decoding="async">
                 {% endif %}
                 <div class="photo-info">
                     <h3 class="photo-title">Strange Findings</h3>
