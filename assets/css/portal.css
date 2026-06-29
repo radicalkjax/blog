@@ -62,6 +62,10 @@ body.portal {
   margin: 16px 0;
 }
 
+.card__socials {
+  margin-top: 16px;
+}
+
 .card__socials a {
   color: #ff6bff;
   font-size: 1.4rem;
