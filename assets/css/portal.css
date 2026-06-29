@@ -45,10 +45,13 @@ body.portal {
 
 .card__role {
   margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 16px;
   font-size: 0.9rem;
-  line-height: 1.8;
+  line-height: 1.6;
   color: #ffb3f0;
-  text-wrap: balance;
 }
 
 .card__role .role-item {
