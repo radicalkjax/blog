@@ -37,7 +37,7 @@ body.portal {
 }
 
 .card__handle {
-  margin: 0;
+  margin: 10px 0 0;
   font-size: 0.9rem;
   color: #f9a8f9;
 }
