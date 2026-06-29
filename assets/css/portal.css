@@ -123,3 +123,8 @@ body.portal {
   font-size: 1.4rem;
   line-height: 1;
 }
+
+/* Pause state (playing): tighten the two bars so the width matches play/pi */
+.portal-play[aria-pressed="true"] {
+  letter-spacing: -4px;
+}
