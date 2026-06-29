@@ -122,6 +122,23 @@ body.portal {
   text-decoration: none;
 }
 
+/* 90s-style 88x31 web badges below the card */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 480px;
+  margin: 26px auto 0;
+}
+
+.badge {
+  display: block;
+  width: 88px;
+  height: 31px;
+  image-rendering: pixelated;
+}
+
 /* SomaFM Groove Salad play/pause toggle, anchored to the card's upper-left
    (mirrors .portal-enter: same top, same size, equal horizontal inset) */
 .portal-play {
