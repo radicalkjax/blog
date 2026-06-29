@@ -45,13 +45,14 @@ body.portal {
 .card__role {
   margin: 10px 0 0;
   font-size: 0.9rem;
+  line-height: 1.6;
   color: #ffb3f0;
 }
 
 .card__bio {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.85;
   text-align: left;
 }
 
