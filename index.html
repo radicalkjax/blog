@@ -2,15 +2,17 @@
 layout: portal
 ---
 <main class="card" id="card">
-    <img class="card__photo" src="{{ '/assets/images/portal/kali.jpg' | relative_url }}" alt="Kali Jackson" width="180" height="180">
+    <img class="card__photo" src="{{ '/assets/images/portal/kali.jpg' | relative_url }}" alt="Kali Jackson" width="160" height="160">
     <h1 class="card__name">Kali Jackson</h1>
     <p class="card__handle">@radicalkjax</p>
-    <p class="card__role">Technical Solutions Architect · AI SecOps Researcher · Full-Stack Developer</p>
+    <p class="card__role">Technical Solutions Architect &middot; AI SecOps Researcher &middot; Full-Stack Developer</p>
+    <hr class="card__rule">
     <p class="card__bio">
         I fell into tech through game modding and a love of music, and now work across
         reverse engineering, AI security, and open-source tooling. I build things that help
-        people — and care about making tech more accessible and inclusive along the way.
+        people &mdash; and care about making tech more accessible and inclusive along the way.
     </p>
+    <hr class="card__rule">
     <nav class="card__socials" aria-label="Social links">
         <a href="https://www.linkedin.com/in/kali-jackson-647094245" aria-label="LinkedIn" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/radicalkjax" aria-label="GitHub" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
@@ -20,7 +22,4 @@ layout: portal
     </nav>
 </main>
 
-<a class="portal-enter" href="{{ '/blog.html' | relative_url }}" aria-label="Enter the full site">
-    <span class="portal-enter__label">enter</span>
-    <span class="portal-enter__pi" aria-hidden="true">π</span>
-</a>
+<a class="portal-enter" href="{{ '/blog.html' | relative_url }}" aria-label="Enter the full site" title="Enter the full site">&pi;</a>
