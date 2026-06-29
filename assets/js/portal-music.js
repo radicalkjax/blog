@@ -7,8 +7,8 @@
   const audio = document.querySelector('.portal-audio');
   if (!btn || !audio) return;
 
-  const PLAY = '▶';        // ▶
-  const PAUSE = '❚❚'; // ❚❚
+  const PLAY = '▶';          // ▶
+  const PAUSE = '▮▮';   // ▮▮ (matches the play/pi size)
 
   btn.addEventListener('click', function () {
     if (audio.paused) {
