@@ -77,7 +77,7 @@ body.portal {
   bottom: 12px;
   color: #ff6bff;
   font-size: 1.6rem;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .portal-enter:hover {
