@@ -14,6 +14,7 @@ body.portal {
 }
 
 .card {
+  position: relative;
   max-width: 500px;
   margin: 0 auto;
   padding: 24px;
@@ -76,11 +77,11 @@ body.portal {
   color: #ffffff;
 }
 
-/* Lower-right plain text link into the full site */
+/* Plain text link into the full site, anchored to the card's upper-right */
 .portal-enter {
-  position: fixed;
-  right: 18px;
-  bottom: 12px;
+  position: absolute;
+  top: 8px;
+  right: 12px;
   color: #ff6bff;
   font-size: 1.6rem;
   text-decoration: none;
