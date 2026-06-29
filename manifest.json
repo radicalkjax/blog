@@ -1,7 +1,7 @@
 {
   "name": "Kali Jackson - Software Engineer & Security Researcher",
   "short_name": "RadicalKJax",
-  "description": "Personal website and blog of Kali Jackson, featuring multilingual content about software engineering, security research, and AI.",
+  "description": "Personal website and blog of Kali Jackson, featuring content about software engineering, security research, and AI.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#6d105a",
@@ -61,29 +61,15 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/assets/images/screenshots/desktop.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
-      "label": "Desktop view of RadicalKJax.com"
-    },
-    {
-      "src": "/assets/images/screenshots/mobile.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "label": "Mobile view of RadicalKJax.com"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Blog",
       "short_name": "Blog",
       "description": "Read the latest blog posts",
-      "url": "/blog",
+      "url": "/blog.html",
       "icons": [
         {
-          "src": "/assets/images/icons/blog-96x96.png",
+          "src": "/assets/images/icons/icon-96x96.png",
           "sizes": "96x96",
           "type": "image/png"
         }
@@ -93,10 +79,10 @@
       "name": "Projects",
       "short_name": "Projects",
       "description": "View my projects",
-      "url": "/projects",
+      "url": "/projects.html",
       "icons": [
         {
-          "src": "/assets/images/icons/projects-96x96.png",
+          "src": "/assets/images/icons/icon-96x96.png",
           "sizes": "96x96",
           "type": "image/png"
         }
@@ -106,10 +92,10 @@
       "name": "About",
       "short_name": "About",
       "description": "Learn more about me",
-      "url": "/about",
+      "url": "/about.html",
       "icons": [
         {
-          "src": "/assets/images/icons/about-96x96.png",
+          "src": "/assets/images/icons/icon-96x96.png",
           "sizes": "96x96",
           "type": "image/png"
         }

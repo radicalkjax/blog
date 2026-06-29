@@ -12,7 +12,7 @@ const STATIC_CACHE_URLS = [
   '/offline.html',
   '/assets/css/main.css',
   '/assets/css/fonts.css',
-  '/assets/js/app.js',
+  '/assets/js/main.js',
   '/assets/fonts/uni0553-webfont.woff2',
   '/manifest.json'
 ];
@@ -66,7 +66,7 @@ self.addEventListener('fetch', (event) => {
   }
   
   // HTML requests - Network first, fall back to cache
-  if (request.headers.get('accept').includes('text/html')) {
+  if ((request.headers.get('accept') || '').includes('text/html')) {
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -207,14 +207,3 @@ self.addEventListener('message', (event) => {
     );
   }
 });
-
-// Background sync for offline actions
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-posts') {
-    event.waitUntil(syncPosts());
-  }
-});
-
-async function syncPosts() {
-  // Implement syncing logic for offline actions
-}

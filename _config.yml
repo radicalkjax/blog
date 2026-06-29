@@ -31,23 +31,10 @@ exclude:
   - vendor
   - .gitignore
   - README.md
-  - _config
-  - _tests
-  - _feeds
   - docs
   - package-lock.json
   - .eslintrc.json
   - .prettierrc.json
-
-# Language settings (for future use - not active with GitHub Pages)
-# languages: ["en", "es", "fr", "ja", "zh", "ar", "de", "pt"]
-# default_lang: "en"
-
-# Collections
-collections:
-  timeline:
-    output: true
-    permalink: /timeline/:path/
 
 # Custom settings
 author:
