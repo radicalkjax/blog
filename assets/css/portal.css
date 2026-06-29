@@ -1,0 +1,170 @@
+/* Portal / business-card landing page
+   Matches the site theme: #6d105a purple, DM Mono, magenta accents,
+   and the double-border "stacked paper" card treatment. */
+
+:root {
+  --portal-bg: #6d105a;
+  --portal-panel: rgba(122, 1, 119, 0.7);
+  --portal-text: #ffffff;
+  --portal-accent: #f84ef8;
+  --portal-accent-soft: #d62598;
+  --portal-link-hover: #ff6bff;
+  --portal-font: 'DM Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.portal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: var(--portal-bg);
+  color: var(--portal-text);
+  font-family: var(--portal-font);
+  line-height: 1.6;
+}
+
+/* Card with the inset double-border treatment used across the site */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 48px 40px;
+  text-align: center;
+  background-color: var(--portal-panel);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.card__photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid var(--portal-accent);
+  margin-bottom: 24px;
+}
+
+.card__name {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--portal-text);
+}
+
+.card__handle {
+  margin-top: 2px;
+  font-size: 0.95rem;
+  color: var(--portal-accent);
+}
+
+.card__role {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--portal-accent-soft);
+  letter-spacing: 0.3px;
+}
+
+.card__bio {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.card__socials {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.card__socials a {
+  color: var(--portal-text);
+  font-size: 1.45rem;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.card__socials a:hover,
+.card__socials a:focus-visible {
+  color: var(--portal-link-hover);
+  transform: translateY(-2px);
+}
+
+/* Lower-right link into the full site */
+.portal-enter {
+  position: fixed;
+  right: 24px;
+  bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.portal-enter__label {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.portal-enter__pi {
+  font-size: 2.1rem;
+  line-height: 1;
+  animation: portal-pulse 2.8s ease-in-out infinite;
+}
+
+.portal-enter:hover,
+.portal-enter:focus-visible {
+  color: var(--portal-link-hover);
+  outline: none;
+}
+
+.portal-enter:hover .portal-enter__label,
+.portal-enter:focus-visible .portal-enter__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes portal-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 36px 22px; }
+  .card__name { font-size: 1.6rem; }
+  .card__photo { width: 140px; height: 140px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-enter__pi { animation: none; }
+  .card__socials a,
+  .portal-enter,
+  .portal-enter__label { transition: none; }
+}
