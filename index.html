@@ -2,6 +2,12 @@
 layout: portal
 ---
 <main class="card" id="card">
+    <button class="portal-play" type="button" aria-label="Play SomaFM Groove Salad" aria-pressed="false" title="Play Groove Salad (SomaFM)">&#9654;</button>
+    <audio class="portal-audio" preload="none">
+        <source src="https://ice1.somafm.com/groovesalad-128-mp3" type="audio/mpeg">
+        <source src="https://ice4.somafm.com/groovesalad-128-mp3" type="audio/mpeg">
+        <source src="https://ice2.somafm.com/groovesalad-128-mp3" type="audio/mpeg">
+    </audio>
     <a class="portal-enter" href="{{ '/blog.html' | relative_url }}" aria-label="Enter the full site" title="Enter the full site">&pi;</a>
     <img class="card__photo" src="{{ '/assets/images/pfp/kalipfp.png' | relative_url }}" alt="Kali Jackson" width="160" height="160">
     <h1 class="card__name">Kali Jackson</h1>
