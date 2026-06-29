@@ -61,16 +61,6 @@
     });
   }
 
-  // Floating logo requires three clicks to return to the portal
-  const logoLink = document.querySelector('.site-logo-link');
-  if (logoLink) {
-    let logoClicks = 0;
-    logoLink.addEventListener('click', function (e) {
-      logoClicks += 1;
-      if (logoClicks < 3) e.preventDefault();
-    });
-  }
-
   // Register service worker for offline support (PWA)
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
