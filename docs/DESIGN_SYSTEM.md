@@ -24,36 +24,6 @@
 
 This design system defines the visual language, interaction patterns, and implementation guidelines for radicalkjax.com. The design emphasizes a **cyberpunk/hacker aesthetic** with technical precision, clean monospace typography, and a bold magenta/purple color scheme.
 
-```mermaid
-graph TD
-    A[Design System] --> B[Visual Identity]
-    A --> C[Component Library]
-    A --> D[Layout System]
-    A --> E[Interaction Patterns]
-
-    B --> B1[Color Palette]
-    B --> B2[Typography]
-    B --> B3[Spacing]
-
-    C --> C1[Headers]
-    C --> C2[Cards]
-    C --> C3[Navigation]
-
-    D --> D1[Grid System]
-    D --> D2[Containers]
-    D --> D3[Responsive Breakpoints]
-
-    E --> E1[Hover States]
-    E --> E2[Transitions]
-    E --> E3[Animations]
-
-    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-```
-
 ---
 
 ## Design Philosophy
@@ -615,16 +585,17 @@ All interactive elements include proper ARIA labels:
 
 ```
 assets/css/
-├── main.css                    # Primary styles (1876 lines)
-├── modern.css                  # Modern CSS features (460 lines)
-├── modern-features.css         # Progressive enhancements
-├── fonts.css                   # Font loading
-├── vendor-prefixes.css         # Browser prefixes
-├── key-terms.css              # Key terms component
-├── collapsible-references.css # Collapsible sections
-├── mathjax-custom.css         # Math rendering
-├── mermaid-custom.css         # Diagram styling
-└── language-switcher.css      # i18n switcher
+├── critical.css            # Inlined above-the-fold styles
+├── main.css                # Primary site styles
+├── modern-features.css     # Progressive enhancements
+├── utilities.css           # Utility classes
+├── fonts.css               # Font loading
+├── vendor-prefixes.css     # Browser prefixes
+├── key-terms.css           # Key terms component
+├── mathjax-custom.css      # Math rendering
+├── mermaid-custom.css      # Diagram styling
+├── scrollytelling.css      # Trans-journey scrollytelling
+└── pages/                  # Per-page styles loaded via page_css front matter
 ```
 
 ### CSS Methodology
@@ -673,17 +644,17 @@ Inline critical CSS in `<head>` to prevent FOUC:
 
 | Module | Purpose | File |
 |--------|---------|------|
+| Site Init | Bootstraps shared behavior | `site-init.js` |
 | Main | General interactions | `main.js` |
 | Social Links | Icon animations | `social-links.js` |
 | TOC | Table of contents | `toc.js` |
 | Key Terms | Interactive glossary | `key-terms.js` |
-| Print PDF | Print optimization | `print-pdf.js` |
-| MathJax | Math rendering | `mathjax-custom.js` |
-| Mermaid | Diagrams | `mermaid-custom.js` |
-| Collapsible | Expandable sections | `collapsible-references.js` |
-| Reference Links | Citation system | `reference-links.js` |
-| Locale Detector | i18n detection | `modules/locale-detector.js` |
-| Localized Images | i18n images | `modules/localized-images.js` |
+| Photo Gallery | Art gallery interactions | `photo-gallery.js` |
+| SomaFM Player | Embedded radio player | `somafm-player.js` |
+| Print PDF | Print optimization | `print-pdf.js` (+ `print/` modules) |
+| MathJax | Math rendering | `mathjax-config.js` |
+| Mermaid | Diagrams | `mermaid-custom.js` (+ `mermaid/` modules) |
+| Scrollytelling | Trans-journey page | `scrollytelling.js` (+ `scrollytelling/` modules) |
 
 ### Loading Strategy
 
@@ -883,20 +854,8 @@ JavaScript enhances the experience but isn't required:
 
 ## Resources
 
-### Documentation Links
-
-- [Architecture Documentation](./architecture/README.md)
-- [Components Documentation](./components/README.md)
-- [Development Guide](./development/README.md)
-- [Customization Guide](./customization/README.md)
-
-### External Resources
-
+- [Repository documentation hub](./README.md)
 - [DM Mono Font](https://fonts.google.com/specimen/DM+Mono)
 - [Font Awesome Icons](https://fontawesome.com/)
 - [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [WCAG Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-
----
-
-**For questions or suggestions about the design system, please create an issue on GitHub.**

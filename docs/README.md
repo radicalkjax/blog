@@ -1,147 +1,76 @@
-# Documentation Hub
+# radicalkjax.com — Documentation
 
-Welcome to the comprehensive documentation for radicalkjax.com. This documentation provides detailed information about the site's architecture, components, development process, deployment, and customization options.
+The personal "business card" site and blog of Kali Jackson. It's an English-only
+[Jekyll](https://jekyllrb.com/) site hosted on GitHub Pages with a cyberpunk /
+hacker aesthetic (deep purple `#6d105a`, DM Mono everywhere).
 
-## Quick Links
+For the visual language — colors, type, spacing, components — see
+[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md).
 
-### Current Status
-- [🔄 Current State](./CURRENT_STATE.md) - Latest status and features (September 2025)
-- [📁 Repository Organization](./REPO_ORGANIZATION.md) - Directory structure guide
-- [🔒 Security Headers](./SECURITY-HEADERS.md) - Security configuration
+## Running locally
 
-### Historical Documentation
-- [📋 Migration Documentation](./MIGRATION_DOCUMENTATION.md) - WordPress to Jekyll migration details
+Requires Ruby (see `.ruby-version`) and Bundler.
 
-## Documentation Sections
-
-- [Architecture Documentation](#architecture-documentation)
-- [Components Documentation](#components-documentation)
-- [Development Guide](#development-guide)
-- [Deployment Guide](#deployment-guide)
-- [Customization Guide](#customization-guide)
-
-## Overview
-
-This documentation is designed to help you understand the site's structure and functionality, as well as provide guidance for development, deployment, and customization. Whether you're a developer looking to contribute to the site, a content creator looking to add new content, or a site owner looking to customize the site's appearance, this documentation has you covered.
-
-```mermaid
-graph TD
-    A[Documentation] --> B[Architecture Documentation]
-    A --> C[Components Documentation]
-    A --> D[Development Guide]
-    A --> E[Deployment Guide]
-    A --> F[Customization Guide]
-    
-    B --> B1[Site Structure]
-    B --> B2[Data Flow]
-    B --> B3[Technical Stack]
-    
-    C --> C1[Layouts]
-    C --> C2[Includes]
-    C --> C3[Page Components]
-    
-    D --> D1[Local Development Setup]
-    D --> D2[Content Creation]
-    D --> D3[Testing]
-    
-    E --> E1[GitHub Pages Deployment]
-    E --> E2[Custom Domain Setup]
-    E --> E3[Troubleshooting]
-    
-    F --> F1[Theme Customization]
-    F --> F2[Layout Modifications]
-    F --> F3[Adding Features]
-    
-    style A fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style B fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style C fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style D fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style E fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
-    style F fill:#6d105a,stroke:#fff,stroke-width:2px,color:#fff
+```bash
+git clone https://github.com/radicalkjax/blog.git
+cd blog
+bundle install
+bundle exec jekyll serve   # http://localhost:4000
 ```
 
-## Design System
+Jekyll rebuilds and live-reloads on save. `npm start` runs the same serve command
+bound to `0.0.0.0:4000`.
 
-The [Design System](DESIGN_SYSTEM.md) provides the comprehensive design reference for the entire site. It covers:
+### Linting / formatting
 
-- **Color Palette**: Complete color system with CSS variables and usage guidelines
-- **Typography**: Font stack, type scale, and typography hierarchy
-- **Layout Architecture**: Container system, spacing, grid layouts, and z-index layers
-- **Component Patterns**: Double-border frames, cards, buttons, navigation, and all reusable components
-- **Responsive Design**: Breakpoints and responsive patterns for all screen sizes
-- **Accessibility**: ARIA labels, focus states, color contrast, and reduced motion support
-- **CSS Architecture**: File structure, methodology, and critical CSS strategy
-- **JavaScript Modules**: Core modules and loading strategy
-- **Creating New Components**: Step-by-step guide with checklist for building new components
+Node tooling is dev-only (no test suite, no git hooks):
 
-## Architecture Documentation
+```bash
+npm run lint      # eslint assets/js + stylelint assets/css (both --fix)
+npm run format    # prettier across js/css/md/yml/json
+npm run build     # bundle exec jekyll build
+```
 
-The [Architecture Documentation](architecture/README.md) provides a comprehensive overview of the site's architecture, including its structure, data flow, and technical stack. It covers:
+## Deployment
 
-- **Site Structure**: Detailed information about the site's directory structure and file organization.
-- **Data Flow**: Explanation of how data flows through the site, from content creation to rendering.
-- **Technical Stack**: Overview of the technologies used to build the site, including Jekyll, HTML, CSS, and JavaScript.
-- **Key Components**: Detailed information about the site's key components, such as layouts, includes, and assets.
-- **Navigation Structure**: Explanation of the site's navigation structure and how it's implemented.
-- **Visual Design Architecture**: Overview of the site's visual design elements and how they're implemented.
+Pushing to `main` triggers `.github/workflows/pages.yml`, which builds the site
+with `JEKYLL_ENV=production` and deploys it to GitHub Pages. The custom domain is
+set via the `CNAME` file. `.github/workflows/ci.yml` build-tests every push and
+pull request. No manual deploy step.
 
-## Components Documentation
+## Repository layout
 
-The [Components Documentation](components/README.md) provides detailed information about the components used in the site, including layouts, includes, and page components. It covers:
+```
+blog/
+├── index.html              # homepage
+├── offline.html            # PWA offline fallback
+├── _config.yml             # Jekyll config
+├── _layouts/               # default.html, post.html
+├── _includes/              # somafm-player.html, structured-data.html
+├── _posts/                 # blog posts (YYYY-MM-DD-title.md)
+├── pages/                  # about, art, blog, connections, projects,
+│                           #   subscribe, thank-you
+├── projects/               # rocket-pup, caliphoria, malwarEvangelist,
+│                           #   presentations
+├── art/                    # photos, other-things
+├── about/                  # trans-journey.html (scrollytelling)
+├── assets/
+│   ├── css/                # global stylesheets + pages/ (per-page)
+│   │                       #   + mermaid-/scrollytelling- modules
+│   └── js/                 # global scripts + pages/ (per-page)
+│                           #   + mermaid/ print/ scrollytelling/ modules
+├── feed.xml, sitemap.xml, robots.txt, manifest.json, service-worker.js
+└── docs/                   # this folder (excluded from the build)
+```
 
-- **Layouts**: Detailed information about the site's layouts, including the default layout and post layout.
-- **Includes**: Explanation of the site's includes, such as the header and footer.
-- **Page Components**: Detailed information about the components used in pages, such as blog post cards, navigation, and social icons.
-- **Blog Components**: Explanation of the components used in blog posts, such as post headers, post content, and post tags.
-- **Special Components**: Detailed information about special components, such as Mermaid diagrams, photo galleries, and project cards.
+## Content
 
-## Development Guide
-
-The [Development Guide](development/README.md) provides comprehensive instructions for local development, content creation, and testing. It covers:
-
-- **Local Development Setup**: Step-by-step instructions for setting up a local development environment.
-- **Content Creation**: Detailed information about creating content for the site, including blog posts, pages, projects, and photos.
-- **Testing**: Guidance for testing the site locally, including cross-browser testing and mobile testing.
-- **Best Practices**: Recommendations for code style, performance optimization, and accessibility.
-
-## Deployment Guide
-
-The [Deployment Guide](deployment/README.md) provides comprehensive instructions for deploying the site to GitHub Pages and setting up a custom domain. It covers:
-
-- **GitHub Pages Deployment**: Step-by-step instructions for deploying the site to GitHub Pages.
-- **Custom Domain Setup**: Detailed information about setting up a custom domain for the site.
-- **HTTPS Configuration**: Guidance for configuring HTTPS for the site.
-- **Troubleshooting**: Solutions for common deployment issues.
-- **Maintenance**: Recommendations for maintaining the site after deployment.
-
-## Customization Guide
-
-The [Customization Guide](customization/README.md) provides comprehensive instructions for customizing the site's appearance and functionality. It covers:
-
-- **Theme Customization**: Detailed information about customizing the site's theme, including color scheme, typography, layout, and frame design.
-- **Layout Modifications**: Guidance for modifying the site's layout, including the header, footer, navigation, and content areas.
-- **Adding Features**: Instructions for adding features to the site, such as social media integration, comments system, search functionality, and analytics.
-- **Advanced Customization**: Detailed information about advanced customization options, such as custom JavaScript, custom Liquid templates, custom plugins, and custom layouts.
-
-## Getting Started
-
-To get started with the documentation, choose a section from the table of contents above based on your needs:
-
-- If you want to understand the site's structure and technical stack, start with the [Architecture Documentation](architecture/README.md).
-- If you want to learn about the components used in the site, check out the [Components Documentation](components/README.md).
-- If you want to set up a local development environment or create content, refer to the [Development Guide](development/README.md).
-- If you want to deploy the site to GitHub Pages or set up a custom domain, see the [Deployment Guide](deployment/README.md).
-- If you want to customize the site's appearance or functionality, consult the [Customization Guide](customization/README.md).
-
-## Contributing
-
-If you'd like to contribute to the documentation, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your changes.
-3. Make your changes to the documentation.
-4. Submit a pull request with a clear description of your changes.
-
-## License
-
-This documentation is licensed under the MIT License. See the LICENSE file for details.
+- **Blog posts** live in `_posts/` as `YYYY-MM-DD-title.md` with `layout: post`
+  and a `tags` list in front matter.
+- **Pages, projects, and art** are HTML + Liquid using `layout: default`.
+- **Per-page CSS/JS** is opt-in: list files in the `page_css` and `page_js`
+  front-matter arrays and the matching `assets/css/pages/` and
+  `assets/js/pages/` files load only on that page.
+- Heavier features (Mermaid diagrams, MathJax, print/PDF, the trans-journey
+  scrollytelling) load as ES-module bundles from their `assets/js/<feature>/`
+  subfolders.
