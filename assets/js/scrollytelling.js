@@ -2,7 +2,18 @@
  * Scrollytelling Sidebar System
  * Interactive reading guide for long-form content
  * For radicalkjax.com trans-journey page
+ *
+ * Entry ES module: wires the scroll/observer/rendering logic to the
+ * pure data + helpers in ./scrollytelling/data.js.
  */
+
+import {
+  parseSections,
+  parseBlogPosts,
+  getIconClass,
+  findRelatedPosts,
+  formatDate
+} from './scrollytelling/data.js';
 
 class ScrollytellingSidebar {
   constructor() {
@@ -44,18 +55,9 @@ class ScrollytellingSidebar {
   }
 
   loadData() {
-    // Load sections from embedded JSON
-    const sectionsScript = document.getElementById('journey-sections');
-    if (sectionsScript) {
-      this.sections = JSON.parse(sectionsScript.textContent);
-    }
-
-    // Load blog posts from embedded JSON
-    const postsScript = document.getElementById('blog-posts-data');
-    if (postsScript) {
-      const postsData = JSON.parse(postsScript.textContent);
-      this.blogPosts = postsData.posts || [];
-    }
+    // Load sections and blog posts from embedded JSON data islands
+    this.sections = parseSections();
+    this.blogPosts = parseBlogPosts();
   }
 
   findSectionMarkers() {
@@ -105,7 +107,7 @@ class ScrollytellingSidebar {
     if (!this.sectionNavList) return;
 
     this.sectionNavList.innerHTML = this.sections.map((section, index) => {
-      const iconClass = this.getIconClass(section.icon);
+      const iconClass = getIconClass(section.icon);
       return `
         <li class="section-nav-item" data-section-id="${section.id}">
           <a href="#section-${section.id}" class="section-nav-link" data-section-index="${index}">
@@ -115,32 +117,6 @@ class ScrollytellingSidebar {
         </li>
       `;
     }).join('');
-  }
-
-  getIconClass(iconName) {
-    if (!iconName) return '';
-
-    const iconMap = {
-      'book-open': 'fas fa-book-open',
-      'child': 'fas fa-child',
-      'tractor': 'fas fa-tractor',
-      'lightbulb': 'fas fa-lightbulb',
-      'house-chimney-crack': 'fas fa-house-chimney-crack',
-      'user-secret': 'fas fa-user-secret',
-      'graduation-cap': 'fas fa-graduation-cap',
-      'door-open': 'fas fa-door-open',
-      'pills': 'fas fa-pills',
-      'heart-crack': 'fas fa-heart-crack',
-      'people-arrows': 'fas fa-people-arrows',
-      'clipboard-check': 'fas fa-clipboard-check',
-      'hospital': 'fas fa-hospital',
-      'rocket': 'fas fa-rocket',
-      'heart': 'fas fa-heart',
-      'face-smile': 'fas fa-face-smile',
-      'star': 'fas fa-star'
-    };
-
-    return iconMap[iconName] || `fas fa-${iconName}`;
   }
 
   setupIntersectionObserver() {
@@ -192,7 +168,7 @@ class ScrollytellingSidebar {
   updateCurrentSectionDisplay(section) {
     if (!this.currentSectionTitle) return;
 
-    const iconClass = this.getIconClass(section.icon);
+    const iconClass = getIconClass(section.icon);
     this.currentSectionTitle.innerHTML = `
       ${iconClass ? `<i class="${iconClass} current-section-icon"></i>` : ''}
       ${section.title}
@@ -202,7 +178,7 @@ class ScrollytellingSidebar {
   updateRelatedPosts(section) {
     if (!this.relatedPostsList) return;
 
-    const relatedPosts = this.findRelatedPosts(section);
+    const relatedPosts = findRelatedPosts(section, this.blogPosts);
 
     if (relatedPosts.length === 0) {
       this.relatedPostsList.innerHTML = `
@@ -221,57 +197,12 @@ class ScrollytellingSidebar {
           <h5 class="related-post-title">${post.title}</h5>
           <p class="related-post-excerpt">${post.excerpt || ''}</p>
           <div class="related-post-meta">
-            <span>${this.formatDate(post.date)}</span>
+            <span>${formatDate(post.date)}</span>
             <span class="related-post-arrow">→</span>
           </div>
         </a>
       `;
     }).join('');
-  }
-
-  findRelatedPosts(section) {
-    if (!section.tags || !this.blogPosts.length) {
-      return [];
-    }
-
-    // Generic tags that shouldn't be used for matching alone
-    const genericTags = ['personal', 'blog', 'milestone', 'general'];
-
-    // Get specific tags from section
-    const specificSectionTags = section.tags.filter(tag => !genericTags.includes(tag));
-
-    const relatedPosts = this.blogPosts.filter(post => {
-      if (!post.tags || !Array.isArray(post.tags)) return false;
-
-      // If section has no specific tags, match any tag
-      if (specificSectionTags.length === 0) {
-        return section.tags.some(tag => post.tags.includes(tag));
-      }
-
-      // Post must have at least one specific tag from the section
-      return specificSectionTags.some(sectionTag => {
-        // Check for exact match
-        if (post.tags.includes(sectionTag)) return true;
-
-        // Check for variations (e.g., "transgender" matches "trans")
-        return post.tags.some(postTag =>
-          sectionTag.includes(postTag) || postTag.includes(sectionTag)
-        );
-      });
-    });
-
-    // Sort by date (most recent first)
-    return relatedPosts.sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateB - dateA;
-    });
-  }
-
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
   }
 
   updateSectionNav(activeSectionId) {
