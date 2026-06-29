@@ -17,18 +17,28 @@
     // Initialize volume at 25% to avoid blowing out speakers
     audio.volume = 0.25;
 
+    function minimize() {
+      playerBody.classList.add('is-hidden');
+      playerHeader.classList.add('is-hidden');
+      playerMinimized.classList.remove('is-hidden');
+    }
+
+    function expand() {
+      playerBody.classList.remove('is-hidden');
+      playerHeader.classList.remove('is-hidden');
+      playerMinimized.classList.add('is-hidden');
+    }
+
     // Start minimized on mobile devices
     if (window.innerWidth <= 768) {
-      playerBody.style.display = 'none';
-      playerHeader.style.display = 'none';
-      playerMinimized.style.display = 'block';
+      minimize();
     }
 
     function togglePlayPause() {
       if (audio.paused) {
         audio.play().then(() => {
-          playBtn.style.display = 'none';
-          pauseBtn.style.display = 'inline';
+          playBtn.classList.add('is-hidden');
+          pauseBtn.classList.remove('is-hidden');
           updateNowPlaying();
           // Update song info every 30 seconds while playing
           songUpdateInterval = setInterval(updateNowPlaying, 30000);
@@ -37,8 +47,8 @@
         });
       } else {
         audio.pause();
-        playBtn.style.display = 'inline';
-        pauseBtn.style.display = 'none';
+        playBtn.classList.remove('is-hidden');
+        pauseBtn.classList.add('is-hidden');
         // Clear the update interval when paused
         if (songUpdateInterval) {
           clearInterval(songUpdateInterval);
@@ -51,38 +61,33 @@
     function toggleMute() {
       if (audio.muted) {
         audio.muted = false;
-        volumeIcon.style.display = 'inline';
-        muteIcon.style.display = 'none';
+        volumeIcon.classList.remove('is-hidden');
+        muteIcon.classList.add('is-hidden');
         volumeSlider.value = audio.volume * 100;
       } else {
         audio.muted = true;
-        volumeIcon.style.display = 'none';
-        muteIcon.style.display = 'inline';
+        volumeIcon.classList.add('is-hidden');
+        muteIcon.classList.remove('is-hidden');
       }
     }
 
     function changeVolume(value) {
       audio.volume = value / 100;
       if (value == 0) {
-        volumeIcon.style.display = 'none';
-        muteIcon.style.display = 'inline';
+        volumeIcon.classList.add('is-hidden');
+        muteIcon.classList.remove('is-hidden');
       } else {
-        volumeIcon.style.display = 'inline';
-        muteIcon.style.display = 'none';
+        volumeIcon.classList.remove('is-hidden');
+        muteIcon.classList.add('is-hidden');
         audio.muted = false;
       }
     }
 
     function togglePlayer() {
-      const isMinimized = playerBody.style.display === 'none';
-      if (isMinimized) {
-        playerBody.style.display = 'block';
-        playerHeader.style.display = 'flex';
-        playerMinimized.style.display = 'none';
+      if (playerBody.classList.contains('is-hidden')) {
+        expand();
       } else {
-        playerBody.style.display = 'none';
-        playerHeader.style.display = 'none';
-        playerMinimized.style.display = 'block';
+        minimize();
       }
     }
 
@@ -167,19 +172,12 @@
     let wasAtBottom = false;
 
     function checkCollision() {
-      const player = document.getElementById('somafm-player');
       const mainContent = document.querySelector('.content-wrapper') || document.querySelector('.post-content') || document.querySelector('article') || document.querySelector('main');
 
       if (!player || !mainContent) return;
 
-      // Reset player styles first to get accurate measurements
-      player.style.position = 'fixed';
-      player.style.top = '120px';
-      player.style.bottom = 'auto';
-      player.style.left = '20px';
-      player.style.transform = 'none';
-      player.style.width = '280px';
-      player.style.maxWidth = 'none';
+      // Measure in the default (sidebar) position
+      player.classList.remove('somafm-player--bottom');
 
       const playerRect = player.getBoundingClientRect();
       const contentRect = mainContent.getBoundingClientRect();
@@ -193,20 +191,10 @@
       );
 
       if (isOverlapping || window.innerWidth <= 768) {
-        // Move player to bottom and minimize it
-        player.style.position = 'fixed';
-        player.style.top = 'auto';
-        player.style.bottom = '20px';
-        player.style.left = '50%';
-        player.style.transform = 'translateX(-50%)';
-        player.style.width = '90%';
-        player.style.maxWidth = '320px';
-
-        // Auto-minimize when moved to bottom
+        // Move player to the bottom and minimize it
+        player.classList.add('somafm-player--bottom');
         if (!wasAtBottom) {
-          playerBody.style.display = 'none';
-          playerHeader.style.display = 'none';
-          playerMinimized.style.display = 'block';
+          minimize();
           wasAtBottom = true;
         }
       } else {

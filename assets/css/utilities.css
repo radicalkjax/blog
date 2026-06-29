@@ -1,5 +1,11 @@
 /* Utility classes — replace repeated element-level inline styles. */
 
+/* Visibility toggle (replaces JS-set inline display:none) */
+.is-hidden { display: none !important; }
+
+/* Revealed state for FOUC-guarded elements (replaces JS-set inline opacity) */
+.is-revealed { opacity: 1 !important; }
+
 /* Text alignment */
 .u-text-center { text-align: center; }
 .u-text-right { text-align: right; }

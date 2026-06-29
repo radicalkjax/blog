@@ -6,7 +6,7 @@
   // Reveal navigation and social icons once styles are loaded
   window.addEventListener('load', function () {
     document.querySelectorAll('.social-icons, nav').forEach(function (el) {
-      el.style.opacity = '1';
+      el.classList.add('is-revealed');
     });
   });
 
@@ -19,14 +19,14 @@
       dropdown.addEventListener('mouseenter', function () {
         if (window.innerWidth > 768) {
           const menu = this.querySelector('.dropdown-menu');
-          if (menu) menu.style.display = 'flex';
+          if (menu) menu.classList.add('is-open');
         }
       });
 
       dropdown.addEventListener('mouseleave', function () {
         if (window.innerWidth > 768) {
           const menu = this.querySelector('.dropdown-menu');
-          if (menu) menu.style.display = 'none';
+          if (menu) menu.classList.remove('is-open');
         }
       });
 
@@ -38,13 +38,13 @@
             e.stopPropagation();
 
             const menu = this.nextElementSibling;
-            if (menu.style.display === 'flex') {
-              menu.style.display = 'none';
+            if (menu.classList.contains('is-open')) {
+              menu.classList.remove('is-open');
             } else {
               document.querySelectorAll('.dropdown-menu').forEach(function (m) {
-                if (m !== menu) m.style.display = 'none';
+                if (m !== menu) m.classList.remove('is-open');
               });
-              menu.style.display = 'flex';
+              menu.classList.add('is-open');
             }
           }
         });
@@ -55,7 +55,7 @@
     document.addEventListener('click', function (e) {
       if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
         document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
-          menu.style.display = 'none';
+          menu.classList.remove('is-open');
         });
       }
     });

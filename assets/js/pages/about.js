@@ -74,8 +74,8 @@ async function loadGitHubRepos() {
             });
 
         // Clear loading and show container
-        loadingDiv.style.display = 'none';
-        containerDiv.style.display = 'block';
+        loadingDiv.classList.add('is-hidden');
+        containerDiv.classList.remove('is-hidden');
 
         // Create repo cards
         ownRepos.forEach(repo => {
@@ -124,12 +124,12 @@ async function loadGitHubRepos() {
 
         // If no repos found
         if (ownRepos.length === 0) {
-            reposContainer.innerHTML = '<p style="text-align: center; opacity: 0.7;">No public repositories found.</p>';
+            reposContainer.innerHTML = '<p class="u-text-center u-dim">No public repositories found.</p>';
         }
 
     } catch (error) {
-        loadingDiv.style.display = 'none';
-        errorDiv.style.display = 'block';
+        loadingDiv.classList.add('is-hidden');
+        errorDiv.classList.remove('is-hidden');
     }
 }
 

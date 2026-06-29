@@ -223,7 +223,7 @@ function setupContactForm() {
 
       // Show success message
       const formContainer = form.parentElement;
-      form.style.display = 'none';
+      form.classList.add('is-hidden');
 
       const successMessage = document.createElement('div');
       successMessage.className = 'form-success';
@@ -239,7 +239,7 @@ function setupContactForm() {
       document.getElementById('send-another').addEventListener('click', () => {
         form.reset();
         successMessage.remove();
-        form.style.display = 'block';
+        form.classList.remove('is-hidden');
       });
     });
   }
