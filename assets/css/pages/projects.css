@@ -1,0 +1,43 @@
+.project-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.project-tags {
+    margin-top: 20px;
+}
+
+.project-tags a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.project-tags a:hover {
+    opacity: 1;
+}
+
+.project-links {
+    margin-top: 20px;
+}
+
+.project-links a {
+    display: inline-block;
+    margin-right: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.project-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

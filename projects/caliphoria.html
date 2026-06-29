@@ -1,55 +1,22 @@
 ---
 layout: default
 title: Caliphoria
-custom_css: |
-    .connections-container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .connections-section {
-        background-color: rgba(122, 1, 119, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 30px;
-        margin-bottom: 30px;
-        border-radius: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        position: relative;
-    }
-    
-    .connections-section::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        right: -1px;
-        bottom: -1px;
-        left: -1px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        pointer-events: none;
-    }
-    
-    .connections-intro {
-        margin-bottom: 30px;
-        line-height: 1.8;
-    }
-    
-    .connections-intro p {
-        margin-bottom: 20px;
-    }
+page_css:
+  - /assets/css/connections.css
 ---
 <div class="connections-container">
     <section class="connections-section">
-        <h1 style="margin-bottom: 30px;">Caliphoria</h1>
+        <h1 class="u-mb-30">Caliphoria</h1>
         <div class="connections-intro">
             <p>Caliphoria is an innovative project that explores new possibilities in digital experiences. This page will contain detailed information about the Caliphoria project, its vision, implementation details, and current status.</p>
             <p>Travel from Mexi-Cali all the way to Mt. Lassen to discover the beauty and wonder of California in an abundant post-apocalyptic world.</p>
         </div>
-        <div class="project-tags" style="margin-top: 20px;">
-            <span style="margin-right: 10px; opacity: 0.8; color: #ffffff;">#virtual-reality</span>
-            <span style="margin-right: 10px; opacity: 0.8; color: #ffffff;">#interactive</span>
-            <span style="margin-right: 10px; opacity: 0.8; color: #ffffff;">#design</span>
+        <div class="project-tags u-mt-20">
+            <span class="u-tag-icon">#virtual-reality</span>
+            <span class="u-tag-icon">#interactive</span>
+            <span class="u-tag-icon">#design</span>
         </div>
-        <div class="project-links" style="margin-top: 20px;">
+        <div class="project-links u-mt-20">
             <a href="https://github.com/radicalkjax"><i class="fab fa-github"></i> GitHub Profile</a>
         </div>
     </section>

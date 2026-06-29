@@ -2,88 +2,12 @@
 layout: default
 title: Projects
 permalink: /projects.html
-custom_css: |
-    .connections-container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .connections-section {
-        background-color: rgba(122, 1, 119, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 30px;
-        margin-bottom: 30px;
-        border-radius: 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        position: relative;
-    }
-    
-    .connections-section::before {
-        content: '';
-        position: absolute;
-        top: -1px;
-        right: -1px;
-        bottom: -1px;
-        left: -1px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        pointer-events: none;
-    }
-    
-    .connections-intro {
-        margin-bottom: 30px;
-        line-height: 1.8;
-    }
-    
-    .connections-intro p {
-        margin-bottom: 20px;
-    }
-    
-    .project-title {
-        font-size: 2rem;
-        margin-bottom: 15px;
-        font-weight: 500;
-    }
-    
-    .project-tags {
-        margin-top: 20px;
-    }
-    
-    .project-tags a {
-        display: inline-block;
-        margin-right: 10px;
-        color: #ffffff;
-        text-decoration: underline;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        transition: opacity 0.3s ease;
-    }
-    
-    .project-tags a:hover {
-        opacity: 1;
-    }
-    
-    .project-links {
-        margin-top: 20px;
-    }
-    
-    .project-links a {
-        display: inline-block;
-        margin-right: 15px;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 500;
-        padding: 5px 10px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 3px;
-        transition: all 0.3s ease;
-    }
-    
-    .project-links a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
+page_css:
+  - /assets/css/connections.css
+  - /assets/css/pages/projects.css
 ---
 <div class="connections-container">
-    <h1 style="margin-bottom: 30px; text-align: center;">Projects</h1>
+    <h1 class="u-section-heading">Projects</h1>
     
     <!-- Project 1 -->
     <section class="connections-section">
@@ -93,10 +17,10 @@ custom_css: |
             <p>The current version is (0.9), with plans for more advanced conversational capabilities and migrating to Go in future iterations.</p>
         </div>
         <div class="project-tags">
-            <span style="margin-right: 10px; opacity: 0.8;">#robotics</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#atproto</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#raspberry-pi</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#bot</span>
+            <span class="u-tag-icon">#robotics</span>
+            <span class="u-tag-icon">#atproto</span>
+            <span class="u-tag-icon">#raspberry-pi</span>
+            <span class="u-tag-icon">#bot</span>
         </div>
         <div class="project-links">
             <a href="https://github.com/radicalkjax/malwarEvangelist"><i class="fab fa-github"></i> GitHub</a>
@@ -112,10 +36,10 @@ custom_css: |
             <p>The site features a clean, minimalist design with a deep purple/magenta color scheme that reflects my personal aesthetic.</p>
         </div>
         <div class="project-tags">
-            <span style="margin-right: 10px; opacity: 0.8;">#web-development</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#github-pages</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#html</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#css</span>
+            <span class="u-tag-icon">#web-development</span>
+            <span class="u-tag-icon">#github-pages</span>
+            <span class="u-tag-icon">#html</span>
+            <span class="u-tag-icon">#css</span>
         </div>
         <div class="project-links">
             <a href="https://github.com/radicalkjax/blog"><i class="fab fa-github"></i> GitHub</a>
@@ -130,9 +54,9 @@ custom_css: |
             <p>My work involves detailed analysis of malware behavior, reverse engineering techniques, and developing countermeasures against emerging threats.</p>
         </div>
         <div class="project-tags">
-            <span style="margin-right: 10px; opacity: 0.8;">#cybersecurity</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#malware-analysis</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#reverse-engineering</span>
+            <span class="u-tag-icon">#cybersecurity</span>
+            <span class="u-tag-icon">#malware-analysis</span>
+            <span class="u-tag-icon">#reverse-engineering</span>
         </div>
         <div class="project-links">
             <a href="https://github.com/radicalkjax"><i class="fab fa-github"></i> GitHub Profile</a>
@@ -148,9 +72,9 @@ custom_css: |
             <p>This ongoing research encompasses areas such as natural language processing, computer vision, and AI ethics.</p>
         </div>
         <div class="project-tags">
-            <span style="margin-right: 10px; opacity: 0.8;">#artificial-intelligence</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#machine-learning</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#research</span>
+            <span class="u-tag-icon">#artificial-intelligence</span>
+            <span class="u-tag-icon">#machine-learning</span>
+            <span class="u-tag-icon">#research</span>
         </div>
         <div class="project-links">
             <a href="https://github.com/radicalkjax/Athena"><i class="fab fa-github"></i> Athena (Deobfuscation AI)</a>
@@ -165,9 +89,9 @@ custom_css: |
             <p>A collection of presentations on various technology topics including AI, coding practices, security research, and more. These presentations are designed to be informative and accessible, providing insights into complex subjects.</p>
         </div>
         <div class="project-tags">
-            <span style="margin-right: 10px; opacity: 0.8;">#presentations</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#technology</span>
-            <span style="margin-right: 10px; opacity: 0.8;">#education</span>
+            <span class="u-tag-icon">#presentations</span>
+            <span class="u-tag-icon">#technology</span>
+            <span class="u-tag-icon">#education</span>
         </div>
         <div class="project-links">
             <a href="/projects/presentations.html"><i class="fas fa-external-link-alt"></i> View Presentations</a>

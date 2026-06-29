@@ -1,0 +1,34 @@
+.connections-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.connections-section {
+    background-color: rgba(122, 1, 119, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.connections-section::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.connections-intro {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.connections-intro p {
+    margin-bottom: 20px;
+}

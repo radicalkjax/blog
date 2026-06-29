@@ -1,0 +1,90 @@
+/* Critical above-the-fold CSS - prevents FOUC */
+:root {
+  --color-primary: #6d105a;
+  --color-secondary: #fff;
+  --color-text: #fff;
+  --color-background: #6d105a;
+  --font-family: 'DM Mono', monospace;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --container-width: 1000px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Critical logo styles to prevent FOUC */
+.site-logo-container {
+  position: fixed;
+  left: 10px;
+  top: 1px;
+  transform: none;
+  z-index: 10000;
+}
+
+.site-logo-outside {
+  width: 120px;
+  height: 120px;
+  display: block;
+}
+
+/* Critical header styles */
+header {
+  padding: 12px 0;
+  border: 2px solid #ffffff;
+  background-color: #6d105a;
+  position: relative;
+}
+
+.site-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff00ff;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Hide elements until styles load */
+.social-icons {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
