@@ -48,7 +48,7 @@ body.portal {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 4px 16px;
+  row-gap: 4px;
   font-size: 0.9rem;
   line-height: 1.6;
   color: #ffb3f0;
@@ -56,6 +56,17 @@ body.portal {
 
 .card__role .role-item {
   white-space: nowrap;
+}
+
+/* Separators always reserve space; portal-separators.js hides the ones at line
+   edges via visibility so the layout (and wrapping) never shifts. */
+.card__role .role-sep {
+  margin: 0 10px;
+  color: #ffb3f0;
+}
+
+.card__role .role-sep.is-hidden {
+  visibility: hidden;
 }
 
 .card__bio {
