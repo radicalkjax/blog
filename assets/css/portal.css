@@ -51,6 +51,10 @@ body.portal {
   text-wrap: balance;
 }
 
+.card__role .role-item {
+  white-space: nowrap;
+}
+
 .card__bio {
   margin: 0;
   font-size: 0.9rem;
