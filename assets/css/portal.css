@@ -7,10 +7,25 @@ body.portal {
   min-height: 100vh;
   margin: 0;
   padding: 30px 16px;
-  background-color: #6d105a;
+  background-color: #1f0419;
+  background-image: url('/assets/images/portal/stars.png');
+  background-repeat: repeat;
+  image-rendering: pixelated;
   color: #ffffff;
   font-family: 'DM Mono', monospace;
   text-align: center;
+  animation: portal-drift 90s linear infinite;
+}
+
+/* Slow diagonal drift of the starfield (distance is a multiple of the 160px tile
+   so it loops seamlessly) */
+@keyframes portal-drift {
+  from { background-position: 0 0; }
+  to { background-position: -160px -320px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.portal { animation: none; }
 }
 
 .card {
