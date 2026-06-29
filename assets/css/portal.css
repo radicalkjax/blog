@@ -46,8 +46,9 @@ body.portal {
 .card__role {
   margin: 10px 0 0;
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.8;
   color: #ffb3f0;
+  text-wrap: balance;
 }
 
 .card__bio {
