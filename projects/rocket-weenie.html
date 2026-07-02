@@ -1,0 +1,33 @@
+---
+layout: default
+title: Rocket Weenie (Play in Browser)
+page_css:
+  - /assets/css/connections.css
+---
+<div class="connections-container">
+    <section class="connections-section">
+        <h1 class="u-mb-30">Rocket Weenie</h1>
+        <div class="connections-intro">
+            <p>My first game — the original 2013 Android game, rebuilt for the web as a tiny WebAssembly build you can play right here. Tap, click, or press space to fire the rockets — weave through the asteroids and rack up a high score.</p>
+        </div>
+
+        <div id="rw-stage" style="position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:5/3;background:#0b0c1c;border:1px solid #2a2c48;border-radius:10px;overflow:hidden;">
+            <canvas id="glcanvas" tabindex="1" style="display:block;width:100%;height:100%;outline:none;touch-action:none;"></canvas>
+        </div>
+        <p class="u-mt-20" style="text-align:center;opacity:.7;">Tap / click / <kbd>space</kbd> to fly · original 2013 art &amp; physics, reverse-engineered from the Android APK</p>
+
+        <div class="project-tags u-mt-20">
+            <span class="u-tag-icon">#game-development</span>
+            <span class="u-tag-icon">#wasm</span>
+            <span class="u-tag-icon">#rust</span>
+        </div>
+        <div class="project-links u-mt-20">
+            <a href="https://github.com/radicalkjax"><i class="fab fa-github"></i> GitHub Profile</a>
+        </div>
+    </section>
+</div>
+
+<!-- macroquad/miniquad loader (defines `load`, grabs #glcanvas), then the shared
+     bootstrap which loads the WASM and starts the music on first gesture. -->
+<script src="/assets/games/rocket-weenie/mq_js_bundle.js"></script>
+<script src="/assets/games/rocket-weenie/boot.js"></script>
