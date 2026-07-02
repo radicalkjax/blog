@@ -1,0 +1,16 @@
+[package]
+name = "rocket-weenie"
+version = "0.1.0"
+edition = "2024"
+description = "Rocket Weenie — web (WASM) build. Reverse-engineered from the 2013 Unity APK."
+
+[dependencies]
+macroquad = "0.4"
+
+# Small, fast wasm: optimize for size in release.
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

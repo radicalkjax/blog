@@ -1,0 +1,7 @@
+# macroquad/miniquad resolve WebGL + JS glue symbols (init_webgl, glGetIntegerv,
+# now, run_animation_loop, ...) at runtime via mq_js_bundle.js. Rust >= 1.82
+# (April 2026 change) no longer treats undefined wasm symbols as imports by
+# default, so restore that behavior for the web target.
+# https://blog.rust-lang.org/2026/04/04/changes-to-webassembly-targets-and-handling-undefined-symbols/
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "link-arg=--import-undefined"]

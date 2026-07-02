@@ -1,0 +1,70 @@
+Assembly-CSharp.dll — decompiled structure (via dnfile)
+Source: RocketWeenieFree.apk  |  Unity 4.3.2f1  |  7,680 bytes
+
+class Booper
+    - .ctor()
+    - Start()
+    - OnTriggerEnter2D()
+
+class PlayHaven
+    - .ctor()
+    - Start()
+    - OnApplicationPause()
+
+class Score
+    - .ctor()
+    - .cctor()
+    - AddPoint()
+    - Start()
+    - OnDestroy()
+    - Update()
+
+class SpaceSlow
+    - .ctor()
+    - FixedUpdate()
+
+class WeenieThrust
+    - .ctor()
+    - Start()
+    - Update()
+    - FixedUpdate()
+    - OnCollisionEnter2D()
+
+class WeenieTracker
+    - .ctor()
+    - Start()
+    - Update()
+
+class meter_score
+    - .ctor()
+    - OnTriggerEnter2D()
+
+class title
+    - .ctor()
+    - .cctor()
+    - Start()
+    - Update()
+
+All fields across types:
+    numBGpanels
+    asteroidMax
+    asteroidMin
+    androidAppToken
+    androidAppSecret
+    iosAppToken
+    iosAppSecret
+    score
+    highScore
+    instance
+    Weenie
+    speed
+    thrustSpeed
+    fowardSpeed
+    didThrust
+    animator
+    dead
+    deathCoolDown
+    time
+    player
+    offsetX
+    sawOnce
