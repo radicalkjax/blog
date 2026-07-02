@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- Standalone test harness for the Rocket Weenie WASM build.
+     Serve this folder over HTTP (file:// won't load .wasm), e.g.:
+         python3 -m http.server  # then open /assets/games/rocket-weenie/
+     The embeddable version lives in the Jekyll page projects/rocket-weenie.html -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Rocket Weenie</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0b0c1c; overflow: hidden; }
+      #glcanvas { display: block; width: 100vw; height: 100vh; outline: none; }
+    </style>
+  </head>
+  <body>
+    <canvas id="glcanvas" tabindex="1"></canvas>
+    <script src="mq_js_bundle.js"></script>
+    <script src="boot.js"></script>
+  </body>
+</html>
