@@ -40,6 +40,8 @@ async function loadGitHubRepos() {
     const containerDiv = document.getElementById('github-repos-container');
     const errorDiv = document.getElementById('github-repos-error');
 
+    const orgs = ['goldenapplestudios', 'ScopeCreep-zip'];
+
     try {
         // Fetch user's own repos
         const userReposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
@@ -51,12 +53,11 @@ async function loadGitHubRepos() {
         const userRepos = await userReposResponse.json();
 
         // Fetch organization repos
-        const orgReposResponse = await fetch(`https://api.github.com/orgs/goldenapplestudios/repos?sort=updated&per_page=100`);
-        let orgRepos = [];
-
-        if (orgReposResponse.ok) {
-            orgRepos = await orgReposResponse.json();
-        }
+        const orgReposResults = await Promise.all(orgs.map(async org => {
+            const response = await fetch(`https://api.github.com/orgs/${org}/repos?sort=updated&per_page=100`);
+            return response.ok ? response.json() : [];
+        }));
+        const orgRepos = orgReposResults.flat();
 
         // Combine all repos
         const allRepos = [...userRepos, ...orgRepos];
