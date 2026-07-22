@@ -89,6 +89,7 @@ body.portal {
   font-size: 0.9rem;
   line-height: 1.85;
   text-align: left;
+  text-wrap: pretty;
 }
 
 .card__rule {
