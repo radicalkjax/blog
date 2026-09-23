@@ -52,14 +52,14 @@ blog/
 │                           #   subscribe, thank-you
 ├── projects/               # rocket-pup, caliphoria, malwarEvangelist,
 │                           #   presentations
-├── art/                    # photos, other-things
-├── about/                  # trans-journey.html (scrollytelling)
+├── art/                    # photos
 ├── assets/
 │   ├── css/                # global stylesheets + pages/ (per-page)
-│   │                       #   + mermaid-/scrollytelling- modules
+│   │                       #   + mermaid- modules
 │   └── js/                 # global scripts + pages/ (per-page)
-│                           #   + mermaid/ print/ scrollytelling/ modules
+│                           #   + mermaid/ print/ modules
 ├── feed.xml, sitemap.xml, robots.txt, manifest.json, service-worker.js
+├── archive/                # retired pages kept for reference (excluded)
 └── docs/                   # this folder (excluded from the build)
 ```
 
@@ -71,6 +71,5 @@ blog/
 - **Per-page CSS/JS** is opt-in: list files in the `page_css` and `page_js`
   front-matter arrays and the matching `assets/css/pages/` and
   `assets/js/pages/` files load only on that page.
-- Heavier features (Mermaid diagrams, MathJax, print/PDF, the trans-journey
-  scrollytelling) load as ES-module bundles from their `assets/js/<feature>/`
+- Heavier features (Mermaid diagrams, MathJax, print/PDF) load as ES-module bundles from their `assets/js/<feature>/`
   subfolders.

@@ -594,7 +594,6 @@ assets/css/
 ├── key-terms.css           # Key terms component
 ├── mathjax-custom.css      # Math rendering
 ├── mermaid-custom.css      # Diagram styling
-├── scrollytelling.css      # Trans-journey scrollytelling
 └── pages/                  # Per-page styles loaded via page_css front matter
 ```
 
@@ -654,7 +653,6 @@ Inline critical CSS in `<head>` to prevent FOUC:
 | Print PDF | Print optimization | `print-pdf.js` (+ `print/` modules) |
 | MathJax | Math rendering | `mathjax-config.js` |
 | Mermaid | Diagrams | `mermaid-custom.js` (+ `mermaid/` modules) |
-| Scrollytelling | Trans-journey page | `scrollytelling.js` (+ `scrollytelling/` modules) |
 
 ### Loading Strategy
 

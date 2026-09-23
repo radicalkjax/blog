@@ -22,9 +22,7 @@ This site is where I document my journey - the technical stuff, the personal stu
 
 **Art** - photos and other creative stuff
 
-**About Me** - the professional resume bits and the personal journey
-
-**My Trans Journey** - because visibility matters
+**About Me** - the professional resume bits
 
 ## running locally
 

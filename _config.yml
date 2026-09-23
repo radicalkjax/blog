@@ -24,6 +24,7 @@ exclude:
   - .gitignore
   - README.md
   - docs
+  - archive
   - package-lock.json
   - .eslintrc.json
   - .prettierrc.json
