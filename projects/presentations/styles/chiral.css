@@ -1,0 +1,328 @@
+.slidev-layout.chiral {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 76px 66px 65px;
+  overflow: hidden;
+  background: #111c25;
+  color: #edf1f5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.chiral .chiral-header,
+.chiral .chiral-footer {
+  position: absolute;
+  left: 66px;
+  right: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font:
+    13px 'DM Mono',
+    monospace;
+  letter-spacing: 0.06em;
+  color: #a6b8c8;
+}
+
+.chiral .chiral-header {
+  top: 25px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #354653;
+}
+
+.chiral .chiral-footer {
+  bottom: 23px;
+}
+
+.chiral .chiral-content {
+  position: relative;
+  height: 100%;
+}
+
+.slidev-layout.chiral h1 {
+  margin: 0 0 29px;
+  padding: 0;
+  font-size: 47px;
+  line-height: 1.15;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: -0.02em;
+}
+
+.slidev-layout.chiral h2 {
+  font-size: 29px;
+  line-height: 1.2;
+  margin: 0 0 15px;
+  font-weight: 500;
+  color: #92d2dc;
+}
+
+.slidev-layout.chiral p {
+  margin: 16px 0;
+  font-size: inherit;
+}
+
+.slidev-layout.chiral strong {
+  color: #92d2dc;
+  font-weight: 600;
+}
+
+.slidev-layout.chiral ul,
+.slidev-layout.chiral ol {
+  margin: 18px 0;
+  padding-left: 1.2em;
+}
+
+.slidev-layout.chiral ul {
+  list-style: disc;
+}
+
+.slidev-layout.chiral ol {
+  list-style: decimal;
+}
+
+.slidev-layout.chiral li {
+  margin-bottom: 16px;
+}
+
+.slidev-layout.chiral li::marker {
+  color: #92d2dc;
+}
+
+.slidev-layout.chiral a {
+  color: #92d2dc;
+  text-decoration: underline;
+}
+
+.slidev-layout.chiral .lede {
+  font-size: 36px;
+  max-width: 1000px;
+}
+
+.slidev-layout.chiral .small {
+  font-size: 20px;
+  color: #a6b8c8;
+}
+
+.chiral .split {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.chiral .split.equal {
+  grid-template-columns: 1fr 1fr;
+}
+
+.chiral .split p {
+  margin-top: 0;
+}
+
+.chiral .punchline {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid #354653;
+  font-size: 32px;
+}
+
+.chiral .source {
+  display: block;
+  margin-top: 15px;
+  font:
+    13px 'DM Mono',
+    monospace;
+  color: #a6b8c8;
+  overflow-wrap: anywhere;
+}
+
+.chiral .agenda {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 50px;
+  list-style-position: outside;
+}
+
+.chiral .agenda li {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.chiral .hero-title {
+  max-width: 850px;
+}
+
+.slidev-layout.chiral.cover h1 {
+  font-size: 74px;
+}
+
+.chiral.cover .chiral-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chiral .cover-brand {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  width: 170px;
+  margin: 0;
+}
+
+.chiral .tagline {
+  font-size: 40px;
+  color: #92d2dc;
+}
+
+.chiral .art-reference {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  margin: 0;
+}
+
+.slidev-layout.chiral .image-credit {
+  font-size: 12px;
+  color: #a6b8c8;
+}
+
+.chiral .technical-diagram {
+  width: 100%;
+  height: 340px;
+  object-fit: contain;
+  margin: 5px 0;
+}
+
+.chiral .timeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  margin: 42px 0;
+}
+
+.chiral .timeline strong {
+  font:
+    44px 'DM Mono',
+    monospace;
+}
+
+.chiral .timeline p {
+  font-size: 24px;
+}
+
+.chiral .slidev-code-wrapper {
+  margin: 0;
+}
+
+.chiral .slidev-code {
+  font-size: 21px !important;
+  line-height: 1.45 !important;
+  background: #0b131b !important;
+  padding: 18px 22px !important;
+  border: 1px solid #354653;
+  border-radius: 6px;
+}
+
+.chiral .slidev-code .line {
+  min-height: 1.45em;
+}
+
+.chiral .code-wide .slidev-code {
+  font-size: 19px !important;
+}
+
+.chiral .reference-list {
+  font-size: 21px;
+}
+
+.chiral .reference-list li {
+  margin-bottom: 11px;
+}
+
+.chiral .mermaid {
+  margin: 5px auto;
+}
+
+.chiral .ready-demo {
+  padding: 22px;
+  background: #0b131b;
+  border: 1px solid #354653;
+  border-radius: 6px;
+}
+
+.slidev-layout.chiral .ready-demo .demo-caption {
+  font-size: 23px;
+  margin: 0 0 16px;
+}
+
+.chiral .ready-demo label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.chiral .ready-demo input {
+  width: 20px;
+  height: 20px;
+  accent-color: #92d2dc;
+}
+
+.chiral .ready-demo output {
+  display: block;
+  padding: 10px;
+  margin: 20px 0 12px;
+  color: #ffc286;
+  font:
+    22px 'DM Mono',
+    monospace;
+  background: #24313f;
+}
+
+.chiral .ready-demo output.ready {
+  color: #a9e6af;
+}
+
+.chiral .ready-demo button {
+  font-size: 18px;
+  padding: 5px 12px;
+  border: 1px solid #6f8799;
+  border-radius: 4px;
+}
+
+.slidev-layout.chiral .ready-demo .demo-footnote {
+  font-size: 14px;
+  color: #a6b8c8;
+  margin-bottom: 0;
+}
+
+.chiral .split .slidev-code {
+  font-size: 18px !important;
+}
+
+.chiral .intent-step {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 17px 0;
+  border-bottom: 1px solid #354653;
+}
+
+.chiral .intent-step span {
+  color: #b9c8d5;
+}
+
+.slidev-layout.chiral pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.chiral .slidev-code .slidev-code-dishonored {
+  opacity: 0.55;
+}

@@ -1,0 +1,4 @@
+# Marp CLI config, shared by `npm run slides` and one-off exports
+# (e.g. `npx marp projects/presentations/presentation.md --pdf`).
+themeSet: projects/presentations/themes
+html: true

@@ -1,0 +1,25 @@
+{
+  "rekindle.png": {
+    "creator": "Rekindle project",
+    "source": "https://github.com/ScopeCreep-zip/Rekindle/blob/e6c3f1c1b4e4f73a18f258dcb8a1309063e4314e/logo/rekindle.png"
+  },
+  "death-stranding-landscape.jpg": {
+    "creator": "Kojima Productions / Sony Interactive Entertainment",
+    "source": "https://www.playstation.com/en-us/games/death-stranding/",
+    "image_url": "https://gmedia.playstation.com/is/image/SIEPDC/death-stranding-overview-section-background-desktop-tablet-01-ps4-en-22may19?wid=1600",
+    "use": "Attributed visual reference in the artistic-influences discussion; no ownership or license transfer claimed."
+  },
+  "death-stranding-cargo.png": {
+    "creator": "Kojima Productions / Sony Interactive Entertainment",
+    "source": "https://interfaceingame.com/screenshots/death-stranding-cargo-management/",
+    "use": "Attributed game-interface screenshot for design analysis."
+  },
+  "chiral-network.svg": {
+    "creator": "Original diagram created for this presentation",
+    "meaning": "Conceptual responsibilities; not a physical network topology."
+  },
+  "intent-sequence.svg": {
+    "creator": "Original diagram created for this presentation",
+    "meaning": "Project author\u2019s design principle from Google deck slide 9; not a claim about every implemented flow."
+  }
+}

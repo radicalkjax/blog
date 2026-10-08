@@ -1,0 +1,26 @@
+# Slidev sources: projects/presentations/<slug>.md; built URLs: /projects/presentations/<slug>/
+- slug: rekindle
+  title: "Hacking Together A Discord Clone"
+  description: >-
+    Building Rekindle from Xfire-inspired client design, Veilid, and Tauri: code,
+    architecture, secure control, democratic governance, and lessons from working with agents.
+  audience: "DEF CON community"
+  duration: "30–45 minutes, including demo"
+  tags:
+    - privacy
+    - Veilid
+    - Rust
+    - community governance
+
+- slug: presentation
+  title: "Vibe Coding: It's A Legitimate Strategy"
+  description: >-
+    This presentation explores the concept of "vibe coding" - using AI for clean, effective,
+    up-to-date, and secure code. It covers the AI-assisted development pipeline, different
+    perspectives on the process, documentation responsibilities, impacts to users, and addresses
+    common concerns about AI-assisted coding.
+  tags:
+    - AI
+    - coding
+    - development
+    - best practices

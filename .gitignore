@@ -6,7 +6,9 @@ Desktop.ini
 
 # Editor directories and files
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 *.sublime-project
 *.sublime-workspace
 *.suo
@@ -21,6 +23,15 @@ npm-debug.log
 yarn-debug.log
 yarn-error.log
 # package-lock.json should be committed for consistent dependencies
+
+# Slidev output (built by `npm run slides`)
+.slides-dist/
+projects/presentations/*/
+!projects/presentations/layouts/
+!projects/presentations/styles/
+!projects/presentations/svgfiles/
+!projects/presentations/assets/
+!projects/presentations/components/
 
 # Jekyll
 _site/

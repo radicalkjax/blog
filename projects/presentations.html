@@ -8,34 +8,20 @@ page_js:
   - /assets/js/pages/presentations.js
 ---
 <div class="connections-container">
-    <section class="connections-section">
-        <h1 class="u-mb-30">Presentations</h1>
-        <div class="connections-intro">
-            <p>This section features presentations I've created on various topics related to technology, security, and software development. These presentations are designed to be informative and accessible, providing insights into complex subjects.</p>
-        </div>
-        
-        <!-- Vibe Coding Presentation -->
-        <section class="connections-section">
-            <h2 class="project-title">Vibe Coding: It's A Legitimate Strategy</h2>
-            <div class="connections-intro">
-                <p>This presentation explores the concept of "vibe coding" - using AI for clean, effective, up-to-date, and secure code. It covers the AI-assisted development pipeline, different perspectives on the process, documentation responsibilities, impacts to users, and addresses common concerns about AI-assisted coding.</p>
-            </div>
-            <div class="presentation-container">
-                <iframe class="presentation-frame" src="/projects/presentations/presentation.html" allowfullscreen frameborder="0"></iframe>
-            </div>
-            <p class="u-note">
-                Note: For the best experience, use the "Open in New Tab" button below and press "f" for fullscreen mode.
-            </p>
-            <div class="project-tags">
-                <a href="#">AI</a>
-                <a href="#">coding</a>
-                <a href="#">development</a>
-                <a href="#">best practices</a>
-            </div>
-            <div class="project-links">
-                <a href="/projects/presentations/presentation.html" target="_blank"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
-                <a href="/projects/presentations/presentation.md.temp" download="presentation.md"><i class="fas fa-download"></i> Download Source</a>
-            </div>
-        </section>
-    </section>
+  <section class="connections-section">
+    <h1 class="u-mb-30">Presentations</h1>
+    <div class="connections-intro"><p>Talks on software, security, privacy, and building things. Choose a presentation to view its slides.</p></div>
+    <div class="presentation-catalog">
+      {% for deck in site.data.presentations %}
+      <article class="presentation-card">
+        <p class="presentation-kicker">{% if deck.audience %}{{ deck.audience | escape }}{% else %}Software &amp; development{% endif %}</p>
+        <h2><a href="{{ '/projects/presentations/' | append: deck.slug | append: '/view.html' | relative_url }}">{{ deck.title | escape }}</a></h2>
+        <p>{{ deck.description | escape }}</p>
+        {% if deck.duration %}<p class="presentation-duration">{{ deck.duration | escape }}</p>{% endif %}
+        <ul class="presentation-tags" aria-label="Topics">{% for tag in deck.tags %}<li>{{ tag | escape }}</li>{% endfor %}</ul>
+        <div class="project-links"><a href="{{ '/projects/presentations/' | append: deck.slug | append: '/view.html' | relative_url }}">View presentation <span aria-hidden="true">→</span></a></div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
 </div>

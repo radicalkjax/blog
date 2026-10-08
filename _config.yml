@@ -28,6 +28,14 @@ exclude:
   - package-lock.json
   - .eslintrc.json
   - .prettierrc.json
+  - projects/presentations/*.md
+  - projects/presentations/layouts
+  - projects/presentations/components
+  - projects/presentations/styles
+  - projects/presentations/svgfiles
+  - .slides-dist
+  - scripts
+  - package.json
 
 # Front-matter defaults
 defaults:

@@ -1,0 +1,456 @@
+{
+  "title": "Rekindle implementation research for Hacking Together A Discord Clone",
+  "review_date": "2026-10-04",
+  "repository": "https://github.com/ScopeCreep-zip/Rekindle",
+  "branch": "codex/communities-merge-cli-claude-remote",
+  "commit": "e6c3f1c1b4e4f73a18f258dcb8a1309063e4314e",
+  "audience": {
+    "group": "DEF CON",
+    "attendees": 20,
+    "duration_minutes": [
+      30,
+      45
+    ]
+  },
+  "method": "Source, caller, UI consumer and documentation tracing. Source presence is not live end-to-end validation.",
+  "worktree_note": "Existing local modification to docs/plans/video-media-engine.md was excluded from committed implementation evidence.",
+  "claims": [
+    {
+      "id": "host-layout",
+      "status": "source_traced",
+      "finding_and_limit": "Desktop embeds Veilid; daemon/CLI uses Noise-IK IPC. Do not imply complete feature parity.",
+      "evidence": {
+        "path": "docs/architecture/overview.md",
+        "line": 47
+      }
+    },
+    {
+      "id": "chiral-model",
+      "status": "source_traced",
+      "finding_and_limit": "Porters and waystations map to peer contributions and mutual aid. This historical plan needs code corroboration for individual mechanisms.",
+      "evidence": {
+        "path": ".claude/plans/ds-aligned/rekindle-architecture-v2.md",
+        "line": 4
+      }
+    },
+    {
+      "id": "governance-merge",
+      "status": "source_traced",
+      "finding_and_limit": "Readers collect authored entries, sort by Lamport and author, then validate permissions. Convergence assumes the same entry set.",
+      "evidence": {
+        "path": "crates/rekindle-governance/src/merge/mod.rs",
+        "line": 44
+      }
+    },
+    {
+      "id": "governance-authority",
+      "status": "source_traced",
+      "finding_and_limit": "Creator receives ALL permissions; roles govern other members. Separate distributed enforcement from application authority.",
+      "evidence": {
+        "path": "crates/rekindle-governance/src/permissions.rs",
+        "line": 33
+      }
+    },
+    {
+      "id": "admin-handoff",
+      "status": "source_traced",
+      "finding_and_limit": "Administrative handoff grants a role and reports still_creator. It does not remove immutable creator authority.",
+      "evidence": {
+        "path": "crates/rekindle-governance-runtime/src/ownership.rs",
+        "line": 77
+      }
+    },
+    {
+      "id": "governance-invariants",
+      "status": "source_traced",
+      "finding_and_limit": "Structural rules precede creator bypass: self-authored join requests, set-once admission policy, invite caps.",
+      "evidence": {
+        "path": "crates/rekindle-governance/src/validate/mod.rs",
+        "line": 41
+      }
+    },
+    {
+      "id": "polls",
+      "status": "source_traced",
+      "finding_and_limit": "Channel votes persist and aggregate per member. Automatic binding of poll outcomes to governance changes is not established.",
+      "evidence": {
+        "path": "crates/rekindle-channel/src/polls.rs",
+        "line": 106
+      }
+    },
+    {
+      "id": "identity",
+      "status": "source_traced",
+      "finding_and_limit": "HKDF derives community-specific pseudonym signing keys. This does not prove resistance to every metadata correlation.",
+      "evidence": {
+        "path": "crates/rekindle-secrets/src/derive.rs",
+        "line": 17
+      }
+    },
+    {
+      "id": "vault-adapter",
+      "status": "source_traced",
+      "finding_and_limit": "StrongholdKeystore is a legacy name; current backing store is VaultStore.",
+      "evidence": {
+        "path": "src-tauri/src/keystore/mod.rs",
+        "line": 51
+      }
+    },
+    {
+      "id": "vault-crypto",
+      "status": "source_traced",
+      "finding_and_limit": "Secret vault uses SQLCipher page encryption plus per-entry AES-GCM. Do not generalize this to every local cache.",
+      "evidence": {
+        "path": "crates/rekindle-vault/src/lib.rs",
+        "line": 2
+      }
+    },
+    {
+      "id": "channel-send",
+      "status": "source_traced",
+      "finding_and_limit": "Permissions and slowmode precede encryption; SMPL success triggers best-effort metadata gossip; failed writes queue retry. Delivered here does not prove every peer read it.",
+      "evidence": {
+        "path": "crates/rekindle-channel/src/pipeline.rs",
+        "line": 206
+      }
+    },
+    {
+      "id": "channel-aad",
+      "status": "source_traced",
+      "finding_and_limit": "Ciphertext binds channel record, member slot and Lamport timestamp as authenticated data.",
+      "evidence": {
+        "path": "crates/rekindle-channel/src/send.rs",
+        "line": 54
+      }
+    },
+    {
+      "id": "channel-receive",
+      "status": "source_traced",
+      "finding_and_limit": "Notification leads to DHT fetch, verification, decryption, persistence, moderation and UI emission. Gossip is not the message body.",
+      "evidence": {
+        "path": "src-tauri/src/services/community/message_notifications_handle.rs",
+        "line": 24
+      }
+    },
+    {
+      "id": "community-join",
+      "status": "source_traced",
+      "finding_and_limit": "Shared flow handles governance, identity, invite secrets, slot claim and initial presence. Admission policy and bootstrap convenience are separate.",
+      "evidence": {
+        "path": "crates/rekindle-governance-runtime/src/join_flow.rs",
+        "line": 1
+      }
+    },
+    {
+      "id": "segments",
+      "status": "source_traced",
+      "finding_and_limit": "Eight segments with 255 slots give a 2040-member implementation bound, not a verified load benchmark.",
+      "evidence": {
+        "path": "crates/rekindle-governance-runtime/src/segments.rs",
+        "line": 35
+      }
+    },
+    {
+      "id": "friend-ui",
+      "status": "source_traced",
+      "finding_and_limit": "UI sends requests and allows recipient acceptance/rejection. Friendship is distinct from DM invitation and voice readiness.",
+      "evidence": {
+        "path": "src/actions/buddy.actions.ts",
+        "line": 78
+      }
+    },
+    {
+      "id": "friend-receive",
+      "status": "source_traced",
+      "finding_and_limit": "Desktop FriendAccept receive sets Accepted automatically. No third human confirmation is demonstrated in this path. Exact author-intended three-step scope remains unresolved.",
+      "evidence": {
+        "path": "src-tauri/src/services/message_service/friend_handlers/incoming.rs",
+        "line": 291
+      }
+    },
+    {
+      "id": "friend-inbox",
+      "status": "source_traced",
+      "finding_and_limit": "Inbox discovery combines watch notifications, polling and manual scan. These three triggers are not three consent steps.",
+      "evidence": {
+        "path": "crates/rekindle-friendship/src/lib.rs",
+        "line": 2
+      }
+    },
+    {
+      "id": "dm-path",
+      "status": "source_traced",
+      "finding_and_limit": "SMPL DM session sends DmInvite through app_call and resolves on accept/decline. Separate from buddy-list Signal messaging.",
+      "evidence": {
+        "path": "crates/rekindle-dm/src/session.rs",
+        "line": 29
+      }
+    },
+    {
+      "id": "voice-handshake",
+      "status": "source_traced",
+      "finding_and_limit": "Community voice implements VoiceJoin, VoiceJoinAck, VoiceJoinConfirmed. Protocol readiness confirmation is not automatically a third human consent click.",
+      "evidence": {
+        "path": "crates/rekindle-voice/src/signaling/presence/ack.rs",
+        "line": 10
+      }
+    },
+    {
+      "id": "voice-confirm",
+      "status": "source_traced",
+      "finding_and_limit": "The third leg advances local state once and emits connected. Local signaling state alone does not prove remote playback.",
+      "evidence": {
+        "path": "crates/rekindle-voice/src/signaling/presence/join.rs",
+        "line": 175
+      }
+    },
+    {
+      "id": "media-ready",
+      "status": "source_traced",
+      "finding_and_limit": "Video readiness requires connected handshake, nonempty remote roster, MEK, local capabilities and session config.",
+      "evidence": {
+        "path": "crates/rekindle-voice/src/media_ready.rs",
+        "line": 45
+      }
+    },
+    {
+      "id": "video-keyframe",
+      "status": "source_traced",
+      "finding_and_limit": "Peer confirmation forces a keyframe in native or browser encoder path so a new receiver can begin decoding.",
+      "evidence": {
+        "path": "src/components/voice/video_call/useVideoCallPanel.ts",
+        "line": 252
+      }
+    },
+    {
+      "id": "voice-routing",
+      "status": "source_traced",
+      "finding_and_limit": "Desktop sender uses Safe routes, the configured anonymity hop floor and LowLatency stability. Configuration is not measured anonymity/latency proof.",
+      "evidence": {
+        "path": "src-tauri/src/services/voice_adapter/frame_sender.rs",
+        "line": 46
+      }
+    },
+    {
+      "id": "voice-topology",
+      "status": "source_traced",
+      "finding_and_limit": "Voice changes mesh to MCU at five total participants when a host is available. MCU mixes audio; do not label every media host a blind ciphertext relay.",
+      "evidence": {
+        "path": "crates/rekindle-voice/src/topology.rs",
+        "line": 41
+      }
+    },
+    {
+      "id": "video-fragmentation",
+      "status": "source_traced",
+      "finding_and_limit": "Video uses 4 KiB payload fragments with separate Reed-Solomon parity. Older 28 KiB video diagrams are stale; comment estimates are not new measurements.",
+      "evidence": {
+        "path": "crates/rekindle-video/src/fragment.rs",
+        "line": 22
+      }
+    },
+    {
+      "id": "files",
+      "status": "source_traced",
+      "finding_and_limit": "Attachment FEK is wrapped by a matching-generation channel MEK. Delivery still needs retained chunks on available peers.",
+      "evidence": {
+        "path": "crates/rekindle-files/src/fek.rs",
+        "line": 28
+      }
+    },
+    {
+      "id": "lifecycle",
+      "status": "source_traced",
+      "finding_and_limit": "Nine lifecycle states gate queries, writes, unlock, recovery and shutdown. Detached permits cached reads but can_write is false.",
+      "evidence": {
+        "path": "crates/rekindle-lifecycle/src/state.rs",
+        "line": 20
+      }
+    },
+    {
+      "id": "audit-log",
+      "status": "source_traced",
+      "finding_and_limit": "Vault-keyed BLAKE3 chain makes audit history tamper-evident, not immutable against a party holding the key.",
+      "evidence": {
+        "path": "crates/rekindle-audit/src/lib.rs",
+        "line": 2
+      }
+    },
+    {
+      "id": "convergence-tests",
+      "status": "source_traced",
+      "finding_and_limit": "Existing property tests check order independence, idempotence, thread and segment convergence, and compaction behavior.",
+      "evidence": {
+        "path": "crates/rekindle-governance/src/merge/proptests.rs",
+        "line": 109
+      }
+    },
+    {
+      "id": "reciprocity-repair",
+      "status": "source_traced",
+      "finding_and_limit": "Latest commit republishes media routes in presence and re-announces to present rostered peers lacking reciprocal media. Flowing media prevents stale directory rows from evicting a live peer. These are source-traced repairs, not a fresh live-call result.",
+      "evidence": {
+        "path": "crates/rekindle-voice/src/signaling/roster_reconcile/mod.rs",
+        "line": 218
+      }
+    },
+    {
+      "id": "mcu-trust-boundary",
+      "status": "source_traced",
+      "finding_and_limit": "MCU decodes peer audio and produces recipient mixes. The peer hosting it is inside the audio plaintext trust boundary; do not portray it as a ciphertext-only forwarding relay.",
+      "evidence": {
+        "path": "crates/rekindle-voice/src/mcu_loop.rs",
+        "line": 60
+      }
+    },
+    {
+      "id": "mek-wire-rollout",
+      "status": "source_traced",
+      "finding_and_limit": "Current MEK rotation and bootstrap call wrap_mek, which emits legacy X25519/HKDF/AES-GCM wrapping. Authenticated HPKE support exists and unwrap reads both formats; presence of HPKE support does not prove current senders use it.",
+      "evidence": {
+        "path": "crates/rekindle-secrets/src/mek.rs",
+        "line": 66,
+        "callers": [
+          "crates/rekindle-mek-rotation/src/distribute.rs:124",
+          "crates/rekindle-governance-runtime/src/bootstrap.rs:152"
+        ]
+      }
+    }
+  ],
+  "unresolved": [
+    "Exact scope of the author's current A-to-B-to-A intent model beyond the verified voice handshake.",
+    "Author's democratic/social governance framing versus role authority and binding voting mechanics.",
+    "Live two-machine rehearsal of join, media, reconnect and creator-offline behavior."
+  ],
+  "verification": {
+    "focused_tests": {
+      "command": "cargo test --offline -p rekindle-governance -p rekindle-secrets -p rekindle-calls",
+      "status": "passed",
+      "exit_code": 0,
+      "total_passed": 202,
+      "breakdown": {
+        "calls_unit": 35,
+        "governance_unit": 101,
+        "governance_integration": 5,
+        "secrets_unit": 61
+      },
+      "limits": "Existing unit/property/synthetic integration tests only. No live Veilid network or media rehearsal. Synthetic 255-member merge is not a 255-client network load test."
+    },
+    "live_network_demo": "not_run"
+  },
+  "presentation_recommendations": [
+    "Follow one user action through UI, runtime, pure crate, storage and peer receipt.",
+    "Show community origin, invite and join as a journey with named protocol steps.",
+    "Distinguish write persistence, notification, receipt and media readiness.",
+    "Separate infrastructure equality from authority and consent.",
+    "Use the implemented third-leg keyframe effect as technical evidence.",
+    "Explain video fragmentation and parity with lost-shard animation, without unverified benchmark numbers.",
+    "Show a real architecture failure and the code change that addresses it.",
+    "Rehearse every live demo capability and prepare recordings for network-dependent paths."
+  ],
+  "documentation_reconciliation": [
+    {
+      "topic": "Vault",
+      "older_material": "Stronghold implementation",
+      "current_source": "VaultStore with legacy adapter type name"
+    },
+    {
+      "topic": "Video fragmentation",
+      "older_material": "28 KiB fragments",
+      "current_source": "4 KiB payload fragments and Reed-Solomon parity"
+    },
+    {
+      "topic": "Governance creation key",
+      "older_material": "Creation event no longer confers governance authority",
+      "current_source": "Separate DHT address key from genesis author pseudonym: latter retains ALL in permission code"
+    },
+    {
+      "topic": "Handshake scope",
+      "older_material": "Presentation describes A-to-B-to-A intent",
+      "current_source": "Three legs traced through community voice to media readiness and keyframe emission; friendship third human confirmation not established"
+    }
+  ],
+  "presentation_framing_research": {
+    "user_direction": {
+      "governance": "Present the Google deck\u2019s social pressure, democratized voting cycles, decentralized leadership and meaningful ownership as the project\u2019s democratic response to Project 2025. This is a political/design interpretation, not a claim that Project 2025 supplies the model.",
+      "three_step_intents": "Cross-cutting secure control and access principle: A proposes, B accepts, A authorizes completion. Nintendo inspiration is attributed to the project author; do not reduce it to invitations or network handshakes."
+    },
+    "nintendo_sources": [
+      {
+        "url": "https://www.nintendo.com/en-gb/Support/Legacy-system/Registering-friends-240216.html",
+        "finding": "3DS friend registration requires reciprocal registration. This supports mutual intent, but does not document a third initiating-user confirmation."
+      },
+      {
+        "url": "https://www.nintendo.com/en-gb/Support/Purchases-Subscriptions/Games/How-to-Transfer-an-Island-to-Another-Nintendo-Switch-2-or-Nintendo-Switch-Console-Animal-Crossing-New-Horizons--1879835.html",
+        "finding": "Animal Crossing island transfer separately selects source and target, discovers the counterpart, then requires source Transfer data and target Proceed. Useful precedent for staged intent bound to the discovered target; do not call it an exact A-B-A flow."
+      }
+    ],
+    "political_context_source": {
+      "url": "https://www.whitehouse.gov/fact-sheets/2025/02/fact-sheet-president-donald-j-trump-reins-in-independent-agencies-to-restore-a-government-that-answers-to-the-american-people/",
+      "finding": "February 18, 2025 administration statement requires independent agencies to submit regulations for White House review and consult on priorities, with a monetary-policy exception. Use as concrete context for centralized executive control; frame Rekindle\u2019s response as the author\u2019s values."
+    },
+    "code_examples": [
+      {
+        "path": "src-tauri/src/services/message_service/session_reset.rs",
+        "finding": "Incoming reset key material stays pending in memory until user acceptance; supports consent before changing trust state."
+      },
+      {
+        "path": "src-tauri/src/commands/friends.rs",
+        "line": 172,
+        "finding": "Explicit accept_session_reset command. Source tracing does not establish every UI exposes the confirmation correctly."
+      },
+      {
+        "path": "crates/rekindle-governance-runtime/src/ownership.rs",
+        "finding": "Administrative roles can be granted and eligible non-creators can relinquish them; creator authority remains immutable. Leadership succession is not abolition of creator power."
+      },
+      {
+        "path": "crates/rekindle-governance/src/merge/mod.rs",
+        "finding": "Readers validate ordered authored records; convergence assumes the same entry set. Distributed enforcement supports the governance story."
+      }
+    ],
+    "slide_sequence": [
+      {
+        "title": "Tinfoil Socialite",
+        "purpose": "Introduce privacy, consent and community self-government as connected values."
+      },
+      {
+        "title": "A request is not permission",
+        "purpose": "Animate the author\u2019s A \u2192 B \u2192 A design model, with distinct pending, accepted and completed states."
+      },
+      {
+        "title": "Keep the person inside the trust boundary",
+        "purpose": "Show session reset as a traced example, then separate human consent from voice Join/Ack/Confirmed transport readiness."
+      },
+      {
+        "title": "Who gets to govern?",
+        "purpose": "Explain voting cycles and social accountability in the author\u2019s terms, grounded in the post\u2013Project 2025 motivation."
+      },
+      {
+        "title": "Every peer checks the rules",
+        "purpose": "Diagram authored record \u2192 deterministic ordering \u2192 permission validation \u2192 community state; explain distinct storage and policy authority."
+      },
+      {
+        "title": "Ownership means something",
+        "purpose": "Explain administrative succession, community identity and creator continuity, including the permanent creator-authority tradeoff."
+      }
+    ],
+    "accuracy_boundaries": [
+      "Do not claim an official Nintendo doctrine named three-step intents was found.",
+      "Do not describe all current access flows as three manual confirmations.",
+      "Do not equate community voting practice with an established automatic election-to-role protocol.",
+      "Do not label the author\u2019s stated current governance practice as future merely because it is social rather than automated."
+    ]
+  },
+  "presentation_revision": {
+    "structure": "Preserves the Google deck\u2019s order: Porque, Xfire, Veilid, Tauri, STEAM/Chiral architecture, client/communities/multimedia, three-step intents/governance/identity, lessons, demo, questions.",
+    "slides": 27,
+    "code_excerpts": 8,
+    "features": [
+      "Click-stepped line highlighting",
+      "Sequential reveals",
+      "Mermaid architecture and message/media diagrams",
+      "Interactive media-ready prerequisite illustration"
+    ],
+    "visual_direction": "Restrained Rekindle palette; Death Stranding discussed within the STEAM section rather than narrating the whole talk."
+  }
+}
