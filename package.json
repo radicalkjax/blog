@@ -34,7 +34,9 @@
   },
   "homepage": "https://radicalkjax.com",
   "devDependencies": {
+    "@fontsource/barlow": "^5.3.0",
     "@fontsource/dm-mono": "^5.3.0",
+    "@fontsource/jost": "^5.3.0",
     "@slidev/cli": "^53.0.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",

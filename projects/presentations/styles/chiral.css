@@ -1,163 +1,390 @@
+@import '@fontsource/jost/300.css';
+@import '@fontsource/jost/400.css';
+@import '@fontsource/jost/500.css';
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
+@import '@fontsource/barlow/600.css';
+
+/*
+ * Chiral theme. Death Stranding's palette (fog, moss, timefall, chiral gold,
+ * Bridges cyan, tar) crossed with Veilid indigo and the Rekindle flame.
+ * Values are tuned for a projector in a dark room: no pure black, no thin
+ * low-contrast text, gold reserved for one highlight per slide.
+ */
+:root {
+  --void: #07090b;
+  --tar: #0d1216;
+  --panel: rgb(9 14 19 / 78%);
+  --panel-solid: #0c1319;
+  --line: #2b3a44;
+  --text: #e8eef0;
+  --fog: #aeb8bd;
+  --fog-dim: #6f7d85;
+  --bridges: #5ed6f2;
+  --bridges-deep: #1d5b6e;
+  --chiral: #f2b84b;
+  --timefall: #3f7a80;
+  --moss: #8a9a5b;
+  --danger: #e8501e;
+  --veilid: #8583d8;
+  --flame-pink: #ff5fb4;
+  --flame-blue: #3d8bff;
+}
+
 .slidev-layout.chiral {
   position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 76px 66px 65px;
+  padding: 78px 66px 70px;
   overflow: hidden;
-  background: #111c25;
-  color: #edf1f5;
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(ellipse at 70% 0%, #14202a 0%, var(--void) 70%);
+  color: var(--text);
+  font-family: Barlow, Arial, sans-serif;
   font-size: 28px;
   line-height: 1.4;
 }
 
-.chiral .chiral-header,
-.chiral .chiral-footer {
+/* ── Landscape, grade, grain ─────────────────────────────────────────── */
+
+.chiral .chiral-bg {
   position: absolute;
-  left: 66px;
-  right: 66px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font:
-    13px 'DM Mono',
-    monospace;
-  letter-spacing: 0.06em;
-  color: #a6b8c8;
+  inset: -8px;
+  background-size: cover;
+  filter: saturate(0.55) brightness(0.62) contrast(1.08);
 }
+
+.chiral .chiral-scrim,
+.chiral .chiral-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.chiral .scrim-full {
+  background:
+    linear-gradient(180deg, rgb(7 9 11 / 55%) 0%, rgb(7 9 11 / 78%) 100%),
+    linear-gradient(90deg, rgb(7 9 11 / 45%), rgb(7 9 11 / 20%));
+}
+
+.chiral .scrim-left {
+  background:
+    linear-gradient(90deg, rgb(7 9 11 / 94%) 0%, rgb(7 9 11 / 80%) 42%, rgb(7 9 11 / 25%) 78%, rgb(7 9 11 / 10%) 100%),
+    linear-gradient(180deg, rgb(7 9 11 / 35%) 0%, transparent 25%, transparent 75%, rgb(7 9 11 / 70%) 100%);
+}
+
+.chiral .scrim-divider {
+  background:
+    linear-gradient(90deg, rgb(7 9 11 / 82%) 0%, rgb(7 9 11 / 35%) 55%, rgb(7 9 11 / 5%) 100%),
+    linear-gradient(180deg, rgb(7 9 11 / 40%) 0%, transparent 30%, transparent 70%, rgb(7 9 11 / 75%) 100%);
+}
+
+.chiral.divider .chiral-bg,
+.chiral.cover .chiral-bg {
+  filter: saturate(0.75) brightness(0.85) contrast(1.05);
+}
+
+.chiral .chiral-grain {
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Header: a Bridges order readout ─────────────────────────────────── */
 
 .chiral .chiral-header {
-  top: 25px;
-  padding-bottom: 13px;
-  border-bottom: 1px solid #354653;
+  position: absolute;
+  top: 26px;
+  left: 66px;
+  right: 66px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font: 13px 'DM Mono', monospace;
+  letter-spacing: 0.18em;
+  color: var(--fog);
 }
 
-.chiral .chiral-footer {
-  bottom: 23px;
+.chiral .chiral-order {
+  color: var(--bridges);
+}
+
+.chiral .chiral-rule {
+  width: 42px;
+  height: 1px;
+  background: var(--bridges);
+  opacity: 0.6;
 }
 
 .chiral .chiral-content {
   position: relative;
+  z-index: 1;
   height: 100%;
 }
 
+/* ── Type ─────────────────────────────────────────────────────────────── */
+
 .slidev-layout.chiral h1 {
-  margin: 0 0 29px;
+  margin: 0 0 26px;
   padding: 0;
-  font-size: 47px;
-  line-height: 1.15;
-  font-weight: 600;
+  font-family: Jost, Barlow, sans-serif;
+  font-size: 50px;
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   text-align: left;
-  letter-spacing: -0.02em;
 }
 
 .slidev-layout.chiral h2 {
-  font-size: 29px;
-  line-height: 1.2;
-  margin: 0 0 15px;
+  margin: 0 0 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 16px;
   font-weight: 500;
-  color: #92d2dc;
+  line-height: 1.3;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bridges);
 }
 
 .slidev-layout.chiral p {
-  margin: 16px 0;
+  margin: 14px 0;
   font-size: inherit;
 }
 
 .slidev-layout.chiral strong {
-  color: #92d2dc;
+  color: var(--text);
   font-weight: 600;
+}
+
+.slidev-layout.chiral em {
+  color: var(--chiral);
+  font-style: normal;
 }
 
 .slidev-layout.chiral ul,
 .slidev-layout.chiral ol {
-  margin: 18px 0;
-  padding-left: 1.2em;
+  margin: 16px 0;
+  padding-left: 1.1em;
 }
 
-.slidev-layout.chiral ul {
-  list-style: disc;
-}
-
-.slidev-layout.chiral ol {
-  list-style: decimal;
-}
+.slidev-layout.chiral ul { list-style: none; }
+.slidev-layout.chiral ol { list-style: decimal; }
 
 .slidev-layout.chiral li {
-  margin-bottom: 16px;
+  position: relative;
+  margin-bottom: 14px;
 }
 
-.slidev-layout.chiral li::marker {
-  color: #92d2dc;
+.slidev-layout.chiral ul > li::before {
+  content: '';
+  position: absolute;
+  left: -1.05em;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--bridges);
+  transform: rotate(45deg);
+}
+
+.slidev-layout.chiral ol li::marker {
+  color: var(--bridges);
+  font-family: 'DM Mono', monospace;
 }
 
 .slidev-layout.chiral a {
-  color: #92d2dc;
+  color: var(--bridges);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.slidev-layout.chiral code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85em;
+  color: var(--bridges);
+  background: rgb(94 214 242 / 10%);
+  padding: 0.05em 0.3em;
+  border-radius: 2px;
 }
 
 .slidev-layout.chiral .lede {
-  font-size: 36px;
-  max-width: 1000px;
+  max-width: 980px;
+  font-family: Jost, Barlow, sans-serif;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.3;
+  color: var(--text);
 }
 
 .slidev-layout.chiral .small {
-  font-size: 20px;
-  color: #a6b8c8;
+  font-size: 19px;
+  color: var(--fog);
 }
+
+.slidev-layout.chiral .source {
+  display: block;
+  margin-top: 12px;
+  font: 13px 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+  color: var(--fog);
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.slidev-layout.chiral .source::before {
+  content: '◇ ';
+  color: var(--bridges);
+}
+
+.slidev-layout.chiral .punchline {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: Jost, Barlow, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.slidev-layout.chiral .punchline em { color: var(--chiral); }
+
+/* ── Bridges panels: hairline frame with corner brackets ─────────────── */
+
+.chiral .panel {
+  position: relative;
+  padding: 20px 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+.chiral .panel::before,
+.chiral .panel::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--bridges);
+}
+
+.chiral .panel::before { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.chiral .panel::after { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.chiral .panel.gold::before,
+.chiral .panel.gold::after { border-color: var(--chiral); }
+.chiral .panel.danger::before,
+.chiral .panel.danger::after { border-color: var(--danger); }
+
+.chiral .panel h2 { margin-top: 0; }
+.chiral .panel > :last-child { margin-bottom: 0; }
 
 .chiral .split {
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 40px;
   align-items: start;
 }
 
-.chiral .split.equal {
-  grid-template-columns: 1fr 1fr;
-}
+.chiral .split.equal { grid-template-columns: 1fr 1fr; }
+.chiral .split.wide-right { grid-template-columns: 1fr 1.35fr; }
+.chiral .split p:first-child { margin-top: 0; }
 
-.chiral .split p {
-  margin-top: 0;
-}
+.chiral .narrow { max-width: 640px; }
+.chiral .mid { max-width: 820px; }
 
-.chiral .punchline {
-  margin-top: 30px;
-  padding-top: 22px;
-  border-top: 1px solid #354653;
-  font-size: 32px;
-}
+/* ── Readouts (DS order screen style) ─────────────────────────────────── */
 
-.chiral .source {
-  display: block;
-  margin-top: 15px;
-  font:
-    13px 'DM Mono',
-    monospace;
-  color: #a6b8c8;
-  overflow-wrap: anywhere;
-}
-
-.chiral .agenda {
+.chiral .readouts {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px 50px;
-  list-style-position: outside;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 30px 0 10px;
 }
 
-.chiral .agenda li {
-  font-size: 26px;
-  margin-bottom: 6px;
+.chiral .readout {
+  padding: 14px 18px;
+  border-left: 2px solid var(--bridges);
+  background: var(--panel);
 }
 
-.chiral .hero-title {
-  max-width: 850px;
+.chiral .readout b {
+  display: block;
+  font: 400 40px/1.1 Jost, sans-serif;
+  color: var(--text);
 }
 
-.slidev-layout.chiral.cover h1 {
-  font-size: 74px;
+.chiral .readout span {
+  font: 12px 'DM Mono', monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fog);
 }
+
+.chiral .readout.gold { border-color: var(--chiral); }
+.chiral .readout.gold b { color: var(--chiral); }
+
+/* ── Tables: the chiral dictionary, cargo classes ─────────────────────── */
+
+.slidev-layout.chiral table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.slidev-layout.chiral th {
+  padding: 8px 12px;
+  font: 500 12px 'DM Mono', monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--bridges);
+  border-bottom: 1px solid var(--bridges-deep);
+}
+
+.slidev-layout.chiral td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.slidev-layout.chiral td:first-child {
+  font-family: Jost, sans-serif;
+  color: var(--chiral);
+  white-space: nowrap;
+}
+
+.slidev-layout.chiral td code { font-size: 0.82em; }
+
+/* ── Code ─────────────────────────────────────────────────────────────── */
+
+.chiral .slidev-code-wrapper { margin: 0; }
+
+.chiral .slidev-code {
+  font-family: 'DM Mono', monospace !important;
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+  background: rgb(7 11 15 / 88%) !important;
+  padding: 18px 22px !important;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--bridges);
+  border-radius: 0;
+}
+
+.chiral .slidev-code .line { min-height: 1.5em; }
+.chiral .code-wide .slidev-code { font-size: 19px !important; }
+.chiral .code-small .slidev-code { font-size: 16.5px !important; }
+.chiral .split .slidev-code { font-size: 17.5px !important; }
+.chiral .slidev-code .slidev-code-dishonored { opacity: 0.32; }
+
+.slidev-layout.chiral pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ── Cover ────────────────────────────────────────────────────────────── */
 
 .chiral.cover .chiral-content {
   display: flex;
@@ -165,164 +392,400 @@
   justify-content: center;
 }
 
+.slidev-layout.chiral.cover h1 {
+  font-size: 76px;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+
+.slidev-layout.chiral .tagline {
+  font-family: Jost, sans-serif;
+  font-size: 34px;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--chiral);
+}
+
+.slidev-layout.chiral .byline {
+  font: 16px 'DM Mono', monospace;
+  letter-spacing: 0.16em;
+  color: var(--fog);
+}
+
 .chiral .cover-brand {
   position: absolute;
-  right: 0;
-  top: 70px;
-  width: 170px;
+  right: -20px;
+  top: 40px;
+  width: 210px;
   margin: 0;
+  mix-blend-mode: screen;
 }
 
-.chiral .tagline {
-  font-size: 40px;
-  color: #92d2dc;
+/* ── Chapter cards: DS-style title cards over the landscape ─────────── */
+
+.chiral.divider .chiral-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.chiral .art-reference {
-  width: 100%;
-  height: 270px;
-  object-fit: cover;
+.slidev-layout.chiral.divider .eyebrow {
+  margin: 0 0 18px;
+  font: 13px 'DM Mono', monospace;
+  letter-spacing: 0.42em;
+  color: var(--fog);
+}
+
+.slidev-layout.chiral.divider h1 {
+  position: relative;
   margin: 0;
+  font-family: Jost, sans-serif;
+  font-size: 66px;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-.slidev-layout.chiral .image-credit {
-  font-size: 12px;
-  color: #a6b8c8;
+/* hairline strands hanging off the title, after the DS key art */
+.slidev-layout.chiral.divider h1::after {
+  content: '';
+  display: block;
+  width: 62%;
+  height: 120px;
+  margin-top: 10px;
+  background: repeating-linear-gradient(90deg, transparent 0 37px, rgb(232 238 240 / 45%) 37px 38px, transparent 38px 61px, rgb(232 238 240 / 25%) 61px 62px, transparent 62px 97px);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
 }
 
-.chiral .technical-diagram {
-  width: 100%;
-  height: 340px;
-  object-fit: contain;
-  margin: 5px 0;
+.slidev-layout.chiral.divider .subline {
+  margin: 4px 0 0;
+  max-width: 760px;
+  font-family: Barlow, sans-serif;
+  font-size: 26px;
+  color: var(--fog);
 }
+
+/* ── Timeline ─────────────────────────────────────────────────────────── */
 
 .chiral .timeline {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
-  margin: 42px 0;
+  grid-template-columns: repeat(var(--steps, 4), 1fr);
+  gap: 0;
+  margin: 40px 0 20px;
+  border-top: 1px solid var(--bridges-deep);
+}
+
+.chiral .timeline > div {
+  position: relative;
+  padding: 26px 22px 0 0;
+}
+
+.chiral .timeline > div::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--bridges);
+  transform: rotate(45deg);
 }
 
 .chiral .timeline strong {
-  font:
-    44px 'DM Mono',
-    monospace;
+  display: block;
+  font: 400 36px Jost, sans-serif;
+  color: var(--text);
 }
 
 .chiral .timeline p {
-  font-size: 24px;
-}
-
-.chiral .slidev-code-wrapper {
-  margin: 0;
-}
-
-.chiral .slidev-code {
-  font-size: 21px !important;
-  line-height: 1.45 !important;
-  background: #0b131b !important;
-  padding: 18px 22px !important;
-  border: 1px solid #354653;
-  border-radius: 6px;
-}
-
-.chiral .slidev-code .line {
-  min-height: 1.45em;
-}
-
-.chiral .code-wide .slidev-code {
-  font-size: 19px !important;
-}
-
-.chiral .reference-list {
+  margin: 6px 0 0;
   font-size: 21px;
+  color: var(--fog);
 }
 
-.chiral .reference-list li {
-  margin-bottom: 11px;
+/* ── Receipts: real commit messages ───────────────────────────────────── */
+
+.chiral .receipts {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+  font: 19px/1.35 'DM Mono', monospace;
 }
 
-.chiral .mermaid {
-  margin: 5px auto;
+.chiral .receipts div {
+  display: grid;
+  grid-template-columns: 110px 160px 1fr;
+  gap: 18px;
+  padding: 10px 16px;
+  background: var(--panel);
+  border-left: 2px solid var(--danger);
 }
 
-.chiral .ready-demo {
-  padding: 22px;
-  background: #0b131b;
-  border: 1px solid #354653;
-  border-radius: 6px;
-}
+.chiral .receipts span:nth-child(1) { color: var(--fog-dim); }
+.chiral .receipts span:nth-child(2) { color: var(--chiral); }
 
-.slidev-layout.chiral .ready-demo .demo-caption {
-  font-size: 23px;
-  margin: 0 0 16px;
-}
+/* ── Interactive readiness gate ───────────────────────────────────────── */
 
 .chiral .ready-demo label {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 21px;
-  margin-bottom: 15px;
+  font-size: 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
 }
 
-.chiral .ready-demo input {
-  width: 20px;
-  height: 20px;
-  accent-color: #92d2dc;
+.chiral .ready-demo input { width: 20px; height: 20px; accent-color: var(--bridges); }
+
+.chiral .ready-demo .handshake {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.chiral .ready-demo .handshake button {
+  flex: 1;
+  padding: 6px 0;
+  font: 14px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  color: var(--fog);
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.chiral .ready-demo .handshake button.on {
+  color: var(--void);
+  background: var(--bridges);
+  border-color: var(--bridges);
 }
 
 .chiral .ready-demo output {
   display: block;
-  padding: 10px;
-  margin: 20px 0 12px;
-  color: #ffc286;
-  font:
-    22px 'DM Mono',
-    monospace;
-  background: #24313f;
+  margin: 18px 0 10px;
+  padding: 10px 14px;
+  font: 22px 'DM Mono', monospace;
+  color: var(--danger);
+  background: rgb(232 80 30 / 10%);
+  border-left: 2px solid var(--danger);
 }
 
 .chiral .ready-demo output.ready {
-  color: #a9e6af;
+  color: #9be3a4;
+  background: rgb(155 227 164 / 10%);
+  border-color: #9be3a4;
 }
 
-.chiral .ready-demo button {
-  font-size: 18px;
-  padding: 5px 12px;
-  border: 1px solid #6f8799;
-  border-radius: 4px;
+.slidev-layout.chiral .ready-demo .demo-caption {
+  margin: 0 0 14px;
+  font: 13px 'DM Mono', monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bridges);
 }
 
 .slidev-layout.chiral .ready-demo .demo-footnote {
+  margin: 0;
   font-size: 14px;
-  color: #a6b8c8;
-  margin-bottom: 0;
+  color: var(--fog);
 }
 
-.chiral .split .slidev-code {
-  font-size: 18px !important;
+/* ── References ───────────────────────────────────────────────────────── */
+
+.chiral .reference-list {
+  columns: 2;
+  column-gap: 40px;
+  font-size: 17px;
 }
 
-.chiral .intent-step {
+.chiral .reference-list li {
+  break-inside: avoid;
+  margin-bottom: 9px;
+}
+
+.chiral .credits {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--fog);
+  columns: 2;
+  column-gap: 40px;
+}
+
+.chiral .credits p { margin: 0 0 6px; break-inside: avoid; }
+
+/* ── Architecture stack ───────────────────────────────────────────────── */
+
+.chiral .arch-stack { display: grid; gap: 14px; }
+.chiral .arch-row { display: grid; gap: 14px; }
+.chiral .arch-row.hosts { grid-template-columns: 1fr 1fr; }
+.chiral .arch-row.hosts .panel { font-size: 22px; padding: 14px 20px; }
+.chiral .arch-row.hosts span { font-size: 17px; color: var(--fog); }
+.chiral .arch-row.tiers { grid-template-columns: repeat(4, 1fr); }
+
+.chiral .arch-row.tiers > div {
+  padding: 12px 14px;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--fog);
+  background: var(--panel);
+  border-top: 2px solid var(--bridges);
+}
+
+.chiral .arch-row.tiers b {
+  display: block;
+  margin-bottom: 4px;
+  font: 400 21px Jost, sans-serif;
+  color: var(--text);
+}
+
+.chiral .arch-row.pipeline { grid-template-columns: repeat(5, 1fr); margin-bottom: 18px; }
+.chiral .arch-row.pipeline .panel { font-size: 17px; line-height: 1.35; padding: 14px 16px; color: var(--fog); }
+
+.chiral .arch-link {
+  font: 15px 'DM Mono', monospace;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--bridges);
+}
+
+.chiral.complete .readouts { margin: 26px 0 30px; }
+
+/* ── Layout helpers ───────────────────────────────────────────────────── */
+
+.chiral.cover .chiral-header,
+.chiral.divider .chiral-header { display: none; }
+
+.chiral .split > * { min-width: 0; }
+.chiral .split.tight { margin-top: 18px; }
+.chiral .split.tight li { font-size: 23px; margin-bottom: 8px; }
+.chiral .slidev-code-wrapper pre { overflow-x: auto; }
+
+.chiral.center .chiral-content {
   display: flex;
-  justify-content: space-between;
-  gap: 28px;
-  padding: 17px 0;
-  border-bottom: 1px solid #354653;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 20px;
 }
 
-.chiral .intent-step span {
-  color: #b9c8d5;
+.chiral .veilid-row { font-size: 20px; padding: 12px 20px; }
+.chiral .veilid-row h2 { color: var(--chiral); margin-bottom: 4px; }
+.chiral .intent-steps { max-height: 300px; }
+.chiral .code-tiny .slidev-code { font-size: 15px !important; padding: 14px 18px !important; }
+.chiral .split.code-heavy { grid-template-columns: 1.9fr 1fr; }
+.chiral .split.tight .small { margin-top: 0; }
+.slidev-layout.chiral.complete h1 { font-size: 80px; font-weight: 300; }
+
+/* ── whoami, proof quotes, greetz ─────────────────────────────────────── */
+
+.chiral .whoami {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: center;
 }
 
-.slidev-layout.chiral pre code {
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
+.slidev-layout.chiral .headshot {
+  width: 300px;
+  height: 300px;
+  margin: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  filter: saturate(0.85);
 }
 
-.chiral .slidev-code .slidev-code-dishonored {
-  opacity: 0.55;
+.chiral .proof {
+  margin: 20px 0;
+  font-family: Jost, Barlow, sans-serif;
+  font-size: 27px;
+  font-weight: 300;
+  line-height: 1.35;
 }
+
+.chiral .proof b { font-weight: 500; color: var(--text); }
+.chiral .proof .source { margin-top: 14px; }
+.chiral .proof.narrow-quote { max-width: 900px; }
+
+.chiral.complete .eyebrow {
+  margin: 0 0 10px;
+  font: 13px 'DM Mono', monospace;
+  letter-spacing: 0.42em;
+  color: var(--fog);
+}
+
+.chiral .greetz { margin-top: 26px; }
+.chiral .greetz li { font-size: 22px; margin-bottom: 8px; }
+.chiral .greetz p { margin: 6px 0; }
+.slidev-layout.chiral .big-table table { font-size: 23px; }
+
+/* Credit: what Veilid provides vs what Rekindle builds. Veilid = indigo, Rekindle = cyan. */
+.chiral .by { display: inline-block; font: 500 12px 'DM Mono', monospace; letter-spacing: .18em; padding: 2px 8px; border: 1px solid currentColor; border-radius: 2px; vertical-align: middle; text-transform: uppercase; }
+.chiral .by.veilid { color: var(--veilid); }
+.chiral .by.rk { color: var(--bridges); }
+.chiral .panel.veilid::before,
+.chiral .panel.veilid::after { border-color: var(--veilid); }
+.chiral .panel.veilid h2 { color: var(--veilid); }
+.chiral .panel.rk::before,
+.chiral .panel.rk::after { border-color: var(--bridges); }
+.chiral .panel.rk h2 { color: var(--bridges); }
+.chiral .boundary th:first-child { color: var(--veilid); }
+.chiral .boundary th:nth-child(2) { color: var(--bridges); }
+.chiral .steps { margin: 0; padding-left: 1.4em; }
+.chiral .steps li { margin: .35em 0; }
+.chiral .result { margin-top: 18px; font-size: 21px; color: var(--fog); }
+.chiral .result b { color: var(--danger); font-weight: 500; }
+.chiral .panel.compact { font-size: 19px; padding: 14px 18px; }
+.chiral .panel.compact .steps li { margin: .2em 0; }
+.chiral .panel.compact .result { font-size: 19px; margin-top: 10px; }
+.chiral .tight-list { font-size: 21px; } .chiral .tight-list li { margin: .45em 0; }
+.chiral .big-table.intents table { font-size: 18px; } .chiral .big-table.intents td:first-child { white-space: nowrap; }
+
+/* Citations: every fact links to the line/sentence that backs it. Quiet until hovered. */
+.slidev-layout.chiral a.cite,
+.slidev-layout.chiral a.cite:visited {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: rgb(94 214 242 / 55%);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.slidev-layout.chiral a.cite:hover { color: var(--bridges); text-decoration-style: solid; }
+.slidev-layout.chiral .receipts a.cite { color: inherit; }
+svg a.cite text { text-decoration: underline dotted; }
+svg a.cite:hover text { fill: var(--bridges); }
+
+/* open problems, called out in red */
+.slidev-layout.chiral p.todo, .slidev-layout.chiral p.small.todo { color: var(--danger); }
+.chiral p.todo a.cite { color: inherit; }
+.chiral .big-table.audits { font-size: 18px; }
+.chiral .big-table.audits td:first-child { font-family: 'DM Mono', monospace; white-space: nowrap; }
+.chiral .big-table.audits td:nth-child(2) { color: var(--fog); }
+
+/* the Why? divider's line is the point of the slide */
+.slidev-layout.chiral.divider .subline.loud { max-width: none; font-size: 46px; font-weight: 500; color: var(--text); }
+.slidev-layout.chiral.divider .subline.loud em { font-style: normal; color: var(--chiral); }
+
+/* cover: the snowy photo washes out thin text, so darken the text side and
+   give the cover's lines more weight and contrast */
+.chiral.cover .scrim-divider {
+  background:
+    linear-gradient(90deg, rgb(7 9 11 / 92%) 0%, rgb(7 9 11 / 78%) 45%, rgb(7 9 11 / 30%) 75%, rgb(7 9 11 / 10%) 100%),
+    linear-gradient(180deg, rgb(7 9 11 / 45%) 0%, transparent 30%, transparent 70%, rgb(7 9 11 / 75%) 100%);
+}
+.slidev-layout.chiral.cover h1 { font-weight: 400; text-shadow: 0 2px 18px rgb(0 0 0 / 55%); }
+.slidev-layout.chiral.cover .tagline { font-weight: 500; letter-spacing: 0.24em; text-shadow: 0 1px 10px rgb(0 0 0 / 70%); }
+.slidev-layout.chiral.cover .byline { color: var(--text); font-weight: 500; text-shadow: 0 1px 8px rgb(0 0 0 / 70%); }
+
+/* cover: the flame sits right of the title, sized to the title's letters */
+.chiral.cover .cover-title { display: flex; align-items: center; gap: 30px; }
+.chiral.cover .cover-title .cover-brand {
+  position: static;
+  width: auto;
+  height: 140px;
+  mix-blend-mode: normal;
+  /* line-height leaves room below the baseline; lift the flame onto the letters */
+  transform: translateY(-18px);
+}
+.slidev-layout.chiral.cover .tagline { max-width: 820px; font-size: 26px; line-height: 1.45; }

@@ -32,6 +32,7 @@ projects/presentations/*/
 !projects/presentations/svgfiles/
 !projects/presentations/assets/
 !projects/presentations/components/
+!projects/presentations/setup/
 
 # Jekyll
 _site/

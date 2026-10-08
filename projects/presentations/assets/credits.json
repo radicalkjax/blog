@@ -3,23 +3,109 @@
     "creator": "Rekindle project",
     "source": "https://github.com/ScopeCreep-zip/Rekindle/blob/e6c3f1c1b4e4f73a18f258dcb8a1309063e4314e/logo/rekindle.png"
   },
-  "death-stranding-landscape.jpg": {
-    "creator": "Kojima Productions / Sony Interactive Entertainment",
-    "source": "https://www.playstation.com/en-us/games/death-stranding/",
-    "image_url": "https://gmedia.playstation.com/is/image/SIEPDC/death-stranding-overview-section-background-desktop-tablet-01-ps4-en-22may19?wid=1600",
-    "use": "Attributed visual reference in the artistic-influences discussion; no ownership or license transfer claimed."
+  "bg/cover.jpg": {
+    "title": "Nesjavellir hiking trail (Unsplash)",
+    "author": "Gemma Evans stayandroam",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Nesjavellir_hiking_trail_%28Unsplash%29.jpg"
   },
-  "death-stranding-cargo.png": {
-    "creator": "Kojima Productions / Sony Interactive Entertainment",
-    "source": "https://interfaceingame.com/screenshots/death-stranding-cargo-management/",
-    "use": "Attributed game-interface screenshot for design analysis."
+  "bg/why.jpg": {
+    "title": "East Iceland (Unsplash)",
+    "author": "Jeremy Bishop tidesinourveins",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:East_Iceland_%28Unsplash%29.jpg"
   },
-  "chiral-network.svg": {
-    "creator": "Original diagram created for this presentation",
-    "meaning": "Conceptual responsibilities; not a physical network topology."
+  "bg/xfire.jpg": {
+    "title": "Solheimasandur Plane Wreck (Unsplash SIczJ91He3c)",
+    "author": "Christoffer Engström christoffere",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Solheimasandur_Plane_Wreck_%28Unsplash_SIczJ91He3c%29.jpg"
   },
-  "intent-sequence.svg": {
-    "creator": "Original diagram created for this presentation",
-    "meaning": "Project author\u2019s design principle from Google deck slide 9; not a claim about every implemented flow."
+  "bg/veilid.jpg": {
+    "title": "Iceland lake Northern Lights (Unsplash)",
+    "author": "Vincent Guth vingtcent",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Iceland_lake_Northern_Lights_%28Unsplash%29.jpg"
+  },
+  "bg/tauri.jpg": {
+    "title": "Rock columns at Reynisfjara Beach",
+    "author": "Alexander Grebenkov",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Rock_columns_at_Reynisfjara_Beach.jpg"
+  },
+  "bg/journey.jpg": {
+    "title": "A Journey from Another World (Unsplash)",
+    "author": "Diogo Tavares diogotavares",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:A_Journey_from_Another_World_%28Unsplash%29.jpg"
+  },
+  "bg/arch.jpg": {
+    "title": "Lost in the valley (Unsplash)",
+    "author": "Jonatan Pie r3dmax",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Lost_in_the_valley_%28Unsplash%29.jpg"
+  },
+  "bg/communities.jpg": {
+    "title": "A cabin with snow by the lake (Unsplash)",
+    "author": "Asgeir Pall Juliusson asgeir",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:A_cabin_with_snow_by_the_lake_%28Unsplash%29.jpg"
+  },
+  "bg/multimedia.jpg": {
+    "title": "Misty Waterfall in Iceland (Unsplash)",
+    "author": "Dan Gold danielcgold",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Misty_Waterfall_in_Iceland_%28Unsplash%29.jpg"
+  },
+  "bg/identity.jpg": {
+    "title": "Djúpivogur, Iceland (Unsplash 59G4kl4Ob00)",
+    "author": "Cosmic Timetraveler atw",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Dj%C3%BApivogur%2C_Iceland_%28Unsplash_59G4kl4Ob00%29.jpg"
+  },
+  "bg/governance.jpg": {
+    "title": "Steam over an Icelandic field (Unsplash)",
+    "author": "Tim Wright timdwright",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Steam_over_an_Icelandic_field_%28Unsplash%29.jpg"
+  },
+  "bg/lessons.jpg": {
+    "title": "Snow-capped Icelandic mountains (Unsplash)",
+    "author": "Rucksack Magazine rucksackmag",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Snow-capped_Icelandic_mountains_%28Unsplash%29.jpg"
+  },
+  "bg/demo.jpg": {
+    "title": "Rural Drive (Unsplash)",
+    "author": "Roma Ryabchenko n3moy",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Rural_Drive_%28Unsplash%29.jpg"
+  },
+  "bg/questions.jpg": {
+    "title": "Kiwirrkurra Community, Gibson Desert North, Australia (Unsplash)",
+    "author": "Robert Whyte robertwhyte",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Kiwirrkurra_Community%2C_Gibson_Desert_North%2C_Australia_%28Unsplash%29.jpg"
+  },
+  "bg/mexico.jpg": {
+    "title": "Chihuahuan Desert Nature Park - Flickr - aspidoscelis",
+    "author": "Patrick Alexander from Las Cruces, NM",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Chihuahuan_Desert_Nature_Park_-_Flickr_-_aspidoscelis.jpg"
   }
 }

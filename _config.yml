@@ -15,6 +15,11 @@ plugins:
   - jekyll-seo-tag
 
 
+# Slidev/Vite emits chunks whose names start with "_"; Jekyll drops those unless listed here.
+include:
+  - "_plugin-vue_export-helper-*.js"
+  - "__vite-browser-external-*.js"
+
 # Exclude from processing
 exclude:
   - Gemfile
